@@ -1,0 +1,9 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/../../../../../OneDrive - The Ohio State University/Desktop/Mario.png","C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/bin/DesktopGL/Content/Mario.xnb","TextureProcessor","Texture2DContent",240,1109,0.095317
+"C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/font.spritefont","C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/bin/DesktopGL/Content/font.xnb","FontDescriptionProcessor","SpriteFontContent",2017,21535,0.1702182
+"C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/MarioDeath.png","C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/bin/DesktopGL/Content/MarioDeath.xnb","TextureProcessor","Texture2DContent",235,1109,0.0010955
+"C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/MarioIdle.png","C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/bin/DesktopGL/Content/MarioIdle.xnb","TextureProcessor","Texture2DContent",313,3285,0.0015203
+"C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/MarioLeapRight.png","C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/bin/DesktopGL/Content/MarioLeapRight.xnb","TextureProcessor","Texture2DContent",240,1173,0.0012125
+"C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/marios.png","C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/bin/DesktopGL/Content/marios.xnb","TextureProcessor","Texture2DContent",68003,231653,0.0071965
+"C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/MarioWalkRight.png","C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/bin/DesktopGL/Content/MarioWalkRight.xnb","TextureProcessor","Texture2DContent",335,3157,0.00196
+"C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/MarioWalkRightTextureAtlas.png","C:/Users/Stan Lu/Source/Repos/CSE-3902/Sprint0/Content/bin/DesktopGL/Content/MarioWalkRightTextureAtlas.xnb","TextureProcessor","Texture2DContent",576,9685,0.0017154
