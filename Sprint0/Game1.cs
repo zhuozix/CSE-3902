@@ -87,8 +87,8 @@ namespace Sprint0
             ICommand MovingAnimatedSpriteCommand = new CommandList(this, 1);
             ICommand NoneMovingAnimatedSpriteCommand = new CommandList(this, 2);
 			// Adam Sprint 2
-			ICommand SetBlockBrick = new BlockNext(this, 0);
-            ICommand SetBlockCoin = new BlockNext(this, 1);
+			ICommand SetBlockBrick = new SetBlockIndex(this, 0);
+            ICommand SetBlockCoin = new SetBlockIndex(this, 1);
             //
 			keyboardController.AddCommand(Keys.D1, NoneMovingNoneAnimatedCommand);
             keyboardController.AddCommand(Keys.D2, NoneMovingAnimatedSpriteCommand);
@@ -96,8 +96,8 @@ namespace Sprint0
             keyboardController.AddCommand(Keys.D4, MovingAnimatedSpriteCommand);
             keyboardController.AddCommand(Keys.D0, new CommandExit(this));
 			// Adam Sprint 2
-			keyboardController.AddCommand(Keys.Y, SetBlockBrick);
-			keyboardController.AddCommand(Keys.T, SetBlockCoin);
+			keyboardController.AddCommand(Keys.T, SetBlockBrick);
+			keyboardController.AddCommand(Keys.Y, SetBlockCoin);
             //
 			#endregion
 		}
@@ -110,10 +110,7 @@ namespace Sprint0
             ICommand MovingNoneAnimatedCommand = new CommandList(this, 3);
             ICommand MovingAnimatedSpriteCommand = new CommandList(this, 1);
             ICommand NoneMovingAnimatedSpriteCommand = new CommandList(this, 2);
-			// Adam Sprint 2
-			ICommand SetBlockBrick = new BlockNext(this, 0);
-			ICommand SetBlockCoin = new BlockNext(this, 1);
-			//
+
 			#endregion
 			//display the sprite from the sprite list one at a time.
 			#region implement command to mouse and keyboard

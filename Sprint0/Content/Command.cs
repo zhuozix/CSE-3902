@@ -39,12 +39,12 @@ namespace Sprint0.Content
     }
 
     // Adam Sprint 2
-	public class BlockNext : ICommand
+	public class SetBlockIndex : ICommand
 	{
 		private Game1 game;
 		private int displayBlock;
 		// display the sprite one at a time
-		public BlockNext(Game1 game, int blockDisplaySprite)
+		public SetBlockIndex(Game1 game, int blockDisplaySprite)
 		{
 			this.game = game;
 			this.displayBlock = blockDisplaySprite;
