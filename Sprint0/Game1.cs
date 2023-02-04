@@ -17,19 +17,32 @@ namespace Sprint0
         public ISprite NoneMovingAnimatedSprite;
         public ISprite MovingNoneAnimatedSprite;
         public ISprite MovingAnimatedSprite;
-
-        public Texture2D MarioSprite;
+		// Adam Sprint 2
+		public ISprite brickBlockSprite;
+		public ISprite coinBlockSprite;
+        //
+		// Adam, Sprint 2
+		public Texture2D texture_CoinBlock; 
+		public Texture2D texture_BrickBlock;
+        //
+		public Texture2D MarioSprite;
         public Texture2D MarioDeathSprite;
         public Texture2D MarioWalkRight;
         private ArrayList spritesList;
-        private ArrayList controllerList;
+		// Adam Sprint 2
+		private ArrayList blockList;
+        //
+		private ArrayList controllerList;
         private SpriteFont font;
         private Rectangle topLeft = new Rectangle(0, 0, 400, 220);
         private Rectangle topRight = new Rectangle(400, 0, 800, 220);
         private Rectangle bottomLeft = new Rectangle(0, 220, 400, 440);
         private Rectangle bottomRight = new Rectangle(400, 220, 800,440);
         public int DisplaySprite { get; set; }
-        public Game1()
+        // Adam Sprint 2
+        public int DisplayBlock { get; set; }
+        //
+		public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -38,10 +51,17 @@ namespace Sprint0
 
         protected override void Initialize()
         {
-            #region initialize variables
-            keyboardController = new KeyboardController();
+			// Adam Sprint 2
+			texture_CoinBlock = Content.Load<Texture2D>("CoinBlocksSpriteSheet");
+			texture_BrickBlock = Content.Load<Texture2D>("BrickBlocksSpriteSheet");
+            //
+			#region initialize variables
+			keyboardController = new KeyboardController();
             mouseController = new MouseController();
             spritesList = new ArrayList();
+            // Adam Sprint 2
+            blockList = new ArrayList();
+            //
             controllerList = new ArrayList();
             #endregion
             #region load textures
@@ -66,15 +86,21 @@ namespace Sprint0
             ICommand MovingNoneAnimatedCommand = new CommandList(this, 3);
             ICommand MovingAnimatedSpriteCommand = new CommandList(this, 1);
             ICommand NoneMovingAnimatedSpriteCommand = new CommandList(this, 2);
-
-            keyboardController.AddCommand(Keys.D1, NoneMovingNoneAnimatedCommand);
+			// Adam Sprint 2
+			ICommand SetBlockBrick = new BlockNext(this, 0);
+            ICommand SetBlockCoin = new BlockNext(this, 1);
+            //
+			keyboardController.AddCommand(Keys.D1, NoneMovingNoneAnimatedCommand);
             keyboardController.AddCommand(Keys.D2, NoneMovingAnimatedSpriteCommand);
             keyboardController.AddCommand(Keys.D3, MovingNoneAnimatedCommand);
             keyboardController.AddCommand(Keys.D4, MovingAnimatedSpriteCommand);
             keyboardController.AddCommand(Keys.D0, new CommandExit(this));
-
-            #endregion
-        }
+			// Adam Sprint 2
+			keyboardController.AddCommand(Keys.Y, SetBlockBrick);
+			keyboardController.AddCommand(Keys.T, SetBlockCoin);
+            //
+			#endregion
+		}
 
         protected override void Update(GameTime gameTime)
         {
@@ -84,12 +110,19 @@ namespace Sprint0
             ICommand MovingNoneAnimatedCommand = new CommandList(this, 3);
             ICommand MovingAnimatedSpriteCommand = new CommandList(this, 1);
             ICommand NoneMovingAnimatedSpriteCommand = new CommandList(this, 2);
-            #endregion
-            //display the sprite from the sprite list one at a time.
-            #region implement command to mouse and keyboard
-            ISprite currentSprite = (ISprite)spritesList[DisplaySprite];
-            // implement command to mouse and keyboard
-            foreach (IController controller in controllerList)
+			// Adam Sprint 2
+			ICommand SetBlockBrick = new BlockNext(this, 0);
+			ICommand SetBlockCoin = new BlockNext(this, 1);
+			//
+			#endregion
+			//display the sprite from the sprite list one at a time.
+			#region implement command to mouse and keyboard
+			ISprite currentSprite = (ISprite)spritesList[DisplaySprite];
+            // Adam Sprint 2
+            ISprite currentBlock = (ISprite)blockList[DisplayBlock];
+            //
+			// implement command to mouse and keyboard
+			foreach (IController controller in controllerList)
             {
                 controller.UpdateInput();
             }
@@ -122,8 +155,11 @@ namespace Sprint0
             #endregion
             currentSprite.Update(gameTime);
             currentSprite.Draw(_spriteBatch,true);
-           
-            base.Update(gameTime);
+
+            currentBlock.Update(gameTime);
+			currentBlock.Draw(_spriteBatch, true);
+
+			base.Update(gameTime);
            
         }
 
@@ -133,12 +169,18 @@ namespace Sprint0
             NoneMovingAnimatedSprite = new NoneMovingAnimatedSprite(MarioWalkRight, new Vector2(600,300),1,3);
             MovingAnimatedSprite = new MovingAnimatedSprite(MarioWalkRight, new Vector2(400, 200),1,3,_graphics,-1);
             MovingNoneAnimatedSprite = new MovingNoneAnimatedSprite(MarioDeathSprite, new Vector2(250, 330),1,1,_graphics,-1);
-          
-
-            spritesList.Add(NoneMovingNoneAnimatedSprite);
+            // Adam Sprint 2
+            coinBlockSprite = new BlockSprite(texture_CoinBlock, 1, 5, new Vector2(100, 100));
+			brickBlockSprite = new BlockSprite(texture_BrickBlock, 1, 5, new Vector2(200, 100));
+            //
+			spritesList.Add(NoneMovingNoneAnimatedSprite);
             spritesList.Add(MovingAnimatedSprite);
             spritesList.Add(NoneMovingAnimatedSprite);
             spritesList.Add(MovingNoneAnimatedSprite);
-        }
+			// Adam Sprint 2
+			blockList.Add(coinBlockSprite);
+			blockList.Add(brickBlockSprite);
+            //
+		}
     }
 }

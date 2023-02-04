@@ -37,4 +37,24 @@ namespace Sprint0.Content
             game.DisplaySprite = displaySprite;
         }
     }
+
+    // Adam Sprint 2
+	public class BlockNext : ICommand
+	{
+		private Game1 game;
+		private int displayBlock;
+		// display the sprite one at a time
+		public BlockNext(Game1 game, int blockDisplaySprite)
+		{
+			this.game = game;
+			this.displayBlock = blockDisplaySprite;
+		}
+
+		public void Execute()
+		{
+			game.DisplayBlock = displayBlock;
+		}
+	}
+    //
+
 }
