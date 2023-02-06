@@ -20,17 +20,32 @@ namespace Sprint0
 		// Adam Sprint 2
 		public ISprite brickBlockSprite;
 		public ISprite coinBlockSprite;
+        // Seth Sprint 2
+        public ISprite fireFlowerSprite;
+        public ISprite starSprite;
+        public ISprite redMushSprite;
+        public ISprite greenMushSprite;
+        public ISprite coinSprite;
         //
-		// Adam, Sprint 2
-		public Texture2D texture_CoinBlock; 
+        // Adam, Sprint 2
+        public Texture2D texture_CoinBlock; 
 		public Texture2D texture_BrickBlock;
         //
-		public Texture2D MarioSprite;
+        // Seth Sprint 2
+        public Texture2D texture_FireFlower;
+        public Texture2D texture_Star;
+        public Texture2D texture_GreenMush;
+        public Texture2D texture_RedMush;
+        public Texture2D texture_Coin;
+        //
+        public Texture2D MarioSprite;
         public Texture2D MarioDeathSprite;
         public Texture2D MarioWalkRight;
         private ArrayList spritesList;
 		// Adam Sprint 2
 		private ArrayList blockList;
+        // Seth Sprint 2
+        private ArrayList itemList;
         //
 		private ArrayList controllerList;
         private SpriteFont font;
@@ -42,6 +57,8 @@ namespace Sprint0
         // Adam Sprint 2
         public int DisplayBlock { get; set; }
         //
+        // Seth Sprint 2
+        public int DisplayItem { get; set; }
 		public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -55,13 +72,23 @@ namespace Sprint0
 			texture_CoinBlock = Content.Load<Texture2D>("CoinBlocksSpriteSheet");
 			texture_BrickBlock = Content.Load<Texture2D>("BrickBlocksSpriteSheet");
             //
-			#region initialize variables
-			keyboardController = new KeyboardController();
+            // Seth Sprint 2
+            texture_FireFlower = Content.Load<Texture2D>("fireFlower");
+            texture_Star = Content.Load<Texture2D>("star");
+            texture_GreenMush = Content.Load<Texture2D>("greenMushroom");
+            texture_RedMush = Content.Load<Texture2D>("redMushroom");
+            texture_Coin = Content.Load<Texture2D>("coin");
+
+
+            #region initialize variables
+            keyboardController = new KeyboardController();
             mouseController = new MouseController();
             spritesList = new ArrayList();
             // Adam Sprint 2
             blockList = new ArrayList();
             //
+            // Seth Sprint 2
+            itemList = new ArrayList();
             controllerList = new ArrayList();
             #endregion
             #region load textures
@@ -90,6 +117,10 @@ namespace Sprint0
 			ICommand SetBlockBrick = new SetBlockIndex(this, 0);
             ICommand SetBlockCoin = new SetBlockIndex(this, 1);
             //
+            // Seth Sprint 2
+            ICommand increaseItemIndex = new increaseItemIndex(this);
+            ICommand decreaseItemIndex = new decreaseItemIndex(this);
+            //
 			keyboardController.AddCommand(Keys.D1, NoneMovingNoneAnimatedCommand);
             keyboardController.AddCommand(Keys.D2, NoneMovingAnimatedSpriteCommand);
             keyboardController.AddCommand(Keys.D3, MovingNoneAnimatedCommand);
@@ -99,6 +130,9 @@ namespace Sprint0
 			keyboardController.AddCommand(Keys.T, SetBlockBrick);
 			keyboardController.AddCommand(Keys.Y, SetBlockCoin);
             //
+            // Seth Sprint 2
+            keyboardController.AddCommand(Keys.I, increaseItemIndex);
+            keyboardController.AddCommand(Keys.U, decreaseItemIndex);
 			#endregion
 		}
 
@@ -117,6 +151,8 @@ namespace Sprint0
 			ISprite currentSprite = (ISprite)spritesList[DisplaySprite];
             // Adam Sprint 2
             ISprite currentBlock = (ISprite)blockList[DisplayBlock];
+            // Seth Sprint 2
+            ISprite currentItem = (ISprite)itemList[DisplayItem];
             //
 			// implement command to mouse and keyboard
 			foreach (IController controller in controllerList)
@@ -156,6 +192,9 @@ namespace Sprint0
             currentBlock.Update(gameTime);
 			currentBlock.Draw(_spriteBatch, true);
 
+            currentItem.Update(gameTime);
+            currentItem.Draw(_spriteBatch, true);
+
 			base.Update(gameTime);
            
         }
@@ -170,6 +209,13 @@ namespace Sprint0
             coinBlockSprite = new BlockSprite(texture_CoinBlock, 1, 5, new Vector2(100, 100));
 			brickBlockSprite = new BlockSprite(texture_BrickBlock, 1, 5, new Vector2(200, 100));
             //
+            // Seth Sprint 2
+            fireFlowerSprite = new FireFlowerSprite(texture_FireFlower, new Vector2(100, 300), 1, 4);
+            starSprite = new StarSprite(texture_Star, new Vector2(200, 300), 1, 4);
+            greenMushSprite = new GreenMushroomSprite(texture_GreenMush, new Vector2(300,300), 1, 1);
+            redMushSprite = new RedMushroomSprite(texture_RedMush, new Vector2(400,300), 1, 1);
+            coinSprite = new CoinSprite(texture_Coin, new Vector2(500, 300), 1, 4);
+
 			spritesList.Add(NoneMovingNoneAnimatedSprite);
             spritesList.Add(MovingAnimatedSprite);
             spritesList.Add(NoneMovingAnimatedSprite);
@@ -178,6 +224,13 @@ namespace Sprint0
 			blockList.Add(coinBlockSprite);
 			blockList.Add(brickBlockSprite);
             //
+
+            //Seth Sprint 2
+            itemList.Add(fireFlowerSprite);
+            itemList.Add(starSprite);
+            itemList.Add(greenMushSprite);
+            itemList.Add(redMushSprite);
+            itemList.Add(coinSprite);
 		}
     }
 }
