@@ -21,7 +21,6 @@ namespace Sprint0.Content
         public Vector2 position;
         public Vector2 velocity;
         public float speed;
-        private bool isVisible;
 
         internal double timeSinceLastFrameTransition = 0;
 
@@ -38,13 +37,11 @@ namespace Sprint0.Content
             this.position = position;
             this.currentFrame = 0;
             this.totalFrames = numRows * numCols;
-            this.isVisible = true;
         }
         public abstract void Update(GameTime gameTime);
         public void Draw(SpriteBatch _spriteBatch, bool isFlipped)
         {
-            if (isVisible)
-            {
+            
                 int width = texture.Width / numCols;
                 int height = texture.Height / numRows;
                 int row = currentFrame / numCols;
@@ -65,11 +62,8 @@ namespace Sprint0.Content
                 _spriteBatch.Begin();
                 _spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, spriteEffect, 0);
                 _spriteBatch.End();
-            }
+            
         }
-        public void Toggle()
-        {
-            isVisible = !isVisible;
-        }
+       
     }
 }

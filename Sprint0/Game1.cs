@@ -92,11 +92,7 @@ namespace Sprint0
             controllerList = new ArrayList();
             #endregion
             #region load textures
-            MarioSprite = Content.Load<Texture2D>("Mario");
-            MarioDeathSprite = Content.Load<Texture2D>("MarioDeath");
-            MarioWalkRight=(Content.Load<Texture2D>("MarioWalkRight"));
-
-            font = Content.Load<SpriteFont>("font");
+           
             #endregion
             base.Initialize();
         }
@@ -109,10 +105,6 @@ namespace Sprint0
             #region create command
             controllerList.Add(keyboardController);
             controllerList.Add(mouseController);
-            ICommand NoneMovingNoneAnimatedCommand = new CommandList(this, 0);
-            ICommand MovingNoneAnimatedCommand = new CommandList(this, 3);
-            ICommand MovingAnimatedSpriteCommand = new CommandList(this, 1);
-            ICommand NoneMovingAnimatedSpriteCommand = new CommandList(this, 2);
 			// Adam Sprint 2
 			ICommand SetBlockBrick = new SetBlockIndex(this, 0);
             ICommand SetBlockCoin = new SetBlockIndex(this, 1);
@@ -120,12 +112,13 @@ namespace Sprint0
             // Seth Sprint 2
             ICommand increaseItemIndex = new increaseItemIndex(this);
             ICommand decreaseItemIndex = new decreaseItemIndex(this);
-            //
+            /*
 			keyboardController.AddCommand(Keys.D1, NoneMovingNoneAnimatedCommand);
             keyboardController.AddCommand(Keys.D2, NoneMovingAnimatedSpriteCommand);
             keyboardController.AddCommand(Keys.D3, MovingNoneAnimatedCommand);
             keyboardController.AddCommand(Keys.D4, MovingAnimatedSpriteCommand);
             keyboardController.AddCommand(Keys.D0, new CommandExit(this));
+            */
 			// Adam Sprint 2
 			keyboardController.AddCommand(Keys.T, SetBlockBrick);
 			keyboardController.AddCommand(Keys.Y, SetBlockCoin);
@@ -140,15 +133,16 @@ namespace Sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             #region create command
+            /*
             ICommand NoneMovingNoneAnimatedCommand = new CommandList(this, 0);
             ICommand MovingNoneAnimatedCommand = new CommandList(this, 3);
             ICommand MovingAnimatedSpriteCommand = new CommandList(this, 1);
             ICommand NoneMovingAnimatedSpriteCommand = new CommandList(this, 2);
-
+            */
 			#endregion
 			//display the sprite from the sprite list one at a time.
 			#region implement command to mouse and keyboard
-			ISprite currentSprite = (ISprite)spritesList[DisplaySprite];
+			
             // Adam Sprint 2
             ISprite currentBlock = (ISprite)blockList[DisplayBlock];
             // Seth Sprint 2
@@ -159,35 +153,9 @@ namespace Sprint0
             {
                 controller.UpdateInput();
             }
-            MouseState mouse = Mouse.GetState();
-            if (mouse.LeftButton == ButtonState.Pressed)
-            {
-                Point mousePosition = new Point(mouse.X, mouse.Y);
-                if (topLeft.Contains(mousePosition))
-                {
-                    NoneMovingNoneAnimatedCommand.Execute();
-                }
-                else if (topRight.Contains(mousePosition))
-                {
-                    NoneMovingAnimatedSpriteCommand.Execute();
-                }
-                else if (bottomLeft.Contains(mousePosition))
-                {
-                    MovingNoneAnimatedCommand.Execute();
-                }
-                else if (bottomRight.Contains(mousePosition))
-                {
-                    MovingAnimatedSpriteCommand.Execute();
-                }
-            }
-            if (mouse.RightButton == ButtonState.Pressed)
-            {
-                ICommand exitCommand = new CommandExit(this);
-                exitCommand.Execute();
-            }
+           
             #endregion
-            currentSprite.Update(gameTime);
-            currentSprite.Draw(_spriteBatch,true);
+            
 
             currentBlock.Update(gameTime);
 			currentBlock.Draw(_spriteBatch, true);
@@ -201,10 +169,12 @@ namespace Sprint0
 
         private void CreateSprites()
         {
+            /*
             NoneMovingNoneAnimatedSprite = new NoneAnimatedNonMovingSprite(MarioSprite, new Vector2(600, 100),1,1);
             NoneMovingAnimatedSprite = new NoneMovingAnimatedSprite(MarioWalkRight, new Vector2(600,300),1,3);
             MovingAnimatedSprite = new MovingAnimatedSprite(MarioWalkRight, new Vector2(400, 200),1,3,_graphics,-1);
             MovingNoneAnimatedSprite = new MovingNoneAnimatedSprite(MarioDeathSprite, new Vector2(250, 330),1,1,_graphics,-1);
+            */
             // Adam Sprint 2
             coinBlockSprite = new BlockSprite(texture_CoinBlock, 1, 5, new Vector2(100, 100));
 			brickBlockSprite = new BlockSprite(texture_BrickBlock, 1, 5, new Vector2(200, 100));
@@ -215,11 +185,12 @@ namespace Sprint0
             greenMushSprite = new GreenMushroomSprite(texture_GreenMush, new Vector2(300,300), 1, 1);
             redMushSprite = new RedMushroomSprite(texture_RedMush, new Vector2(400,300), 1, 1);
             coinSprite = new CoinSprite(texture_Coin, new Vector2(500, 300), 1, 4);
-
+            /*
 			spritesList.Add(NoneMovingNoneAnimatedSprite);
             spritesList.Add(MovingAnimatedSprite);
             spritesList.Add(NoneMovingAnimatedSprite);
             spritesList.Add(MovingNoneAnimatedSprite);
+            */
 			// Adam Sprint 2
 			blockList.Add(coinBlockSprite);
 			blockList.Add(brickBlockSprite);
