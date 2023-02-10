@@ -46,11 +46,10 @@ namespace Sprint0.Content
                 int height = texture.Height / numRows;
                 int row = currentFrame / numCols;
                 int column = currentFrame % numCols;
-
+                SpriteEffects spriteEffect;
                 Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
-
-                SpriteEffects spriteEffect;
+                 
                 if (isFlipped)
                 {
                     spriteEffect = SpriteEffects.FlipHorizontally;
@@ -59,6 +58,7 @@ namespace Sprint0.Content
                 {
                     spriteEffect = SpriteEffects.None;
                 }
+               
                 _spriteBatch.Begin();
                 _spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, spriteEffect, 0);
                 _spriteBatch.End();

@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace Sprint0.Content.Mario
 {
@@ -45,7 +47,7 @@ namespace Sprint0.Content.Mario
         public virtual void Exit() { }
 
         public abstract MarioPowerupStateType GetEnumValue();
-
+        /*
         public virtual void NormalMarioTransition()
         {
             Exit();
@@ -70,6 +72,7 @@ namespace Sprint0.Content.Mario
             CurrentState = new MarioDeadState(marioEntity);
             CurrentState.Enter(this);
         }
+        */
 
         public virtual void TakeDamage() { }
     }

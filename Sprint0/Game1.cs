@@ -48,7 +48,6 @@ namespace Sprint0
         private ArrayList itemList;
         //
 		private ArrayList controllerList;
-        private SpriteFont font;
         private Rectangle topLeft = new Rectangle(0, 0, 400, 220);
         private Rectangle topRight = new Rectangle(400, 0, 800, 220);
         private Rectangle bottomLeft = new Rectangle(0, 220, 400, 440);

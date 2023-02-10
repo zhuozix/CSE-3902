@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Sprint0.Content.Mario;
 
 namespace Sprint0.Content.Mario
 {
@@ -19,16 +19,16 @@ namespace Sprint0.Content.Mario
             Position = spawnLocation;
             Velocity = Vector2.Zero;
             Acceleration = Vector2.Zero;
-
+            /*
             CurrentActionState = new MarioIdleState(this);
             CurrentPowerupState = new MarioNormalState(this);
-
+            */
             CurrentActionState.Enter(null);
             CurrentPowerupState.Enter(null);
 
             IsFacingRight = true;
         }
-
+        /*
         #region Action state transitions
         public void Jump()
         {
@@ -77,7 +77,7 @@ namespace Sprint0.Content.Mario
             CurrentPowerupState.TakeDamage();
         }
         #endregion
-
+        */
         public override void Update(GameTime gameTime)
         {
             CurrentActionState.Update(gameTime);

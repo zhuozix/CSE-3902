@@ -9,12 +9,12 @@ namespace Sprint0.Content.Mario
         void Exit();
 
         MarioPowerupStateType GetEnumValue();
-
+        /*
         void NormalMarioTransition();
         void SuperMarioTransition();
         void FireMarioTransition();
         void DeadMarioTransition();
-
+        */
         void TakeDamage();
     }
 }
