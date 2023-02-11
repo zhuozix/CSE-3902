@@ -16,7 +16,7 @@ namespace Sprint0
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private MouseController mouseController;
+
         private KeyboardController keyboardController;
         public ISprite NoneMovingNoneAnimatedSprite;
         public ISprite NoneMovingAnimatedSprite;
@@ -51,8 +51,8 @@ namespace Sprint0
 		private ArrayList blockList;
         // Seth Sprint 2
         private ArrayList itemList;
-        //
-		private ArrayList controllerList;
+
+        private ISprite currentItem;
         private Rectangle topLeft = new Rectangle(0, 0, 400, 220);
         private Rectangle topRight = new Rectangle(400, 0, 800, 220);
         private Rectangle bottomLeft = new Rectangle(0, 220, 400, 440);
@@ -87,16 +87,16 @@ namespace Sprint0
 
             #region initialize variables
             keyboardController = new KeyboardController();
-            mouseController = new MouseController();
             spritesList = new ArrayList();
             // Adam Sprint 2
             blockList = new ArrayList();
             //
             // Seth Sprint 2
             itemList = new ArrayList();
-            controllerList = new ArrayList();
             #endregion
 
+
+            
             base.Initialize();
         }
 
@@ -106,8 +106,6 @@ namespace Sprint0
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             CreateSprites();
             #region create command
-            controllerList.Add(keyboardController);
-            controllerList.Add(mouseController);
 			// Adam Sprint 2
 			ICommand SetBlockBrick = new SetBlockIndex(this, 0);
             ICommand SetBlockCoin = new SetBlockIndex(this, 1);
@@ -136,13 +134,10 @@ namespace Sprint0
             // Adam Sprint 2
             ISprite currentBlock = (ISprite)blockList[DisplayBlock];
             // Seth Sprint 2
-            ISprite currentItem = (ISprite)itemList[DisplayItem];
+            
             //
-			// implement command to mouse and keyboard
-			foreach (IController controller in controllerList)
-            {
-                controller.UpdateInput();
-            }
+            // implement command to mouse and keyboard
+            keyboardController.UpdateInput();
            
             #endregion
             
@@ -151,8 +146,9 @@ namespace Sprint0
 			currentBlock.Draw(_spriteBatch, true);
 
             currentItem.Update(gameTime);
+            currentItem = (ISprite)itemList[DisplayItem];
             currentItem.Draw(_spriteBatch, true);
-
+            
 			base.Update(gameTime);
            
         }
@@ -182,6 +178,10 @@ namespace Sprint0
             itemList.Add(greenMushSprite);
             itemList.Add(redMushSprite);
             itemList.Add(coinSprite);
-		}
+
+
+            DisplayItem = 0;
+            currentItem = (ISprite)itemList[DisplayItem];
+        }
     }
 }
