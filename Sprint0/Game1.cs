@@ -1,7 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Blocks;
+using Sprint0.Command;
 using Sprint0.Content;
+using Sprint0.Controller;
+using Sprint0.Item;
+using Sprint0.Sprites;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -17,7 +22,7 @@ namespace Sprint0
         public ISprite NoneMovingAnimatedSprite;
         public ISprite MovingNoneAnimatedSprite;
         public ISprite MovingAnimatedSprite;
-		// Adam Sprint 2
+		// Adam Sprint 2 
 		public ISprite brickBlockSprite;
 		public ISprite coinBlockSprite;
         // Seth Sprint 2
@@ -58,6 +63,8 @@ namespace Sprint0
         //
         // Seth Sprint 2
         public int DisplayItem { get; set; }
+
+
 		public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -70,14 +77,13 @@ namespace Sprint0
 			// Adam Sprint 2
 			texture_CoinBlock = Content.Load<Texture2D>("CoinBlocksSpriteSheet");
 			texture_BrickBlock = Content.Load<Texture2D>("BrickBlocksSpriteSheet");
-            //
+            
             // Seth Sprint 2
             texture_FireFlower = Content.Load<Texture2D>("fireFlower");
             texture_Star = Content.Load<Texture2D>("star");
             texture_GreenMush = Content.Load<Texture2D>("greenMushroom");
             texture_RedMush = Content.Load<Texture2D>("redMushroom");
             texture_Coin = Content.Load<Texture2D>("coin");
-
 
             #region initialize variables
             keyboardController = new KeyboardController();
@@ -90,9 +96,7 @@ namespace Sprint0
             itemList = new ArrayList();
             controllerList = new ArrayList();
             #endregion
-            #region load textures
-           
-            #endregion
+
             base.Initialize();
         }
 
@@ -111,13 +115,7 @@ namespace Sprint0
             // Seth Sprint 2
             ICommand increaseItemIndex = new increaseItemIndex(this);
             ICommand decreaseItemIndex = new decreaseItemIndex(this);
-            /*
-			keyboardController.AddCommand(Keys.D1, NoneMovingNoneAnimatedCommand);
-            keyboardController.AddCommand(Keys.D2, NoneMovingAnimatedSpriteCommand);
-            keyboardController.AddCommand(Keys.D3, MovingNoneAnimatedCommand);
-            keyboardController.AddCommand(Keys.D4, MovingAnimatedSpriteCommand);
-            keyboardController.AddCommand(Keys.D0, new CommandExit(this));
-            */
+
 			// Adam Sprint 2
 			keyboardController.AddCommand(Keys.T, SetBlockBrick);
 			keyboardController.AddCommand(Keys.Y, SetBlockCoin);
@@ -131,14 +129,7 @@ namespace Sprint0
         protected override void Update(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            #region create command
-            /*
-            ICommand NoneMovingNoneAnimatedCommand = new CommandList(this, 0);
-            ICommand MovingNoneAnimatedCommand = new CommandList(this, 3);
-            ICommand MovingAnimatedSpriteCommand = new CommandList(this, 1);
-            ICommand NoneMovingAnimatedSpriteCommand = new CommandList(this, 2);
-            */
-			#endregion
+
 			//display the sprite from the sprite list one at a time.
 			#region implement command to mouse and keyboard
 			
@@ -168,12 +159,7 @@ namespace Sprint0
 
         private void CreateSprites()
         {
-            /*
-            NoneMovingNoneAnimatedSprite = new NoneAnimatedNonMovingSprite(MarioSprite, new Vector2(600, 100),1,1);
-            NoneMovingAnimatedSprite = new NoneMovingAnimatedSprite(MarioWalkRight, new Vector2(600,300),1,3);
-            MovingAnimatedSprite = new MovingAnimatedSprite(MarioWalkRight, new Vector2(400, 200),1,3,_graphics,-1);
-            MovingNoneAnimatedSprite = new MovingNoneAnimatedSprite(MarioDeathSprite, new Vector2(250, 330),1,1,_graphics,-1);
-            */
+
             // Adam Sprint 2
             coinBlockSprite = new BlockSprite(texture_CoinBlock, 1, 5, new Vector2(100, 100));
 			brickBlockSprite = new BlockSprite(texture_BrickBlock, 1, 5, new Vector2(200, 100));
@@ -184,12 +170,7 @@ namespace Sprint0
             greenMushSprite = new GreenMushroomSprite(texture_GreenMush, new Vector2(300,300), 1, 1);
             redMushSprite = new RedMushroomSprite(texture_RedMush, new Vector2(400,300), 1, 1);
             coinSprite = new CoinSprite(texture_Coin, new Vector2(500, 300), 1, 4);
-            /*
-			spritesList.Add(NoneMovingNoneAnimatedSprite);
-            spritesList.Add(MovingAnimatedSprite);
-            spritesList.Add(NoneMovingAnimatedSprite);
-            spritesList.Add(MovingNoneAnimatedSprite);
-            */
+
 			// Adam Sprint 2
 			blockList.Add(coinBlockSprite);
 			blockList.Add(brickBlockSprite);

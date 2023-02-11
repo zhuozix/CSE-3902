@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-namespace Sprint0.Content
+
+namespace Sprint0.Sprites
 {
     public interface ISprite
     {
@@ -20,4 +21,4 @@ namespace Sprint0.Content
     }
 }
 
-    
+

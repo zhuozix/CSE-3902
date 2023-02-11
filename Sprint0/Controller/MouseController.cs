@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Sprint0.Content;
 
-namespace Sprint0.Content
+namespace Sprint0.Controller
 {
     public class MouseController : IController
     {
