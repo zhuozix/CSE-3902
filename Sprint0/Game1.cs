@@ -9,6 +9,7 @@ using Sprint0.Item;
 using Sprint0.Sprites;
 using System.Collections;
 using System.Collections.Generic;
+using Sprint0.Enemy;
 
 namespace Sprint0
 {
@@ -31,6 +32,9 @@ namespace Sprint0
         public ISprite redMushSprite;
         public ISprite greenMushSprite;
         public ISprite coinSprite;
+        // Zhuozi Sprint 2
+        public ISpriteE Gommba;
+        public ISpriteE Koopa;
         //
         // Adam, Sprint 2
         public Texture2D texture_CoinBlock; 
@@ -42,6 +46,9 @@ namespace Sprint0
         public Texture2D texture_GreenMush;
         public Texture2D texture_RedMush;
         public Texture2D texture_Coin;
+        // Zhuozi Sprint 2
+        public Texture2D texture_Gommba;
+        public Texture2D texture_Koopa;
         //
         public Texture2D MarioSprite;
         public Texture2D MarioDeathSprite;
@@ -51,8 +58,9 @@ namespace Sprint0
 		private ArrayList blockList;
         // Seth Sprint 2
         private ArrayList itemList;
+        // Zhuozi Sprint 2
+        private ArrayList enemyList;
 
-        private ISprite currentItem;
         private Rectangle topLeft = new Rectangle(0, 0, 400, 220);
         private Rectangle topRight = new Rectangle(400, 0, 800, 220);
         private Rectangle bottomLeft = new Rectangle(0, 220, 400, 440);
@@ -63,9 +71,11 @@ namespace Sprint0
         //
         // Seth Sprint 2
         public int DisplayItem { get; set; }
+        // Zhuozi Sprint 2
+        public int DisplayEnemy { get; set; }
 
 
-		public Game1()
+        public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -85,6 +95,10 @@ namespace Sprint0
             texture_RedMush = Content.Load<Texture2D>("redMushroom");
             texture_Coin = Content.Load<Texture2D>("coin");
 
+            //Zhuozi Sprint 2
+            texture_Gommba = Content.Load<Texture2D>("EnemyContent/WalkingGoomba1");
+            texture_Koopa = Content.Load<Texture2D>("EnemyContent/WalkingGreenKoopa1");
+
             #region initialize variables
             keyboardController = new KeyboardController();
             spritesList = new ArrayList();
@@ -93,10 +107,12 @@ namespace Sprint0
             //
             // Seth Sprint 2
             itemList = new ArrayList();
+            // Zhuozi Sprint 2
+            enemyList = new ArrayList();
             #endregion
 
 
-            
+
             base.Initialize();
         }
 
@@ -113,28 +129,36 @@ namespace Sprint0
             // Seth Sprint 2
             ICommand increaseItemIndex = new increaseItemIndex(this);
             ICommand decreaseItemIndex = new decreaseItemIndex(this);
+            // Zhuozi Sprint 2
 
-			// Adam Sprint 2
-			keyboardController.AddCommand(Keys.T, SetBlockBrick);
+            ICommand SetPrevious = new SetPrevious(this);
+            ICommand SetNext = new SetNext(this);
+
+            // Adam Sprint 2
+            keyboardController.AddCommand(Keys.T, SetBlockBrick);
 			keyboardController.AddCommand(Keys.Y, SetBlockCoin);
             //
             // Seth Sprint 2
             keyboardController.AddCommand(Keys.I, increaseItemIndex);
             keyboardController.AddCommand(Keys.U, decreaseItemIndex);
-			#endregion
-		}
+            // Zhuozi Sprint 2
+            keyboardController.AddCommand(Keys.O, SetPrevious);
+            keyboardController.AddCommand(Keys.P, SetNext);
+            #endregion
+        }
 
         protected override void Update(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-			//display the sprite from the sprite list one at a time.
-			#region implement command to mouse and keyboard
-			
+            //display the sprite from the sprite list one at a time.
+            #region implement command to mouse and keyboard
+            // Zhuozi Sprint 2
+            ISpriteE currentEnemy = (ISpriteE)enemyList[DisplayEnemy];
             // Adam Sprint 2
             ISprite currentBlock = (ISprite)blockList[DisplayBlock];
             // Seth Sprint 2
-            
+            ISprite currentItem = (ISprite)itemList[DisplayItem];
             //
             // implement command to mouse and keyboard
             keyboardController.UpdateInput();
@@ -146,10 +170,13 @@ namespace Sprint0
 			currentBlock.Draw(_spriteBatch, true);
 
             currentItem.Update(gameTime);
-            currentItem = (ISprite)itemList[DisplayItem];
             currentItem.Draw(_spriteBatch, true);
-            
-			base.Update(gameTime);
+
+            // Zhuozi Sprint2
+            currentEnemy.Update(gameTime);
+            currentEnemy.Draw(_spriteBatch);
+
+            base.Update(gameTime);
            
         }
 
@@ -166,7 +193,11 @@ namespace Sprint0
             greenMushSprite = new GreenMushroomSprite(texture_GreenMush, new Vector2(300,300), 1, 1);
             redMushSprite = new RedMushroomSprite(texture_RedMush, new Vector2(400,300), 1, 1);
             coinSprite = new CoinSprite(texture_Coin, new Vector2(500, 300), 1, 4);
-
+            //Zhuozi Sprint 2
+            Gommba = new GommbaSprite(texture_Gommba, new Vector2(500, 400), 1, 2, _graphics);
+            Koopa = new GommbaSprite(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics);
+           
+          
 			// Adam Sprint 2
 			blockList.Add(coinBlockSprite);
 			blockList.Add(brickBlockSprite);
@@ -178,10 +209,9 @@ namespace Sprint0
             itemList.Add(greenMushSprite);
             itemList.Add(redMushSprite);
             itemList.Add(coinSprite);
-
-
-            DisplayItem = 0;
-            currentItem = (ISprite)itemList[DisplayItem];
+            // Zhuozi Sprint 2
+            enemyList.Add(Gommba);
+            enemyList.Add(Koopa);
         }
     }
 }
