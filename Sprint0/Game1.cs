@@ -189,9 +189,9 @@ namespace Sprint0
             //
             // Seth Sprint 2
             fireFlowerSprite = new FireFlowerSprite(texture_FireFlower, new Vector2(100, 300), 1, 4);
-            starSprite = new StarSprite(texture_Star, new Vector2(200, 300), 1, 4);
-            greenMushSprite = new GreenMushroomSprite(texture_GreenMush, new Vector2(300,300), 1, 1);
-            redMushSprite = new RedMushroomSprite(texture_RedMush, new Vector2(400,300), 1, 1);
+            starSprite = new StarSprite(texture_Star, new Vector2(200, 300), 1, 4, _graphics, 1);
+            greenMushSprite = new GreenMushroomSprite(texture_GreenMush, new Vector2(300,300), 1, 1, _graphics,1);
+            redMushSprite = new RedMushroomSprite(texture_RedMush, new Vector2(400,300), 1, 1, _graphics, 1);
             coinSprite = new CoinSprite(texture_Coin, new Vector2(500, 300), 1, 4);
             //Zhuozi Sprint 2
             Gommba = new GommbaSprite(texture_Gommba, new Vector2(500, 400), 1, 2, _graphics);
