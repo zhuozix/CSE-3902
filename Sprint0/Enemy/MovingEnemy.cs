@@ -27,6 +27,7 @@ namespace Sprint0.Enemy
         public override void Update(GameTime gameTime)
         {
             float currentx = position.X;
+            int width = graphics.PreferredBackBufferWidth;
             timeSinceLastFrameTransition += gameTime.ElapsedGameTime.TotalSeconds;
             if (timeSinceLastFrameTransition > animateFrequency)
             {
@@ -40,11 +41,11 @@ namespace Sprint0.Enemy
             Velocity = new Vector2(moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirection, 0);
 
             position += Velocity;
-            if (currentx >= 600)
+            if (currentx >= width)
             {
                 moveDirection = -1;
             }
-            else if (currentx <= 400)
+            else if (currentx <= 0)
             {
                 moveDirection = 1;
             }
