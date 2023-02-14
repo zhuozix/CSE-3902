@@ -17,29 +17,19 @@ namespace Sprint0.Factory
     internal class NPCFactory
     {
         private GraphicsDeviceManager _graphics;
-        // Adam Sprint 2 
-        public ISprite brickBlockSprite;
-        public ISprite coinBlockSprite;
-        // Seth Sprint 2
-        public ISprite fireFlowerSprite;
-        public ISprite starSprite;
-        public ISprite redMushSprite;
-        public ISprite greenMushSprite;
-        public ISprite coinSprite;
-        // Zhuozi Sprint 2
-        public ISpriteE Gommba;
-        public ISpriteE Koopa;
-        // Adam, Sprint 2
+
+        // Blocks
         public Texture2D texture_CoinBlock;
         public Texture2D texture_BrickBlock;
 
-        // Seth Sprint 2
+        // Items
         public Texture2D texture_FireFlower;
         public Texture2D texture_Star;
         public Texture2D texture_GreenMush;
         public Texture2D texture_RedMush;
         public Texture2D texture_Coin;
-        // Zhuozi Sprint 2
+
+        // Enemies
         public Texture2D texture_Gommba;
         public Texture2D texture_Koopa;
 

@@ -77,8 +77,10 @@ namespace Sprint0
             npcSpritesFactory = new NPCFactory(_graphics);
             npcSpritesFactory.initalize(Content);
             playerFactory = new PlayerFactory(Content);
+
             //controllers
             keyboardController = new KeyboardController();
+
             //Lists
             blockList = new ArrayList();
             itemList = new ArrayList();
@@ -91,8 +93,17 @@ namespace Sprint0
         protected override void LoadContent()
         {         
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            //Load Sprites to lists
-            CreateSprites();
+
+            /*
+             * Load Sprites 
+             */
+            //Player
+            mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), playerFactory);
+            // NPC lists
+            npcSpritesFactory.addAllBlocks(blockList);
+            npcSpritesFactory.addAllItems(itemList);
+            npcSpritesFactory.addAllEnemies(enemyList);
+
             //Load commands to controller
             keyboardController.loadCommonCommand(this);
         }
@@ -128,22 +139,6 @@ namespace Sprint0
 
             base.Update(gameTime);
            
-        }
-
-        private void CreateSprites()
-        {
-            //Player
-            mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), playerFactory);
-            // NPC lists
-            npcSpritesFactory.addAllBlocks(blockList);
-            npcSpritesFactory.addAllItems(itemList);
-            npcSpritesFactory.addAllEnemies(enemyList);
-        }
-        public void gameReset()
-        {
-            DisplayBlock = 0;
-            DisplayEnemy = 0;
-            DisplayItem = 0;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Command;
 using Sprint0.Command.GameControlCMD;
+using Sprint0.Command.NpcCMD.EnemyCMD;
 /**
 * Controller Class for keyboard input. 
 * This class is not for player control. 
