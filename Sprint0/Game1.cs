@@ -10,14 +10,20 @@ using Sprint0.Sprites;
 using System.Collections;
 using System.Collections.Generic;
 using Sprint0.Enemy;
-using System;
-using Sprint0.Mario;
 using Sprint0.Factory;
 
 namespace Sprint0
 {
     public class Game1 : Game
     {
+        private static Game1 instance;
+        public static Game1 Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         /*
@@ -68,8 +74,7 @@ namespace Sprint0
             //Factories
             npcSpritesFactory = new NPCFactory(_graphics);
             npcSpritesFactory.initalize(Content);
-            //Test for player
-            texture_Mario = Content.Load<Texture2D>("Mario");
+   
             //controllers
             keyboardController = new KeyboardController();
             //Lists
@@ -88,6 +93,9 @@ namespace Sprint0
             CreateSprites();
             //Load commands to controller
             keyboardController.loadCommonCommand(this);
+
+            //don't know why it says mario is a namespace
+            //Mario mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2));
         }
 
         protected override void Update(GameTime gameTime)
@@ -106,9 +114,6 @@ namespace Sprint0
             keyboardController.UpdateInput();
 
             #endregion
-            //Test
-            mario.Update(gameTime); 
-            mario.Draw(_spriteBatch, true);
             //Blocks
             currentBlock.Update(gameTime);
 			currentBlock.Draw(_spriteBatch, true);
@@ -126,7 +131,7 @@ namespace Sprint0
         private void CreateSprites()
         {
             //Test
-            mario = new MarioSpritesTest(texture_Mario,new Vector2(280, 300), 1, 1);
+   
             // NPC lists
             npcSpritesFactory.addAllBlocks(blockList);
             npcSpritesFactory.addAllItems(itemList);
