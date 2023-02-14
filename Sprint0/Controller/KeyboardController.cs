@@ -66,13 +66,8 @@ namespace Sprint0.Content
             this.AddCommand(Keys.O, SetPrevious);
             this.AddCommand(Keys.P, SetNext);
             // Game control
-            this.AddCommand(Keys.Escape, exit);
+            this.AddCommand(Keys.Q, exit);
             this.AddCommand(Keys.R, reset);
-        }
-
-        public void loadGameControlCommand(Game1 gameInstance)
-        {
-
         }
 
         //Only for switching sprites.
