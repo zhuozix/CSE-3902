@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.Command;
+using Sprint0.Command.GameControlCMD;
 /**
- * Controller Class for keyboard input. 
- * This class is not for player control. 
- * There will be a new controller class in the future.
- * 
- * @Version 2023/2/11
- * @Author Shuangchen
- */
+* Controller Class for keyboard input. 
+* This class is not for player control. 
+* 
+* @Version 2023/2/13 (1.1)
+*/
 namespace Sprint0.Content
 {
     class KeyboardController : IController
@@ -33,20 +33,62 @@ namespace Sprint0.Content
             CommandMap.Add(key, command);
         }
 
-        //Only for switching sprites, not working for running.
+        public void loadCommonCommand(Game1 gameInstance)
+        {
+            /*
+             * Set Common Command
+             */
+
+            // Adam Sprint 2
+            ICommand SetBlockBrick = new SetBlockIndex(gameInstance, 0);
+            ICommand SetBlockCoin = new SetBlockIndex(gameInstance, 1);
+            // Change Item
+            ICommand increaseItemIndex = new increaseItemIndex(gameInstance);
+            ICommand decreaseItemIndex = new decreaseItemIndex(gameInstance);
+            // Change Enemy 
+            ICommand SetPrevious = new SetPrevious(gameInstance);
+            ICommand SetNext = new SetNext(gameInstance);
+            // Game control
+            ICommand exit = new Exit(gameInstance);
+            ICommand reset = new Reset(gameInstance);
+
+            /*
+             * Put common command into controller map.
+             */
+
+            // Adam Sprint 2
+            this.AddCommand(Keys.T, SetBlockBrick);
+            this.AddCommand(Keys.Y, SetBlockCoin);
+            // Change Item
+            this.AddCommand(Keys.I, increaseItemIndex);
+            this.AddCommand(Keys.U, decreaseItemIndex);
+            // Change Enemy
+            this.AddCommand(Keys.O, SetPrevious);
+            this.AddCommand(Keys.P, SetNext);
+            // Game control
+            this.AddCommand(Keys.Escape, exit);
+            this.AddCommand(Keys.R, reset);
+        }
+
+        public void loadGameControlCommand(Game1 gameInstance)
+        {
+
+        }
+
+        //Only for switching sprites.
         public void UpdateInput()
         {
-            //if the key pressed and released, execute the command in the map.
+            //if the key pressed, execute the command in the map.
             KeyboardState currentKeyboardState = Keyboard.GetState();
             Keys[] keysPressed = Keyboard.GetState().GetPressedKeys();
 
-            //Excute the command only when key is released!
+            //Excute the command
             foreach (Keys key in keysPressed)
             {
                 //Check if the key is released or not.
                 if (!previousKeyboardState.IsKeyDown(key))
                 {
-                    //Find command line.
+                    
                     if (CommandMap.ContainsKey(keysPressed[0]))
                     { 
                         CommandMap[keysPressed[0]].Execute();
