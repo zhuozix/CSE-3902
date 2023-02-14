@@ -1,12 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace Sprint0.Mario.State.PowerupState
+namespace Sprint0.MarioPlayer.State.PowerupState
 {
     public class MarioSuperState : MarioPowerupState
     {
-        public MarioSuperState(Mario marioEntity)
-            : base(marioEntity)
+        public MarioSuperState(Mario marioEntity, PlayerFactory marioFactory) : base(marioEntity, marioFactory)
         { }
 
         public override MarioPowerupStateType GetEnumValue()

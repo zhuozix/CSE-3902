@@ -1,12 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.MarioPlayer.State.PowerupState;
 using System;
 
-namespace Sprint0.Mario.State.PowerupState
+namespace Sprint0.MarioPlayer.State.PowerupState
 {
     public class MarioNormalState : MarioPowerupState
     {
-        public MarioNormalState(Mario marioEntity)
-            : base(marioEntity)
+        public MarioNormalState(Mario marioEntity, PlayerFactory marioFactory) : base(marioEntity, marioFactory)
         { }
 
         public override MarioPowerupStateType GetEnumValue()
@@ -17,7 +17,7 @@ namespace Sprint0.Mario.State.PowerupState
         public override void DeadMarioTransition()
         {
             Exit();
-            CurrentState = new MarioDeadState(marioEntity);
+            CurrentState = new MarioDeadState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
 

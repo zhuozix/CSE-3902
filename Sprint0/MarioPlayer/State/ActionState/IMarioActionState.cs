@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Sprint0.Mario.State.ActionState
+namespace Sprint0.MarioPlayer.State.ActionState
 {
     public interface IMarioActionState
     {

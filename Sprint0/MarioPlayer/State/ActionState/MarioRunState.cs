@@ -1,12 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using Sprint0.Mario.State.PowerupState;
+using Sprint0.MarioPlayer.State.PowerupState;
 
-namespace Sprint0.Mario.State.ActionState
+namespace Sprint0.MarioPlayer.State.ActionState
 {
     public class MarioRunState : MarioActionState
     {
-        public MarioRunState(Mario marioEntity) :
-            base(marioEntity)
+        public MarioRunState(Mario marioEntity, PlayerFactory marioFactory) : base(marioEntity, marioFactory)
         { }
 
         public override void Enter(IMarioActionState previousState)
@@ -33,7 +32,7 @@ namespace Sprint0.Mario.State.ActionState
             if (powerupStateType == MarioPowerupStateType.Super || powerupStateType == MarioPowerupStateType.Fire)
             {
                 Exit();
-                CurrentState = new MarioCrouchState(marioEntity);
+                CurrentState = new MarioCrouchState(marioEntity, marioFactory);
                 CurrentState.Enter(this);
             }
         }
@@ -41,21 +40,21 @@ namespace Sprint0.Mario.State.ActionState
         public override void JumpingTransition()
         {
             Exit();
-            CurrentState = new MarioJumpState(marioEntity);
+            CurrentState = new MarioJumpState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
 
         public override void FallingTransition()
         {
             Exit();
-            CurrentState = new MarioFallState(marioEntity);
+            CurrentState = new MarioFallState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
 
         public override void IdleTransition()
         {
             Exit();
-            CurrentState = new MarioIdleState(marioEntity);
+            CurrentState = new MarioIdleState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
 

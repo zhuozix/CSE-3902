@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Sprint0.Mario.State.ActionState
+namespace Sprint0.MarioPlayer.State.ActionState
 {
     public class MarioFallState : MarioActionState
     {
-        public MarioFallState(Mario marioEntity) :
-            base(marioEntity)
+        public MarioFallState(Mario marioEntity, PlayerFactory marioFactory) :
+            base(marioEntity, marioFactory)
         { }
 
         public override void Enter(IMarioActionState previousState)
@@ -24,7 +24,7 @@ namespace Sprint0.Mario.State.ActionState
         public override void IdleTransition()
         {
             Exit();
-            CurrentState = new MarioIdleState(marioEntity);
+            CurrentState = new MarioIdleState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
 

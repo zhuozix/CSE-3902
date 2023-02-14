@@ -12,11 +12,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Content\MarioContent\**" />
-    <Compile Remove="Mario\MarioStates\**" />
+    <Compile Remove="MarioPlayer\MarioStates\**" />
     <EmbeddedResource Remove="Content\MarioContent\**" />
-    <EmbeddedResource Remove="Mario\MarioStates\**" />
+    <EmbeddedResource Remove="MarioPlayer\MarioStates\**" />
     <None Remove="Content\MarioContent\**" />
-    <None Remove="Mario\MarioStates\**" />
+    <None Remove="MarioPlayer\MarioStates\**" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />

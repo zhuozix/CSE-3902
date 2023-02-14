@@ -198,7 +198,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NormalMario/MarioDeath.png
+/build:NormalMario/MarioDeath.png;NormalMario/NormalMarioDeath.png
 
 #begin NormalMario/MarioIdleRight.png
 /importer:TextureImporter
@@ -210,7 +210,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NormalMario/MarioIdleRight.png
+/build:NormalMario/MarioIdleRight.png;NormalMario/NormalMarioIdleRight.png
 
 #begin NormalMario/MarioJumpRight.png
 /importer:TextureImporter
@@ -222,7 +222,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NormalMario/MarioJumpRight.png
+/build:NormalMario/MarioJumpRight.png;NormalMario/NormalMarioJumpRight.png
 
 #begin NormalMario/MarioTurnRight.png
 /importer:TextureImporter
@@ -234,7 +234,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NormalMario/MarioTurnRight.png
+/build:NormalMario/MarioTurnRight.png;NormalMario/NormalMarioTurnRight.png
 
 #begin NormalMario/MarioWalkRight.png
 /importer:TextureImporter
@@ -246,7 +246,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NormalMario/MarioWalkRight.png
+/build:NormalMario/MarioWalkRight.png;NormalMario/NormalMarioWalkRight.png
 
 #begin redMushroom.png
 /importer:TextureImporter

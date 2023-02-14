@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Sprint0.Mario.State.PowerupState
+namespace Sprint0.MarioPlayer.State.PowerupState
 {
 
     public enum MarioPowerupStateType
@@ -14,6 +14,7 @@ namespace Sprint0.Mario.State.PowerupState
     public abstract class MarioPowerupState : IMarioPowerupState
     {
         protected Mario marioEntity;
+        protected PlayerFactory marioFactory;
         protected IMarioPowerupState previousState;
         protected IMarioPowerupState CurrentState
         {
@@ -27,9 +28,10 @@ namespace Sprint0.Mario.State.PowerupState
             }
         }
 
-        public MarioPowerupState(Mario marioEntity)
+        public MarioPowerupState(Mario marioEntity, PlayerFactory marioFactory)
         {
             this.marioEntity = marioEntity;
+            this.marioFactory= marioFactory;
         }
 
         public virtual void Enter(IMarioPowerupState previousState)
@@ -38,7 +40,7 @@ namespace Sprint0.Mario.State.PowerupState
             CurrentState = this;
 
             Vector2 previousPosition = marioEntity.Position;
-            marioEntity.Sprite = Mario.SpriteFactory.BuildSprite(marioEntity.CurrentPowerupState.GetEnumValue(), marioEntity.CurrentActionState.GetEnumValue());
+            marioEntity.Sprite = marioFactory.buildSprites(marioEntity.CurrentPowerupState.GetEnumValue(), marioEntity.CurrentActionState.GetEnumValue());
             marioEntity.Position = previousPosition;
         }
 
@@ -50,25 +52,25 @@ namespace Sprint0.Mario.State.PowerupState
         public virtual void NormalMarioTransition()
         {
             Exit();
-            CurrentState = new MarioNormalState(marioEntity);
+            CurrentState = new MarioNormalState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
         public virtual void SuperMarioTransition()
         {
             Exit();
-            CurrentState = new MarioSuperState(marioEntity);
+            CurrentState = new MarioSuperState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
         public virtual void FireMarioTransition()
         {
             Exit();
-            CurrentState = new MarioFireState(marioEntity);
+            CurrentState = new MarioFireState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
         public virtual void DeadMarioTransition()
         {
             Exit();
-            CurrentState = new MarioDeadState(marioEntity);
+            CurrentState = new MarioDeadState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
 

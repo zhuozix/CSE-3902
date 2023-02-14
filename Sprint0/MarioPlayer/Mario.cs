@@ -2,30 +2,30 @@
 using Microsoft.Xna.Framework;
 using Sprint0.Content;
 using System;
-using Sprint0.Mario.State.ActionState;
-using Sprint0.Mario.State.PowerupState;
+using Sprint0.MarioPlayer.State.ActionState;
+using Sprint0.MarioPlayer.State.PowerupState;
 
-namespace Sprint0.Mario
+namespace Sprint0.MarioPlayer
 {
     public class Mario : Entity
     {
         public IMarioActionState CurrentActionState { get; set; }
         public IMarioPowerupState CurrentPowerupState { get; set; }
         public bool IsFacingRight { get; set; }
-
-        public static MarioSpriteFactory SpriteFactory { get { return MarioSpriteFactory.Instance; } }
-
-        public Mario(Vector2 spawnLocation)
+        private PlayerFactory marioFactory;
+ 
+        public Mario(Vector2 spawnLocation,PlayerFactory marioFactoryIn)
         {
-            Sprite = SpriteFactory.BuildSprite(MarioPowerupStateType.Normal, MarioActionStateType.Idle);
+            marioFactory = marioFactoryIn;
+            Sprite = marioFactory.buildSprites(MarioPowerupStateType.Normal, MarioActionStateType.Idle);
            
 
             Position = spawnLocation;
             Velocity = Vector2.Zero;
             Acceleration = Vector2.Zero;
 
-            CurrentActionState = new MarioIdleState(this);
-            CurrentPowerupState = new MarioNormalState(this);
+            CurrentActionState = new MarioIdleState(this, marioFactory);
+            CurrentPowerupState = new MarioNormalState(this, marioFactory);
 
             CurrentActionState.Enter(null);
             CurrentPowerupState.Enter(null);

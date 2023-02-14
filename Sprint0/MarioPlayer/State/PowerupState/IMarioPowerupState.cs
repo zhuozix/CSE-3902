@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Sprint0.Mario.State.PowerupState
+namespace Sprint0.MarioPlayer.State.PowerupState
 {
     public interface IMarioPowerupState
     {

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Content;
 using Sprint0.Sprites;
 
-namespace Sprint0.Mario
+namespace Sprint0.MarioPlayer
 {
     public abstract class Entity : ISprite
     {

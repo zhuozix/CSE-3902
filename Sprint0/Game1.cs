@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sprint0.Enemy;
 using Sprint0.Factory;
+using Sprint0.MarioPlayer;
 
 namespace Sprint0
 {
@@ -35,6 +36,7 @@ namespace Sprint0
          * SpriteFactories
          */
         private NPCFactory npcSpritesFactory;
+        private PlayerFactory playerFactory;
 
         /*
          * Current Sprites
@@ -74,7 +76,7 @@ namespace Sprint0
             //Factories
             npcSpritesFactory = new NPCFactory(_graphics);
             npcSpritesFactory.initalize(Content);
-   
+            playerFactory = new PlayerFactory(Content);
             //controllers
             keyboardController = new KeyboardController();
             //Lists
@@ -93,9 +95,6 @@ namespace Sprint0
             CreateSprites();
             //Load commands to controller
             keyboardController.loadCommonCommand(this);
-
-            //don't know why it says mario is a namespace
-            //Mario mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2));
         }
 
         protected override void Update(GameTime gameTime)
@@ -114,6 +113,9 @@ namespace Sprint0
             keyboardController.UpdateInput();
 
             #endregion
+            //Players
+            mario.Update(gameTime);
+            mario.Draw(_spriteBatch,true);
             //Blocks
             currentBlock.Update(gameTime);
 			currentBlock.Draw(_spriteBatch, true);
@@ -130,8 +132,8 @@ namespace Sprint0
 
         private void CreateSprites()
         {
-            //Test
-   
+            //Player
+            mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), playerFactory);
             // NPC lists
             npcSpritesFactory.addAllBlocks(blockList);
             npcSpritesFactory.addAllItems(itemList);

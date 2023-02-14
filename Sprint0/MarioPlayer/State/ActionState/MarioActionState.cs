@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Sprint0.Mario.State.ActionState
+namespace Sprint0.MarioPlayer.State.ActionState
 {
 
     public enum MarioActionStateType
@@ -16,10 +16,11 @@ namespace Sprint0.Mario.State.ActionState
         protected Mario marioEntity;
         protected IMarioActionState previousState;
         protected IMarioActionState CurrentState { get { return marioEntity.CurrentActionState; } set { marioEntity.CurrentActionState = value; } }
-
-        public MarioActionState(Mario marioEntity)
+        protected PlayerFactory marioFactory;
+        public MarioActionState(Mario marioEntity, PlayerFactory marioFactory)
         {
             this.marioEntity = marioEntity;
+            this.marioFactory = marioFactory;
         }
 
         public virtual void Enter(IMarioActionState previousState)
@@ -28,7 +29,7 @@ namespace Sprint0.Mario.State.ActionState
             CurrentState = this;
 
             Vector2 previousPosition = marioEntity.Position;
-            marioEntity.Sprite = Mario.SpriteFactory.BuildSprite(marioEntity.CurrentPowerupState.GetEnumValue(), marioEntity.CurrentActionState.GetEnumValue());
+            marioEntity.Sprite = marioFactory.buildSprites(marioEntity.CurrentPowerupState.GetEnumValue(), marioEntity.CurrentActionState.GetEnumValue());
             marioEntity.Position = previousPosition;
         }
 
