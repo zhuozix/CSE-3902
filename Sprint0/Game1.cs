@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sprint0.Enemy;
 using System;
+using Sprint0.Mario;
 
 namespace Sprint0
 {
@@ -33,7 +34,11 @@ namespace Sprint0
         // Zhuozi Sprint 2
         public ISpriteE Gommba;
         public ISpriteE Koopa;
-        //
+        //Mario
+        public ISprite mario;
+        public Texture2D texture_Mario;
+
+
         // Adam, Sprint 2
         public Texture2D texture_CoinBlock; 
 		public Texture2D texture_BrickBlock;
@@ -79,6 +84,7 @@ namespace Sprint0
 
         protected override void Initialize()
         {
+            texture_Mario = Content.Load<Texture2D>("Mario");
 			// Adam Sprint 2
 			texture_CoinBlock = Content.Load<Texture2D>("CoinBlocksSpriteSheet");
 			texture_BrickBlock = Content.Load<Texture2D>("BrickBlocksSpriteSheet");
@@ -126,11 +132,13 @@ namespace Sprint0
             // Seth Sprint 2
             currentItem = (ISprite)itemList[DisplayItem];
             //
+            
             // implement command to mouse and keyboard
             keyboardController.UpdateInput();
-           
+
             #endregion
-            
+            mario.Update(gameTime); 
+            mario.Draw(_spriteBatch, true);
 
             currentBlock.Update(gameTime);
 			currentBlock.Draw(_spriteBatch, true);
@@ -148,6 +156,8 @@ namespace Sprint0
 
         private void CreateSprites()
         {
+ 
+            mario = new MarioSpritesTest(texture_Mario,new Vector2(280, 300), 1, 1);
 
             // Adam Sprint 2
             coinBlockSprite = new BlockSprite(texture_CoinBlock, 1, 5, new Vector2(100, 100));
