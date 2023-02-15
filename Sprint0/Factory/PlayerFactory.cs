@@ -27,7 +27,6 @@ namespace Sprint0.MarioPlayer
 
         public Sprite buildSprites(MarioPowerupStateType powerUpType, MarioActionStateType actionType)
         {   
-            
             findLocation(powerUpType, actionType);
             texture = content.Load<Texture2D>(spritesLocation);
             if (faceToRight)
@@ -56,7 +55,7 @@ namespace Sprint0.MarioPlayer
                     fileNamePrefix = "FireMario";
                     break;
                 case MarioPowerupStateType.Dead:
-                    fileNamePrefix = "NormalMario/MarioDeath";
+                    fileNamePrefix = "";
                     break;
                 default:
                     throw new ArgumentException("MarioSpriteFactory error: Invalid MarioPowerupStateType specified");
@@ -86,6 +85,10 @@ namespace Sprint0.MarioPlayer
                 fileNameSuffix = "";
 
             spritesLocation = fileNamePrefix + "/" + fileNamePrefix + fileNameSuffix;
+            if(powerUpType == MarioPowerupStateType.Dead)
+            {
+                spritesLocation = "DeadMario/MarioDeath";
+            }
             if (fileNameSuffix == "WalkRight")
             {
                 faceToRight = true;

@@ -30,7 +30,8 @@ namespace Sprint0
         /*
          * Controllers
          */
-        private KeyboardController keyboardController;
+        private IController keyboardController;
+        private IController playerController;
 
         /*
          * SpriteFactories
@@ -42,8 +43,8 @@ namespace Sprint0
          * Current Sprites
          */
         //Mario
-        public ISprite mario;
-        public Texture2D texture_Mario;
+        public Mario mario;
+        //Npc
         public ISpriteE currentEnemy;
         public ISprite currentBlock;
         public ISprite currentItem;
@@ -80,6 +81,8 @@ namespace Sprint0
 
             //controllers
             keyboardController = new KeyboardController();
+            playerController = new PlayerController();
+            
 
             //Lists
             blockList = new ArrayList();
@@ -104,8 +107,10 @@ namespace Sprint0
             npcSpritesFactory.addAllItems(itemList);
             npcSpritesFactory.addAllEnemies(enemyList);
 
+
             //Load commands to controller
             keyboardController.loadCommonCommand(this);
+            playerController.loadCommonCommand(this);
         }
 
         protected override void Update(GameTime gameTime)
@@ -122,7 +127,7 @@ namespace Sprint0
             currentItem = (ISprite)itemList[DisplayItem];
             //
             keyboardController.UpdateInput();
-
+            playerController.UpdateInput(); 
             #endregion
             //Players
             mario.Update(gameTime);

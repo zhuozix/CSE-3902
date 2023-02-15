@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Sprint0.Command;
 using Sprint0.Command.GameControlCMD;
 using Sprint0.Command.NpcCMD.EnemyCMD;
+using Sprint0.Command.PlayerCMD;
+using Sprint0.MarioPlayer;
 /**
 * Controller Class for keyboard input. 
 * This class is not for player control. 
@@ -36,6 +38,7 @@ namespace Sprint0.Content
 
         public void loadCommonCommand(Game1 gameInstance)
         {
+            Mario playerInstance = gameInstance.mario;
             /*
              * Set Common Command
              */
@@ -52,6 +55,11 @@ namespace Sprint0.Content
             // Game control
             ICommand exit = new Exit(gameInstance);
             ICommand reset = new Reset(gameInstance);
+            //State change command
+            ICommand takeDamage = new MarioDamageCheatCommand(playerInstance);
+            ICommand toSuperMario = new MarioSuperCheatCommand(playerInstance);
+            ICommand toNormalMario = new MarioNormalCheatCommand(playerInstance);
+            ICommand toFireMario = new MarioFireCheatCommand(playerInstance);
 
             /*
              * Put common command into controller map.
@@ -69,6 +77,12 @@ namespace Sprint0.Content
             // Game control
             this.AddCommand(Keys.Q, exit);
             this.AddCommand(Keys.R, reset);
+            //Mario state control
+            this.AddCommand(Keys.D1, toNormalMario);
+            this.AddCommand(Keys.D2, toSuperMario);
+            this.AddCommand(Keys.D3, toFireMario);
+            this.AddCommand(Keys.E, takeDamage);
+
         }
 
         //Only for switching sprites.
@@ -85,9 +99,9 @@ namespace Sprint0.Content
                 if (!previousKeyboardState.IsKeyDown(key))
                 {
                     
-                    if (CommandMap.ContainsKey(keysPressed[0]))
+                    if (CommandMap.ContainsKey(key))
                     { 
-                        CommandMap[keysPressed[0]].Execute();
+                        CommandMap[key].Execute();
                     }
                 }         
             }

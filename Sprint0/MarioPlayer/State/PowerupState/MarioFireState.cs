@@ -17,7 +17,7 @@ namespace Sprint0.MarioPlayer.State.PowerupState
 
         public override void TakeDamage()
         {
-            NormalMarioTransition();
+            SuperMarioTransition();
         }
     }
 }

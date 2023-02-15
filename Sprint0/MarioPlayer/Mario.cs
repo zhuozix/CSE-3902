@@ -34,6 +34,11 @@ namespace Sprint0.MarioPlayer
         }
 
         #region Action state transitions
+
+        public void idle()
+        {
+            CurrentActionState.IdleTransition();
+        }
         public void Jump()
         {
             CurrentActionState.JumpingTransition();
