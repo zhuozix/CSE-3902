@@ -57,23 +57,22 @@ namespace Sprint0.Controller
         {
             //if the key pressed, execute the command in the map.
             Keys[] keysPressed = Keyboard.GetState().GetPressedKeys();
-
+            
             if(keysPressed.Length == 0)
             {
                 idle.Execute();
             }
-
+            
             //Excute the command
             foreach (Keys key in keysPressed)
             {
-                
+             
                     if (CommandMap.ContainsKey(key))
                     {
                         CommandMap[key].Execute();
                     }
-                   
-            }
-
+                   }
+       
         }
     }
 }
