@@ -43,7 +43,10 @@ namespace Sprint0.Controller
             this.AddCommand(Keys.A, moveLeft);
             this.AddCommand(Keys.D, moveRight);
             this.AddCommand(Keys.S, crouch);
-
+            this.AddCommand(Keys.Up, jump);
+            this.AddCommand(Keys.Left, moveLeft);
+            this.AddCommand(Keys.Right, moveRight);
+            this.AddCommand(Keys.Down, crouch);
             
             this.idle = new MarioIdle(playerInstance);
         }
