@@ -25,7 +25,12 @@ namespace Sprint0.MarioPlayer.State.ActionState
             CurrentState = new MarioCrouchState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
-
+        public override void IdleTransition()
+        {
+            Exit();
+            CurrentState = new MarioIdleState(marioEntity, marioFactory);
+            CurrentState.Enter(this);
+        }
         public override void JumpingTransition()
         {
             Exit();

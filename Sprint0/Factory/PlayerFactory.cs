@@ -17,27 +17,37 @@ namespace Sprint0.MarioPlayer
         private ContentManager content;
         string spritesLocation;
         public Texture2D texture;
-        bool faceToRight = false;
-
+        private MarioActionStateType actionType;
 
         public PlayerFactory(ContentManager contentIn)
-        {         
+        {
             this.content = contentIn;
         }
 
         public Sprite buildSprites(MarioPowerupStateType powerUpType, MarioActionStateType actionType)
-        {   
+        {
             findLocation(powerUpType, actionType);
             texture = content.Load<Texture2D>(spritesLocation);
-            if (faceToRight)
-            {
-                return new NoneMovingAnimatedSprite(texture, Vector2.Zero, 1, 3);
-            }
-            else
-            {
-                return new NoneAnimatedNonMovingSprite(texture, Vector2.Zero, 1, 1);
-            }
+            this.actionType = actionType;
+            return spritesGenerator();
 
+        }
+
+        public Sprite spritesGenerator()
+        {
+            Sprite ans;
+           
+                if(this.actionType == MarioActionStateType.Running)
+                {
+                   ans = new NoneMovingAnimatedSprite(texture, Vector2.Zero, 1, 3);
+                }
+                else {
+                   ans = new NoneAnimatedNonMovingSprite(texture, Vector2.Zero, 1, 1);
+                }
+                
+         
+           
+            return ans;
         }
 
         private void findLocation(MarioPowerupStateType powerUpType, MarioActionStateType actionType)
@@ -88,10 +98,6 @@ namespace Sprint0.MarioPlayer
             if(powerUpType == MarioPowerupStateType.Dead)
             {
                 spritesLocation = "DeadMario/MarioDeath";
-            }
-            if (fileNameSuffix == "WalkRight")
-            {
-                faceToRight = true;
             }
 
         }
