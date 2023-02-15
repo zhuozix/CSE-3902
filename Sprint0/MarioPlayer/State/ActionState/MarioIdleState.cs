@@ -1,5 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Factory;
+using Sprint0.Item;
 using Sprint0.MarioPlayer.State.PowerupState;
+using Sprint0.Sprites;
 
 namespace Sprint0.MarioPlayer.State.ActionState
 {
@@ -97,7 +100,15 @@ namespace Sprint0.MarioPlayer.State.ActionState
             }
             
         }
-        public override void Attack() { }
+        public override void Attack() 
+        {
+            MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
+            if (powerupStateType == MarioPowerupStateType.Fire)
+            {
+                marioEntity.generateFireball();
+                
+            }
+        }
 
         public override void Update(GameTime gameTime) { }
     }

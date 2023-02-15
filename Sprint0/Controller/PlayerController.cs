@@ -37,17 +37,12 @@ namespace Sprint0.Controller
             ICommand moveRight = new MarioMoveRightCommand(playerInstance);
             ICommand crouch = new MarioCrouchCommand(playerInstance);
 
-            //Fire
-            ICommand fire = null;
 
             //add command to controller
             this.AddCommand(Keys.W, jump);
             this.AddCommand(Keys.A, moveLeft);
             this.AddCommand(Keys.D, moveRight);
             this.AddCommand(Keys.S, crouch);
-
-            this.AddCommand(Keys.N, fire);
-            this.AddCommand(Keys.Z, fire);
 
             
             this.idle = new MarioIdle(playerInstance);

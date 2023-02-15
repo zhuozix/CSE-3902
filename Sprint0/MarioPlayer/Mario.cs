@@ -4,6 +4,10 @@ using Sprint0.Content;
 using System;
 using Sprint0.MarioPlayer.State.ActionState;
 using Sprint0.MarioPlayer.State.PowerupState;
+using Sprint0.Factory;
+using Sprint0.Item;
+using Sprint0.Sprites;
+using System.Collections;
 
 namespace Sprint0.MarioPlayer
 {
@@ -13,13 +17,15 @@ namespace Sprint0.MarioPlayer
         public IMarioPowerupState CurrentPowerupState { get; set; }
         public bool IsFacingRight { get; set; }
         private PlayerFactory marioFactory;
- 
-        public Mario(Vector2 spawnLocation,PlayerFactory marioFactoryIn)
+        public BulletFactory fireballFactory;
+        private ArrayList bulletList;
+        public Mario(Vector2 spawnLocation,PlayerFactory marioFactoryIn, BulletFactory fireballFactory, ArrayList bulletList)
         {
             marioFactory = marioFactoryIn;
             Sprite = marioFactory.buildSprites(MarioPowerupStateType.Normal, MarioActionStateType.Idle);
-           
 
+            this.fireballFactory = fireballFactory;
+            this.bulletList = bulletList;
             Position = spawnLocation;
             Velocity = Vector2.Zero;
             Acceleration = Vector2.Zero;
@@ -31,6 +37,22 @@ namespace Sprint0.MarioPlayer
             CurrentPowerupState.Enter(null);
 
             IsFacingRight = true;
+        }
+
+        public void generateFireball()
+        {
+            if(bulletList.Count < 3)
+            {
+                ISprite fireball = fireballFactory.getFireballSprite(Position);
+                bulletList.Add(fireball);
+            }
+            else
+            {
+                bulletList.RemoveAt(0);
+                ISprite fireball = fireballFactory.getFireballSprite(Position);
+                bulletList.Add(fireball);
+            }
+            
         }
 
         #region Action state transitions
