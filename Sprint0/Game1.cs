@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using Sprint0.Enemy;
 using Sprint0.Factory;
 using Sprint0.MarioPlayer;
+using Microsoft.Xna.Framework.Content;
 
 namespace Sprint0
 {
@@ -25,8 +26,8 @@ namespace Sprint0
                 return instance;
             }
         }
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        public GraphicsDeviceManager _graphics;
+        public SpriteBatch _spriteBatch;
         /*
          * Controllers
          */
@@ -38,6 +39,7 @@ namespace Sprint0
          */
         private NPCFactory npcSpritesFactory;
         private PlayerFactory playerFactory;
+        private BulletFactory fireballFactory;
 
         /*
          * Current Sprites
@@ -48,6 +50,7 @@ namespace Sprint0
         public ISpriteE currentEnemy;
         public ISprite currentBlock;
         public ISprite currentItem;
+        public ISprite CurrentBullet;
 
         /*
          *  Sprites Lists
@@ -55,6 +58,7 @@ namespace Sprint0
         private ArrayList blockList;
         private ArrayList itemList;
         private ArrayList enemyList;
+        public ArrayList bulletList;
 
         /*
          * Command Control
@@ -78,6 +82,9 @@ namespace Sprint0
             npcSpritesFactory = new NPCFactory(_graphics);
             npcSpritesFactory.initalize(Content);
             playerFactory = new PlayerFactory(Content);
+            fireballFactory = new BulletFactory(_graphics);
+            fireballFactory.initalize(Content);
+
 
             //controllers
             keyboardController = new KeyboardController();
@@ -88,6 +95,7 @@ namespace Sprint0
             blockList = new ArrayList();
             itemList = new ArrayList();
             enemyList = new ArrayList();
+            bulletList = new ArrayList();
 
 
             base.Initialize();
@@ -101,7 +109,7 @@ namespace Sprint0
              * Load Sprites 
              */
             //Player
-            mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), playerFactory);
+            mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), playerFactory, fireballFactory,bulletList);
             // NPC lists
             npcSpritesFactory.addAllBlocks(blockList);
             npcSpritesFactory.addAllItems(itemList);
@@ -140,6 +148,11 @@ namespace Sprint0
             
             //Enemies
             currentEnemy.Update(gameTime);
+
+            foreach(ISprite sprite in bulletList)
+            {
+                sprite.Update(gameTime);
+            }
             
 
             base.Update(gameTime);
@@ -155,6 +168,12 @@ namespace Sprint0
             currentBlock.Draw(_spriteBatch, true);
             currentItem.Draw(_spriteBatch, true);
             currentEnemy.Draw(_spriteBatch);
+
+            foreach (ISprite sprite in bulletList)
+            {
+                sprite.Draw(_spriteBatch, true);
+            }
+
         }
     }
 }

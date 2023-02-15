@@ -55,4 +55,14 @@ namespace Sprint0.Command.PlayerCMD
             receiver.MoveRight();
         }
     }
+
+    internal class fireFireball : MarioReceiver<Mario>
+    {
+        public fireFireball(Mario receiver) : base(receiver) { }
+
+        public override void Execute()
+        {
+            receiver.Attack();
+        }
+    }
 }
