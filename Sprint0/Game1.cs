@@ -153,8 +153,8 @@ namespace Sprint0
             {
                 sprite.Update(gameTime);
             }
-            
 
+            fireballFactory.update(bulletList,gameTime);
             base.Update(gameTime);
            
         }
@@ -174,6 +174,6 @@ namespace Sprint0
                 sprite.Draw(_spriteBatch, true);
             }
 
-        }
+        } 
     }
 }
