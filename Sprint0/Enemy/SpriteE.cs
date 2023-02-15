@@ -51,11 +51,11 @@ namespace Sprint0.Enemy
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
-            if (position.X >=600)
+            if (position.X >= 780)
             {
                 spriteEffect = SpriteEffects.FlipHorizontally;
             }
-            else if(position.X <= 400)
+            else if(position.X <= 0)
             {
                 spriteEffect = SpriteEffects.None;
             }
