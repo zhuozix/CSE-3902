@@ -115,7 +115,7 @@ namespace Sprint0
 
         protected override void Update(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            
 
             //display the sprite from the sprite list one at a time.
             #region implement command
@@ -131,19 +131,30 @@ namespace Sprint0
             #endregion
             //Players
             mario.Update(gameTime);
-            mario.Draw(_spriteBatch,true);
+            
             //Blocks
             currentBlock.Update(gameTime);
-			currentBlock.Draw(_spriteBatch, true);
+			
             //Items
             currentItem.Update(gameTime);
-            currentItem.Draw(_spriteBatch, true);
+            
             //Enemies
             currentEnemy.Update(gameTime);
-            currentEnemy.Draw(_spriteBatch);
+            
 
             base.Update(gameTime);
            
+        }
+
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+
+            mario.Draw(_spriteBatch, true);
+            currentBlock.Draw(_spriteBatch, true);
+            currentItem.Draw(_spriteBatch, true);
+            currentEnemy.Draw(_spriteBatch);
         }
     }
 }
