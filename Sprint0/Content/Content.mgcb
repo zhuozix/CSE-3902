@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin BrickBlocksSpriteSheet.png
+#begin ../../../../../../../Users/adam/Downloads/sprite/stairblock.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,9 +23,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:BrickBlocksSpriteSheet.png
+/build:../../../../../../../Users/adam/Downloads/sprite/stairblock.png;stairblock.png
 
-#begin coin.png
+#begin brickBlock.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -35,7 +35,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:coin.png
+/build:brickBlock.png
 
 #begin CoinBlocksSpriteSheet.png
 /importer:TextureImporter
@@ -49,6 +49,7 @@
 /processorParam:TextureFormat=Color
 /build:CoinBlocksSpriteSheet.png
 
+
 #begin DeadMario/MarioDeath.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -60,6 +61,7 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:DeadMario/MarioDeath.png
+
 
 #begin EnemyContent/WalkingGoomba1.png
 /importer:TextureImporter
@@ -97,7 +99,11 @@
 /processorParam:TextureFormat=Color
 /build:fireFlower.png
 
+
+#begin floorBlock.png
+
 #begin FireMario/fireball.PNG
+
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,6 +113,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
+
+/build:floorBlock.png
+
 /build:FireMario/fireball.PNG
 
 #begin FireMario/FireMarioAttackRight.png
@@ -181,6 +190,7 @@
 /processorParam:TextureFormat=Color
 /build:FireMario/FireMarioWalkRight.png
 
+
 #begin font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -200,7 +210,35 @@
 /processorParam:TextureFormat=Color
 /build:greenMushroom.png
 
+
+#begin GreenPipe.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GreenPipe.png
+
+#begin GreenPipe.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GreenPipe.png
+
+#begin Mario.png
+
 #begin NormalMario/MarioIdleRight.png
+
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -284,7 +322,23 @@
 /processorParam:TextureFormat=Color
 /build:SuperMario/SuperMarioCrouchRight.png
 
+
+#begin questionBlock.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:questionBlock.png
+
+#begin redMushroom.png
+
 #begin SuperMario/SuperMarioIdleRight.png
+
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -296,7 +350,11 @@
 /processorParam:TextureFormat=Color
 /build:SuperMario/SuperMarioIdleRight.png
 
+
+#begin stairblock.png
+
 #begin SuperMario/SuperMarioJumpRight.png
+
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -306,7 +364,11 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
+
+/build:stairblock.png
+
 /build:SuperMario/SuperMarioJumpRight.png
+
 
 #begin SuperMario/SuperMarioTurnRight.png
 /importer:TextureImporter
@@ -331,6 +393,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:SuperMario/SuperMarioWalkRight.png
+
+#begin usedblock.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:usedblock.png
 
 #begin WalkingGoomba1.png
 /importer:TextureImporter
