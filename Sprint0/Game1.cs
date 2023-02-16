@@ -26,8 +26,13 @@ namespace Sprint0
 		// Adam Sprint 2 
 		public ISprite brickBlockSprite;
 		public ISprite coinBlockSprite;
-        // Seth Sprint 2
-        public ISprite fireFlowerSprite;
+		public ISprite floorBlockSprite;
+		public ISprite usedBlockSprite;
+		public ISprite stairBlockSprite;
+		public ISprite pipeBlockSprite;
+		//
+		// Seth Sprint 2
+		public ISprite fireFlowerSprite;
         public ISprite starSprite;
         public ISprite redMushSprite;
         public ISprite greenMushSprite;
@@ -39,9 +44,13 @@ namespace Sprint0
         // Adam, Sprint 2
         public Texture2D texture_CoinBlock; 
 		public Texture2D texture_BrickBlock;
-        //
-        // Seth Sprint 2
-        public Texture2D texture_FireFlower;
+		public Texture2D texture_FloorBlock;
+		public Texture2D texture_StairBlock;
+		public Texture2D texture_UsedBlock;
+		public Texture2D texture_PipeBlock;
+		//
+		// Seth Sprint 2
+		public Texture2D texture_FireFlower;
         public Texture2D texture_Star;
         public Texture2D texture_GreenMush;
         public Texture2D texture_RedMush;
@@ -55,7 +64,7 @@ namespace Sprint0
         public Texture2D MarioWalkRight;
         private ArrayList spritesList;
 		// Adam Sprint 2
-		private ArrayList blockList;
+		public ArrayList blockList;
         // Seth Sprint 2
         private ArrayList itemList;
         // Zhuozi Sprint 2
@@ -85,11 +94,15 @@ namespace Sprint0
         protected override void Initialize()
         {
 			// Adam Sprint 2
-			texture_CoinBlock = Content.Load<Texture2D>("CoinBlocksSpriteSheet");
-			texture_BrickBlock = Content.Load<Texture2D>("BrickBlocksSpriteSheet");
-            
-            // Seth Sprint 2
-            texture_FireFlower = Content.Load<Texture2D>("fireFlower");
+			texture_CoinBlock = Content.Load<Texture2D>("questionBlock");
+			texture_BrickBlock = Content.Load<Texture2D>("brickBlock");
+			texture_FloorBlock = Content.Load<Texture2D>("floorBlock");
+			texture_StairBlock = Content.Load<Texture2D>("stairblock");
+			texture_UsedBlock = Content.Load<Texture2D>("usedblock");
+			texture_PipeBlock = Content.Load<Texture2D>("GreenPipe");
+
+			// Seth Sprint 2
+			texture_FireFlower = Content.Load<Texture2D>("fireFlower");
             texture_Star = Content.Load<Texture2D>("star");
             texture_GreenMush = Content.Load<Texture2D>("greenMushroom");
             texture_RedMush = Content.Load<Texture2D>("redMushroom");
@@ -123,8 +136,8 @@ namespace Sprint0
             CreateSprites();
             #region create command
 			// Adam Sprint 2
-			ICommand SetBlockBrick = new SetBlockIndex(this, 0);
-            ICommand SetBlockCoin = new SetBlockIndex(this, 1);
+			ICommand previousBlock = new decreaseBlockIndex(this);
+            ICommand nextBlock = new IncreaseBlockIndex(this);
             //
             // Seth Sprint 2
             ICommand increaseItemIndex = new increaseItemIndex(this);
@@ -135,8 +148,8 @@ namespace Sprint0
             ICommand SetNext = new SetNext(this);
 
             // Adam Sprint 2
-            keyboardController.AddCommand(Keys.T, SetBlockBrick);
-			keyboardController.AddCommand(Keys.Y, SetBlockCoin);
+            keyboardController.AddCommand(Keys.T, previousBlock);
+			keyboardController.AddCommand(Keys.Y, nextBlock);
             //
             // Seth Sprint 2
             keyboardController.AddCommand(Keys.I, increaseItemIndex);
@@ -184,11 +197,15 @@ namespace Sprint0
         {
 
             // Adam Sprint 2
-            coinBlockSprite = new BlockSprite(texture_CoinBlock, 1, 5, new Vector2(100, 100));
-			brickBlockSprite = new BlockSprite(texture_BrickBlock, 1, 5, new Vector2(200, 100));
-            //
-            // Seth Sprint 2
-            fireFlowerSprite = new FireFlowerSprite(texture_FireFlower, new Vector2(100, 300), 1, 4);
+            coinBlockSprite = new AnimatedBlockSprite(texture_CoinBlock, 1, 3, new Vector2(100, 100));
+			brickBlockSprite = new BlockSprite(texture_BrickBlock, 1, 1, new Vector2(200, 100));
+			floorBlockSprite = new BlockSprite(texture_FloorBlock, 1, 1, new Vector2(300, 100));
+			stairBlockSprite = new BlockSprite(texture_StairBlock, 1, 1, new Vector2(400, 100));
+			usedBlockSprite = new BlockSprite(texture_UsedBlock, 1, 1, new Vector2(500, 100));
+			pipeBlockSprite = new BlockSprite(texture_PipeBlock, 1, 1, new Vector2(600, 100));
+			//
+			// Seth Sprint 2
+			fireFlowerSprite = new FireFlowerSprite(texture_FireFlower, new Vector2(100, 300), 1, 4);
             starSprite = new StarSprite(texture_Star, new Vector2(200, 300), 1, 4, _graphics, 1);
             greenMushSprite = new GreenMushroomSprite(texture_GreenMush, new Vector2(300,300), 1, 1, _graphics,1);
             redMushSprite = new RedMushroomSprite(texture_RedMush, new Vector2(400,300), 1, 1, _graphics, 1);
@@ -201,10 +218,14 @@ namespace Sprint0
 			// Adam Sprint 2
 			blockList.Add(coinBlockSprite);
 			blockList.Add(brickBlockSprite);
-            //
+			blockList.Add(stairBlockSprite);
+			blockList.Add(usedBlockSprite);
+			blockList.Add(floorBlockSprite);
+			blockList.Add(pipeBlockSprite);
+			//
 
-            //Seth Sprint 2
-            itemList.Add(fireFlowerSprite);
+			//Seth Sprint 2
+			itemList.Add(fireFlowerSprite);
             itemList.Add(starSprite);
             itemList.Add(greenMushSprite);
             itemList.Add(redMushSprite);
