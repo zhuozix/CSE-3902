@@ -8,6 +8,7 @@ namespace Sprint0.Content
 {
     public interface ICommand
     {
+        
         void Execute();
     }
 }

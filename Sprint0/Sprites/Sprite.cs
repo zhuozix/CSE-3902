@@ -10,8 +10,8 @@ using Sprint0.Sprites;
 namespace Sprint0.Content
 {
     public abstract class Sprite: ISprite
-    {
-        public static double animateFrequency = 0.9 / 5.0;
+    {   // adjust animate speed
+        public static double animateFrequency = 0.18;
 
         private Texture2D texture;
         private int numRows;
@@ -65,6 +65,7 @@ namespace Sprint0.Content
                 _spriteBatch.End();
             
         }
-       
+
+
     }
 }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.Content;
 
-namespace Sprint0.Content
+namespace Sprint0.Command.NpcCMD.EnemyCMD
 {
     // Zhuozi Sprint 2
     public class SetPrevious : ICommand

@@ -9,19 +9,7 @@ using System.Threading.Tasks;
 namespace Sprint0.Command
 {
 
-    public class CommandExit : ICommand
-    {
-        private Game game;
-        public CommandExit(Game game)
-        {
-            this.game = game;
-        }
-
-        public void Execute()
-        {
-            game.Exit();
-        }
-    }
+    
     public class CommandList : ICommand
     {
         private Game1 game;
@@ -133,5 +121,6 @@ namespace Sprint0.Command
 
         }
     }
+
 
 }

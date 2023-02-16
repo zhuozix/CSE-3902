@@ -1,5 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Input;
+using Sprint0.Command.PlayerCMD;
 using Sprint0.Content;
+using Sprint0.MarioPlayer;
+using Sprint0.MarioPlayer.State.ActionState;
+using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +12,15 @@ using System.Threading.Tasks;
 
 namespace Sprint0.Controller
 {
-    internal class PlayerController : IController
+    internal class PlayerController:IController
     {
         //create dictionary to map the keys.
         private Dictionary<Keys, ICommand> CommandMap;
 
-        public PlayerController()
+        private ICommand idle;
+        private ICommand fallAfterJump;
+        private Mario playerInstance;
+        public PlayerController() 
         {
             CommandMap = new Dictionary<Keys, ICommand>();
         }
@@ -23,23 +30,52 @@ namespace Sprint0.Controller
             CommandMap.Add(key, command);
         }
 
-        public void UpdateInput()
+        public void loadCommonCommand(Game1 gameInstance)
         {
-            //if the key pressed execute the command in the map.
-            KeyboardState currentKeyboardState = Keyboard.GetState();
-            Keys[] keysPressed = Keyboard.GetState().GetPressedKeys();
+            playerInstance = gameInstance.mario;
 
-            //Excute the command only when key is released!
-            foreach (Keys key in keysPressed)
-            {
-                    //Find command line.
-                    if (CommandMap.ContainsKey(keysPressed[0]))
-                    {
-                        CommandMap[keysPressed[0]].Execute();
-                    }
-                
-            }
+            //Basic movement command
+            ICommand jump = new MarioJumpCommand(playerInstance);
+            ICommand moveLeft = new MarioMoveLeftCommand(playerInstance);
+            ICommand moveRight = new MarioMoveRightCommand(playerInstance);
+            ICommand crouch = new MarioCrouchCommand(playerInstance);
+
+
+            //add command to controller
+            this.AddCommand(Keys.W, jump);
+            this.AddCommand(Keys.A, moveLeft);
+            this.AddCommand(Keys.D, moveRight);
+            this.AddCommand(Keys.S, crouch);
+            this.AddCommand(Keys.Up, jump);
+            this.AddCommand(Keys.Left, moveLeft);
+            this.AddCommand(Keys.Right, moveRight);
+            this.AddCommand(Keys.Down, crouch);
+            
+            this.idle = new MarioIdle(playerInstance);
+            this.fallAfterJump = new fallAfterJump(playerInstance);
         }
 
+        public void UpdateInput()
+        {
+            //if the key pressed, execute the command in the map.
+            KeyboardState currentKeyboardState = Keyboard.GetState();
+            Keys[] keysPressed = Keyboard.GetState().GetPressedKeys();
+            MarioActionStateType currentActionType = playerInstance.CurrentActionState.GetEnumValue();
+            if(keysPressed.Length == 0 && currentActionType != MarioActionStateType.Falling)
+            {
+                idle.Execute();
+            }
+
+            //Excute the command
+            foreach (Keys key in keysPressed)
+            {   
+                if (CommandMap.ContainsKey(key))
+                {
+                    CommandMap[key].Execute();
+                    
+                }
+            }                      
+
+        }
     }
 }

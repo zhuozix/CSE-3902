@@ -40,11 +40,11 @@ namespace Sprint0.Enemy
             Velocity = new Vector2(moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirection, 0);
 
             position += Velocity;
-            if (currentx >= 600)
+            if (currentx >= 780)
             {
                 moveDirection = -1;
             }
-            else if (currentx <= 400)
+            else if (currentx <= 0)
             {
                 moveDirection = 1;
             }
