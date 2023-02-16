@@ -16,22 +16,22 @@ namespace Sprint0.MarioPlayer
         public IMarioActionState CurrentActionState { get; set; }
         public IMarioPowerupState CurrentPowerupState { get; set; }
         public bool IsFacingRight { get; set; }
-        private PlayerFactory marioFactory;
         public BulletFactory fireballFactory;
         private ArrayList bulletList;
-        public Mario(Vector2 spawnLocation,PlayerFactory marioFactoryIn, BulletFactory fireballFactory, ArrayList bulletList)
+        public float ySpawnPosition;
+        public Mario(Vector2 spawnLocation,Game1 gameInstance)
         {
-            marioFactory = marioFactoryIn;
-            Sprite = marioFactory.buildSprites(MarioPowerupStateType.Normal, MarioActionStateType.Idle);
+            Sprite = gameInstance.playerFactory.buildSprites(MarioPowerupStateType.Normal, MarioActionStateType.Idle);
 
-            this.fireballFactory = fireballFactory;
-            this.bulletList = bulletList;
+            this.fireballFactory = gameInstance.fireballFactory;
+            this.bulletList = gameInstance.bulletList;
             Position = spawnLocation;
             Velocity = Vector2.Zero;
             Acceleration = Vector2.Zero;
+            ySpawnPosition = spawnLocation.Y;
 
-            CurrentActionState = new MarioIdleState(this, marioFactory);
-            CurrentPowerupState = new MarioNormalState(this, marioFactory);
+            CurrentActionState = new MarioIdleState(this, gameInstance.playerFactory);
+            CurrentPowerupState = new MarioNormalState(this, gameInstance.playerFactory);
 
             CurrentActionState.Enter(null);
             CurrentPowerupState.Enter(null);
@@ -43,16 +43,21 @@ namespace Sprint0.MarioPlayer
         {
             if(bulletList.Count < 3)
             {
-                ISprite fireball = fireballFactory.getFireballSprite(Position);
+                ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight);
                 bulletList.Add(fireball);
             }
             else
             {
                 bulletList.RemoveAt(0);
-                ISprite fireball = fireballFactory.getFireballSprite(Position);
+                ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight);
                 bulletList.Add(fireball);
             }
             
+        }
+
+        public bool yPositionChecker()
+        {
+            return Position.Y < ySpawnPosition;
         }
 
         #region Action state transitions
@@ -64,6 +69,11 @@ namespace Sprint0.MarioPlayer
         public void Jump()
         {
             CurrentActionState.JumpingTransition();
+        }
+
+        public void fallAfterJump()
+        {
+            CurrentActionState.FallingTransition();
         }
 
         public void MoveLeft()

@@ -38,8 +38,8 @@ namespace Sprint0
          * SpriteFactories
          */
         private NPCFactory npcSpritesFactory;
-        private PlayerFactory playerFactory;
-        private BulletFactory fireballFactory;
+        public PlayerFactory playerFactory;
+        public BulletFactory fireballFactory;
 
         /*
          * Current Sprites
@@ -50,7 +50,6 @@ namespace Sprint0
         public ISpriteE currentEnemy;
         public ISprite currentBlock;
         public ISprite currentItem;
-        public ISprite CurrentBullet;
 
         /*
          *  Sprites Lists
@@ -109,7 +108,7 @@ namespace Sprint0
              * Load Sprites 
              */
             //Player
-            mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), playerFactory, fireballFactory,bulletList);
+            mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), this);
             // NPC lists
             npcSpritesFactory.addAllBlocks(blockList);
             npcSpritesFactory.addAllItems(itemList);
@@ -169,9 +168,9 @@ namespace Sprint0
             currentItem.Draw(_spriteBatch, true);
             currentEnemy.Draw(_spriteBatch);
 
-            foreach (ISprite sprite in bulletList)
+            foreach (FireBallSprite sprite in bulletList)
             {
-                sprite.Draw(_spriteBatch, true);
+                sprite.Draw(_spriteBatch, sprite.isFilped);
             }
 
         } 

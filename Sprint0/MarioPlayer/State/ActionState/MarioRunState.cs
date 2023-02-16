@@ -68,7 +68,15 @@ namespace Sprint0.MarioPlayer.State.ActionState
             if (!marioEntity.IsFacingRight)
                 IdleTransition();
         }
-        public override void Attack() { }
+        public override void Attack() 
+        {
+            MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
+            if (powerupStateType == MarioPowerupStateType.Fire)
+            {
+                marioEntity.generateFireball();
+
+            }
+        }
 
         public override void Update(GameTime gameTime) { }
     }

@@ -16,7 +16,15 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public override void Enter(IMarioActionState previousState)
         {
             base.Enter(previousState);
-            marioEntity.Velocity = new Vector2(0, 0);
+            if (marioEntity.yPositionChecker())
+            {
+                FallingTransition();
+            }
+            else
+            {
+                marioEntity.Velocity = new Vector2(0, 0);
+            }
+            
         }
 
         public override MarioActionStateType GetEnumValue()
@@ -32,12 +40,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
                 Exit();
                 CurrentState = new MarioCrouchState(marioEntity, marioFactory);
                 CurrentState.Enter(this);
-            }else if(powerupStateType == MarioPowerupStateType.Dead)
-            {
-                //do nothing
             }
-            else
-                FallingTransition();
         }
 
         public override void JumpingTransition()
@@ -110,6 +113,8 @@ namespace Sprint0.MarioPlayer.State.ActionState
             }
         }
 
-        public override void Update(GameTime gameTime) { }
+        public override void Update(GameTime gameTime) {
+
+        }
     }
 }

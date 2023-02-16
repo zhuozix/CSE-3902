@@ -2,6 +2,7 @@
 using Sprint0.Command.PlayerCMD;
 using Sprint0.Content;
 using Sprint0.MarioPlayer;
+using Sprint0.MarioPlayer.State.ActionState;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,10 @@ namespace Sprint0.Controller
     {
         //create dictionary to map the keys.
         private Dictionary<Keys, ICommand> CommandMap;
-        //test
-        ICommand idle;
+
+        private ICommand idle;
+        private ICommand fallAfterJump;
+        private Mario playerInstance;
         public PlayerController() 
         {
             CommandMap = new Dictionary<Keys, ICommand>();
@@ -29,7 +32,7 @@ namespace Sprint0.Controller
 
         public void loadCommonCommand(Game1 gameInstance)
         {
-            Mario playerInstance = gameInstance.mario;
+            playerInstance = gameInstance.mario;
 
             //Basic movement command
             ICommand jump = new MarioJumpCommand(playerInstance);
@@ -49,28 +52,30 @@ namespace Sprint0.Controller
             this.AddCommand(Keys.Down, crouch);
             
             this.idle = new MarioIdle(playerInstance);
+            this.fallAfterJump = new fallAfterJump(playerInstance);
         }
 
         public void UpdateInput()
         {
             //if the key pressed, execute the command in the map.
+            KeyboardState currentKeyboardState = Keyboard.GetState();
             Keys[] keysPressed = Keyboard.GetState().GetPressedKeys();
-            
-            if(keysPressed.Length == 0)
+            MarioActionStateType currentActionType = playerInstance.CurrentActionState.GetEnumValue();
+            if(keysPressed.Length == 0 && currentActionType != MarioActionStateType.Falling)
             {
                 idle.Execute();
             }
-            
+
             //Excute the command
             foreach (Keys key in keysPressed)
-            {
-             
-                    if (CommandMap.ContainsKey(key))
-                    {
-                        CommandMap[key].Execute();
-                    }
-                   }
-       
+            {   
+                if (CommandMap.ContainsKey(key))
+                {
+                    CommandMap[key].Execute();
+                    
+                }
+            }                      
+
         }
     }
 }

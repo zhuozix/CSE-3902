@@ -89,7 +89,6 @@ namespace Sprint0.Content
 
         }
 
-        //Only for switching sprites.
         public void UpdateInput()
         {
             //if the key pressed, execute the command in the map.

@@ -17,6 +17,7 @@ namespace Sprint0.Command.PlayerCMD
         public override void Execute()
         {
             receiver.Jump();
+            
         }
     }
 
@@ -63,6 +64,16 @@ namespace Sprint0.Command.PlayerCMD
         public override void Execute()
         {
             receiver.Attack();
+        }
+    }
+
+    internal class fallAfterJump : MarioReceiver<Mario> 
+    {
+        public fallAfterJump(Mario receiver) : base(receiver) { }
+
+        public override void Execute()
+        {
+            receiver.fallAfterJump();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.MarioPlayer.State.PowerupState;
 
 namespace Sprint0.MarioPlayer.State.ActionState
 {
@@ -11,7 +12,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public override void Enter(IMarioActionState previousState)
         {
             base.Enter(previousState);
-            marioEntity.Velocity = new Vector2(0, 50);
+            marioEntity.Velocity = new Vector2(0, 0);
         }
 
         public override MarioActionStateType GetEnumValue()
@@ -52,6 +53,18 @@ namespace Sprint0.MarioPlayer.State.ActionState
             CurrentState.Enter(this);
         }
 
-        public override void Update(GameTime gameTime) { }
+        public override void Attack()
+        {
+            MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
+            if (powerupStateType == MarioPowerupStateType.Fire)
+            {
+                marioEntity.generateFireball();
+
+            }
+        }
+        public override void Update(GameTime gameTime) 
+        {
+        
+        }
     }
 }

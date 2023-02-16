@@ -20,8 +20,6 @@ namespace Sprint0.Factory
 
         float timeSpent = 0f;
 
-        bool haveBullet = false;
-
         public BulletFactory(GraphicsDeviceManager graphicsIn)
         {
             _graphics = graphicsIn;
@@ -31,10 +29,19 @@ namespace Sprint0.Factory
         {
             texture_FireBall = content.Load<Texture2D>("FireMario/fireball");
         }
-        public ISprite getFireballSprite(Vector2 currentLocation)
+        public ISprite getFireballSprite(Vector2 currentLocation, bool isFacingRight)
         {
+            if (isFacingRight)
+            {
+                Vector2 newLocation = new Vector2(currentLocation.X + 5,currentLocation.Y + 20);
+                return new FireBallSprite(texture_FireBall, newLocation, 4, 4, _graphics, 1,true);
+            }
+            else
+            {
+                Vector2 newLocation = new Vector2(currentLocation.X - 5, currentLocation.Y + 20);
+                return new FireBallSprite(texture_FireBall, newLocation, 4, 4, _graphics, -1, false);
+            }
             
-            return new FireBallSprite(texture_FireBall, currentLocation, 4, 4, _graphics, 1);
         }
 
         public void update(ArrayList bulletList,GameTime gameTimeIn)
