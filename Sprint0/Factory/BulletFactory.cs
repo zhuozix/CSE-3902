@@ -33,13 +33,13 @@ namespace Sprint0.Factory
         {
             if (isFacingRight)
             {
-                Vector2 newLocation = new Vector2(currentLocation.X + 5,currentLocation.Y + 20);
-                return new FireBallSprite(texture_FireBall, newLocation, 4, 4, _graphics, 1,true);
+                Vector2 newLocation = new Vector2(currentLocation.X + 5,currentLocation.Y);
+                return new FireBallSprite(texture_FireBall, newLocation, 2, 2, _graphics, 1,true);
             }
             else
             {
-                Vector2 newLocation = new Vector2(currentLocation.X - 5, currentLocation.Y + 20);
-                return new FireBallSprite(texture_FireBall, newLocation, 4, 4, _graphics, -1, false);
+                Vector2 newLocation = new Vector2(currentLocation.X - 5, currentLocation.Y);
+                return new FireBallSprite(texture_FireBall, newLocation, 2, 2, _graphics, -1, false);
             }
             
         }

@@ -28,5 +28,48 @@ namespace Sprint0.Item
             this.isFilped = isFilepd;
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            float currHeight = position.Y;
+            float currWidth = position.X;
+            float maxHeight = graphics.PreferredBackBufferHeight - (Texture.Height + 1);
+            float maxWidth = graphics.PreferredBackBufferWidth - (Texture.Width / this.totalFrames + 1);
+            float minHeight = graphics.PreferredBackBufferHeight - 50;
+            float minWidth = 0;
+
+            timeSinceLastFrameTransition += gameTime.ElapsedGameTime.TotalSeconds;
+            if (timeSinceLastFrameTransition > animateFrequency)
+            {
+                timeSinceLastFrameTransition = 0;
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                {
+                    currentFrame = 0;
+                }
+            }
+
+            if (currHeight >= maxHeight)
+            {
+                moveDirection = -moveDirection;
+            }
+            else if (currHeight <= minHeight && moveDirection < 0)
+            {
+                moveDirection = -moveDirection;
+            }
+
+            if (Position.X >= maxWidth && xDirection > 0)
+            {
+                xDirection = -xDirection;
+            }
+            else if (Position.X <= minWidth && xDirection < 0)
+            {
+                xDirection = -xDirection;
+            }
+
+
+            position += new Vector2(moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * xDirection, moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirection);
+
+        }
+
     }
 }
