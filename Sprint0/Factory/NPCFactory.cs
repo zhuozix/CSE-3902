@@ -18,12 +18,16 @@ namespace Sprint0.Factory
     {
         private GraphicsDeviceManager _graphics;
 
-        // Blocks
-        public Texture2D texture_CoinBlock;
-        public Texture2D texture_BrickBlock;
+		// Blocks
+		public Texture2D texture_CoinBlock;
+		public Texture2D texture_BrickBlock;
+		public Texture2D texture_FloorBlock;
+		public Texture2D texture_StairBlock;
+		public Texture2D texture_UsedBlock;
+		public Texture2D texture_GreenPipeBlock;
 
-        // Items
-        public Texture2D texture_FireFlower;
+		// Items
+		public Texture2D texture_FireFlower;
         public Texture2D texture_Star;
         public Texture2D texture_GreenMush;
         public Texture2D texture_RedMush;
@@ -40,12 +44,16 @@ namespace Sprint0.Factory
 
         public void initalize(ContentManager content)
         {
-            // Adam Sprint 2
-            texture_CoinBlock = content.Load<Texture2D>("CoinBlocksSpriteSheet");
-            texture_BrickBlock = content.Load<Texture2D>("BrickBlocksSpriteSheet");
+			// Adam Sprint 2
+			texture_CoinBlock = content.Load<Texture2D>("questionBlock");
+			texture_BrickBlock = content.Load<Texture2D>("brickBlock");
+			texture_FloorBlock = content.Load<Texture2D>("floorBlock");
+			texture_StairBlock = content.Load<Texture2D>("stairblock");
+			texture_UsedBlock = content.Load<Texture2D>("usedblock");
+			texture_GreenPipeBlock = content.Load<Texture2D>("GreenPipe");
 
-            // Seth Sprint 2
-            texture_FireFlower = content.Load<Texture2D>("fireFlower");
+			// Seth Sprint 2
+			texture_FireFlower = content.Load<Texture2D>("fireFlower");
             texture_Star = content.Load<Texture2D>("star");
             texture_GreenMush = content.Load<Texture2D>("greenMushroom");
             texture_RedMush = content.Load<Texture2D>("redMushroom");
@@ -59,7 +67,11 @@ namespace Sprint0.Factory
         {
             blockList.Add(getCoinBlockSprite());
             blockList.Add(getBrickBlockSprite());
-        }
+			blockList.Add(getFloorBlockSprite());
+			blockList.Add(getStairBlockSprite());
+			blockList.Add(getUsedBlockSprite());
+			blockList.Add(getGreenPipeBlockSprite());
+		}
         public void addAllItems(ArrayList itemList)
         {
             itemList.Add(getFireFlowerSprite());
@@ -76,13 +88,29 @@ namespace Sprint0.Factory
         }
         public ISprite getCoinBlockSprite()
         {
-            return new BlockSprite(texture_CoinBlock, 1, 5, new Vector2(100, 100));
+            return new AnimatedBlockSprite(texture_CoinBlock, 1, 3, new Vector2(100, 100));
         }
         public ISprite getBrickBlockSprite() 
         {
-            return new BlockSprite(texture_BrickBlock, 1, 5, new Vector2(200, 100));
+            return new BlockSprite(texture_BrickBlock, 1, 1, new Vector2(200, 100));
         }
-        public ISprite getFireFlowerSprite()
+		public ISprite getFloorBlockSprite()
+		{
+			return new BlockSprite(texture_FloorBlock, 1, 1, new Vector2(300, 100));
+		}
+		public ISprite getStairBlockSprite()
+		{
+			return new BlockSprite(texture_StairBlock, 1, 1, new Vector2(400, 100));
+		}
+		public ISprite getUsedBlockSprite()
+		{
+			return new BlockSprite(texture_UsedBlock, 1, 1, new Vector2(500, 100));
+		}
+		public ISprite getGreenPipeBlockSprite()
+		{
+			return new BlockSprite(texture_GreenPipeBlock, 1, 1, new Vector2(600, 100));
+		}
+		public ISprite getFireFlowerSprite()
         {
             return new FireFlowerSprite(texture_FireFlower, new Vector2(100, 300), 1, 4);
         }
