@@ -18,14 +18,15 @@ namespace Sprint0.Item
         private int moveDirection;
         static float moveSpeed = 100f;
         private int xDirection = 1;
-        public bool isFilped = true;
-        public FireBallSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection, bool isFilepd)
+        public bool isFliped = true;
+        public FireBallSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection, bool isFliped)
             : base(texture, position, rows, cols, graphics, moveDirection)
         {
             this.graphics = graphics;
             this.originalPosition = position;
             this.moveDirection = moveDirection;
-            this.isFilped = isFilepd;
+            this.isFliped = isFliped;
+            xDirection = moveDirection;
         }
 
         public override void Update(GameTime gameTime)

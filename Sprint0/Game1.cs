@@ -170,7 +170,7 @@ namespace Sprint0
 
             foreach (FireBallSprite sprite in bulletList)
             {
-                sprite.Draw(_spriteBatch, sprite.isFilped);
+                sprite.Draw(_spriteBatch, sprite.isFliped);
             }
 
         } 
