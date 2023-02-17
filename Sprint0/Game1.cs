@@ -174,5 +174,10 @@ namespace Sprint0
             }
 
         } 
+
+        public void GameReset()
+        {
+            this.Initialize();
+        }
     }
 }
