@@ -4,31 +4,19 @@ Team members: Adam Cote, Kyle Kauffman, Seth Welch, Shuangchen Zhou, Yao Lu, Zhu
 
 Project: Mario Replica
 
-Assignment:
+Sprint2
 
-Sprint2:
+Start date: 1/27/2023
+End date: 2/17/2023
 
-      Start date: 2023/1/27
-      End date: 2023/2/17
-      
-      Backlog:
-      
-      Kyle:
-      1.Add a task for creating interfaces (or you can let the person responsible for each part of the implementation choose when to provide interfaces).
-      2.Add a task for creating a Link class.
-      
-      Yao:
-      3.Add a task for handling Link's state transitions.
-      
-      Zhuozi:
-      4.Add a task for creating enemy classes.
-      
-      Adam:
-      5.Add a task for creating item classes.
-      
-      Seth:
-      6.Add a task for creating block class(es).
-      
-      Shuangchen:
-      7.Add tasks for implementing commands and controllers.
-      8.Add a task to implement keyboard input.
+Controls:
+
+WASD or the arrow keys will move mario around.
+T and Y will cycle through the blocks.
+U and I will cycle through the items.
+O and P will cycle through the enemies.
+Pressing the 1, 2, and 3 keys will set Mario to small, big, or fire mario respectively.
+While fire mario, pressing N or Z will fire a fireball.
+E to damage mario.
+R to reset the game.
+Q to exit the game.
