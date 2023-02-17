@@ -6,7 +6,7 @@ namespace Sprint0.MarioPlayer.State.PowerupState
 {
     public class MarioDeadState : MarioPowerupState
     {
-        public MarioDeadState(Mario marioEntity, PlayerFactory marioFactory) : base(marioEntity, marioFactory)
+        public MarioDeadState(Mario marioEntity, MarioFactory marioFactory) : base(marioEntity, marioFactory)
         { }
 
         public override MarioPowerupStateType GetEnumValue()

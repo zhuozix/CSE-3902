@@ -8,6 +8,7 @@ using Sprint0.Factory;
 using Sprint0.Item;
 using Sprint0.Sprites;
 using System.Collections;
+using Sprint0.Sprites.Lists;
 
 namespace Sprint0.MarioPlayer
 {
@@ -16,22 +17,24 @@ namespace Sprint0.MarioPlayer
         public IMarioActionState CurrentActionState { get; set; }
         public IMarioPowerupState CurrentPowerupState { get; set; }
         public bool IsFacingRight { get; set; }
-        public BulletFactory fireballFactory;
-        private ArrayList bulletList;
+        public SpritesFactory fireballFactory;
+        private FireBallList fireBallList;
         public float ySpawnPosition;
+        public MarioFactory marioFactory;
+       
         public Mario(Vector2 spawnLocation,Game1 gameInstance)
         {
-            Sprite = gameInstance.playerFactory.buildSprites(MarioPowerupStateType.Normal, MarioActionStateType.Idle);
-
-            this.fireballFactory = gameInstance.fireballFactory;
-            this.bulletList = gameInstance.bulletList;
+            marioFactory = new MarioFactory(gameInstance.Content);
+            Sprite = marioFactory.buildSprites(MarioPowerupStateType.Normal, MarioActionStateType.Idle);
+            this.fireballFactory = gameInstance.spritesFactory;
+            this.fireBallList= gameInstance.fireBallList;
             Position = spawnLocation;
             Velocity = Vector2.Zero;
             Acceleration = Vector2.Zero;
             ySpawnPosition = spawnLocation.Y;
 
-            CurrentActionState = new MarioIdleState(this, gameInstance.playerFactory);
-            CurrentPowerupState = new MarioNormalState(this, gameInstance.playerFactory);
+            CurrentActionState = new MarioIdleState(this, marioFactory);
+            CurrentPowerupState = new MarioNormalState(this, marioFactory);
 
             CurrentActionState.Enter(null);
             CurrentPowerupState.Enter(null);
@@ -40,19 +43,9 @@ namespace Sprint0.MarioPlayer
         }
 
         public void generateFireball()
-        {
-            if(bulletList.Count < 3)
-            {
-                ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight);
-                bulletList.Add(fireball);
-            }
-            else
-            {
-                bulletList.RemoveAt(0);
-                ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight);
-                bulletList.Add(fireball);
-            }
-            
+        {           
+            ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight);
+            fireBallList.add(fireball);
         }
 
         public bool yPositionChecker()
@@ -129,6 +122,65 @@ namespace Sprint0.MarioPlayer
         public override void Draw(SpriteBatch spriteBatch, bool isFlipped)
         {
             base.Draw(spriteBatch, !IsFacingRight);
+        }
+
+        public bool running()
+        {
+            return CurrentActionState.GetEnumValue() == MarioActionStateType.Running;
+        }
+
+        private string findLocation(MarioPowerupStateType powerUpType, MarioActionStateType actionType)
+        {
+            string spriteLocation;
+            string fileNamePrefix;
+            switch (powerUpType)
+            {
+                case MarioPowerupStateType.Normal:
+                    fileNamePrefix = "NormalMario";
+                    break;
+                case MarioPowerupStateType.Super:
+                    fileNamePrefix = "SuperMario";
+                    break;
+                case MarioPowerupStateType.Fire:
+                    fileNamePrefix = "FireMario";
+                    break;
+                case MarioPowerupStateType.Dead:
+                    fileNamePrefix = "";
+                    break;
+                default:
+                    throw new ArgumentException("MarioSpriteFactory error: Invalid MarioPowerupStateType specified");
+            }
+
+            string fileNameSuffix;
+            if (powerUpType != MarioPowerupStateType.Dead)
+                switch (actionType)
+                {
+                    case MarioActionStateType.Idle:
+                        fileNameSuffix = "IdleRight";
+                        break;
+                    case MarioActionStateType.Crouching:
+                        fileNameSuffix = "CrouchRight";
+                        break;
+                    case MarioActionStateType.Jumping:
+                    case MarioActionStateType.Falling:
+                        fileNameSuffix = "JumpRight";
+                        break;
+                    case MarioActionStateType.Running:
+                        fileNameSuffix = "WalkRight";
+                        break;
+                    default:
+                        throw new ArgumentException("MarioSpriteFactory error: Invalid MarioActionStateType specified");
+                }
+            else
+                fileNameSuffix = "";
+
+            
+            if (powerUpType == MarioPowerupStateType.Dead)
+            {
+                spriteLocation = "DeadMario/MarioDeath";
+            }
+            spriteLocation = fileNamePrefix + "/" + fileNamePrefix + fileNameSuffix;
+            return spriteLocation;
         }
     }
 }

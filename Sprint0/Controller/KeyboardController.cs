@@ -10,6 +10,7 @@ using Sprint0.Command.GameControlCMD;
 using Sprint0.Command.NpcCMD.EnemyCMD;
 using Sprint0.Command.PlayerCMD;
 using Sprint0.MarioPlayer;
+using Sprint0.MarioPlayer.State.ActionState;
 /**
 * Controller Class for keyboard input. 
 * This class is not for player control. 
@@ -22,13 +23,22 @@ namespace Sprint0.Content
     {
         //create dictionary to map the keys.
         private Dictionary<Keys, ICommand> CommandMap;
+        private Dictionary<Keys, ICommand> playerMap;
+
         //Save current states for comparsion.
         KeyboardState previousKeyboardState;
 
-        public KeyboardController()
+        //idle for mario
+        private ICommand idle;
+
+        Game1 gameInstance;
+
+        public KeyboardController(Game1 gameInstance)
         {
             CommandMap = new Dictionary<Keys, ICommand>();
+            playerMap = new Dictionary<Keys, ICommand>();
             previousKeyboardState = Keyboard.GetState();
+            this.gameInstance = gameInstance;
         }
 
         public void AddCommand(Keys key, ICommand command)
@@ -36,7 +46,12 @@ namespace Sprint0.Content
             CommandMap.Add(key, command);
         }
 
-        public void loadCommonCommand(Game1 gameInstance)
+        public void AddPlayerCommand(Keys key, ICommand command)
+        {
+            playerMap.Add(key, command);
+        }
+
+        public void loadCommonCommand()
         {
             Mario playerInstance = gameInstance.mario;
             /*
@@ -59,8 +74,17 @@ namespace Sprint0.Content
             ICommand toSuperMario = new MarioSuperCheatCommand(playerInstance);
             ICommand toNormalMario = new MarioNormalCheatCommand(playerInstance);
             ICommand toFireMario = new MarioFireCheatCommand(playerInstance);
+            //Basic movement command
+            ICommand jump = new MarioJumpCommand(playerInstance);
+            ICommand moveLeft = new MarioMoveLeftCommand(playerInstance);
+            ICommand moveRight = new MarioMoveRightCommand(playerInstance);
+            ICommand crouch = new MarioCrouchCommand(playerInstance);
             //Fire
             ICommand fire = new fireFireball(playerInstance);
+            //idle
+            this.idle = new MarioIdle(playerInstance);
+
+
             /*
              * Put common command into controller map.
              */
@@ -84,6 +108,15 @@ namespace Sprint0.Content
             //Fireball controls
             this.AddCommand(Keys.N, fire);
             this.AddCommand(Keys.Z, fire);
+            //Add movement commands to controller
+            this.AddPlayerCommand(Keys.W, jump);
+            this.AddPlayerCommand(Keys.A, moveLeft);
+            this.AddPlayerCommand(Keys.D, moveRight);
+            this.AddPlayerCommand(Keys.S, crouch);
+            this.AddPlayerCommand(Keys.Up, jump);
+            this.AddPlayerCommand(Keys.Left, moveLeft);
+            this.AddPlayerCommand(Keys.Right, moveRight);
+            this.AddPlayerCommand(Keys.Down, crouch);
 
         }
 
@@ -92,10 +125,19 @@ namespace Sprint0.Content
             //if the key pressed, execute the command in the map.
             KeyboardState currentKeyboardState = Keyboard.GetState();
             Keys[] keysPressed = Keyboard.GetState().GetPressedKeys();
-
+           
+            if (keysPressed.Length == 0)
+            {
+                idle.Execute();
+            }
             //Excute the command
             foreach (Keys key in keysPressed)
             {
+                if (playerMap.ContainsKey(key))
+                {
+                    playerMap[key].Execute();
+
+                }
                 //Check if the key is released or not.
                 if (!previousKeyboardState.IsKeyDown(key))
                 {

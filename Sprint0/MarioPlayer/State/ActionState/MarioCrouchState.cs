@@ -5,7 +5,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
 {
     public class MarioCrouchState : MarioActionState
     {
-        public MarioCrouchState(Mario marioEntity, PlayerFactory marioFactory) :
+        public MarioCrouchState(Mario marioEntity, MarioFactory marioFactory) :
             base(marioEntity, marioFactory)
         { }
 

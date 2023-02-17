@@ -16,8 +16,8 @@ namespace Sprint0.MarioPlayer.State.ActionState
         protected Mario marioEntity;
         protected IMarioActionState previousState;
         protected IMarioActionState CurrentState { get { return marioEntity.CurrentActionState; } set { marioEntity.CurrentActionState = value; } }
-        protected PlayerFactory marioFactory;
-        public MarioActionState(Mario marioEntity, PlayerFactory marioFactory)
+        protected MarioFactory marioFactory;
+        public MarioActionState(Mario marioEntity, MarioFactory marioFactory)
         {
             this.marioEntity = marioEntity;
             this.marioFactory = marioFactory;

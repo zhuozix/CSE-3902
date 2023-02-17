@@ -19,6 +19,7 @@ namespace Sprint0.Item
         static float moveSpeed = 100f;
         private int xDirection = 1;
         public bool isFliped = true;
+        public float time = 0f;
         public FireBallSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection, bool isFliped)
             : base(texture, position, rows, cols, graphics, moveDirection)
         {
@@ -31,6 +32,8 @@ namespace Sprint0.Item
 
         public override void Update(GameTime gameTime)
         {
+            time += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             float currHeight = position.Y;
             float currWidth = position.X;
             float maxHeight = graphics.PreferredBackBufferHeight - (Texture.Height + 1);

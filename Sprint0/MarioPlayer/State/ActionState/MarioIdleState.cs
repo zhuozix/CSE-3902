@@ -8,7 +8,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
 {
     public class MarioIdleState : MarioActionState
     {
-        public MarioIdleState(Mario marioEntity, PlayerFactory marioFactory) : base(marioEntity, marioFactory)
+        public MarioIdleState(Mario marioEntity, MarioFactory marioFactory) : base(marioEntity, marioFactory)
         {
         }
 

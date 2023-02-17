@@ -6,7 +6,7 @@ namespace Sprint0.MarioPlayer.State.PowerupState
 {
     public class MarioFireState : MarioPowerupState
     {
-        public MarioFireState(Mario marioEntity,PlayerFactory marioFactory)
+        public MarioFireState(Mario marioEntity,MarioFactory marioFactory)
             : base(marioEntity, marioFactory)
         { }
 

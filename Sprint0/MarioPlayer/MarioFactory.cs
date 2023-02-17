@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace Sprint0.MarioPlayer
 {
-    public class PlayerFactory
+    public class MarioFactory
     {
         private ContentManager content;
         string spritesLocation;
         public Texture2D texture;
         private MarioActionStateType actionType;
 
-        public PlayerFactory(ContentManager contentIn)
+        public MarioFactory(ContentManager contentIn)
         {
             this.content = contentIn;
         }

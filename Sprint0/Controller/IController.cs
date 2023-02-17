@@ -9,7 +9,7 @@ namespace Sprint0.Content
 {
     interface IController
     {
-        void loadCommonCommand(Game1 instance);
+        void loadCommonCommand();
         void UpdateInput();
     }
 }

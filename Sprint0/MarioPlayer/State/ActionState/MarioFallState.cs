@@ -6,7 +6,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
     public class MarioFallState : MarioActionState
     {
         private float timeSpent = 0f;
-        public MarioFallState(Mario marioEntity, PlayerFactory marioFactory) :
+        public MarioFallState(Mario marioEntity, MarioFactory marioFactory) :
             base(marioEntity, marioFactory)
         { }
 
@@ -23,9 +23,13 @@ namespace Sprint0.MarioPlayer.State.ActionState
 
         public override void IdleTransition()
         {
-            Exit();
-            CurrentState = new MarioIdleState(marioEntity, marioFactory);
-            CurrentState.Enter(this);
+            if (!marioEntity.yPositionChecker())
+            {
+                Exit();
+                CurrentState = new MarioIdleState(marioEntity, marioFactory);
+                CurrentState.Enter(this);
+            }
+           
         }
 
         public override void RunningTransition()

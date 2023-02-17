@@ -8,7 +8,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
         private static float VerticalVelocity = -100;
         private float timeSpent = 0f;
 
-        public MarioJumpState(Mario marioEntity, PlayerFactory marioFactory) : base(marioEntity, marioFactory)
+        public MarioJumpState(Mario marioEntity, MarioFactory marioFactory) : base(marioEntity, marioFactory)
         { }
 
         public override void Enter(IMarioActionState previousState)

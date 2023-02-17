@@ -12,14 +12,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.MarioPlayer;
+using Sprint0.MarioPlayer.State.ActionState;
 
 namespace Sprint0.Factory
 {
-    internal class NPCFactory
+    public class SpritesFactory
     {
         private GraphicsDeviceManager _graphics;
-
-		// Blocks
+        Game1 gameInstance;
+  		// Blocks
 		public Texture2D texture_CoinBlock;
 		public Texture2D texture_BrickBlock;
 		public Texture2D texture_FloorBlock;
@@ -38,13 +40,21 @@ namespace Sprint0.Factory
         public Texture2D texture_Gommba;
         public Texture2D texture_Koopa;
 
-        public NPCFactory( GraphicsDeviceManager graphicsIn)
+        // Bullets
+        public Texture2D texture_FireBall;
+
+        // Mario
+        public Texture2D texture_Mario;
+
+        public SpritesFactory(Game1 gameInstance)
         {
-            _graphics = graphicsIn;
+            this._graphics = gameInstance._graphics;
+            this.gameInstance = gameInstance;
         }
 
-        public void initalize(ContentManager content)
+        public void initalize()
         {
+            ContentManager content = gameInstance.Content;
             // Blocks
             texture_BrickBlock = content.Load<Texture2D>("Blocks/brickBlock");
             texture_CoinBlock = content.Load<Texture2D>("Blocks/questionBlock");
@@ -63,6 +73,9 @@ namespace Sprint0.Factory
             // Enemies
             texture_Gommba = content.Load<Texture2D>("EnemyContent/WalkingGoomba1");
             texture_Koopa = content.Load<Texture2D>("EnemyContent/WalkingGreenKoopa1");
+
+            // Bullets
+            texture_FireBall = content.Load<Texture2D>("FireMario/fireball");
         }
         public void addAllBlocks(ArrayList blockList)
         {
@@ -142,6 +155,31 @@ namespace Sprint0.Factory
             
             return new GommbaSprite(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics);
         }
-        
+
+        public ISprite getFireballSprite(Vector2 currentLocation, bool isFacingRight)
+        {
+            if (isFacingRight)
+            {
+                return new FireBallSprite(texture_FireBall, new Vector2(currentLocation.X + 5, currentLocation.Y), 2, 2, _graphics, 1, true);
+            }
+            else
+            {
+                return new FireBallSprite(texture_FireBall, new Vector2(currentLocation.X - 5, currentLocation.Y), 2, 2, _graphics, -1, false);
+            }
+
+        }
+
+        public Sprite getMarioSprite(string fileLocation)
+        {
+            texture_Mario = gameInstance.Content.Load<Texture2D>(fileLocation);
+            if (gameInstance.mario.running())
+            {
+                return new NoneMovingAnimatedSprite(texture_Mario, Vector2.Zero, 1, 3);
+            }
+            else
+            {
+                return new NoneAnimatedNonMovingSprite(texture_Mario, Vector2.Zero, 1, 1);
+            }
+        }
     }
 }

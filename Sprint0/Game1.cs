@@ -1,18 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Sprint0.Blocks;
-using Sprint0.Command;
 using Sprint0.Content;
-using Sprint0.Controller;
-using Sprint0.Item;
 using Sprint0.Sprites;
 using System.Collections;
-using System.Collections.Generic;
 using Sprint0.Enemy;
 using Sprint0.Factory;
 using Sprint0.MarioPlayer;
-using Microsoft.Xna.Framework.Content;
+using Sprint0.Sprites.Lists;
 
 namespace Sprint0
 {
@@ -32,14 +26,11 @@ namespace Sprint0
          * Controllers
          */
         private IController keyboardController;
-        private IController playerController;
 
         /*
          * SpriteFactories
          */
-        private NPCFactory npcSpritesFactory;
-        public PlayerFactory playerFactory;
-        public BulletFactory fireballFactory;
+        public SpritesFactory spritesFactory;
 
         /*
          * Current Sprites
@@ -57,7 +48,7 @@ namespace Sprint0
         private ArrayList blockList;
         private ArrayList itemList;
         private ArrayList enemyList;
-        public ArrayList bulletList;
+        public FireBallList fireBallList;
 
         /*
          * Command Control
@@ -78,23 +69,19 @@ namespace Sprint0
         protected override void Initialize()
         {
             //Factories
-            npcSpritesFactory = new NPCFactory(_graphics);
-            npcSpritesFactory.initalize(Content);
-            playerFactory = new PlayerFactory(Content);
-            fireballFactory = new BulletFactory(_graphics);
-            fireballFactory.initalize(Content);
+            spritesFactory = new SpritesFactory(this);
+            spritesFactory.initalize();
 
 
             //controllers
-            keyboardController = new KeyboardController();
-            playerController = new PlayerController();
+            keyboardController = new KeyboardController(this);
             
 
             //Lists
             blockList = new ArrayList();
             itemList = new ArrayList();
             enemyList = new ArrayList();
-            bulletList = new ArrayList();
+            fireBallList = new FireBallList();
 
 
             base.Initialize();
@@ -107,17 +94,16 @@ namespace Sprint0
             /*
              * Load Sprites 
              */
+
             //Player
             mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), this);
             // NPC lists
-            npcSpritesFactory.addAllBlocks(blockList);
-            npcSpritesFactory.addAllItems(itemList);
-            npcSpritesFactory.addAllEnemies(enemyList);
-
+            spritesFactory.addAllBlocks(blockList);
+            spritesFactory.addAllItems(itemList);
+            spritesFactory.addAllEnemies(enemyList);
 
             //Load commands to controller
-            keyboardController.loadCommonCommand(this);
-            playerController.loadCommonCommand(this);
+            keyboardController.loadCommonCommand();
         }
 
         protected override void Update(GameTime gameTime)
@@ -126,15 +112,14 @@ namespace Sprint0
 
             //display the sprite from the sprite list one at a time.
             #region implement command
-            // Zhuozi Sprint 2
+           
             currentEnemy = (ISpriteE)enemyList[DisplayEnemy];
-            // Adam Sprint 2
+            
             currentBlock = (ISprite)blockList[DisplayBlock];
-            // Seth Sprint 2
+            
             currentItem = (ISprite)itemList[DisplayItem];
-            //
+            
             keyboardController.UpdateInput();
-            playerController.UpdateInput(); 
             #endregion
             //Players
             mario.Update(gameTime);
@@ -148,12 +133,9 @@ namespace Sprint0
             //Enemies
             currentEnemy.Update(gameTime);
 
-            foreach(ISprite sprite in bulletList)
-            {
-                sprite.Update(gameTime);
-            }
+            //Fireballs
+            fireBallList.Update(gameTime);
 
-            fireballFactory.update(bulletList,gameTime);
             base.Update(gameTime);
            
         }
@@ -167,11 +149,8 @@ namespace Sprint0
             currentBlock.Draw(_spriteBatch, true);
             currentItem.Draw(_spriteBatch, true);
             currentEnemy.Draw(_spriteBatch);
+            fireBallList.Draw(_spriteBatch);
 
-            foreach (FireBallSprite sprite in bulletList)
-            {
-                sprite.Draw(_spriteBatch, sprite.isFliped);
-            }
 
         } 
 

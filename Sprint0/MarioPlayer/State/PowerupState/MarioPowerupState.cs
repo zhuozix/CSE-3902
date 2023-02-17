@@ -14,7 +14,7 @@ namespace Sprint0.MarioPlayer.State.PowerupState
     public abstract class MarioPowerupState : IMarioPowerupState
     {
         protected Mario marioEntity;
-        protected PlayerFactory marioFactory;
+        protected MarioFactory marioFactory;
         protected IMarioPowerupState previousState;
         protected IMarioPowerupState CurrentState
         {
@@ -28,7 +28,7 @@ namespace Sprint0.MarioPlayer.State.PowerupState
             }
         }
 
-        public MarioPowerupState(Mario marioEntity, PlayerFactory marioFactory)
+        public MarioPowerupState(Mario marioEntity, MarioFactory marioFactory)
         {
             this.marioEntity = marioEntity;
             this.marioFactory= marioFactory;
