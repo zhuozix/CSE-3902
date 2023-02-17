@@ -125,7 +125,6 @@ namespace Sprint0.Content
             //if the key pressed, execute the command in the map.
             KeyboardState currentKeyboardState = Keyboard.GetState();
             Keys[] keysPressed = Keyboard.GetState().GetPressedKeys();
-           
             if (keysPressed.Length == 0)
             {
                 idle.Execute();

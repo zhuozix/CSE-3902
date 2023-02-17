@@ -148,7 +148,7 @@ namespace Sprint0
             mario.Draw(_spriteBatch, true);
             currentBlock.Draw(_spriteBatch, true);
             currentItem.Draw(_spriteBatch, true);
-            currentEnemy.Draw(_spriteBatch);
+            currentEnemy.Draw(_spriteBatch, true);
             fireBallList.Draw(_spriteBatch);
 
 
