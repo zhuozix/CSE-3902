@@ -16,13 +16,14 @@ namespace Sprint0.Enemy
         private GraphicsDeviceManager graphics;
         private Vector2 originalPosition;
         public Vector2 Velocity;
-        private int moveDirection = 1;
+        private int moveDirection;
 
-        public MovingEnemy(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics)
+        public MovingEnemy(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection)
             : base(texture, position, rows, cols)
         {
             this.graphics = graphics;
             originalPosition = position;
+            this.moveDirection = moveDirection;
         }
         public override void Update(GameTime gameTime)
         {

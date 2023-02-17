@@ -145,15 +145,15 @@ namespace Sprint0.Factory
         {
             return new CoinSprite(texture_Coin, new Vector2(500, 300), 1, 4);
         }
-        public ISpriteE getGommbaSprite() 
+        public ISprite getGommbaSprite() 
         {
-            return new GommbaSprite(texture_Gommba, new Vector2(500, 400), 1, 2, _graphics);
+            return new GommbaSprite(texture_Gommba, new Vector2(500, 400), 1, 2, _graphics, 1);
             
         }
-        public ISpriteE getKoopaSprite()
+        public ISprite getKoopaSprite()
         {
             
-            return new GommbaSprite(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics);
+            return new GommbaSprite(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics, 1);
         }
 
         public ISprite getFireballSprite(Vector2 currentLocation, bool isFacingRight)

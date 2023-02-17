@@ -12,8 +12,8 @@ namespace Sprint0.Enemy
 
     public class GommbaSprite : MovingEnemy
     {
-        public GommbaSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics)
-            : base(texture, position, rows, cols, graphics)
+        public GommbaSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection)
+            : base(texture, position, rows, cols, graphics, moveDirection)
         { }
 
     }

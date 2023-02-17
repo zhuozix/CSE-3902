@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Enemy;
+using Sprint0.Sprites;
 
 namespace Sprint0.Enemy
 {
-    public abstract class SpriteE : ISpriteE
+    public abstract class SpriteE : ISprite
     {
         public static double animateFrequency = 0.9 / 5.0;
 
@@ -41,7 +42,7 @@ namespace Sprint0.Enemy
             this.totalFrames = numRows * numCols;
         }
         public abstract void Update(GameTime gameTime);
-        public void Draw(SpriteBatch _spriteBatch)
+        public void Draw(SpriteBatch _spriteBatch, bool isFlipped)
         {
 
             int width = texture.Width / numCols;
@@ -59,9 +60,9 @@ namespace Sprint0.Enemy
             {
                 spriteEffect = SpriteEffects.None;
             }
-            _spriteBatch.Begin();
+            
             _spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, spriteEffect, 0);
-            _spriteBatch.End();
+            
 
         }
 
