@@ -39,6 +39,7 @@ namespace Sprint0.Controller
             ICommand moveLeft = new MarioMoveLeftCommand(playerInstance);
             ICommand moveRight = new MarioMoveRightCommand(playerInstance);
             ICommand crouch = new MarioCrouchCommand(playerInstance);
+            ICommand fire = new fireFireball(playerInstance);
 
 
             //Add movement commands to controller
