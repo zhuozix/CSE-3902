@@ -59,7 +59,8 @@ namespace Sprint0.Content
             ICommand toSuperMario = new MarioSuperCheatCommand(playerInstance);
             ICommand toNormalMario = new MarioNormalCheatCommand(playerInstance);
             ICommand toFireMario = new MarioFireCheatCommand(playerInstance);
-
+            //Fire
+            ICommand fire = new fireFireball(playerInstance);
             /*
              * Put common command into controller map.
              */
@@ -80,6 +81,9 @@ namespace Sprint0.Content
             this.AddCommand(Keys.D2, toSuperMario);
             this.AddCommand(Keys.D3, toFireMario);
             this.AddCommand(Keys.E, takeDamage);
+            //Fireball controls
+            this.AddCommand(Keys.N, fire);
+            this.AddCommand(Keys.Z, fire);
 
         }
 
