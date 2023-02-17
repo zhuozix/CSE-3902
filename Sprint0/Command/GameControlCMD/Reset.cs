@@ -16,6 +16,9 @@ namespace Sprint0.Command.GameControlCMD
         }
         public void Execute()
         {
+            this.game.DisplayBlock = 0;
+            this.game.DisplayItem = 0;
+            this.game.DisplayEnemy = 0;
             game.GameReset();
         }
     }
