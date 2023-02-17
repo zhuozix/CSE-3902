@@ -147,13 +147,13 @@ namespace Sprint0.Factory
         }
         public ISprite getGommbaSprite() 
         {
-            return new GommbaSprite(texture_Gommba, new Vector2(500, 400), 1, 2, _graphics, 1);
+            return new MovingEnemy(texture_Gommba, new Vector2(500, 400), 1, 2, _graphics, 1);
             
         }
         public ISprite getKoopaSprite()
         {
             
-            return new GommbaSprite(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics, 1);
+            return new MovingEnemy(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics, 1);
         }
 
         public ISprite getFireballSprite(Vector2 currentLocation, bool isFacingRight)

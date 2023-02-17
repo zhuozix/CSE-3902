@@ -111,16 +111,11 @@ namespace Sprint0
             
 
             //display the sprite from the sprite list one at a time.
-            #region implement command
-            // Zhuozi Sprint 2
             currentEnemy = (ISprite)enemyList[DisplayEnemy];
-            // Adam Sprint 2
             currentBlock = (ISprite)blockList[DisplayBlock];
-            
             currentItem = (ISprite)itemList[DisplayItem];
             
             keyboardController.UpdateInput();
-            #endregion
             //Players
             mario.Update(gameTime);
             
