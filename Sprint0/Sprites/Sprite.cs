@@ -60,9 +60,8 @@ namespace Sprint0.Content
                     spriteEffect = SpriteEffects.None;
                 }
                
-                _spriteBatch.Begin();
+                
                 _spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, spriteEffect, 0);
-                _spriteBatch.End();
             
         }
 

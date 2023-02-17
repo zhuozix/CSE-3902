@@ -47,7 +47,7 @@ namespace Sprint0
         //Mario
         public Mario mario;
         //Npc
-        public ISpriteE currentEnemy;
+        public ISprite currentEnemy;
         public ISprite currentBlock;
         public ISprite currentItem;
 
@@ -127,7 +127,7 @@ namespace Sprint0
             //display the sprite from the sprite list one at a time.
             #region implement command
             // Zhuozi Sprint 2
-            currentEnemy = (ISpriteE)enemyList[DisplayEnemy];
+            currentEnemy = (ISprite)enemyList[DisplayEnemy];
             // Adam Sprint 2
             currentBlock = (ISprite)blockList[DisplayBlock];
             // Seth Sprint 2
@@ -161,18 +161,19 @@ namespace Sprint0
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            _spriteBatch.Begin();
 
             mario.Draw(_spriteBatch, true);
             currentBlock.Draw(_spriteBatch, true);
             currentItem.Draw(_spriteBatch, true);
-            currentEnemy.Draw(_spriteBatch);
+            currentEnemy.Draw(_spriteBatch, true);
 
             foreach (FireBallSprite sprite in bulletList)
             {
                 sprite.Draw(_spriteBatch, sprite.isFliped);
             }
 
+            _spriteBatch.End();
         } 
 
         public void GameReset()

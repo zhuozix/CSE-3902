@@ -46,9 +46,9 @@ namespace Sprint0.Blocks
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X - width, (int)location.Y - height, width, height);
 
-            spriteBatch.Begin();
+           
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
-            spriteBatch.End();
+
         }
     }
 }
