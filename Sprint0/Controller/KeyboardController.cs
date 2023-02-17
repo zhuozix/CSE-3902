@@ -42,7 +42,7 @@ namespace Sprint0.Content
             /*
              * Set Common Command
              */
-
+            // Change Block
             ICommand increaseBlockIndex = new increaseBlockIndex(gameInstance);
             ICommand decreaseBlockIndex = new decreaseBlockIndex(gameInstance);
             // Change Item
@@ -82,8 +82,6 @@ namespace Sprint0.Content
             this.AddCommand(Keys.D2, toSuperMario);
             this.AddCommand(Keys.D3, toFireMario);
             this.AddCommand(Keys.E, takeDamage);
-            this.AddCommand(Keys.N, fire);
-            this.AddCommand(Keys.Z, fire);
 
         }
 

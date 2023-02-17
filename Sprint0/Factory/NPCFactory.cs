@@ -45,22 +45,22 @@ namespace Sprint0.Factory
 
         public void initalize(ContentManager content)
         {
-			// Adam Sprint 2
-			texture_BrickBlock = content.Load<Texture2D>("Blocks/brickBlock");
+            // Blocks
+            texture_BrickBlock = content.Load<Texture2D>("Blocks/brickBlock");
             texture_CoinBlock = content.Load<Texture2D>("Blocks/questionBlock");
             texture_FloorBlock = content.Load<Texture2D>("Blocks/floorBlock");
 			texture_StairBlock = content.Load<Texture2D>("Blocks/stairblock");
 			texture_UsedBlock = content.Load<Texture2D>("Blocks/usedblock");
 			texture_GreenPipeBlock = content.Load<Texture2D>("Blocks/GreenPipe");
 
-			// Seth Sprint 2
+			// Items
 			texture_FireFlower = content.Load<Texture2D>("fireFlower");
             texture_Star = content.Load<Texture2D>("star");
             texture_GreenMush = content.Load<Texture2D>("greenMushroom");
             texture_RedMush = content.Load<Texture2D>("redMushroom");
             texture_Coin = content.Load<Texture2D>("coin");
 
-            //Zhuozi Sprint 2
+            // Enemies
             texture_Gommba = content.Load<Texture2D>("EnemyContent/WalkingGoomba1");
             texture_Koopa = content.Load<Texture2D>("EnemyContent/WalkingGreenKoopa1");
         }
