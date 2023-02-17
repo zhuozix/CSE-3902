@@ -27,26 +27,53 @@ namespace Sprint0.Command
         }
     }
 
-    // Adam Sprint 2
-    public class SetBlockIndex : ICommand
+
+
+    public class increaseBlockIndex : ICommand
     {
         private Game1 game;
-        private int displayBlock;
-        // display the sprite one at a time
-        public SetBlockIndex(Game1 game, int blockDisplaySprite)
+
+        public increaseBlockIndex(Game1 game)
         {
             this.game = game;
-            displayBlock = blockDisplaySprite;
         }
 
         public void Execute()
         {
-            game.DisplayBlock = displayBlock;
+            if (game.DisplayBlock < 5)
+            {
+                game.DisplayBlock = game.DisplayBlock + 1;
+            }
+            else
+            {
+                game.DisplayBlock = 0;
+            }
+
         }
     }
-    //
 
-    // Seth Sprint 2
+    public class decreaseBlockIndex : ICommand
+    {
+        private Game1 game;
+
+        public decreaseBlockIndex(Game1 game)
+        {
+            this.game = game;
+        }
+
+        public void Execute()
+        {
+            if (game.DisplayBlock > 0)
+            {
+                game.DisplayBlock = game.DisplayBlock - 1;
+            }
+            else
+            {
+                game.DisplayBlock = 5;
+            }
+
+        }
+    }
 
     public class increaseItemIndex : ICommand
     {

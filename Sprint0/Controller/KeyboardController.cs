@@ -43,9 +43,8 @@ namespace Sprint0.Content
              * Set Common Command
              */
 
-            // Adam Sprint 2
-            ICommand SetBlockBrick = new SetBlockIndex(gameInstance, 0);
-            ICommand SetBlockCoin = new SetBlockIndex(gameInstance, 1);
+            ICommand increaseBlockIndex = new increaseBlockIndex(gameInstance);
+            ICommand decreaseBlockIndex = new decreaseBlockIndex(gameInstance);
             // Change Item
             ICommand increaseItemIndex = new increaseItemIndex(gameInstance);
             ICommand decreaseItemIndex = new decreaseItemIndex(gameInstance);
@@ -67,9 +66,8 @@ namespace Sprint0.Content
              * Put common command into controller map.
              */
 
-            // Adam Sprint 2
-            this.AddCommand(Keys.T, SetBlockBrick);
-            this.AddCommand(Keys.Y, SetBlockCoin);
+            this.AddCommand(Keys.Y, increaseBlockIndex);
+            this.AddCommand(Keys.T, decreaseBlockIndex);
             // Change Item
             this.AddCommand(Keys.I, increaseItemIndex);
             this.AddCommand(Keys.U, decreaseItemIndex);
