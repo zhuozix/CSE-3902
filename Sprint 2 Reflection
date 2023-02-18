@@ -22,3 +22,12 @@ Yao Lu's reflection:
 We created too many branches in the beginning which caused some confusion, but that was resolved later. In the next sprint, maybe we need to assign tasks more finely, 
 instead of some people having too much work and some too little like in this sprint. Mario stuff is too complicated, we spent a lot of time researching how to do it well,
 we should pay attention to code smell next time.
+
+Seth Welch's reflection:
+One positive of our team's work this sprint is that we had most of the functionality coded in a few days before the deadline. After receiving Professor Kirby's code 
+review we redworked some of our code to be more unified. I think that most of the issues with our code came from having worked rather independently from eachother,
+which is why we had multiple sprite factories and controller classes at some point. I think that in the future sprints we should be able to work betteras a team to 
+avoid issues like this. Using github was also a learning cuve for someone who hasn't used it very much in the past. I am glad that we didnt have any major issues
+with our repository other than some branch confusion. Doing my part with the item objects was simple because of the base provided by our team member's Sprint 0 code.
+Things like the well designed sprite interface and the command design made building the item functionality on top easier. It shows that a good foundation makes 
+everything you build on top of it easier. For the next sprint, I want us to focus on our work being more unified.
