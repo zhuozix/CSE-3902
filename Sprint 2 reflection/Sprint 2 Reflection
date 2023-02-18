@@ -31,3 +31,10 @@ avoid issues like this. Using github was also a learning cuve for someone who ha
 with our repository other than some branch confusion. Doing my part with the item objects was simple because of the base provided by our team member's Sprint 0 code.
 Things like the well designed sprite interface and the command design made building the item functionality on top easier. It shows that a good foundation makes 
 everything you build on top of it easier. For the next sprint, I want us to focus on our work being more unified.
+
+Shuangchen's reflection
+I felt that we went fairly well and eventually met the functional requirements of the assignment. 
+But there was also a big problem with the lack of communication within the group.
+We just split one big assignment into several smaller ones. Each person then did his or her own thing individually. 
+This resulted in fragmented code, with each part having a different style. 
+I think this is something we need to focus on improving.
