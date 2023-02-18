@@ -52,7 +52,7 @@ Name of the .cs file being reviewed
 
 Author of the .cs file being reviewed
 	
-	Sheesh
+	Adam Cote
 
 Specific comments on code quality
 
