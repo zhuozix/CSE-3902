@@ -1,0 +1,16 @@
+Planning was originally in README file but was replaced with a proper README file with controls for the program.
+
+The Plan:
+  Kyle: Creating interfaces (or you can let the person responsible for each part of the implementation choose when to provide interfaces).
+  
+  Yao: Handling Link's state transitions.
+  
+  Zhuozi: Creating enemy classes.
+  
+  Adam: Creating item classes.
+  
+  Seth: Creating block class(es).
+  
+  Shuangchen: Implementing commands and controllers, implement keyboard input.
+
+Note: Adam and Seth switched jobs from the original plan early in the process.
