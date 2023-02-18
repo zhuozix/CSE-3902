@@ -12,8 +12,8 @@ There are some magic numbers in there that should be pulled out and made into a 
 Author of the code review: Kyle Kauffman
 Date of the code review: 2/17/2023
 Sprint number: 2
-Name of the .cs file being reviewed: Zhuozi.cs
-Author of the .cs file being reviewed: Adam
+Name of the .cs file being reviewed: SpriteE.cs
+Author of the .cs file being reviewed: Zhuozi
 Number of minutes taken to complete the review: ~15 minutes
 Readability
 The code is organized and the variable names are clear so I can read what the code is doing, but it could benefit from some comments.
