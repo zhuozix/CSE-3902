@@ -17,3 +17,8 @@ the same work and push it to the online repository. This wastes a lot of time to
 process to create the enemy sprite is easy but making it fit into the whole project spend me a lot of time. My teammates start very early, so we complete most of our
 sprite’s creation very early. Most of our time is spent on building the factory and controllers to put them together. Mario is another part we work a long time on it,
 especially making the fire ball and its movement.
+
+Yao Lu's reflection:
+We created too many branches in the beginning which caused some confusion, but that was resolved later. In the next sprint, maybe we need to assign tasks more finely, 
+instead of some people having too much work and some too little like in this sprint. Mario stuff is too complicated, we spent a lot of time researching how to do it well,
+we should pay attention to code smell next time.
