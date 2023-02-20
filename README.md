@@ -4,19 +4,20 @@ Team members: Adam Cote, Kyle Kauffman, Seth Welch, Shuangchen Zhou, Yao Lu, Zhu
 
 Project: Mario Replica
 
-Sprint2
+Sprint3 Planning:
 
-Start date: 1/27/2023
-End date: 2/17/2023
+Start date: 2/17
 
-Controls:
+End date: 3/10
 
-WASD or the arrow keys will move mario around.
-T and Y will cycle through the blocks.
-U and I will cycle through the items.
-O and P will cycle through the enemies.
-Pressing the 1, 2, and 3 keys will set Mario to small, big, or fire mario respectively.
-While fire mario, pressing N or Z will fire a fireball.
-E to damage mario.
-R to reset the game.
-Q to exit the game.
+Tasks for the required features of the sprint.
+
+1. Collisions for player and moving NPCs. {Shuangchen Zhou/ Yao Lu}
+
+2. Mouse Controller (Gamepad is optional) for teleport function.  {Kyle}
+
+3. State change for NPCs(items, blocks, enemies). {Shuangchen Zhou / Yao Lu / Zhuozi Xie}
+
+4. Level {Seth / Adam}
+
+All group members should test the game for bugs and if it meets the requirements. (Last week of this sprint)
