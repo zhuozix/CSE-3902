@@ -7,6 +7,7 @@ using Sprint0.Enemy;
 using Sprint0.Factory;
 using Sprint0.MarioPlayer;
 using Sprint0.Sprites.Lists;
+using Sprint0.ObjectManager;
 
 namespace Sprint0
 {
@@ -58,7 +59,7 @@ namespace Sprint0
         public int DisplayItem { get; set; }
         public int DisplayEnemy { get; set; }
 
-
+        public GameObjectManager gameObjectManager;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -75,9 +76,11 @@ namespace Sprint0
 
             //controllers
             keyboardController = new KeyboardController(this);
-            
+
 
             //Lists
+            gameObjectManager = new GameObjectManager();
+
             blockList = new ArrayList();
             itemList = new ArrayList();
             enemyList = new ArrayList();
@@ -102,6 +105,19 @@ namespace Sprint0
             spritesFactory.addAllItems(itemList);
             spritesFactory.addAllEnemies(enemyList);
 
+            foreach (ISprite obj in blockList)
+            {
+                gameObjectManager.addObject(obj, "block");
+            }
+            foreach (ISprite obj in enemyList)
+            {
+                gameObjectManager.addObject(obj, "enemy");
+            }
+            foreach (ISprite obj in itemList)
+            {
+                gameObjectManager.addObject((ISprite)obj, "item");
+            }
+            gameObjectManager.addObject(mario, "player");
             //Load commands to controller
             keyboardController.loadCommonCommand();
         }
@@ -111,25 +127,26 @@ namespace Sprint0
             
 
             //display the sprite from the sprite list one at a time.
-            currentEnemy = (ISprite)enemyList[DisplayEnemy];
-            currentBlock = (ISprite)blockList[DisplayBlock];
-            currentItem = (ISprite)itemList[DisplayItem];
+            //currentEnemy = (ISprite)enemyList[DisplayEnemy];
+            //currentBlock = (ISprite)blockList[DisplayBlock];
+            //currentItem = (ISprite)itemList[DisplayItem];
             
             keyboardController.UpdateInput();
             //Players
-            mario.Update(gameTime);
+            //mario.Update(gameTime);
             
             //Blocks
-            currentBlock.Update(gameTime);
+            //currentBlock.Update(gameTime);
+            gameObjectManager.update(gameTime);
 			
             //Items
-            currentItem.Update(gameTime);
+            //currentItem.Update(gameTime);
             
             //Enemies
-            currentEnemy.Update(gameTime);
+            //currentEnemy.Update(gameTime);
 
             //Fireballs
-            fireBallList.Update(gameTime);
+            //fireBallList.Update(gameTime);
 
             base.Update(gameTime);
            
@@ -140,11 +157,12 @@ namespace Sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
 
-            mario.Draw(_spriteBatch, true);
-            currentBlock.Draw(_spriteBatch, true);
-            currentItem.Draw(_spriteBatch, true);
-            currentEnemy.Draw(_spriteBatch, true);
-            fireBallList.Draw(_spriteBatch);
+            //mario.Draw(_spriteBatch, true);
+            //currentBlock.Draw(_spriteBatch, true);
+            gameObjectManager.Draw(_spriteBatch, true);
+            //currentItem.Draw(_spriteBatch, true);
+            //currentEnemy.Draw(_spriteBatch, true);
+            //fireBallList.Draw(_spriteBatch);
 
 
             _spriteBatch.End();

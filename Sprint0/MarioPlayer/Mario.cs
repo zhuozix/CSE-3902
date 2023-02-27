@@ -9,6 +9,7 @@ using Sprint0.Item;
 using Sprint0.Sprites;
 using System.Collections;
 using Sprint0.Sprites.Lists;
+using Sprint0.ObjectManager;
 
 namespace Sprint0.MarioPlayer
 {
@@ -21,6 +22,8 @@ namespace Sprint0.MarioPlayer
         private FireBallList fireBallList;
         public float ySpawnPosition;
         public MarioFactory marioFactory;
+
+        public GameObjectManager gameObjectManager;
        
         public Mario(Vector2 spawnLocation,Game1 gameInstance)
         {
@@ -32,7 +35,7 @@ namespace Sprint0.MarioPlayer
             Velocity = Vector2.Zero;
             Acceleration = Vector2.Zero;
             ySpawnPosition = spawnLocation.Y;
-
+            
             CurrentActionState = new MarioIdleState(this, marioFactory);
             CurrentPowerupState = new MarioNormalState(this, marioFactory);
 
@@ -40,12 +43,15 @@ namespace Sprint0.MarioPlayer
             CurrentPowerupState.Enter(null);
 
             IsFacingRight = true;
+
+            gameObjectManager = gameInstance.gameObjectManager;
         }
 
         public void generateFireball()
         {           
             ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight);
-            fireBallList.add(fireball);
+            //fireBallList.add(fireball);
+            gameObjectManager.addObject(fireball, "fireBall");
         }
 
         public bool yPositionChecker()
