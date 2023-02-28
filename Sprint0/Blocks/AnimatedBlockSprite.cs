@@ -58,7 +58,7 @@ namespace Sprint0.Blocks
 			int column = currentFrame % Columns;
 
 			Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-			Rectangle destinationRectangle = new Rectangle((int)location.X - width, (int)location.Y - height, width, height);
+			Rectangle destinationRectangle = new Rectangle((int)Position.X, (int)Position.Y, width, height);
 
 			spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 			

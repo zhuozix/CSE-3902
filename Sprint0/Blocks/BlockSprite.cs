@@ -15,7 +15,7 @@ namespace Sprint0.Blocks
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
-        public Vector2 Position { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Vector2 Position { get; set; }
 
         public int Width => throw new NotImplementedException();
 
@@ -44,7 +44,7 @@ namespace Sprint0.Blocks
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X - width, (int)location.Y - height, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)Position.X, (int)Position.Y, width, height);
 
            
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
