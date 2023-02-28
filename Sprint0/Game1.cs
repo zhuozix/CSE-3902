@@ -99,13 +99,14 @@ namespace Sprint0
             /*
              * Load Sprites 
              */
+            LevelLoader.LevelLoader.loadLevel(gameObjectManager, "C:\\Users\\sethw\\Downloads\\CSE-3902-Sprint3(2)\\CSE-3902-Sprint3\\Sprint0\\LevelLoader\\level1-1.xml", spritesFactory, this);
 
             //Player
-            mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), this);
+            //mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), this);
             // NPC lists
-            spritesFactory.addAllBlocks(blockList);
-            spritesFactory.addAllItems(itemList);
-            spritesFactory.addAllEnemies(enemyList);
+            //spritesFactory.addAllBlocks(blockList);
+            //spritesFactory.addAllItems(itemList);
+            //spritesFactory.addAllEnemies(enemyList);
 
             foreach (ISprite obj in blockList)
             {
