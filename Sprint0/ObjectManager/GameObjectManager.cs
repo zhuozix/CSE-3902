@@ -29,6 +29,7 @@ namespace Sprint0.ObjectManager
 
         public void addObject(ISprite obj, String objectType)
         {
+
             switch(objectType) {
 
                 case "block":
