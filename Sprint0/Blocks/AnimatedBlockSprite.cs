@@ -15,7 +15,7 @@ namespace Sprint0.Blocks
 		public Texture2D Texture { get; set; }
 		public int Rows { get; set; }
 		public int Columns { get; set; }
-		public Vector2 Position { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+		public Vector2 Position { get; set; }
 
 		public int Width => throw new NotImplementedException();
 
