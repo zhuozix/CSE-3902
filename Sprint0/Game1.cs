@@ -66,6 +66,7 @@ namespace Sprint0
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+             
         }
 
         protected override void Initialize()
@@ -99,7 +100,7 @@ namespace Sprint0
             /*
              * Load Sprites 
              */
-            LevelLoader.LevelLoader.loadLevel(gameObjectManager, "C:\\Users\\sethw\\Downloads\\CSE-3902-Sprint3(2)\\CSE-3902-Sprint3\\Sprint0\\LevelLoader\\level1-1.xml", spritesFactory, this);
+          LevelLoader.LevelLoader.loadLevel(gameObjectManager, "C:\\Users\\sethw\\Downloads\\CSE-3902-Sprint3(2)\\CSE-3902-Sprint3\\Sprint0\\LevelLoader\\level1-1.xml", spritesFactory, this);
 
             //Player
             //mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), this);
