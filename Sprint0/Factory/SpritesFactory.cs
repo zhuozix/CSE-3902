@@ -100,6 +100,12 @@ namespace Sprint0.Factory
             enemyList.Add(getGommbaSprite());
             enemyList.Add(getKoopaSprite());
         }
+
+        public Texture2D getBackgroundSprite(String background)
+        {
+            ContentManager content = gameInstance.Content;
+            return content.Load<Texture2D>(background);
+        }
         public ISprite getCoinBlockSprite()
         {
             return new AnimatedBlockSprite(texture_CoinBlock, 1, 3, new Vector2(100, 100));
