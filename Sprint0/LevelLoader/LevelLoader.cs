@@ -11,6 +11,7 @@ using Sprint0.LevelLoader;
 using Microsoft.Xna.Framework;
 using Sprint0.MarioPlayer;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 
 namespace Sprint0.LevelLoader
 {
@@ -20,7 +21,7 @@ namespace Sprint0.LevelLoader
         {
             
             String type = "";
-            XmlReader xml = XmlReader.Create(level);
+            XmlReader xml = XmlReader.Create(Directory.GetCurrentDirectory().Replace(@"bin\Debug\net6.0", @"\LevelLoader\") + level);
             while(xml.Read())
             {
 
