@@ -1,4 +1,7 @@
 <Level>
+	<Background>
+		<bg-1-1></bg-1-1>
+	</Background>
 	<Blocks>
 		<CoinBlock xPos="50" yPos="75"></CoinBlock>
 		<FloorBlock xPos="100" yPos="300"></FloorBlock>

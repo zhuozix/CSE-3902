@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using Sprint0.MarioPlayer;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
+using System.ComponentModel;
 
 namespace Sprint0.LevelLoader
 {
@@ -24,8 +25,11 @@ namespace Sprint0.LevelLoader
             XmlReader xml = XmlReader.Create(Directory.GetCurrentDirectory().Replace(@"bin\Debug\net6.0", @"\LevelLoader\") + level);
             while(xml.Read())
             {
-
-                if (xml.Name == "Blocks")
+                if (xml.Name == "Background")
+                {
+                    type = "background";
+                }
+                else if (xml.Name == "Blocks")
                 {
                     type = "block";
                 }
@@ -56,6 +60,9 @@ namespace Sprint0.LevelLoader
                             break;
                         case "player":
                             processPlayer(xml, gameObjectManager, factory, game);
+                            break;
+                        case "background":
+                            processBackground(xml, gameObjectManager, factory);
                             break;
                         default:
                             break;
@@ -180,6 +187,14 @@ namespace Sprint0.LevelLoader
                     break;
                 default:
                     break;
+            }
+        }
+
+        public static void processBackground(XmlReader xml, GameObjectManager gameObjectManager, SpritesFactory factory)
+        {
+            if (xml.Name.Contains("bg"))
+            {
+                gameObjectManager.addBackground(factory.getBackgroundSprite(xml.Name));
             }
         }
     }
