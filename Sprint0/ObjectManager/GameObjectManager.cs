@@ -5,6 +5,7 @@ using Sprint0.Sprites.Lists;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace Sprint0.ObjectManager
         private List<ISprite> players;
         private List<ISprite> items;
         public FireBallList fireBallList;
+        public Texture2D background;
 
         public GameObjectManager() 
         { 
@@ -52,6 +54,11 @@ namespace Sprint0.ObjectManager
             }
         }
 
+        public void addBackground(Texture2D background)
+        {
+            this.background = background;
+        }
+
         public void update(GameTime time)
         {
             foreach (ISprite obj in this.blocks)
@@ -75,6 +82,7 @@ namespace Sprint0.ObjectManager
 
         public void Draw(SpriteBatch _spriteBatch, Boolean isFlipped)
         {
+            _spriteBatch.Draw(this.background, new Rectangle(0,0,this.background.Width * 2,this.background.Height * 2), Color.White);
             foreach (ISprite obj in this.blocks)
             {
                 obj.Draw(_spriteBatch, isFlipped);
