@@ -146,6 +146,16 @@ namespace Sprint0.LevelLoader
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
                     break;
+                case "FloorBlockStretch":
+                    long xPos2 = Int64.Parse(xml.GetAttribute("xPos2"));
+                    while(xPos <= xPos2)
+                    {
+                        obj = factory.getFloorBlockSprite();
+                        obj.Position = new Vector2(xPos, yPos);
+                        gameObjectManager.addObject(obj, "block");
+                        xPos += 16 * Game1.scale;
+                    }
+                    break;
                 default:
                     break;
             }
