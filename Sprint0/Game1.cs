@@ -22,6 +22,8 @@ namespace Sprint0
                 return instance;
             }
         }
+        public const int scale = 2;
+
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
         /*

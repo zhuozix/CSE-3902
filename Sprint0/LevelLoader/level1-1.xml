@@ -3,13 +3,76 @@
 		<bg-1-1></bg-1-1>
 	</Background>
 	<Blocks>
-		<CoinBlock xPos="50" yPos="75"></CoinBlock>
-		<FloorBlock xPos="100" yPos="300"></FloorBlock>
-		<GreenPipe xPos="420" yPos="400"></GreenPipe>
+		<CoinBlock xPos="510" yPos="286"></CoinBlock>
+		<CoinBlock xPos="670" yPos="286"></CoinBlock>
+		<CoinBlock xPos="734" yPos="286"></CoinBlock>
+		<CoinBlock xPos="702" yPos="158"></CoinBlock>
+		
+		<FloorBlock xPos="0" yPos="418"></FloorBlock>
+		<FloorBlock xPos="32" yPos="418"></FloorBlock>
+		<FloorBlock xPos="64" yPos="418"></FloorBlock>
+		<FloorBlock xPos="96" yPos="418"></FloorBlock>
+		<FloorBlock xPos="128" yPos="418"></FloorBlock>
+		<FloorBlock xPos="160" yPos="418"></FloorBlock>
+		<FloorBlock xPos="192" yPos="418"></FloorBlock>
+		<FloorBlock xPos="224" yPos="418"></FloorBlock>
+		<FloorBlock xPos="256" yPos="418"></FloorBlock>
+		<FloorBlock xPos="288" yPos="418"></FloorBlock>
+		<FloorBlock xPos="320" yPos="418"></FloorBlock>
+		<FloorBlock xPos="352" yPos="418"></FloorBlock>
+		<FloorBlock xPos="384" yPos="418"></FloorBlock>
+		<FloorBlock xPos="416" yPos="418"></FloorBlock>
+		<FloorBlock xPos="448" yPos="418"></FloorBlock>
+		<FloorBlock xPos="480" yPos="418"></FloorBlock>
+		<FloorBlock xPos="512" yPos="418"></FloorBlock>
+		<FloorBlock xPos="544" yPos="418"></FloorBlock>
+		<FloorBlock xPos="576" yPos="418"></FloorBlock>
+		<FloorBlock xPos="608" yPos="418"></FloorBlock>
+		<FloorBlock xPos="640" yPos="418"></FloorBlock>
+		<FloorBlock xPos="672" yPos="418"></FloorBlock>
+		<FloorBlock xPos="704" yPos="418"></FloorBlock>
+		<FloorBlock xPos="736" yPos="418"></FloorBlock>
+		<FloorBlock xPos="768" yPos="418"></FloorBlock>
+		<FloorBlock xPos="800" yPos="418"></FloorBlock>
+		<FloorBlock xPos="832" yPos="418"></FloorBlock>
+		<FloorBlock xPos="864" yPos="418"></FloorBlock>
+
+		<FloorBlock xPos="0" yPos="450"></FloorBlock>
+		<FloorBlock xPos="32" yPos="450"></FloorBlock>
+		<FloorBlock xPos="64" yPos="450"></FloorBlock>
+		<FloorBlock xPos="96" yPos="450"></FloorBlock>
+		<FloorBlock xPos="128" yPos="450"></FloorBlock>
+		<FloorBlock xPos="160" yPos="450"></FloorBlock>
+		<FloorBlock xPos="192" yPos="450"></FloorBlock>
+		<FloorBlock xPos="224" yPos="450"></FloorBlock>
+		<FloorBlock xPos="256" yPos="450"></FloorBlock>
+		<FloorBlock xPos="288" yPos="450"></FloorBlock>
+		<FloorBlock xPos="320" yPos="450"></FloorBlock>
+		<FloorBlock xPos="352" yPos="450"></FloorBlock>
+		<FloorBlock xPos="384" yPos="450"></FloorBlock>
+		<FloorBlock xPos="416" yPos="450"></FloorBlock>
+		<FloorBlock xPos="448" yPos="450"></FloorBlock>
+		<FloorBlock xPos="480" yPos="450"></FloorBlock>
+		<FloorBlock xPos="512" yPos="450"></FloorBlock>
+		<FloorBlock xPos="544" yPos="450"></FloorBlock>
+		<FloorBlock xPos="576" yPos="450"></FloorBlock>
+		<FloorBlock xPos="608" yPos="450"></FloorBlock>
+		<FloorBlock xPos="640" yPos="450"></FloorBlock>
+		<FloorBlock xPos="672" yPos="450"></FloorBlock>
+		<FloorBlock xPos="704" yPos="450"></FloorBlock>
+		<FloorBlock xPos="736" yPos="450"></FloorBlock>
+		<FloorBlock xPos="768" yPos="450"></FloorBlock>
+		<FloorBlock xPos="800" yPos="450"></FloorBlock>
+		<FloorBlock xPos="832" yPos="450"></FloorBlock>
+		<FloorBlock xPos="864" yPos="450"></FloorBlock>
+		
+		<BrickBlock xPos="640" yPos="286"></BrickBlock>
+		<BrickBlock xPos="704" yPos="286"></BrickBlock>
+		<BrickBlock xPos="768" yPos="286"></BrickBlock>
 	</Blocks>
 	<Enemies>
-		<Goomba xPos="250" yPos="150"></Goomba>
-		<Koopa xPos="300" yPos="200"></Koopa>
+		<Goomba xPos="250" yPos="386"></Goomba>
+		<Koopa xPos="300" yPos="386"></Koopa>
 	</Enemies>
 	<Items>
 		<Coin xPos="100" yPos="100"></Coin>
@@ -17,6 +80,6 @@
 		<Star xPos="400" yPos="400"></Star>
 	</Items>
 	<Player>
-		<Mario xPos="200" yPos="450"></Mario>
+		<Mario xPos="200" yPos="386"></Mario>
 	</Player>
 </Level>
