@@ -16,6 +16,9 @@ namespace Sprint0.Sprites
         int Width { get; }
         int Height { get; }
 
+        public bool collide { get; set; }
+        public bool collideA { get; set; }
+
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, bool isFlipped);
     }

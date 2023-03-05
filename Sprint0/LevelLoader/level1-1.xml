@@ -3,13 +3,13 @@
 		<bg-1-1></bg-1-1>
 	</Background>
 	<Blocks>
-		<CoinBlock xPos="50" yPos="75"></CoinBlock>
-		<FloorBlock xPos="100" yPos="300"></FloorBlock>
-		<GreenPipe xPos="420" yPos="400"></GreenPipe>
+		<CoinBlock xPos="50" yPos="150"></CoinBlock>
+		<FloorBlock xPos="100" yPos="150"></FloorBlock>
+		<GreenPipe xPos="150" yPos="150"></GreenPipe>
 	</Blocks>
 	<Enemies>
 		<Goomba xPos="250" yPos="150"></Goomba>
-		<Koopa xPos="300" yPos="200"></Koopa>
+		<Koopa xPos="300" yPos="150"></Koopa>
 	</Enemies>
 	<Items>
 		<Coin xPos="100" yPos="100"></Coin>

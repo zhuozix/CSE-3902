@@ -21,7 +21,10 @@ namespace Sprint0.Blocks
 
 		public int Height => throw new NotImplementedException();
 
-		private int currentFrame;
+        public bool collide { get; set ; }
+		public bool collideA { get; set; }
+
+        private int currentFrame;
 		private int totalFrames;
 		private Vector2 location;
 		internal double timeSinceLastFrameTransition = 0.0;

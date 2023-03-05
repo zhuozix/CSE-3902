@@ -16,7 +16,8 @@ namespace Sprint0.MarioPlayer
         public Vector2 Position { get { return Sprite.Position; } set { Sprite.Position = value; } }
         public Vector2 Velocity { get; set; }
         public Vector2 Acceleration { get; set; }
-   
+        public bool collide { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public bool collideA { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         public virtual void Update(GameTime gameTime)
         {

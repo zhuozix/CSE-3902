@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.ObjectManager;
+
 namespace Sprint0.Content
 {
 
@@ -12,6 +14,7 @@ namespace Sprint0.Content
         private GraphicsDeviceManager graphics;
         private Vector2 originalPosition;
         private int moveDirection;
+        private GameObjectManager gameobj;
 
         public MovingAnimatedSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection)
             : base(texture, position, rows, cols)
@@ -19,6 +22,7 @@ namespace Sprint0.Content
             this.graphics = graphics;
             originalPosition = position;
             this.moveDirection = moveDirection;
+            //this.gameobj= gameObjectManager;
         }
 
         public override void Update(GameTime gameTime)

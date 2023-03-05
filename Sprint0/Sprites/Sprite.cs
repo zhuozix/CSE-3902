@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Sprites;
+using Sprint0.ObjectManager;
 
 namespace Sprint0.Content
 {
@@ -22,7 +23,8 @@ namespace Sprint0.Content
         public Vector2 position;
         public Vector2 velocity;
         public float speed;
-
+        public bool collide { get; set; }
+        public bool collideA { get; set; }
         internal double timeSinceLastFrameTransition = 0;
 
         public Vector2 Position { get { return position; } set { position = value; } }
