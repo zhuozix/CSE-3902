@@ -12,6 +12,7 @@ namespace Sprint0.NPC.Enemy
     public abstract class SpriteE : ISprite
     {
         public string Name { get; set; }
+        public string state { get; set; }
         public static double animateFrequency = 0.9 / 5.0;
         public bool crash { get; set; }
         private Texture2D texture;
@@ -22,7 +23,7 @@ namespace Sprint0.NPC.Enemy
         SpriteEffects spriteEffect = SpriteEffects.None;
 
         public Vector2 position;
-        public Vector2 velocity;
+        public Vector2 velocity { get; set; }
         public float speed;
         public bool collide { get; set; }
 

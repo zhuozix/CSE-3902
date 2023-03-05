@@ -22,7 +22,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
             }
             else
             {
-                marioEntity.Velocity = new Vector2(0, 0);
+                marioEntity.velocity = new Vector2(0, 0);
             }
             
         }

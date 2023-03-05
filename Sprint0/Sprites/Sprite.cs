@@ -13,6 +13,7 @@ namespace Sprint0.Content
     public abstract class Sprite: ISprite
     {   // adjust animate speed
         public string Name { get; set; }
+        public string state { get; set; }
         public static double animateFrequency = 0.18;
         public bool crash { get; set; }
         private Texture2D texture;
@@ -22,7 +23,7 @@ namespace Sprint0.Content
         internal int totalFrames;
 
         public Vector2 position;
-        public Vector2 velocity;
+        public Vector2 velocity { get; set; }
         public float speed;
         public bool collide { get; set; }
         public bool collideA { get; set; }

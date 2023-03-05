@@ -12,7 +12,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public override void Enter(IMarioActionState previousState)
         {
             base.Enter(previousState);
-            marioEntity.Velocity = new Vector2(0, 0);
+            marioEntity.velocity = new Vector2(0, 0);
         }
 
         public override MarioActionStateType GetEnumValue()

@@ -14,7 +14,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public override void Enter(IMarioActionState previousState)
         {
             base.Enter(previousState);
-            marioEntity.Velocity += new Vector2(0, VerticalVelocity);
+            marioEntity.velocity += new Vector2(0, VerticalVelocity);
         }
 
         public override MarioActionStateType GetEnumValue()
@@ -54,11 +54,11 @@ namespace Sprint0.MarioPlayer.State.ActionState
 
         public override void Update(GameTime gameTime)
         {
-            if (marioEntity.Velocity.Y < 0)
+            if (marioEntity.velocity.Y < 0)
             {
                 float accelaretion = 0.98f;
                 timeSpent += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                marioEntity.Velocity = new Vector2(marioEntity.Velocity.X, marioEntity.Velocity.Y + (timeSpent * accelaretion));
+                marioEntity.velocity = new Vector2(marioEntity.velocity.X, marioEntity.velocity.Y + (timeSpent * accelaretion));
             }
             else
             {

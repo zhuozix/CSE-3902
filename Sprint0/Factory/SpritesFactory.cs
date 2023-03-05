@@ -111,6 +111,7 @@ namespace Sprint0.Factory
         {
             ISprite sprite = new AnimatedBlockSprite(texture_CoinBlock, 1, 3, new Vector2(100, 100));
             sprite.Name = "CoinBlock";
+            sprite.state = "Normal";
             return sprite;
         }
 
@@ -118,62 +119,88 @@ namespace Sprint0.Factory
         {
             ISprite sprite = new BlockSprite(texture_BrickBlock, 1, 1, new Vector2(200, 100));
             sprite.Name = "BrickBlock";
+            sprite.state = "Normal";
             return sprite;
         }
 		public ISprite getFloorBlockSprite()
 		{
             ISprite sprite = new BlockSprite(texture_FloorBlock, 1, 1, new Vector2(300, 100));
             sprite.Name = "FloorBlock";
+            sprite.state = "Normal";
             return sprite;
 		}
 		public ISprite getStairBlockSprite()
 		{
             ISprite sprite = new BlockSprite(texture_StairBlock, 1, 1, new Vector2(400, 100));
             sprite.Name = "StairBlock";
+            sprite.state = "Normal";
             return sprite;
 		}
 		public ISprite getUsedBlockSprite()
 		{
             ISprite sprite = new BlockSprite(texture_UsedBlock, 1, 1, new Vector2(500, 100));
             sprite.Name = "UsedBlock";
+            sprite.state = "Normal";
+            return sprite;
+		}
+		public ISprite getGreenPipeBlockSprite()
+		{
+            ISprite sprite = new BlockSprite(texture_GreenPipeBlock, 1, 1, new Vector2(600, 100));
+            sprite.Name = "GreenPipe";
+            sprite.state = "Normal";
             return sprite;
 		}
 
-
-		public ISprite getGreenPipeBlockSprite()
-		{
-			return new BlockSprite(texture_GreenPipeBlock, 1, 1, new Vector2(600, 100));
-		}
 		public ISprite getFireFlowerSprite()
         {
-            return new FireFlowerSprite(texture_FireFlower, new Vector2(100, 300), 1, 4);
+            ISprite sprite = new FireFlowerSprite(texture_FireFlower, new Vector2(100, 300), 1, 4);;
+            sprite.Name = "FireFlower";
+            sprite.state = "Normal";
+            return sprite;
         }
         public ISprite getStarSprite()
         {
-            return new StarSprite(texture_Star, new Vector2(200, 300), 1, 4, _graphics, 1);
+            ISprite sprite = new StarSprite(texture_Star, new Vector2(200, 300), 1, 4, _graphics, 1);
+            sprite.Name = "Star";
+            sprite.state = "Normal";
+            return sprite;
         }
         public ISprite getGreenMushSprite() 
         {
-            return new GreenMushroomSprite(texture_GreenMush, new Vector2(300, 300), 1, 1, _graphics, 1);
+            ISprite sprite = new GreenMushroomSprite(texture_GreenMush, new Vector2(300, 300), 1, 1, _graphics, 1);
+            sprite.Name = "GreenMush";
+            sprite.state = "Normal";
+            return sprite;
             
             
         }
         public ISprite getRedMushSprite() {
-            return new RedMushroomSprite(texture_RedMush, new Vector2(400, 300), 1, 1, _graphics, 1);
+            ISprite sprite = new RedMushroomSprite(texture_RedMush, new Vector2(400, 300), 1, 1, _graphics, 1);
+            sprite.Name = "RedMush";
+            sprite.state = "Normal";
+            return sprite;
         }
         public ISprite getCoinSprite() 
         {
-            return new CoinSprite(texture_Coin, new Vector2(500, 300), 1, 4);
+            ISprite sprite = new CoinSprite(texture_Coin, new Vector2(500, 300), 1, 4);
+            sprite.Name = "Coin";
+            sprite.state = "Normal";
+            return sprite;
         }
         public ISprite getGommbaSprite() 
         {
-            return new MovingEnemy(texture_Gommba, new Vector2(500, 400), 1, 2, _graphics, 1);
+            ISprite sprite = new MovingEnemy(texture_Gommba, new Vector2(500, 400), 1, 2, _graphics, 1);
+            sprite.Name = "Gommba";
+            sprite.state = "Normal";
+            return sprite;
             
         }
         public ISprite getKoopaSprite()
         {
-            
-            return new MovingEnemy(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics, 1);
+            ISprite sprite = new MovingEnemy(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics, 1);
+            sprite.Name = "Koopa";
+            sprite.state = "Normal";
+            return sprite;
         }
 
         public ISprite getFireballSprite(Vector2 currentLocation, bool isFacingRight)

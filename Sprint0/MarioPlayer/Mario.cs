@@ -32,7 +32,7 @@ namespace Sprint0.MarioPlayer
             this.fireballFactory = gameInstance.spritesFactory;
             this.fireBallList= gameInstance.fireBallList;
             Position = spawnLocation;
-            Velocity = Vector2.Zero;
+            velocity = Vector2.Zero;
             Acceleration = Vector2.Zero;
             ySpawnPosition = spawnLocation.Y;
             
@@ -125,7 +125,7 @@ namespace Sprint0.MarioPlayer
             CurrentActionState.Update(gameTime);
             if (this.crash)
             {
-                Velocity = new Vector2(0, Velocity.Y);
+                velocity = new Vector2(0, velocity.Y);
                 crash = false;
             }
             

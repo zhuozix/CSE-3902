@@ -13,11 +13,13 @@ namespace Sprint0.NPC.Blocks
     internal class AnimatedBlockSprite : ISprite
     {
         public string Name { get; set; }
+        public string state { get; set; }
         public bool crash { get; set; }
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
         public Vector2 Position { get; set; }
+        public Vector2 velocity { get; set; }
 
         public int Width => throw new NotImplementedException();
 

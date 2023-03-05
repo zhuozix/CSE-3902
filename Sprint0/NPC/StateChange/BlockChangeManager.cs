@@ -34,14 +34,10 @@ namespace Sprint0.NPC.StateChange
                 case "CoinBlock":
                     CoinBlockTransition(); break;
                 case "BrickBlock":
-                    brickBlockTransition(); break;
-                case "FloorBlock":
-                // No Change
-                case "StairBlock":
-                // No change
-                case "UsedBlock":
-                // No change               
-                default: break;
+                    brickBlockTransition(); break;              
+                default: 
+                    // No Change
+                    break;
             }
         }
 

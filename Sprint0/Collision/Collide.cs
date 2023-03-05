@@ -45,7 +45,6 @@ namespace Sprint0.Collision
             // enemy and enemy
             foreach(MovingEnemy a in gobj.enemies)
             {
-                if (found) { break; }
                 foreach(MovingEnemy b in gobj.enemies)
                 {
                     if (found) { break; }
@@ -68,7 +67,6 @@ namespace Sprint0.Collision
             //enemy and block
             foreach(MovingEnemy a in gobj.enemies)
             {
-                if (found) { break; }
                 foreach (ISprite b in gobj.blocks)
                 {
                     if (found) { break; }
