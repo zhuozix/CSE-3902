@@ -51,7 +51,7 @@ namespace Sprint0.Content
                 int column = currentFrame % numCols;
                 SpriteEffects spriteEffect;
                 Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-                Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
+                Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * Game1.scale, height * Game1.scale);
                  
                 if (isFlipped)
                 {

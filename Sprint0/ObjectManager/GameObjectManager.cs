@@ -82,7 +82,7 @@ namespace Sprint0.ObjectManager
 
         public void Draw(SpriteBatch _spriteBatch, Boolean isFlipped)
         {
-            _spriteBatch.Draw(this.background, new Rectangle(0,0,this.background.Width * 2,this.background.Height * 2), Color.White);
+            _spriteBatch.Draw(this.background, new Rectangle(0,0,this.background.Width * Game1.scale,this.background.Height * Game1.scale), Color.White);
             foreach (ISprite obj in this.blocks)
             {
                 obj.Draw(_spriteBatch, isFlipped);

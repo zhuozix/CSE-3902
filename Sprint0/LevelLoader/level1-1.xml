@@ -3,13 +3,22 @@
 		<bg-1-1></bg-1-1>
 	</Background>
 	<Blocks>
-		<CoinBlock xPos="50" yPos="150"></CoinBlock>
-		<FloorBlock xPos="100" yPos="150"></FloorBlock>
-		<GreenPipe xPos="150" yPos="150"></GreenPipe>
+		<CoinBlock xPos="510" yPos="286"></CoinBlock>
+		<CoinBlock xPos="670" yPos="286"></CoinBlock>
+		<CoinBlock xPos="734" yPos="286"></CoinBlock>
+		<CoinBlock xPos="702" yPos="158"></CoinBlock>
+
+		<FloorBlockStretch xPos="0" yPos="416" xPos2="864"></FloorBlockStretch>
+		<FloorBlockStretch xPos="0" yPos="448" xPos2="864"></FloorBlockStretch>
+		
+	
+		<BrickBlock xPos="640" yPos="286"></BrickBlock>
+		<BrickBlock xPos="704" yPos="286"></BrickBlock>
+		<BrickBlock xPos="768" yPos="286"></BrickBlock>
 	</Blocks>
 	<Enemies>
-		<Goomba xPos="250" yPos="150"></Goomba>
-		<Koopa xPos="300" yPos="150"></Koopa>
+		<Goomba xPos="250" yPos="386"></Goomba>
+		<Koopa xPos="300" yPos="386"></Koopa>
 	</Enemies>
 	<Items>
 		<Coin xPos="100" yPos="100"></Coin>
@@ -17,6 +26,6 @@
 		<Star xPos="400" yPos="400"></Star>
 	</Items>
 	<Player>
-		<Mario xPos="200" yPos="450"></Mario>
+		<Mario xPos="200" yPos="386"></Mario>
 	</Player>
 </Level>
