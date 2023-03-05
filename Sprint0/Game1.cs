@@ -62,6 +62,11 @@ namespace Sprint0
         public int DisplayItem { get; set; }
         public int DisplayEnemy { get; set; }
 
+        /*
+         * Camera
+         */
+        private Camera camera;
+
         public GameObjectManager gameObjectManager;
         public Game1()
         {
@@ -98,6 +103,7 @@ namespace Sprint0
         {         
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            camera = new Camera();
 
             /*
              * Load Sprites 
@@ -144,15 +150,17 @@ namespace Sprint0
             //Blocks
             //currentBlock.Update(gameTime);
             gameObjectManager.update(gameTime);
-			
+
             //Items
             //currentItem.Update(gameTime);
-            
+
             //Enemies
             //currentEnemy.Update(gameTime);
 
             //Fireballs
             //fireBallList.Update(gameTime);
+
+            camera.MoveCamera(mario);
 
             base.Update(gameTime);
            
@@ -161,7 +169,7 @@ namespace Sprint0
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(transformMatrix: camera.Transform);
 
             //mario.Draw(_spriteBatch, true);
             //currentBlock.Draw(_spriteBatch, true);
