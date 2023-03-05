@@ -123,6 +123,12 @@ namespace Sprint0.MarioPlayer
         {
 
             CurrentActionState.Update(gameTime);
+            if (this.crash)
+            {
+                Velocity = new Vector2(0, Velocity.Y);
+                crash = false;
+            }
+            
             base.Update(gameTime);
         }
 

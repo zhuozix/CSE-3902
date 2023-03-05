@@ -79,11 +79,13 @@ namespace Sprint0.Collision
                 {
                     if (!a.Texture.Equals(b.Texture))
                     {
-                        Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width ), a.Texture.Height);
-                        Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width ), a.Texture.Height);
+                        Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width )/3, a.Texture.Height);
+                        Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
+                        Rectangle = RectangleA;
                         if (RectangleA.Intersects(RectangleB))
                         {
                             a.crash = true;
+                            
                         }
                     }
 
@@ -102,6 +104,7 @@ namespace Sprint0.Collision
                         if (RectangleA.Intersects(RectangleB))
                         {
                             a.crash = true;
+                            a.TakeDamage();
                         }
                     }
 
