@@ -3,7 +3,7 @@
 		<bg-1-1></bg-1-1>
 	</Background>
 	<Blocks>
-		<CoinBlock xPos="510" yPos="286"></CoinBlock>
+		<CoinBlock xPos="510" yPos="386"></CoinBlock>
 		<CoinBlock xPos="670" yPos="286"></CoinBlock>
 		<CoinBlock xPos="734" yPos="286"></CoinBlock>
 		<CoinBlock xPos="702" yPos="158"></CoinBlock>

@@ -22,7 +22,7 @@ namespace Sprint0.MarioPlayer
         private FireBallList fireBallList;
         public float ySpawnPosition;
         public MarioFactory marioFactory;
-
+        public bool crash { get; set; }
         public GameObjectManager gameObjectManager;
        
         public Mario(Vector2 spawnLocation,Game1 gameInstance)
@@ -45,6 +45,7 @@ namespace Sprint0.MarioPlayer
             IsFacingRight = true;
 
             gameObjectManager = gameInstance.gameObjectManager;
+            crash = false;
         }
 
         public void generateFireball()
