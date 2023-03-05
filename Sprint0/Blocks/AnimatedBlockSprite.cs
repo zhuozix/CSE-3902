@@ -12,7 +12,8 @@ namespace Sprint0.Blocks
 {
 	internal class AnimatedBlockSprite : ISprite
 	{
-		public Texture2D Texture { get; set; }
+        public bool crash { get; set; }
+        public Texture2D Texture { get; set; }
 		public int Rows { get; set; }
 		public int Columns { get; set; }
 		public Vector2 Position { get; set; }
@@ -21,7 +22,10 @@ namespace Sprint0.Blocks
 
 		public int Height => throw new NotImplementedException();
 
-		private int currentFrame;
+        public bool collide { get; set ; }
+		public bool collideA { get; set; }
+
+        private int currentFrame;
 		private int totalFrames;
 		private Vector2 location;
 		internal double timeSinceLastFrameTransition = 0.0;

@@ -16,6 +16,8 @@ namespace Sprint0.Sprites
         int Width { get; }
         int Height { get; }
 
+        bool crash { get; set; }
+
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, bool isFlipped);
     }

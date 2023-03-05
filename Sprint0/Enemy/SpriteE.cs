@@ -13,7 +13,7 @@ namespace Sprint0.Enemy
     public abstract class SpriteE : ISprite
     {
         public static double animateFrequency = 0.9 / 5.0;
-
+        public bool crash { get; set; }
         private Texture2D texture;
         private int numRows;
         private int numCols;
@@ -24,6 +24,7 @@ namespace Sprint0.Enemy
         public Vector2 position;
         public Vector2 velocity;
         public float speed;
+        public bool collide { get; set; }
 
         internal double timeSinceLastFrameTransition = 0;
 
@@ -31,6 +32,8 @@ namespace Sprint0.Enemy
         public Texture2D Texture { get { return texture; } }
         public int Width { get { return texture.Width; } }
         public int Height { get { return texture.Height; } }
+
+        public bool collideA { get; set ; }
 
         public SpriteE(Texture2D texture, Vector2 position, int rows, int cols)
         {
@@ -52,11 +55,11 @@ namespace Sprint0.Enemy
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
-            if (position.X >= 780)
+            if (collideA)
             {
                 spriteEffect = SpriteEffects.FlipHorizontally;
             }
-            else if(position.X <= 0)
+            else
             {
                 spriteEffect = SpriteEffects.None;
             }

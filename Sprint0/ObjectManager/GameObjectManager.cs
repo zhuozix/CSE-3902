@@ -13,10 +13,10 @@ namespace Sprint0.ObjectManager
 {
     public class GameObjectManager
     {
-        private List<ISprite> blocks;
-        private List<ISprite> enemies;
-        private List<ISprite> players;
-        private List<ISprite> items;
+        public List<ISprite> blocks;
+        public List<ISprite> enemies;
+        public List<ISprite> players;
+        public List<ISprite> items;
         public FireBallList fireBallList;
         public Texture2D background;
 

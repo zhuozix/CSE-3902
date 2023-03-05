@@ -13,6 +13,7 @@ using Sprint0.MarioPlayer;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using System.ComponentModel;
+using Sprint0.Collision;
 
 namespace Sprint0.LevelLoader
 {
@@ -171,6 +172,7 @@ namespace Sprint0.LevelLoader
                 case "Goomba":
                     obj = factory.getGommbaSprite();
                     obj.Position = new Vector2(xPos, yPos);
+                    
                     gameObjectManager.addObject(obj, "enemy");
                     break;
                 case "Koopa":

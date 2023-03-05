@@ -9,6 +9,7 @@ using Sprint0.MarioPlayer;
 using Sprint0.Sprites.Lists;
 using Sprint0.ObjectManager;
 using Sprint0.LevelLoader;
+using Sprint0.Collision;
 
 namespace Sprint0
 {
@@ -31,6 +32,7 @@ namespace Sprint0
          */
         private IController keyboardController;
 
+        private ICollision Collision;
         /*
          * SpriteFactories
          */
@@ -96,6 +98,9 @@ namespace Sprint0
             fireBallList = new FireBallList();
 
 
+
+            Collision = new Collide(gameObjectManager);
+
             base.Initialize();
         }
 
@@ -146,7 +151,7 @@ namespace Sprint0
             keyboardController.UpdateInput();
             //Players
             //mario.Update(gameTime);
-            
+            Collision.Update(gameTime);
             //Blocks
             //currentBlock.Update(gameTime);
             gameObjectManager.update(gameTime);
@@ -154,6 +159,8 @@ namespace Sprint0
             //Items
             //currentItem.Update(gameTime);
 
+
+            
             //Enemies
             //currentEnemy.Update(gameTime);
 

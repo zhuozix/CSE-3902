@@ -16,10 +16,14 @@ namespace Sprint0.Blocks
         public int Rows { get; set; }
         public int Columns { get; set; }
         public Vector2 Position { get; set; }
+        public bool crash { get; set; }
 
         public int Width => throw new NotImplementedException();
 
         public int Height => throw new NotImplementedException();
+
+        public bool collide { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool collideA { get; set; }
 
         private int currentFrame;
         private int totalFrames;
