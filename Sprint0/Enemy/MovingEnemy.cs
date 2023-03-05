@@ -21,7 +21,8 @@ namespace Sprint0.Enemy
         public Vector2 Velocity;
         private int moveDirectionX;
         private int moveDirectionY = 0;
-        
+        public bool crash { get; set; }
+
 
         public MovingEnemy(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection)
             : base(texture, position, rows, cols)
@@ -29,6 +30,7 @@ namespace Sprint0.Enemy
             this.graphics = graphics;
             originalPosition = position;
             this.moveDirectionX = moveDirection;
+            crash = false;
         }
         public override void Update(GameTime gameTime)
         {
@@ -46,32 +48,25 @@ namespace Sprint0.Enemy
             Velocity = new Vector2(moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirectionX, moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirectionY);
 
             position += Velocity;
-            if (collide)
+            if (this.crash)
             {
-                moveDirectionX = 0;
+                
+                moveDirectionX = moveDirectionX * (-1);
+                position += new Vector2(5*moveDirectionX, 0);
+                this.crash = false;
             }
-           /* else if(collide && moveDirectionX == -1)
+            if(moveDirectionX != 0)
             {
-                moveDirectionX = 1;
-                collide = false;
-            }*/
-
-            if (collideA)
-            {
-                moveDirectionX = -1;
+                if (currentx >= 780)
+                {
+                    moveDirectionX = -1;
+                }
+                else if (currentx <= 0)
+                {
+                    moveDirectionX = 1;
+                }
             }
-            else
-            {
-                moveDirectionX = 1;
-            }
-       /*     if (currentx >= 780)
-            {
-                moveDirection = -1;
-            }
-            else if (currentx <= 0)
-            {
-                moveDirection = 1;
-            }*/
+            
         }
 
     }

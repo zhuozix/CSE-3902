@@ -145,7 +145,7 @@ namespace Sprint0
             keyboardController.UpdateInput();
             //Players
             //mario.Update(gameTime);
-            
+            Collision.Update(gameTime);
             //Blocks
             //currentBlock.Update(gameTime);
             gameObjectManager.update(gameTime);
@@ -153,7 +153,7 @@ namespace Sprint0
             //Items
             //currentItem.Update(gameTime);
 
-            Collision.Update(gameTime);
+            
             //Enemies
             //currentEnemy.Update(gameTime);
 

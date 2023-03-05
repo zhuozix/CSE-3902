@@ -13,7 +13,7 @@ namespace Sprint0.Enemy
     public abstract class SpriteE : ISprite
     {
         public static double animateFrequency = 0.9 / 5.0;
-
+        public bool crash { get; set; }
         private Texture2D texture;
         private int numRows;
         private int numCols;

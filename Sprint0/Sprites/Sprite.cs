@@ -13,7 +13,7 @@ namespace Sprint0.Content
     public abstract class Sprite: ISprite
     {   // adjust animate speed
         public static double animateFrequency = 0.18;
-
+        public bool crash { get; set; }
         private Texture2D texture;
         private int numRows;
         private int numCols;

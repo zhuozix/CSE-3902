@@ -7,7 +7,7 @@ namespace Sprint0.MarioPlayer
 {
     public abstract class Entity : ISprite
     {
-    
+        public bool crash { get; set; }
         public Sprite Sprite { get; set; }
         public Texture2D Texture { get { return Sprite.Texture; } }
         public int Width { get { return Texture.Width; } }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Sprint0.ObjectManager;
 using Sprint0.Sprites;
 using System.Collections;
+using Sprint0.Enemy;
 
 namespace Sprint0.Collision
 {
@@ -31,76 +32,25 @@ namespace Sprint0.Collision
 
         public void Update(GameTime gameTime)
         {
-            /* List<ISprite> enemy = gobj.enemies;
-             List<ISprite> block = gobj.blocks;
-             for (int i = 0; i < enemy.Count; i++)
-             {
-                 Rectangle = new Rectangle((int)enemy[i].Position.X, (int)enemy[i].Position.Y, enemy[i].Texture.Width, enemy[i].Texture.Height);
-                 for (int j = 0; j < block.Count; j++)
-                 {
-                     if (TouchLeft(block[j]) || TouchRight(block[j]))
-                     {
-                         collideEnemy[i] = true;
-                     }
-
-                 }         
-                 if (enemy[i].Position.X >= 780)
-                 {
-                     collideA= true;
-                 }
-                 else if (enemy[i].Position.X <= 0)
-                 {
-                     collideA= false;
-                 }
-             }*/
-
-            detectEnemyCollison();
-            //detectTwoEnemyCollison();
-        }
-
-        public void detectEnemyCollison()
-        {
-            List<ISprite> enemy = gobj.enemies;
-            List<ISprite> block = gobj.blocks;
-            for (int i = 0; i < enemy.Count; i++)
+            foreach(MovingEnemy a in gobj.enemies)
             {
-                Rectangle = new Rectangle((int)enemy[i].Position.X, (int)enemy[i].Position.Y, enemy[i].Texture.Width, enemy[i].Texture.Height);
-                for (int j = 0; j < block.Count; j++)
+                foreach(MovingEnemy b in gobj.enemies)
                 {
-                    Rectangle Rectangle1 = new Rectangle((int)block[j].Position.X, (int)block[j].Position.Y, block[j].Texture.Width, block[j].Texture.Height);
-                    if (Rectangle.X >= Rectangle1.X)
+                    if (!a.Texture.Equals(b.Texture))
                     {
-                        enemy[i].collide = true;
+                        Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
+                        Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
+                        if (RectangleA.Intersects(RectangleB))
+                        {
+                            a.crash = true;
+                        }
                     }
-
-                }
-                if (Rectangle.X >= 780)
-                {
-                    enemy[i].collideA = true;
-                }
-                else if (Rectangle.X <= 0)
-                {
-                    enemy[i].collideA = false;
+                        
+                    
                 }
             }
         }
-        public void detectTwoEnemyCollison()
-        {
-            List<ISprite> enemy = gobj.enemies;
-            //List<ISprite> block = gobj.blocks;
-            for (int i = 0; i < enemy.Count; i++)
-            {
-                Rectangle = new Rectangle((int)enemy[i].Position.X, (int)enemy[i].Position.Y, enemy[i].Texture.Width, enemy[i].Texture.Height);
-                for (int j = 0; j < enemy.Count; j++)
-                {
-                    if (enemy[i].Position.X == enemy[j].Position.X)
-                    {
-                        enemy[i].collideA = true;
-                    }
 
-                }
-            }
-        }
 
         public bool TouchLeft(ISprite collide)
         {

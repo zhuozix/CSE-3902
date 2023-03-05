@@ -12,7 +12,8 @@ namespace Sprint0.Blocks
 {
 	internal class AnimatedBlockSprite : ISprite
 	{
-		public Texture2D Texture { get; set; }
+        public bool crash { get; set; }
+        public Texture2D Texture { get; set; }
 		public int Rows { get; set; }
 		public int Columns { get; set; }
 		public Vector2 Position { get; set; }
