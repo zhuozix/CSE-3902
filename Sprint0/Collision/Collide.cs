@@ -40,6 +40,7 @@ namespace Sprint0.Collision
         public void Update(GameTime gameTime)
         {
             bool found = false;
+            IStateChangeManager changeState = null;
 
             // enemy and enemy
             foreach(MovingEnemy a in gobj.enemies)
@@ -78,7 +79,8 @@ namespace Sprint0.Collision
                         if (RectangleA.Intersects(RectangleB))
                         {
                             a.crash = true;                          
-                            BlockChangeManager blockChange = new BlockChangeManager(b, factory, gobj);
+                            changeState = new BlockChangeManager(b, factory, gobj);
+                            changeState.changeState();
                             found = true;
                             break;
                         }

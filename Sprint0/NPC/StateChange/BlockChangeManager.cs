@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0.NPC.StateChange
 {
-    class BlockChangeManager
+    class BlockChangeManager : IStateChangeManager
     {
         public ISprite blockSprite;
         SpritesFactory factory;
@@ -20,9 +20,12 @@ namespace Sprint0.NPC.StateChange
             blockSprite = enterSprites;
             factory = factoryIn;
             objManager = objManagerIn;
+            
+        }
+        public void changeState()
+        {
             blockTransition();
         }
-
 
         private void blockTransition()
         {
