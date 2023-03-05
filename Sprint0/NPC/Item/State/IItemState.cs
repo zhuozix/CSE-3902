@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Sprint0.EntityClasses.Item.State
+namespace Sprint0.NPC.Item.State
 {
     public interface IItemState
     {

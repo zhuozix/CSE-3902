@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Item
+namespace Sprint0.NPC.Item
 {
     internal class FireBallSprite : MovingAnimatedSprite
     {
@@ -24,7 +24,7 @@ namespace Sprint0.Item
             : base(texture, position, rows, cols, graphics, moveDirection)
         {
             this.graphics = graphics;
-            this.originalPosition = position;
+            originalPosition = position;
             this.moveDirection = moveDirection;
             this.isFliped = isFliped;
             xDirection = moveDirection;
@@ -37,7 +37,7 @@ namespace Sprint0.Item
             float currHeight = position.Y;
             float currWidth = position.X;
             float maxHeight = graphics.PreferredBackBufferHeight - (Texture.Height + 1);
-            float maxWidth = graphics.PreferredBackBufferWidth - (Texture.Width / this.totalFrames + 1);
+            float maxWidth = graphics.PreferredBackBufferWidth - (Texture.Width / totalFrames + 1);
             float minHeight = graphics.PreferredBackBufferHeight - 50;
             float minWidth = 0;
 

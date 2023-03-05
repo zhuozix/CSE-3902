@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Factory;
-using Sprint0.Item;
+using Sprint0.NPC.Item;
 using Sprint0.MarioPlayer.State.PowerupState;
 using Sprint0.Sprites;
 

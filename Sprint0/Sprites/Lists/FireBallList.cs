@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Item;
+using Sprint0.NPC.Item;
 using System;
 using System.Collections;
 using System.Collections.Generic;

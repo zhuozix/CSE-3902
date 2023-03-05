@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Content;
 using Sprint0.Sprites;
 using System.Collections;
-using Sprint0.Enemy;
+using Sprint0.NPC.Enemy;
 using Sprint0.Factory;
 using Sprint0.MarioPlayer;
 using Sprint0.Sprites.Lists;
@@ -38,15 +38,9 @@ namespace Sprint0
          */
         public SpritesFactory spritesFactory;
 
-        /*
-         * Current Sprites
-         */
         //Mario
         public Mario mario;
-        //Npc
-        public ISprite currentEnemy;
-        public ISprite currentBlock;
-        public ISprite currentItem;
+ 
 
         /*
          *  Sprites Lists
@@ -99,7 +93,7 @@ namespace Sprint0
 
 
 
-            Collision = new Collide(gameObjectManager);
+            Collision = new Collide(this);
 
             base.Initialize();
         }
@@ -142,30 +136,11 @@ namespace Sprint0
         protected override void Update(GameTime gameTime)
         {
             
-
-            //display the sprite from the sprite list one at a time.
-            //currentEnemy = (ISprite)enemyList[DisplayEnemy];
-            //currentBlock = (ISprite)blockList[DisplayBlock];
-            //currentItem = (ISprite)itemList[DisplayItem];
-            
             keyboardController.UpdateInput();
-            //Players
-            //mario.Update(gameTime);
+
             Collision.Update(gameTime);
-            //Blocks
-            //currentBlock.Update(gameTime);
+
             gameObjectManager.update(gameTime);
-
-            //Items
-            //currentItem.Update(gameTime);
-
-
-            
-            //Enemies
-            //currentEnemy.Update(gameTime);
-
-            //Fireballs
-            //fireBallList.Update(gameTime);
 
             camera.MoveCamera(mario);
 

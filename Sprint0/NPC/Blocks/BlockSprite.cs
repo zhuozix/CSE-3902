@@ -8,10 +8,11 @@ using Microsoft.Xna.Framework;
 using System.Threading;
 using Sprint0.Sprites;
 
-namespace Sprint0.Blocks
+namespace Sprint0.NPC.Blocks
 {
     internal class BlockSprite : ISprite
     {
+        public string Name { get; set; }
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
@@ -48,9 +49,9 @@ namespace Sprint0.Blocks
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)Position.X, (int)Position.Y, width * Game1.scale , height * Game1.scale);
+            Rectangle destinationRectangle = new Rectangle((int)Position.X, (int)Position.Y, width * Game1.scale, height * Game1.scale);
 
-           
+
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
 
         }

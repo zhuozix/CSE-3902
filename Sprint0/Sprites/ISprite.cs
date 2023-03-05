@@ -10,6 +10,7 @@ namespace Sprint0.Sprites
 {
     public interface ISprite
     {
+        string Name { get; set; }
         Vector2 Position { get; set; }
 
         Texture2D Texture { get; }

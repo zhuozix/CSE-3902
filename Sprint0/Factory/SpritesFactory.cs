@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint0.Blocks;
-using Sprint0.Enemy;
-using Sprint0.Item;
+using Sprint0.NPC.Blocks;
+using Sprint0.NPC.Enemy;
+using Sprint0.NPC.Item;
 using Sprint0.Sprites;
 using Sprint0.Content;
 using System;
@@ -109,24 +109,37 @@ namespace Sprint0.Factory
         }
         public ISprite getCoinBlockSprite()
         {
-            return new AnimatedBlockSprite(texture_CoinBlock, 1, 3, new Vector2(100, 100));
+            ISprite sprite = new AnimatedBlockSprite(texture_CoinBlock, 1, 3, new Vector2(100, 100));
+            sprite.Name = "CoinBlock";
+            return sprite;
         }
+
         public ISprite getBrickBlockSprite() 
         {
-            return new BlockSprite(texture_BrickBlock, 1, 1, new Vector2(200, 100));
+            ISprite sprite = new BlockSprite(texture_BrickBlock, 1, 1, new Vector2(200, 100));
+            sprite.Name = "BrickBlock";
+            return sprite;
         }
 		public ISprite getFloorBlockSprite()
 		{
-			return new BlockSprite(texture_FloorBlock, 1, 1, new Vector2(300, 100));
+            ISprite sprite = new BlockSprite(texture_FloorBlock, 1, 1, new Vector2(300, 100));
+            sprite.Name = "FloorBlock";
+            return sprite;
 		}
 		public ISprite getStairBlockSprite()
 		{
-			return new BlockSprite(texture_StairBlock, 1, 1, new Vector2(400, 100));
+            ISprite sprite = new BlockSprite(texture_StairBlock, 1, 1, new Vector2(400, 100));
+            sprite.Name = "StairBlock";
+            return sprite;
 		}
 		public ISprite getUsedBlockSprite()
 		{
-			return new BlockSprite(texture_UsedBlock, 1, 1, new Vector2(500, 100));
+            ISprite sprite = new BlockSprite(texture_UsedBlock, 1, 1, new Vector2(500, 100));
+            sprite.Name = "UsedBlock";
+            return sprite;
 		}
+
+
 		public ISprite getGreenPipeBlockSprite()
 		{
 			return new BlockSprite(texture_GreenPipeBlock, 1, 1, new Vector2(600, 100));

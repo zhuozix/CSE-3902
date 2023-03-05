@@ -10,7 +10,7 @@ using Sprint0.ObjectManager;
 using Sprint0.Collision;
 using System.Diagnostics;
 
-namespace Sprint0.Enemy
+namespace Sprint0.NPC.Enemy
 {
     public class MovingEnemy : SpriteE
     {
@@ -29,7 +29,7 @@ namespace Sprint0.Enemy
         {
             this.graphics = graphics;
             originalPosition = position;
-            this.moveDirectionX = moveDirection;
+            moveDirectionX = moveDirection;
             crash = false;
         }
         public override void Update(GameTime gameTime)
@@ -48,14 +48,14 @@ namespace Sprint0.Enemy
             Velocity = new Vector2(moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirectionX, moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirectionY);
 
             position += Velocity;
-            if (this.crash)
+            if (crash)
             {
-                
-                moveDirectionX = moveDirectionX * (-1);
-                position += new Vector2(5*moveDirectionX, 0);
-                this.crash = false;
+
+                moveDirectionX = moveDirectionX * -1;
+                position += new Vector2(5 * moveDirectionX, 0);
+                crash = false;
             }
-            if(moveDirectionX != 0)
+            if (moveDirectionX != 0)
             {
                 if (currentx >= 780)
                 {
@@ -66,7 +66,7 @@ namespace Sprint0.Enemy
                     moveDirectionX = 1;
                 }
             }
-            
+
         }
 
     }

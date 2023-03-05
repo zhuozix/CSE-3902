@@ -7,21 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint0.Item
+namespace Sprint0.NPC.Item
 {
-    internal class StarSprite : MovingAnimatedSprite
+    internal class GreenMushroomSprite : MovingNoneAnimatedSprite
     {
+
         private GraphicsDeviceManager graphics;
         private Vector2 originalPosition;
         //1 means right and down, -1 means move left and up
         private int moveDirection;
         static float moveSpeed = 100f;
         private int xDirection = 1;
-        public StarSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection)
+        public GreenMushroomSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection)
             : base(texture, position, rows, cols, graphics, moveDirection)
         {
             this.graphics = graphics;
-            this.originalPosition = position;
+            originalPosition = position;
             this.moveDirection = moveDirection;
         }
 
@@ -30,32 +31,17 @@ namespace Sprint0.Item
             float currHeight = position.Y;
             float currWidth = position.X;
             float maxHeight = graphics.PreferredBackBufferHeight - (Texture.Height + 1);
-            float maxWidth = graphics.PreferredBackBufferWidth - (Texture.Width / this.totalFrames + 1);
-            float minHeight = graphics.PreferredBackBufferHeight - 50;
+            float maxWidth = graphics.PreferredBackBufferWidth - (Texture.Width + 1);
+            float minHeight = 0;
             float minWidth = 0;
-
-            timeSinceLastFrameTransition += gameTime.ElapsedGameTime.TotalSeconds;
-            if (timeSinceLastFrameTransition > animateFrequency)
-            {
-                timeSinceLastFrameTransition = 0;
-                currentFrame++;
-                if (currentFrame == totalFrames)
-                {
-                    currentFrame = 0;
-                }
-            }
-
             if (currHeight >= maxHeight)
             {
-                moveDirection = -moveDirection;
-            }
-            else if (currHeight <= minHeight && moveDirection < 0)
-            {
-                moveDirection = -moveDirection;
+                position.Y = maxHeight;
             }
 
             if (Position.X >= maxWidth && xDirection > 0)
             {
+                position.X = maxWidth - 1;
                 xDirection = -xDirection;
             }
             else if (Position.X <= minWidth && xDirection < 0)

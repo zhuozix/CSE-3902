@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sprint0.Enemy;
 using Sprint0.Sprites;
 
-namespace Sprint0.Enemy
+namespace Sprint0.NPC.Enemy
 {
     public abstract class SpriteE : ISprite
     {
+        public string Name { get; set; }
         public static double animateFrequency = 0.9 / 5.0;
         public bool crash { get; set; }
         private Texture2D texture;
@@ -33,16 +33,16 @@ namespace Sprint0.Enemy
         public int Width { get { return texture.Width; } }
         public int Height { get { return texture.Height; } }
 
-        public bool collideA { get; set ; }
+        public bool collideA { get; set; }
 
         public SpriteE(Texture2D texture, Vector2 position, int rows, int cols)
         {
             this.texture = texture;
-            this.numRows = rows;
-            this.numCols = cols;
+            numRows = rows;
+            numCols = cols;
             this.position = position;
-            this.currentFrame = 0;
-            this.totalFrames = numRows * numCols;
+            currentFrame = 0;
+            totalFrames = numRows * numCols;
         }
         public abstract void Update(GameTime gameTime);
         public void Draw(SpriteBatch _spriteBatch, bool isFlipped)
@@ -63,9 +63,9 @@ namespace Sprint0.Enemy
             {
                 spriteEffect = SpriteEffects.None;
             }
-            
+
             _spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, spriteEffect, 0);
-            
+
 
         }
 
