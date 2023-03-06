@@ -111,7 +111,7 @@ namespace Sprint0.LevelLoader
 
         public static void processBlock(XmlReader xml, GameObjectManager gameObjectManager, SpritesFactory factory)
         {
-            
+            long xPos2;
             long xPos = Int64.Parse(xml.GetAttribute("xPos"));
             long yPos = Int64.Parse(xml.GetAttribute("yPos"));
             ISprite obj;
@@ -158,10 +158,20 @@ namespace Sprint0.LevelLoader
                     gameObjectManager.addObject(obj, "block");
                     break;
                 case "FloorBlockStretch":
-                    long xPos2 = Int64.Parse(xml.GetAttribute("xPos2"));
+                    xPos2 = Int64.Parse(xml.GetAttribute("xPos2"));
                     while(xPos <= xPos2)
                     {
                         obj = factory.getFloorBlockSprite();
+                        obj.Position = new Vector2(xPos, yPos);
+                        gameObjectManager.addObject(obj, "block");
+                        xPos += 16 * Game1.scale;
+                    }
+                    break;
+                case "StairBlockStretch":
+                    xPos2 = Int64.Parse(xml.GetAttribute("xPos2"));
+                    while (xPos <= xPos2)
+                    {
+                        obj = factory.getStairBlockSprite();
                         obj.Position = new Vector2(xPos, yPos);
                         gameObjectManager.addObject(obj, "block");
                         xPos += 16 * Game1.scale;

@@ -26,6 +26,8 @@
 
 		<BrickBlock xPos="2462" yPos="288"></BrickBlock>
 		<BrickBlock xPos="2528" yPos="288"></BrickBlock>
+
+		<CoinBlock xPos="2496" yPos="288"></CoinBlock>
 		
 		<BrickBlock xPos="2560" yPos="160"></BrickBlock>
 		<BrickBlock xPos="2592" yPos="160"></BrickBlock>
@@ -35,14 +37,82 @@
 		<BrickBlock xPos="2720" yPos="160"></BrickBlock>
 		<BrickBlock xPos="2752" yPos="160"></BrickBlock>
 		<BrickBlock xPos="2784" yPos="160"></BrickBlock>
+
+		<BrickBlock xPos="2912" yPos="160"></BrickBlock>
+		<BrickBlock xPos="2944" yPos="160"></BrickBlock>
+		<BrickBlock xPos="2976" yPos="160"></BrickBlock>
+
+		<CoinBlock xPos="3008" yPos="160"></CoinBlock>
+
+		<BrickBlock xPos="3008" yPos="288"></BrickBlock>
+
+		<BrickBlock xPos="3200" yPos="288"></BrickBlock>
+		<BrickBlock xPos="3232" yPos="288"></BrickBlock>
+
+		<CoinBlock xPos="3392" yPos="288"></CoinBlock>
+		<CoinBlock xPos="3488" yPos="288"></CoinBlock>
+		<CoinBlock xPos="3488" yPos="160"></CoinBlock>
+		<CoinBlock xPos="3584" yPos="288"></CoinBlock>
+
+		<BrickBlock xPos="3776" yPos="288"></BrickBlock>
+
+		<BrickBlock xPos="3872" yPos="160"></BrickBlock>
+		<BrickBlock xPos="3904" yPos="160"></BrickBlock>
+		<BrickBlock xPos="3936" yPos="160"></BrickBlock>
+
+		<BrickBlock xPos="4096" yPos="160"></BrickBlock>
+		<CoinBlock xPos="4128" yPos="160"></CoinBlock>
+		<CoinBlock xPos="4160" yPos="160"></CoinBlock>
+		<BrickBlock xPos="4192" yPos="160"></BrickBlock>
+
+		<BrickBlock xPos="4128" yPos="288"></BrickBlock>
+		<BrickBlock xPos="4160" yPos="288"></BrickBlock>
+
+		<StairBlockStretch xPos="4288" yPos="384" xPos2="4384"></StairBlockStretch>
+		<StairBlockStretch xPos="4320" yPos="352" xPos2="4384"></StairBlockStretch>
+		<StairBlockStretch xPos="4352" yPos="320" xPos2="4384"></StairBlockStretch>
+		<StairBlock xPos="4384" yPos="288"></StairBlock>
+
+		<StairBlock xPos="4480" yPos="288"></StairBlock>
+		<StairBlockStretch xPos="4480" yPos="320" xPos2="4512"></StairBlockStretch>
+		<StairBlockStretch xPos="4480" yPos="352" xPos2="4544"></StairBlockStretch>
+		<StairBlockStretch xPos="4480" yPos="384" xPos2="4576"></StairBlockStretch>
+
+		<StairBlockStretch xPos="4736" yPos="384" xPos2="4864"></StairBlockStretch>
+		<StairBlockStretch xPos="4768" yPos="352" xPos2="4864"></StairBlockStretch>
+		<StairBlockStretch xPos="4800" yPos="320" xPos2="4864"></StairBlockStretch>
+		<StairBlockStretch xPos="4832" yPos="288" xPos2="4864"></StairBlockStretch>
+
+		<StairBlock xPos="4960" yPos="288"></StairBlock>
+		<StairBlockStretch xPos="4960" yPos="320" xPos2="4992"></StairBlockStretch>
+		<StairBlockStretch xPos="4960" yPos="352" xPos2="5024"></StairBlockStretch>
+		<StairBlockStretch xPos="4960" yPos="384" xPos2="5056"></StairBlockStretch>
 		
+		<BrickBlock xPos="5376" yPos="288"></BrickBlock>
+		<BrickBlock xPos="5408" yPos="288"></BrickBlock>
+		<BrickBlock xPos="5472" yPos="288"></BrickBlock>
 		
-		<CoinBlock xPos="2496" yPos="288"></CoinBlock>
+		<CoinBlock xPos="5440" yPos="288"></CoinBlock>
+
+		<StairBlockStretch xPos="5792" yPos="384" xPos2="6048"></StairBlockStretch>
+		<StairBlockStretch xPos="5824" yPos="352" xPos2="6048"></StairBlockStretch>
+		<StairBlockStretch xPos="5856" yPos="320" xPos2="6048"></StairBlockStretch>
+		<StairBlockStretch xPos="5888" yPos="288" xPos2="6048"></StairBlockStretch>
+
+		<StairBlockStretch xPos="5920" yPos="256" xPos2="6048"></StairBlockStretch>
+		<StairBlockStretch xPos="5952" yPos="224" xPos2="6048"></StairBlockStretch>
+		<StairBlockStretch xPos="5984" yPos="192" xPos2="6048"></StairBlockStretch>
+		<StairBlockStretch xPos="6016" yPos="160" xPos2="6048"></StairBlockStretch>
+
+		<StairBlock xPos="4384" yPos="288"></StairBlock>
 
 		<GreenPipeSmall xPos="896" yPos="352"></GreenPipeSmall>
 		<GreenPipeMedium xPos="1216" yPos="320"></GreenPipeMedium>
 		<GreenPipeLarge xPos="1472" yPos="288"></GreenPipeLarge>
 		<GreenPipeLarge xPos="1824" yPos="288"></GreenPipeLarge>
+
+		<GreenPipeSmall xPos="5216" yPos="352"></GreenPipeSmall>
+		<GreenPipeSmall xPos="5728" yPos="352"></GreenPipeSmall>
 	</Blocks>
 	<Enemies>
 		<Goomba xPos="250" yPos="386"></Goomba>
@@ -53,6 +123,6 @@
 		
 	</Items>
 	<Player>
-		<Mario xPos="200" yPos="386"></Mario>
+		<Mario xPos="200" yPos="140"></Mario>
 	</Player>
 </Level>
