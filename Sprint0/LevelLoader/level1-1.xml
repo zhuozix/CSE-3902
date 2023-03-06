@@ -3,11 +3,6 @@
 		<bg-1-1></bg-1-1>
 	</Background>
 	<Blocks>
-		<CoinBlock xPos="510" yPos="286"></CoinBlock>
-		<CoinBlock xPos="670" yPos="286"></CoinBlock>
-		<CoinBlock xPos="734" yPos="286"></CoinBlock>
-		<CoinBlock xPos="702" yPos="158"></CoinBlock>
-
 		<FloorBlockStretch xPos="0" yPos="416" xPos2="2176"></FloorBlockStretch>
 		<FloorBlockStretch xPos="0" yPos="448" xPos2="2176"></FloorBlockStretch>
 
@@ -19,10 +14,32 @@
 
 		<FloorBlockStretch xPos="4960" yPos="416" xPos2="6720"></FloorBlockStretch>
 		<FloorBlockStretch xPos="4960" yPos="448" xPos2="6720"></FloorBlockStretch>
+		
+		<CoinBlock xPos="510" yPos="286"></CoinBlock>
+		<CoinBlock xPos="670" yPos="286"></CoinBlock>
+		<CoinBlock xPos="734" yPos="286"></CoinBlock>
+		<CoinBlock xPos="702" yPos="158"></CoinBlock>
 
-		<BrickBlock xPos="640" yPos="386"></BrickBlock>
+		<BrickBlock xPos="640" yPos="286"></BrickBlock>
 		<BrickBlock xPos="704" yPos="286"></BrickBlock>
 		<BrickBlock xPos="768" yPos="286"></BrickBlock>
+
+		<BrickBlock xPos="2462" yPos="288"></BrickBlock>
+		<BrickBlock xPos="2528" yPos="288"></BrickBlock>
+		
+		<BrickBlock xPos="2560" yPos="160"></BrickBlock>
+		<BrickBlock xPos="2592" yPos="160"></BrickBlock>
+		<BrickBlock xPos="2624" yPos="160"></BrickBlock>
+		<BrickBlock xPos="2656" yPos="160"></BrickBlock>
+		<BrickBlock xPos="2688" yPos="160"></BrickBlock>
+		<BrickBlock xPos="2720" yPos="160"></BrickBlock>
+		<BrickBlock xPos="2752" yPos="160"></BrickBlock>
+		<BrickBlock xPos="2784" yPos="160"></BrickBlock>
+		
+		
+		<CoinBlock xPos="2496" yPos="288"></CoinBlock>
+
+		<GreenPipe xPos="896" yPos="352"></GreenPipe>
 	</Blocks>
 	<Enemies>
 		<Goomba xPos="250" yPos="386"></Goomba>
