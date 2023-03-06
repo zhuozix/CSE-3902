@@ -142,8 +142,18 @@ namespace Sprint0.LevelLoader
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
                     break;
-                case "GreenPipe":
-                    obj = factory.getGreenPipeBlockSprite();
+                case "GreenPipeLarge":
+                    obj = factory.getGreenPipeLargeSprite();
+                    obj.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(obj, "block");
+                    break;
+                case "GreenPipeMedium":
+                    obj = factory.getGreenPipeMediumSprite();
+                    obj.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(obj, "block");
+                    break;
+                case "GreenPipeSmall":
+                    obj = factory.getGreenPipeSmallSprite();
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
                     break;

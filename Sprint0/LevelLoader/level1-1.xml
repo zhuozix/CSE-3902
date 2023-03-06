@@ -39,7 +39,10 @@
 		
 		<CoinBlock xPos="2496" yPos="288"></CoinBlock>
 
-		<GreenPipe xPos="896" yPos="352"></GreenPipe>
+		<GreenPipeSmall xPos="896" yPos="352"></GreenPipeSmall>
+		<GreenPipeMedium xPos="1216" yPos="320"></GreenPipeMedium>
+		<GreenPipeLarge xPos="1472" yPos="288"></GreenPipeLarge>
+		<GreenPipeLarge xPos="1824" yPos="288"></GreenPipeLarge>
 	</Blocks>
 	<Enemies>
 		<Goomba xPos="250" yPos="386"></Goomba>

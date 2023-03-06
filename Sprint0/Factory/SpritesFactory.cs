@@ -28,10 +28,12 @@ namespace Sprint0.Factory
 		public Texture2D texture_FloorBlock;
 		public Texture2D texture_StairBlock;
 		public Texture2D texture_UsedBlock;
-		public Texture2D texture_GreenPipeBlock;
+		public Texture2D texture_GreenPipeLarge;
+        public Texture2D texture_GreenPipeMedium;
+        public Texture2D texture_GreenPipeSmall;
 
-		// Items
-		public Texture2D texture_FireFlower;
+        // Items
+        public Texture2D texture_FireFlower;
         public Texture2D texture_Star;
         public Texture2D texture_GreenMush;
         public Texture2D texture_RedMush;
@@ -62,10 +64,12 @@ namespace Sprint0.Factory
             texture_FloorBlock = content.Load<Texture2D>("Blocks/floorBlock");
 			texture_StairBlock = content.Load<Texture2D>("Blocks/stairblock");
 			texture_UsedBlock = content.Load<Texture2D>("Blocks/usedblock");
-			texture_GreenPipeBlock = content.Load<Texture2D>("Blocks/GreenPipe");
+			texture_GreenPipeLarge = content.Load<Texture2D>("Blocks/GreenPipeLarge");
+            texture_GreenPipeMedium = content.Load<Texture2D>("Blocks/GreenPipeMedium");
+            texture_GreenPipeSmall = content.Load<Texture2D>("Blocks/GreenPipeSmall");
 
-			// Items
-			texture_FireFlower = content.Load<Texture2D>("fireFlower");
+            // Items
+            texture_FireFlower = content.Load<Texture2D>("fireFlower");
             texture_Star = content.Load<Texture2D>("star");
             texture_GreenMush = content.Load<Texture2D>("greenMushroom");
             texture_RedMush = content.Load<Texture2D>("redMushroom");
@@ -85,7 +89,7 @@ namespace Sprint0.Factory
 			blockList.Add(getFloorBlockSprite());
 			blockList.Add(getStairBlockSprite());
 			blockList.Add(getUsedBlockSprite());
-			blockList.Add(getGreenPipeBlockSprite());
+			blockList.Add(getGreenPipeSmallSprite());
 		}
         public void addAllItems(ArrayList itemList)
         {
@@ -143,15 +147,31 @@ namespace Sprint0.Factory
             sprite.state = "Normal";
             return sprite;
 		}
-		public ISprite getGreenPipeBlockSprite()
+		public ISprite getGreenPipeLargeSprite()
 		{
-            ISprite sprite = new BlockSprite(texture_GreenPipeBlock, 1, 1, new Vector2(600, 100));
+            ISprite sprite = new BlockSprite(texture_GreenPipeLarge, 1, 1, new Vector2(600, 100));
             sprite.Name = "GreenPipe";
             sprite.state = "Normal";
             return sprite;
 		}
 
-		public ISprite getFireFlowerSprite()
+        public ISprite getGreenPipeMediumSprite()
+        {
+            ISprite sprite = new BlockSprite(texture_GreenPipeMedium, 1, 1, new Vector2(600, 100));
+            sprite.Name = "GreenPipe";
+            sprite.state = "Normal";
+            return sprite;
+        }
+
+        public ISprite getGreenPipeSmallSprite()
+        {
+            ISprite sprite = new BlockSprite(texture_GreenPipeSmall, 1, 1, new Vector2(600, 100));
+            sprite.Name = "GreenPipe";
+            sprite.state = "Normal";
+            return sprite;
+        }
+
+        public ISprite getFireFlowerSprite()
         {
             ISprite sprite = new FireFlowerSprite(texture_FireFlower, new Vector2(100, 300), 1, 4);;
             sprite.Name = "FireFlower";
