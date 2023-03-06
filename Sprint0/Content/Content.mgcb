@@ -49,7 +49,7 @@
 /processorParam:TextureFormat=Color
 /build:Blocks/floorBlock.png
 
-#begin Blocks/GreenPipe.png
+#begin Blocks/GreenPipeLarge.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,7 +59,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Blocks/GreenPipe.png
+/build:Blocks/GreenPipeLarge.png
+
+#begin Blocks/GreenPipeMedium.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Blocks/GreenPipeMedium.png
+
+#begin Blocks/GreenPipeSmall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Blocks/GreenPipeSmall.png
 
 #begin Blocks/questionBlock.png
 /importer:TextureImporter
