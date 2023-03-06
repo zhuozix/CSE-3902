@@ -40,7 +40,8 @@ namespace Sprint0
 
         //Mario
         public Mario mario;
- 
+        public int coins;
+        public int life;
 
         /*
          *  Sprites Lists
@@ -91,7 +92,8 @@ namespace Sprint0
             enemyList = new ArrayList();
             fireBallList = new FireBallList();
 
-
+            coins = 0;
+            life = 3;
 
             Collision = new Collide(this);
 

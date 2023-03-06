@@ -31,100 +31,96 @@ namespace Sprint0.Collision
         public List<bool> collideEnemy { get; set; }
         public List<bool> collidePlayer { get; set; }
         public bool fall { get; set; }
+        Game1 game;
         public Collide(Game1 gameInstance)
         {
             this.gobj = gameInstance.gameObjectManager;
             this.factory = gameInstance.spritesFactory;
+            game = gameInstance;
         }
 
         public void Update(GameTime gameTime)
         {
             bool found = false;
-            IStateChangeManager changeState = null;
 
-            // enemy and enemy
-            foreach(MovingEnemy a in gobj.enemies)
-            {
-                foreach(MovingEnemy b in gobj.enemies)
-                {
-                    if (found) { break; }
-                    if (!a.Texture.Equals(b.Texture))
-                    {
-                        Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
-                        Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
-                        if (RectangleA.Intersects(RectangleB))
-                        {
-                            a.crash = true;
-                            found = true;
-                            break;
-                        }
-                    }
-                        
-                    
-                }
-            }
+            // enemy and enemy does not collide
+            // enemy and item does not collide
 
-            //enemy and block
+            // enemy and block
             foreach(MovingEnemy a in gobj.enemies)
             {
                 foreach (ISprite b in gobj.blocks)
                 {
                     if (found) { break; }
-                    if (!a.Texture.Equals(b.Texture))
-                    {
+                    
                         Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
                         Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
                         if (RectangleA.Intersects(RectangleB))
                         {
                             a.crash = true;                          
-                            changeState = new BlockChangeManager(b, factory, gobj);
-                            changeState.changeState();
-                            found = true;
-                            break;
                         }
-                    }  
+                     
                     
                 }
             }
 
             //Mario and block
+            found = false;
             foreach (Mario a in gobj.players)
             {
                 foreach (ISprite b in gobj.blocks)
                 {
-                    if (!a.Texture.Equals(b.Texture))
+                    if (found) { break; }
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width )/3, a.Texture.Height);
+                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
+                    Rectangle = RectangleA;
+                    if (RectangleA.Intersects(RectangleB))
                     {
-                        Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width )/3, a.Texture.Height);
-                        Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
-                        Rectangle = RectangleA;
-                        if (RectangleA.Intersects(RectangleB))
-                        {
-                            a.crash = true;
-                            
-                        }
+                       a.crash = true;
+                       BlockChangeManager changeState = new BlockChangeManager(b, factory, gobj);
+                       changeState.changeState();
+                       found = true;
+                       break;
                     }
-
-
                 }
             }
+
+
             //mario and enemy
+            found = false;
             foreach (Mario a in gobj.players)
             {
                 foreach (ISprite b in gobj.enemies)
                 {
-                    if (!a.Texture.Equals(b.Texture))
-                    {
+                    if (found) { break; }
                         Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
                         Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
                         if (RectangleA.Intersects(RectangleB))
                         {
+                            //Kill the enemy
+                            if(RectangleB.Top > RectangleA.Top)
+                            {
+                                found = true;
+                            EnemyChangeManager changeState = new EnemyChangeManager(b, game);
+                            changeState.attackedByFireball();
+                            changeState.changeState();
+                            break;
+                            }
+                            else
+                            {
+                            //killed by enemy
                             a.crash = true;
                             a.TakeDamage();
+                            }
+                            
                         }
-                    }
 
 
                 }
+
+                // Item and mario
+
+                // Item and block
             }
         }
 

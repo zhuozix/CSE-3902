@@ -18,11 +18,11 @@ namespace Sprint0.NPC.StateChange
         GameObjectManager objManager;
         bool touchedByFireball = false;
         
-        public EnemyChangeManager(ISprite enemyIn, SpritesFactory factoryIn, GameObjectManager objIn) 
+        public EnemyChangeManager(ISprite enemyIn, Game1 gameInstance) 
         {
             currentEnemy= enemyIn;
-            factory = factoryIn;
-            objManager = objIn;
+            factory = gameInstance.spritesFactory;
+            objManager = gameInstance.gameObjectManager;
         }
         public void attackedByFireball()
         {
@@ -30,22 +30,22 @@ namespace Sprint0.NPC.StateChange
         }
         public void changeState()
         {
-
+            enemyTransition();
         }
 
-        private void findNextState()
+        private void enemyTransition()
         {
             switch (currentEnemy.Name)
             {
                 case "Koopa":
-                    koopaStateChange();break;
+                    koopaTransition();break;
                 case "Gommba":
-                    gommbaStateChange();break;
+                    gommbaTransition();break;
                 default: break;
             }
         }
 
-        private void gommbaStateChange()
+        private void gommbaTransition()
         {
             if (touchedByFireball)
             {
@@ -66,7 +66,7 @@ namespace Sprint0.NPC.StateChange
             }
         }
 
-        private void koopaStateChange()
+        private void koopaTransition()
         {
             if (touchedByFireball)
             {
