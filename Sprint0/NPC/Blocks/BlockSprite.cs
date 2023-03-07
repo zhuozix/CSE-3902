@@ -31,6 +31,8 @@ namespace Sprint0.NPC.Blocks
         private int currentFrame;
         private int totalFrames;
         private Vector2 location;
+        internal double timeSinceLastFrameTransition = 0.0;
+        public static double animateFrequency = 0.9 / 5.0;
 
         public BlockSprite(Texture2D texture, int rows, int columns, Vector2 l)
         {
@@ -41,7 +43,18 @@ namespace Sprint0.NPC.Blocks
             totalFrames = Rows * Columns;
             location = l;
         }
-        public void Update(GameTime gameTime) {/* Not Animated So Do Nothing */}
+        public void Update(GameTime gameTime) {
+            timeSinceLastFrameTransition += gameTime.ElapsedGameTime.TotalSeconds;
+            if (timeSinceLastFrameTransition > animateFrequency)
+            {
+                timeSinceLastFrameTransition = 0;
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                {
+                    currentFrame = 0;
+                }
+            }
+        }
 
         public void Draw(SpriteBatch spriteBatch, bool isFlipped)
         {

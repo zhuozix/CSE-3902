@@ -113,7 +113,7 @@ namespace Sprint0.Factory
         }
         public ISprite getCoinBlockSprite()
         {
-            ISprite sprite = new AnimatedBlockSprite(texture_CoinBlock, 1, 3, new Vector2(100, 100));
+            ISprite sprite = new BlockSprite(texture_CoinBlock, 1, 3, new Vector2(100, 100));
             sprite.Name = "CoinBlock";
             sprite.state = "Normal";
             return sprite;

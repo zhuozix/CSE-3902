@@ -17,7 +17,7 @@ namespace Sprint0.Collision
         public bool fall { get; set; }
 
         public abstract void Update(GameTime gameTime);
-
+        /*
         public bool TouchLeft(ISprite collide);
 
         public bool TouchRight(ISprite collide);
@@ -25,5 +25,6 @@ namespace Sprint0.Collision
         public bool TouchTop(ISprite collide);
 
         public bool TouchBottom(ISprite collide);
+        */
     }
 }

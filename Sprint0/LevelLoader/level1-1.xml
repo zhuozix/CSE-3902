@@ -15,12 +15,12 @@
 		<FloorBlockStretch xPos="4960" yPos="416" xPos2="6720"></FloorBlockStretch>
 		<FloorBlockStretch xPos="4960" yPos="448" xPos2="6720"></FloorBlockStretch>
 		
-		<CoinBlock xPos="510" yPos="286"></CoinBlock>
+		<CoinBlock xPos="510" yPos="386"></CoinBlock>
 		<CoinBlock xPos="670" yPos="286"></CoinBlock>
 		<CoinBlock xPos="734" yPos="286"></CoinBlock>
 		<CoinBlock xPos="702" yPos="158"></CoinBlock>
 
-		<BrickBlock xPos="640" yPos="286"></BrickBlock>
+		<BrickBlock xPos="640" yPos="386"></BrickBlock>
 		<BrickBlock xPos="704" yPos="286"></BrickBlock>
 		<BrickBlock xPos="768" yPos="286"></BrickBlock>
 

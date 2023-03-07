@@ -47,21 +47,48 @@ namespace Sprint0.Collision
             // enemy and item does not collide
 
             // enemy and block
-            foreach(MovingEnemy a in gobj.enemies)
+            foreach (MovingEnemy a in gobj.enemies)
             {
                 Velocity = a.velocity;
-                foreach (ISprite b in gobj.blocks)
+                foreach (BlockSprite b in gobj.blocks)
                 {
                     if (found) { break; }
-                    
-                        Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
-                        Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
-                        if (RectangleA.Intersects(RectangleB))
+
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
+                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
+                    if (RectangleA.Intersects(RectangleB))
+                    {
+                        a.crash = true;
+                    }
+
+
+                }
+            }
+
+            // Item and block
+            found = false;
+            foreach (BlockSprite a in gobj.blocks)
+            {
+                foreach (ISprite b in gobj.items)
+                {
+                    if (found) { break; }
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
+                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
+                    if (RectangleA.Intersects(RectangleB))
+                    {
+                        a.crash = true;
+                        if (TouchBottom(a, b))
                         {
-                            a.crash = true;                          
+                            b.velocity = new Vector2(b.velocity.X, 0);
+
+
                         }
-                     
-                    
+                        if (TouchLeft(a, b) || TouchRight(a, b))
+                        {
+                            // move to the opposite direction
+                        }
+
+                    }
                 }
             }
 
@@ -70,34 +97,50 @@ namespace Sprint0.Collision
             foreach (Mario a in gobj.players)
             {
                 Velocity = a.velocity;
-                foreach (ISprite b in gobj.blocks)
+                foreach (BlockSprite b in gobj.blocks)
                 {
                     if (found) { break; }
-                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width ), a.Texture.Height * 2);
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width), a.Texture.Height * 2);
                     Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height * 2);
                     Rectangle = RectangleA;
                     if (Rectangle.Intersects(RectangleB))
                     {
                         a.crash = true;
-                    if(RectangleA.Top <= RectangleB.Top)
-                    {
-                        if(a.velocity.Y > 0)
+                        if (TouchTop(a, b))
+                        {
+                            if (a.velocity.Y > 0)
                             {
                                 a.velocity = new Vector2(a.velocity.X, 0);
-                                
-                            }
-                        
-                    }
-                    else if (RectangleA.Bottom >= RectangleB.Bottom)
-                    {
-                        //a.velocity = new Vector2(a.velocity.X, 150);
-                            a.fallAfterJump();
-                       BlockChangeManager changeState = new BlockChangeManager(b, factory, gobj);
-                       changeState.changeState();
-                       found = true;
-                       break;
 
-                    }
+                            }
+
+                        }
+                        else if (TouchBottom(a, b))
+                        {
+                            //a.velocity = new Vector2(a.velocity.X, 150);
+                            a.fallAfterJump();
+                            BlockChangeManager changeState = new BlockChangeManager(b, factory, gobj);
+                            changeState.changeState();
+                            found = true;
+                            break;
+
+                        }
+                        if (TouchLeft(a, b))
+                        {
+                            if (a.velocity.X > 0)
+                            {
+                                a.velocity = new Vector2(0, a.velocity.Y);
+                            }
+                            a.velocity = Vector2.Zero;
+                        }
+                        if (TouchRight(a, b))
+                        {
+                            if (a.velocity.X < 0)
+                            {
+                                a.velocity = new Vector2(0, a.velocity.Y);
+                            }
+                            a.velocity = Vector2.Zero;
+                        }
 
                     }
                     else
@@ -115,76 +158,98 @@ namespace Sprint0.Collision
                 foreach (ISprite b in gobj.enemies)
                 {
                     if (found) { break; }
-                        Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
-                        Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
-                        if (RectangleA.Intersects(RectangleB))
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
+                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
+                    if (RectangleA.Intersects(RectangleB))
+                    {
+                        //Kill the enemy
+                        if (RectangleB.Top > RectangleA.Top)
                         {
-                            //Kill the enemy
-                            if(RectangleB.Top > RectangleA.Top)
-                            {
-                                found = true;
+                            found = true;
                             EnemyChangeManager changeState = new EnemyChangeManager(b, game);
                             changeState.attackedByFireball();
                             changeState.changeState();
                             break;
-                            }
-                            else
-                            {
+                        }
+                        else
+                        {
                             //killed by enemy
                             a.crash = true;
                             a.TakeDamage();
-                            }
-                            
                         }
 
-
+                    }
                 }
 
-                // Item and mario
+                
 
-                // Item and block
+
+                
             }
+            
+            // Item and mario
+            found = false;
+            foreach (Mario a in gobj.players)
+            {
+                foreach (ISprite b in gobj.items)
+                {
+                    if (found) { break; }
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
+                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
+                    if (RectangleA.Intersects(RectangleB))
+                    {
+                        //eat the item, and item disappear
+
+                    }
+                }
+            }
+
+
         }
 
-
-        public bool TouchLeft(ISprite collide)
+        public bool TouchLeft(ISprite collide1, ISprite collide2)
         {
             bool intersect = false;
-            Rectangle Rectangle1 = new Rectangle((int)collide.Position.X, (int)collide.Position.Y, collide.Texture.Width, collide.Texture.Height);
-            if (Rectangle.Intersects(Rectangle1))
+            Rectangle RectangleA = new Rectangle((int)collide1.Position.X, (int)collide1.Position.Y, collide1.Texture.Width, collide1.Texture.Height);
+            Rectangle RectangleB = new Rectangle((int)collide2.Position.X, (int)collide2.Position.Y, collide2.Texture.Width, collide2.Texture.Height);
+            if (RectangleA.Right + collide1.velocity.X > RectangleB.Left && RectangleA.Left < RectangleB.Left && RectangleA.Bottom > RectangleB.Top && RectangleA.Top < RectangleB.Bottom)
             {
                 intersect = true;
             }
             return intersect;
         }
 
-        public bool TouchRight(ISprite collide)
+        public bool TouchRight(ISprite collide1, ISprite collide2)
         {
             bool intersect = false;
-            Rectangle Rectangle1 = new Rectangle((int)collide.Position.X, (int)collide.Position.Y, collide.Texture.Width, collide.Texture.Height);
-            if (Rectangle.Intersects(Rectangle1))
+            Rectangle RectangleA = new Rectangle((int)collide1.Position.X, (int)collide1.Position.Y, collide1.Texture.Width, collide1.Texture.Height);
+            Rectangle RectangleB = new Rectangle((int)collide2.Position.X, (int)collide2.Position.Y, collide2.Texture.Width, collide2.Texture.Height);
+            if (RectangleA.Left + collide1.velocity.X < RectangleB.Right && RectangleA.Right > RectangleB.Right && RectangleA.Bottom > RectangleB.Top && RectangleA.Top < RectangleB.Bottom)
             {
                 intersect = true;
             }
             return intersect;
         }
 
-        public bool TouchTop(ISprite collide)
+        public bool TouchTop(ISprite collide1, ISprite collide2)
         {
-            Rectangle Rectangle1 = new Rectangle((int)collide.Position.X, (int)collide.Position.Y, collide.Texture.Width, collide.Texture.Height);
-            return this.Rectangle.Bottom + this.Velocity.Y > Rectangle1.Top &&
-                this.Rectangle.Top < Rectangle1.Top &&
-                this.Rectangle.Right > Rectangle1.Left &&
-                this.Rectangle.Left < Rectangle1.Right;
+            Rectangle RectangleA = new Rectangle((int)collide1.Position.X, (int)collide1.Position.Y, collide1.Texture.Width, collide1.Texture.Height);
+            Rectangle RectangleB = new Rectangle((int)collide2.Position.X, (int)collide2.Position.Y, collide2.Texture.Width, collide2.Texture.Height);
+            return RectangleA.Bottom + collide1.velocity.Y > RectangleB.Top &&
+                RectangleA.Top < RectangleB.Top &&
+                RectangleA.Right > RectangleB.Left &&
+                RectangleA.Left < RectangleB.Right;
         }
 
-        public bool TouchBottom(ISprite collide)
+        public bool TouchBottom(ISprite collide1, ISprite collide2)
         {
-            Rectangle Rectangle1 = new Rectangle((int)collide.Position.X, (int)collide.Position.Y, collide.Texture.Width, collide.Texture.Height);
-            return this.Rectangle.Top + this.Velocity.Y < Rectangle1.Bottom &&
-                this.Rectangle.Bottom > Rectangle1.Bottom &&
-                this.Rectangle.Right > Rectangle1.Left &&
-                this.Rectangle.Left < Rectangle1.Right;
+            bool intersect = false;
+            Rectangle RectangleA = new Rectangle((int)collide1.Position.X, (int)collide1.Position.Y, collide1.Texture.Width, collide1.Texture.Height);
+            Rectangle RectangleB = new Rectangle((int)collide2.Position.X, (int)collide2.Position.Y, collide2.Texture.Width, collide2.Texture.Height);
+            return RectangleA.Top + collide1.velocity.Y < RectangleB.Bottom &&
+           RectangleA.Bottom > RectangleB.Top &&
+           RectangleA.Right > RectangleB.Left &&
+           RectangleA.Left < RectangleB.Right;
         }
     }
 }
