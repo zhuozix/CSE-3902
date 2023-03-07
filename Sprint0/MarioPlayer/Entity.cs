@@ -21,8 +21,11 @@ namespace Sprint0.MarioPlayer
         public bool collide { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public bool collideA { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
+        
+
         public virtual void Update(GameTime gameTime)
         {
+
             velocity += (float)gameTime.ElapsedGameTime.TotalSeconds * Acceleration;
             Position += (float)gameTime.ElapsedGameTime.TotalSeconds * velocity;
             Sprite.Update(gameTime);

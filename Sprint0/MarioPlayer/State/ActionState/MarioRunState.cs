@@ -13,11 +13,11 @@ namespace Sprint0.MarioPlayer.State.ActionState
             base.Enter(previousState);
             if (marioEntity.IsFacingRight)
             {
-                marioEntity.velocity = new Vector2(50, 0);
+                marioEntity.velocity = new Vector2(50, 150);
             }
             else
             {
-                marioEntity.velocity = new Vector2(-50, 0);
+                marioEntity.velocity = new Vector2(-50, 150);
             }
         }
 
@@ -58,15 +58,36 @@ namespace Sprint0.MarioPlayer.State.ActionState
             CurrentState.Enter(this);
         }
 
+        public override void RunningTransition()
+        {
+
+        }
+
         public override void TurnLeft()
         {
             if (marioEntity.IsFacingRight)
                 IdleTransition();
+            else
+            {
+                if (!marioEntity.crash)
+                {
+                   marioEntity.velocity = new Vector2(-50, 150);
+                }
+            }
+                
         }
         public override void TurnRight()
         {
             if (!marioEntity.IsFacingRight)
                 IdleTransition();
+            else
+            {
+                if (!marioEntity.crash)
+                {
+                    marioEntity.velocity = new Vector2(50, 150);
+                }
+            }
+                
         }
         public override void Attack() 
         {

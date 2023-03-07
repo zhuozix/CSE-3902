@@ -5,7 +5,8 @@ namespace Sprint0.MarioPlayer.State.ActionState
 {
     public class MarioJumpState : MarioActionState
     {
-        private static float VerticalVelocity = -100;
+        private static float VerticalVelocity = -120;
+        private static float superVerticalVelocity = -180;
         private float timeSpent = 0f;
 
         public MarioJumpState(Mario marioEntity, MarioFactory marioFactory) : base(marioEntity, marioFactory)
@@ -14,6 +15,11 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public override void Enter(IMarioActionState previousState)
         {
             base.Enter(previousState);
+            MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
+            if(powerupStateType != MarioPowerupStateType.Normal)
+            {
+                VerticalVelocity = superVerticalVelocity;
+            }
             marioEntity.velocity += new Vector2(0, VerticalVelocity);
         }
 
@@ -24,21 +30,35 @@ namespace Sprint0.MarioPlayer.State.ActionState
 
         public override void FallingTransition()
         {
-            //Exit();
-            //CurrentState = new MarioFallState(marioEntity, marioFactory);
-            //CurrentState.Enter(this);
+            Exit();
+            CurrentState = new MarioFallState(marioEntity, marioFactory);
+            CurrentState.Enter(this);
         }
 
       
         public override void IdleTransition()
         {
             Exit();
-            CurrentState = new MarioIdleState(marioEntity, marioFactory);
+            CurrentState = new MarioFallState(marioEntity, marioFactory);
             CurrentState.Enter(this);
         }
         public override void CrouchingTransition()
         {
             IdleTransition();
+        }
+        public override void TurnLeft()
+        {
+             if(marioEntity.velocity.X == 0 && !marioEntity.IsFacingRight)
+            {
+                marioEntity.velocity = new Vector2(-50, marioEntity.velocity.Y);
+            }
+        }
+        public override void TurnRight()
+        {
+            if (marioEntity.velocity.X == 0 && marioEntity.IsFacingRight)
+            {
+                marioEntity.velocity = new Vector2(50, marioEntity.velocity.Y);
+            }
         }
 
         public override void Attack()
@@ -63,7 +83,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
             else
             {
                 timeSpent = 0f;
-                IdleTransition();
+                FallingTransition();
             }
            
            

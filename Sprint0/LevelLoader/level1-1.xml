@@ -123,6 +123,6 @@
 		
 	</Items>
 	<Player>
-		<Mario xPos="200" yPos="140"></Mario>
+		<Mario xPos="200" yPos="200"></Mario>
 	</Player>
 </Level>

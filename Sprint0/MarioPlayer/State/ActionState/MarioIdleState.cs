@@ -16,15 +16,14 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public override void Enter(IMarioActionState previousState)
         {
             base.Enter(previousState);
-            if (marioEntity.yPositionChecker())
-            {
-                FallingTransition();
-            }
-            else
+             if (marioEntity.velocity.Y == 0)
             {
                 marioEntity.velocity = new Vector2(0, 0);
             }
-            
+            else
+            {
+                FallingTransition();
+            }     
         }
 
         public override MarioActionStateType GetEnumValue()
@@ -114,6 +113,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
         }
 
         public override void Update(GameTime gameTime) {
+
 
         }
     }

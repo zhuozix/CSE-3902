@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.MarioPlayer.State.PowerupState;
+using System;
 
 namespace Sprint0.MarioPlayer.State.ActionState
 {
@@ -13,7 +14,10 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public override void Enter(IMarioActionState previousState)
         {
             base.Enter(previousState);
-            marioEntity.velocity = new Vector2(marioEntity.velocity.X, 50);
+
+            marioEntity.velocity = new Vector2(0, 100);
+            
+            
         }
 
         public override void JumpingTransition()
@@ -23,13 +27,8 @@ namespace Sprint0.MarioPlayer.State.ActionState
 
         public override void IdleTransition()
         {
-            if (!marioEntity.yPositionChecker())
-            {
-                Exit();
-                CurrentState = new MarioIdleState(marioEntity, marioFactory);
-                CurrentState.Enter(this);
-            }
-           
+            
+
         }
 
         public override void RunningTransition()
@@ -39,7 +38,30 @@ namespace Sprint0.MarioPlayer.State.ActionState
 
         public override void FallingTransition()
         {
+            
+        }
 
+        public override void TurnLeft()
+        {
+            if (!marioEntity.crash && marioEntity.velocity.X == 0 && !marioEntity.IsFacingRight)
+            {
+                marioEntity.velocity = new Vector2(-50, marioEntity.velocity.Y);
+
+            }
+            else if (marioEntity.crash)
+            {
+                IdleTransition();
+            }
+        }
+        public override void TurnRight()
+        {
+            if (!marioEntity.crash && marioEntity.velocity.X == 0 && marioEntity.IsFacingRight)
+            {
+                marioEntity.velocity = new Vector2(50, marioEntity.velocity.Y);
+            } else if (marioEntity.crash)
+            {
+                IdleTransition();
+            }
         }
 
         public override void Attack()
@@ -59,20 +81,21 @@ namespace Sprint0.MarioPlayer.State.ActionState
 
         public override void Update(GameTime gameTime)
         {
-            if (marioEntity.velocity.Y < 100)
+            if (marioEntity.crash || marioEntity.velocity.Y == 0)
+            {
+                Exit();
+                CurrentState = new MarioIdleState(marioEntity, marioFactory);
+                CurrentState.Enter(this);
+            }
+
+            else if (marioEntity.velocity.Y < 150)
             {
                 float accelaretion = 9.8f;
                 timeSpent += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 marioEntity.velocity = new Vector2(marioEntity.velocity.X, marioEntity.velocity.Y + (timeSpent * accelaretion));
             }
-            else
-            {
-                timeSpent = 0f;
-                if (!marioEntity.yPositionChecker())
-                {
-                    IdleTransition();
-                }
-            }
+            
+
         }
     }
 }

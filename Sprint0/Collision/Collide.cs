@@ -49,6 +49,7 @@ namespace Sprint0.Collision
             // enemy and block
             foreach(MovingEnemy a in gobj.enemies)
             {
+                Velocity = a.velocity;
                 foreach (ISprite b in gobj.blocks)
                 {
                     if (found) { break; }
@@ -68,19 +69,40 @@ namespace Sprint0.Collision
             found = false;
             foreach (Mario a in gobj.players)
             {
+                Velocity = a.velocity;
                 foreach (ISprite b in gobj.blocks)
                 {
                     if (found) { break; }
-                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width )/3, a.Texture.Height);
-                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width ), a.Texture.Height * 2);
+                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height * 2);
                     Rectangle = RectangleA;
-                    if (RectangleA.Intersects(RectangleB))
+                    if (Rectangle.Intersects(RectangleB))
                     {
-                       a.crash = true;
+                        a.crash = true;
+                    if(RectangleA.Top <= RectangleB.Top)
+                    {
+                        if(a.velocity.Y > 0)
+                            {
+                                a.velocity = new Vector2(a.velocity.X, 0);
+                                
+                            }
+                        
+                    }
+                    else if (RectangleA.Bottom >= RectangleB.Bottom)
+                    {
+                        //a.velocity = new Vector2(a.velocity.X, 150);
+                            a.fallAfterJump();
                        BlockChangeManager changeState = new BlockChangeManager(b, factory, gobj);
                        changeState.changeState();
                        found = true;
                        break;
+
+                    }
+
+                    }
+                    else
+                    {
+                        a.crash = false;
                     }
                 }
             }
