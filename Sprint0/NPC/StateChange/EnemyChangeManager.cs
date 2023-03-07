@@ -47,6 +47,8 @@ namespace Sprint0.NPC.StateChange
 
         private void gommbaTransition()
         {
+            ISprite futureSprite = factory.getKoopaShellSprite();
+            futureSprite.Position = currentEnemy.Position;
             if (touchedByFireball)
             {
                 foreach (ISprite target in objManager.enemies)
@@ -62,12 +64,16 @@ namespace Sprint0.NPC.StateChange
             else if (currentEnemy.state == "Normal")
             {
                 currentEnemy.state = "Dead";
+
                 currentEnemy.velocity = new Vector2(0, 0);
+                objManager.addObject(futureSprite, "enemies");
             }
         }
 
         private void koopaTransition()
         {
+            ISprite futureSprite = factory.getKoopaShellSprite();
+            futureSprite.Position = currentEnemy.Position;
             if (touchedByFireball)
             {
                 foreach (ISprite target in objManager.enemies)
@@ -78,15 +84,17 @@ namespace Sprint0.NPC.StateChange
                         break;
                     }
                 }
+                
             }
 
             if (currentEnemy.state == "Normal")
             {
                 currentEnemy.state = "idle";
+                objManager.addObject(futureSprite, "enemies");
             } 
             else if(currentEnemy.state == "idle")
             {
-
+               
             }
             else if(currentEnemy.state == "rolling")
             {

@@ -81,6 +81,11 @@ namespace Sprint0.NPC.StateChange
         public void CoinTransition()
         {
             game1.coins++;
+            if (game1.coins == 100)
+            {
+                game1.life++;
+                game1.coins = 0;
+            }
         }
         public void fireFlowerTransition()
         {

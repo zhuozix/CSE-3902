@@ -41,7 +41,9 @@ namespace Sprint0.Factory
 
         // Enemies
         public Texture2D texture_Gommba;
+        public Texture2D texture_DeadGommba;
         public Texture2D texture_Koopa;
+        public Texture2D texture_KoopaShell;
 
         // Bullets
         public Texture2D texture_FireBall;
@@ -78,6 +80,8 @@ namespace Sprint0.Factory
             // Enemies
             texture_Gommba = content.Load<Texture2D>("EnemyContent/WalkingGoomba1");
             texture_Koopa = content.Load<Texture2D>("EnemyContent/WalkingGreenKoopa1");
+            texture_KoopaShell = content.Load<Texture2D>("EnemyContent/GreenKoopaTroopaShell");
+            texture_DeadGommba = content.Load<Texture2D>("EnemyContent/deadGoomba");
 
             // Bullets
             texture_FireBall = content.Load<Texture2D>("FireMario/fireball");
@@ -104,6 +108,8 @@ namespace Sprint0.Factory
         {
             enemyList.Add(getGommbaSprite());
             enemyList.Add(getKoopaSprite());
+            enemyList.Add(getKoopaShellSprite());
+            enemyList.Add(getDeadGommbaSprite());
         }
 
         public Texture2D getBackgroundSprite(String background)
@@ -220,6 +226,21 @@ namespace Sprint0.Factory
             ISprite sprite = new MovingEnemy(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics, 1);
             sprite.Name = "Koopa";
             sprite.state = "Normal";
+            return sprite;
+        }
+
+         public ISprite getKoopaShellSprite()
+        {
+            ISprite sprite = new MovingEnemy(texture_KoopaShell, new Vector2(500, 400), 1, 1, _graphics, 1);
+            sprite.Name = "KoopaShell";
+            sprite.state = "idle";
+            return sprite;
+        }
+         public ISprite getDeadGommbaSprite()
+        {
+            ISprite sprite = new MovingEnemy(texture_DeadGommba, new Vector2(500, 400), 1, 1, _graphics, 1);
+            sprite.Name = "DeadGommba";
+            sprite.state = "Dead";
             return sprite;
         }
 
