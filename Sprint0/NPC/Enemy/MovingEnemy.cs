@@ -14,7 +14,7 @@ namespace Sprint0.NPC.Enemy
 {
     public class MovingEnemy : SpriteE
     {
-        private static float moveSpeed = 100f;
+        private float moveSpeed = 100f;
 
         private GraphicsDeviceManager graphics;
         private Vector2 originalPosition;
@@ -34,6 +34,10 @@ namespace Sprint0.NPC.Enemy
         }
         public override void Update(GameTime gameTime)
         {
+            if(this.state == "Dead")
+            {
+                moveSpeed = 0;
+            }
             float currentx = position.X;
             timeSinceLastFrameTransition += gameTime.ElapsedGameTime.TotalSeconds;
             if (timeSinceLastFrameTransition > animateFrequency)

@@ -31,6 +31,8 @@ namespace Sprint0.Factory
 		public Texture2D texture_GreenPipeLarge;
         public Texture2D texture_GreenPipeMedium;
         public Texture2D texture_GreenPipeSmall;
+        public Texture2D texture_ShatteredBlock;
+        public Texture2D texture_InvisibleBlock;
 
         // Items
         public Texture2D texture_FireFlower;
@@ -69,6 +71,9 @@ namespace Sprint0.Factory
 			texture_GreenPipeLarge = content.Load<Texture2D>("Blocks/GreenPipeLarge");
             texture_GreenPipeMedium = content.Load<Texture2D>("Blocks/GreenPipeMedium");
             texture_GreenPipeSmall = content.Load<Texture2D>("Blocks/GreenPipeSmall");
+            texture_ShatteredBlock = content.Load<Texture2D>("Blocks/ShatteredBlock");
+            //todo
+            texture_InvisibleBlock = null;
 
             // Items
             texture_FireFlower = content.Load<Texture2D>("fireFlower");
@@ -176,6 +181,21 @@ namespace Sprint0.Factory
             sprite.state = "Normal";
             return sprite;
         }
+        public ISprite getInvisibleBlock()
+        {
+            ISprite sprite = new BlockSprite(texture_InvisibleBlock, 1, 1, new Vector2(500, 100));
+            sprite.Name = "InvisibleBlock";
+            sprite.state = "Normal";
+            return sprite;
+        }
+
+        public ISprite getShatteredBlock()
+        {
+            ISprite sprite = new BlockSprite(texture_ShatteredBlock, 1, 1, new Vector2(600, 100));
+            sprite.Name = "ShatteredBlock";
+            sprite.state = "Crashed";
+            return sprite;
+        }
 
         public ISprite getFireFlowerSprite()
         {
@@ -240,7 +260,7 @@ namespace Sprint0.Factory
         {
             ISprite sprite = new MovingEnemy(texture_DeadGommba, new Vector2(500, 400), 1, 1, _graphics, 1);
             sprite.Name = "DeadGommba";
-            sprite.state = "Dead";
+            sprite.state = "Normal";
             return sprite;
         }
 

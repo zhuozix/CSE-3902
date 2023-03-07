@@ -119,7 +119,7 @@ namespace Sprint0.Collision
                         {
                             //a.velocity = new Vector2(a.velocity.X, 150);
                             a.fallAfterJump();
-                            BlockChangeManager changeState = new BlockChangeManager(b, factory, gobj);
+                            BlockChangeManager changeState = new BlockChangeManager(b, game);
                             changeState.changeState();
                             found = true;
                             break;
@@ -157,17 +157,18 @@ namespace Sprint0.Collision
             {
                 foreach (ISprite b in gobj.enemies)
                 {
+
                     if (found) { break; }
                     Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
                     Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
-                    if (RectangleA.Intersects(RectangleB))
+                    if (b.state == "Normal" && RectangleA.Intersects(RectangleB))
                     {
                         //Kill the enemy
                         if (RectangleB.Top > RectangleA.Top)
                         {
                             found = true;
                             EnemyChangeManager changeState = new EnemyChangeManager(b, game);
-                            changeState.attackedByFireball();
+                            
                             changeState.changeState();
                             break;
                         }

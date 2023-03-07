@@ -47,27 +47,24 @@ namespace Sprint0.NPC.StateChange
 
         private void gommbaTransition()
         {
-            ISprite futureSprite = factory.getKoopaShellSprite();
-            futureSprite.Position = currentEnemy.Position;
-            if (touchedByFireball)
-            {
                 foreach (ISprite target in objManager.enemies)
                 {
                     if (currentEnemy.Equals(target))
                     {
+                        if (!touchedByFireball)
+                        {
+                        ISprite futureSprite = factory.getDeadGommbaSprite();
+                        futureSprite.Position = currentEnemy.Position;
+                        futureSprite.velocity = Vector2.Zero;
+                        futureSprite.state = "Dead";
+                        objManager.addObject(futureSprite, "enemy");
+
+                        }
                         objManager.enemies.Remove(target);
                         break;
                     }
                 }
-            }
-
-            else if (currentEnemy.state == "Normal")
-            {
-                currentEnemy.state = "Dead";
-
-                currentEnemy.velocity = new Vector2(0, 0);
-                objManager.addObject(futureSprite, "enemies");
-            }
+            
         }
 
         private void koopaTransition()

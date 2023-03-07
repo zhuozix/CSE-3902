@@ -29,7 +29,7 @@ namespace Sprint0.NPC.Item
         {
             float currHeight = position.Y;
             float currWidth = position.X;
-            float maxHeight = graphics.PreferredBackBufferHeight - (Texture.Height + 1);
+            float maxHeight = 600;
             float maxWidth = graphics.PreferredBackBufferWidth - (Texture.Width + 1);
             float minHeight = 0;
             float minWidth = 0;
