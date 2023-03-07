@@ -29,7 +29,7 @@ namespace Sprint0.Content
         KeyboardState previousKeyboardState;
 
         //idle for mario
-        private ICommand idle;
+        //private ICommand idle; Taken over by mouse controller
 
         Game1 gameInstance;
 
@@ -82,7 +82,7 @@ namespace Sprint0.Content
             //Fire
             ICommand fire = new fireFireball(playerInstance);
             //idle
-            this.idle = new MarioIdle(playerInstance);
+            //this.idle = new MarioIdle(playerInstance); taken over by mouse controller
 
 
             /*
@@ -124,11 +124,12 @@ namespace Sprint0.Content
         {
             //if the key pressed, execute the command in the map.
             KeyboardState currentKeyboardState = Keyboard.GetState();
+
             Keys[] keysPressed = Keyboard.GetState().GetPressedKeys();
             
             if (keysPressed.Length == 0)
             {
-                idle.Execute();
+                // idle.Execute();   Taken over by mouse
             }
             else
             {
@@ -141,10 +142,10 @@ namespace Sprint0.Content
                         commandFind = true;
                     }
                 }
-                if (!commandFind)
+                /* if (!commandFind)   Taken over by mouse controller
                 {
-                    idle.Execute();
-                }
+                    idle.Execute(); 
+                } */
                
             }
             //Excute the command

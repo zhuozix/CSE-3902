@@ -10,6 +10,7 @@ using Sprint0.Sprites.Lists;
 using Sprint0.ObjectManager;
 using Sprint0.LevelLoader;
 using Sprint0.Collision;
+using Sprint0.Controller;
 
 namespace Sprint0
 {
@@ -31,6 +32,7 @@ namespace Sprint0
          * Controllers
          */
         private IController keyboardController;
+        private IController MouseController;
 
         private ICollision Collision;
         /*
@@ -82,6 +84,7 @@ namespace Sprint0
 
             //controllers
             keyboardController = new KeyboardController(this);
+            MouseController = new MouseController(this);
 
 
             //Lists
@@ -133,12 +136,14 @@ namespace Sprint0
             gameObjectManager.addObject(mario, "player");
             //Load commands to controller
             keyboardController.loadCommonCommand();
+            MouseController.loadCommonCommand();
         }
 
         protected override void Update(GameTime gameTime)
         {
             
             keyboardController.UpdateInput();
+            MouseController.UpdateInput();
 
             Collision.Update(gameTime);
 
