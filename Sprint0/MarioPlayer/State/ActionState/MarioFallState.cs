@@ -14,8 +14,10 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public override void Enter(IMarioActionState previousState)
         {
             base.Enter(previousState);
+ 
+            marioEntity.velocity = new Vector2(marioEntity.velocity.X, 70);
 
-            marioEntity.velocity = new Vector2(0, 100);
+            
             
             
         }
@@ -33,35 +35,56 @@ namespace Sprint0.MarioPlayer.State.ActionState
 
         public override void RunningTransition()
         {
-
         }
 
         public override void FallingTransition()
         {
-            
+            MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
+            if (powerupStateType != MarioPowerupStateType.Dead)
+            {
+                Exit();
+                CurrentState = new MarioFallState(marioEntity, marioFactory);
+                CurrentState.Enter(this);
+            }
         }
 
         public override void TurnLeft()
         {
-            if (!marioEntity.crash && marioEntity.velocity.X == 0 && !marioEntity.IsFacingRight)
-            {
-                marioEntity.velocity = new Vector2(-50, marioEntity.velocity.Y);
 
-            }
-            else if (marioEntity.crash)
+                if (marioEntity.IsFacingRight)
+                {
+                    marioEntity.IsFacingRight = false;
+                }
+               if(Math.Abs(marioEntity.velocity.X - 50) <= 100)
             {
-                IdleTransition();
+                marioEntity.velocity = new Vector2(marioEntity.velocity.X - 20, marioEntity.velocity.Y);
             }
+            else
+            {
+                marioEntity.velocity = new Vector2(-20, marioEntity.velocity.Y);
+            }
+              
+           
+            
         }
         public override void TurnRight()
         {
-            if (!marioEntity.crash && marioEntity.velocity.X == 0 && marioEntity.IsFacingRight)
+
+                if (!marioEntity.IsFacingRight)
+                {
+                    marioEntity.IsFacingRight = true;
+                }
+            if (marioEntity.velocity.X + 50 <= 100)
             {
-                marioEntity.velocity = new Vector2(50, marioEntity.velocity.Y);
-            } else if (marioEntity.crash)
-            {
-                IdleTransition();
+                marioEntity.velocity = new Vector2(marioEntity.velocity.X + 20, marioEntity.velocity.Y);
             }
+            else
+            {
+                marioEntity.velocity = new Vector2( 20, marioEntity.velocity.Y);
+            }
+               
+            
+         
         }
 
         public override void Attack()

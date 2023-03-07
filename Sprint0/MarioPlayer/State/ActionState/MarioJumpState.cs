@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.MarioPlayer.State.PowerupState;
+using System;
 
 namespace Sprint0.MarioPlayer.State.ActionState
 {
@@ -20,7 +21,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
             {
                 VerticalVelocity = superVerticalVelocity;
             }
-            marioEntity.velocity += new Vector2(0, VerticalVelocity);
+            marioEntity.velocity += new Vector2(marioEntity.velocity.X, VerticalVelocity);
         }
 
         public override MarioActionStateType GetEnumValue()
@@ -48,17 +49,36 @@ namespace Sprint0.MarioPlayer.State.ActionState
         }
         public override void TurnLeft()
         {
-             if(marioEntity.velocity.X == 0 && !marioEntity.IsFacingRight)
+            if (marioEntity.IsFacingRight)
+            {
+                marioEntity.IsFacingRight = false;
+            }
+            if (Math.Abs(marioEntity.velocity.X - 50) <= 100)
+            {
+                marioEntity.velocity = new Vector2(marioEntity.velocity.X - 50, marioEntity.velocity.Y);
+            }
+            else
             {
                 marioEntity.velocity = new Vector2(-50, marioEntity.velocity.Y);
             }
+
         }
         public override void TurnRight()
         {
-            if (marioEntity.velocity.X == 0 && marioEntity.IsFacingRight)
+
+            if (!marioEntity.IsFacingRight)
+            {
+                marioEntity.IsFacingRight = true;
+            }
+            if (marioEntity.velocity.X + 50 <= 100)
+            {
+                marioEntity.velocity = new Vector2(marioEntity.velocity.X + 50, marioEntity.velocity.Y);
+            }
+            else
             {
                 marioEntity.velocity = new Vector2(50, marioEntity.velocity.Y);
             }
+
         }
 
         public override void Attack()

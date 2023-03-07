@@ -13,11 +13,11 @@ namespace Sprint0.MarioPlayer.State.ActionState
             base.Enter(previousState);
             if (marioEntity.IsFacingRight)
             {
-                marioEntity.velocity = new Vector2(50, 150);
+                marioEntity.velocity = new Vector2(50, 0);
             }
             else
             {
-                marioEntity.velocity = new Vector2(-50, 150);
+                marioEntity.velocity = new Vector2(-50, 0);
             }
         }
 
