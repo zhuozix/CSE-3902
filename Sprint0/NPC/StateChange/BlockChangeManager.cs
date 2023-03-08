@@ -2,14 +2,17 @@
 using Sprint0.Factory;
 using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.PowerupState;
+using Sprint0.NPC.Blocks;
 using Sprint0.NPC.Item;
 using Sprint0.ObjectManager;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Sprint0.NPC.StateChange
 {
@@ -64,16 +67,33 @@ namespace Sprint0.NPC.StateChange
 
         private void brickBlockTransition()
         {
-            foreach (ISprite target in objManager.blocks)
+            MarioPowerupStateType powerupStateType = game.mario.CurrentPowerupState.GetEnumValue();
+            if (powerupStateType == MarioPowerupStateType.Normal)
             {
-                if (blockSprite.Equals(target))
+                foreach (BlockSprite target in objManager.blocks)
                 {
-                    brickCrash(target);
-                    objManager.blocks.Remove(target);
-                    
-                    break;
+                    if (blockSprite.Equals(target))
+                    {
+                        target.originalPosition = target.Position;
+                        target.velocity = new Vector2(0, -3);
+                        break;
+                    }
                 }
             }
+            else if(powerupStateType != MarioPowerupStateType.Dead)
+            {
+                foreach (ISprite target in objManager.blocks)
+                {
+                    if (blockSprite.Equals(target))
+                    {
+                        brickCrash(target);
+                        objManager.blocks.Remove(target);
+
+                        break;
+                    }
+                }
+            }
+            
         }
 
         private void brickCrash(ISprite targetSprite)

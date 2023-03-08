@@ -27,11 +27,12 @@ namespace Sprint0.MarioPlayer
         public GameObjectManager gameObjectManager;
         private float timeSpent = 0f;
         Game1 game;
+        public int columns = 1;
 
         public Mario(Vector2 spawnLocation,Game1 gameInstance)
         {
             game= gameInstance;
-            marioFactory = new MarioFactory(gameInstance.Content);
+            marioFactory = new MarioFactory(gameInstance.Content, this);
             Sprite = marioFactory.buildSprites(MarioPowerupStateType.Normal, MarioActionStateType.Idle);
             this.fireballFactory = gameInstance.spritesFactory;
             this.fireBallList= gameInstance.fireBallList;
@@ -50,12 +51,17 @@ namespace Sprint0.MarioPlayer
 
             gameObjectManager = gameInstance.gameObjectManager;
             crash = false;
+            state = "Normal";
         }
 
         public void generateFireball()
         {           
             ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight);
-            //fireBallList.add(fireball);
+            if(this.velocity.X != 0)
+            {
+                fireball.velocity = new Vector2(fireball.velocity.X * 3, fireball.velocity.Y);
+            }
+            
             gameObjectManager.addObject(fireball, "fireBall");
         }
 
@@ -154,30 +160,6 @@ namespace Sprint0.MarioPlayer
         {
 
             CurrentActionState.Update(gameTime);
-
-            MarioPowerupStateType powerupStateType = this.CurrentPowerupState.GetEnumValue();
-            if (powerupStateType == MarioPowerupStateType.Dead)
-            {
-                timeSpent += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if(timeSpent > 3f)
-                {
-                    timeSpent = 0f;
-                    ICommand reset = new Reset(game);
-                    reset.Execute();
-                }
-            }
-            if(this.Position.Y > 800)
-            {
-                timeSpent += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (timeSpent >= 3f)
-                {
-                    timeSpent = 0f;
-                    ICommand reset = new Reset(game);
-                    reset.Execute();
-                }
-            }
-
-
             base.Update(gameTime);
         }
 

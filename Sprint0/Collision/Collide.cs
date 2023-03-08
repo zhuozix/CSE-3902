@@ -49,14 +49,14 @@ namespace Sprint0.Collision
             // enemy and item does not collide
 
             // enemy and block
-            foreach (MovingEnemy a in gobj.enemies)
+            foreach (ISprite a in gobj.enemies)
             {
                 Velocity = a.velocity;
                 foreach (BlockSprite b in gobj.blocks)
                 {
 
-                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
-                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width  ), a.Texture.Height);
+                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(b.Texture.Width / b.Columns), b.Texture.Height);
                     if (RectangleA.Intersects(RectangleB))
                     {
                         a.crash = true;
@@ -98,16 +98,21 @@ namespace Sprint0.Collision
             {
                 foreach (BlockSprite b in gobj.blocks)
                 {
-                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width), a.Texture.Height * 2);
-                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width), a.Texture.Height * 2);
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width/ a.columns), a.Texture.Height * 2);
+                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(b.Texture.Width/ b.Columns) , b.Texture.Height);
                     Rectangle = RectangleA;
                     if (Rectangle.Intersects(RectangleB))
                     {
+                        if (b.state == "Crashed")
+                        {
+                            break;
+                        }
                         a.crash = true;
                         if (TouchTop(a, b))
                         {
                             if (a.velocity.Y > 0)
                             {
+                                
                                 a.velocity = new Vector2(a.velocity.X, 0);
 
                             }
@@ -115,28 +120,25 @@ namespace Sprint0.Collision
                         }
                         else if (TouchBottom(a, b))
                         {
-                            //a.velocity = new Vector2(a.velocity.X, 150);
                             a.fallAfterJump();
                             BlockChangeManager changeState = new BlockChangeManager(b, game);
                             changeState.changeState();
                             break;
 
                         }
-                        if (TouchLeft(a, b))
+                        else if (TouchLeft(a, b))
                         {
-                            if (a.velocity.X > 0)
-                            {
+                            
                                 a.velocity = new Vector2(0, a.velocity.Y);
-                            }
-                            a.velocity = Vector2.Zero;
+                            
+                            //a.velocity = Vector2.Zero;
                         }
-                        if (TouchRight(a, b))
+                        else if (TouchRight(a, b))
                         {
-                            if (a.velocity.X < 0)
-                            {
+                            
                                 a.velocity = new Vector2(0, a.velocity.Y);
-                            }
-                            a.velocity = Vector2.Zero;
+                            
+                            //a.velocity = Vector2.Zero;
                         }
 
                     }
@@ -146,33 +148,41 @@ namespace Sprint0.Collision
                     }
                 }
             }
+
+
             foreach (Mario a in gobj.players)
             {
-                foreach (ISprite b in gobj.enemies)
+                foreach (SpriteE b in gobj.enemies)
                 {
 
                     //if (found) { break; }
-                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
-                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width / a.columns), a.Texture.Height * 2);
+                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(b.Texture.Width / b.numCols), b.Texture.Height );
                     if (RectangleA.Intersects(RectangleB))
                     {
-                        //Kill the enemy
-                        if (b.state == "idle" || RectangleA.Bottom >= RectangleB.Bottom)
+                        if(a.state == "Star")
+                        {
+                            EnemyChangeManager changeState = new EnemyChangeManager(b, game);
+                            changeState.attackedByFireball();
+                            changeState.changeState();
+                            break;
+                        }                    
+                        else if (b.state == "idle" || TouchTop(a,b))
                         {
                             
-                            EnemyChangeManager changeState = new EnemyChangeManager(b, game);
-                            
+                            EnemyChangeManager changeState = new EnemyChangeManager(b, game);    
                             changeState.changeState();
                             break;
                         }
-                        else
+                        else if(a.state == "Normal")
                         {
                             
                             if (b.state == "Normal" || b.state == "rolling")
                             {
                             //killed by enemy
                             a.crash = true;
-                            //a.TakeDamage();
+                            a.TakeDamage();
+                            //a.state = "Hurt";
                             }
                             
                         }
@@ -205,6 +215,23 @@ namespace Sprint0.Collision
             }
 
             //Fireball and mario
+            foreach (ISprite a in gobj.fireBallList)
+            {
+                bool find = false;
+                foreach (ISprite b in gobj.players)
+                {
+                    Rectangle RectangleA = new Rectangle((int)a.Position.X, (int)a.Position.Y, (int)(a.Texture.Width), a.Texture.Height);
+                    Rectangle RectangleB = new Rectangle((int)b.Position.X, (int)b.Position.Y, (int)(a.Texture.Width / 2), a.Texture.Height);
+                    if (RectangleA.Intersects(RectangleB))
+                    {
+                        find = true;
+                        FireballChangeManager changeFireBall = new FireballChangeManager(b, game);
+                        changeFireBall.changeState();
+                        break;
+                    }
+                    if (find) { break; }
+                }
+            }
 
             //Fireball and enemy
             foreach (ISprite a in gobj.fireBallList)

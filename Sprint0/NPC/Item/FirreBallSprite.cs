@@ -16,7 +16,7 @@ namespace Sprint0.NPC.Item
         private Vector2 originalPosition;
         //1 means right and down, -1 means move left and up
         private int moveDirection;
-        static float moveSpeed = 100f;
+        //private float moveSpeed = 100f;
         private int xDirection = 1;
         public bool isFliped = true;
         public float time = 0f;
@@ -28,6 +28,7 @@ namespace Sprint0.NPC.Item
             this.moveDirection = moveDirection;
             this.isFliped = isFliped;
             xDirection = moveDirection;
+            velocity = new Vector2(100f, 0);
         }
 
         public override void Update(GameTime gameTime)
@@ -71,7 +72,7 @@ namespace Sprint0.NPC.Item
             }
 
 
-            position += new Vector2(moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * xDirection, moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirection);
+            position += new Vector2(velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds * xDirection, velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirection);
 
         }
 

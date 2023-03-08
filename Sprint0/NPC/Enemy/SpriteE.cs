@@ -16,8 +16,8 @@ namespace Sprint0.NPC.Enemy
         public static double animateFrequency = 0.9 / 5.0;
         public bool crash { get; set; }
         private Texture2D texture;
-        private int numRows;
-        private int numCols;
+        public int numRows;
+        public int numCols;
         internal int currentFrame;
         internal int totalFrames;
         SpriteEffects spriteEffect = SpriteEffects.None;

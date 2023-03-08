@@ -14,11 +14,11 @@ namespace Sprint0.NPC.Enemy
 {
     public class MovingEnemy : SpriteE
     {
-        private float moveSpeed = 100f;
+        public float moveSpeed = 100f;
 
         private GraphicsDeviceManager graphics;
         private Vector2 originalPosition;
-        public Vector2 Velocity;
+        private Vector2 Velocity;
         private int moveDirectionX;
         private int moveDirectionY = 0;
         public bool crash { get; set; }
@@ -34,14 +34,19 @@ namespace Sprint0.NPC.Enemy
         }
         public override void Update(GameTime gameTime)
         {
-            if(this.state == "Dead" || this.state == "idle")
+            if (this.state == "Dead" || this.state == "idle")
             {
                 moveSpeed = 0;
+            }
+            else if (this.state == "Rolling")
+            {
+                moveSpeed = 300;
             }
             else
             {
                 moveSpeed = 100;
             }
+
             
             float currentx = position.X;
             timeSinceLastFrameTransition += gameTime.ElapsedGameTime.TotalSeconds;

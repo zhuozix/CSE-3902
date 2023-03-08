@@ -18,10 +18,12 @@ namespace Sprint0.MarioPlayer
         string spritesLocation;
         public Texture2D texture;
         private MarioActionStateType actionType;
+        Mario player;
 
-        public MarioFactory(ContentManager contentIn)
+        public MarioFactory(ContentManager contentIn, Mario player)
         {
             this.content = contentIn;
+            this.player = player;
         }
 
         public Sprite buildSprites(MarioPowerupStateType powerUpType, MarioActionStateType actionType)
@@ -40,9 +42,11 @@ namespace Sprint0.MarioPlayer
                 if(this.actionType == MarioActionStateType.Running)
                 {
                    ans = new NoneMovingAnimatedSprite(texture, Vector2.Zero, 1, 3);
+                player.columns = 3;
                 }
                 else {
                    ans = new NoneAnimatedNonMovingSprite(texture, Vector2.Zero, 1, 1);
+                player.columns = 1;
                 }
                 
          

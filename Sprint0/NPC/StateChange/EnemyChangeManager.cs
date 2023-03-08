@@ -86,7 +86,7 @@ namespace Sprint0.NPC.StateChange
                 }
             }
 
-            else if (currentEnemy.state == "Normal")
+            else if (currentEnemy.state != "idle")
             {
                 foreach (ISprite target in objManager.enemies)
                 {
@@ -112,7 +112,7 @@ namespace Sprint0.NPC.StateChange
                         objManager.enemies.Remove(target);
                         ISprite futureSprite = factory.getKoopaShellSprite();
                         futureSprite.Position = currentEnemy.Position;
-                        futureSprite.state = "Normal";
+                        futureSprite.state = "Rolling";
                         objManager.addObject(futureSprite, "enemy");
                         pushMario();
                         break;
@@ -130,11 +130,11 @@ namespace Sprint0.NPC.StateChange
             float yVelocity = player.velocity.Y;
             if (xVelocity > 0 && yVelocity == 0)
             {
-                game.mario.Position = new Vector2(player.Position.X - 50, player.Position.Y);
+                game.mario.Position = new Vector2(player.Position.X - 5, player.Position.Y);
             }
             else if (xVelocity < 0 && yVelocity == 0)
             {
-                game.mario.Position = new Vector2(player.Position.X + 50, player.Position.Y);
+                game.mario.Position = new Vector2(player.Position.X + 5, player.Position.Y);
             }
             else
             {

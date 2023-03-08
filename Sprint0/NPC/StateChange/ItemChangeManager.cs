@@ -65,6 +65,7 @@ namespace Sprint0.NPC.StateChange
 
         public void starTransition()
         {
+            game1.mario.state = "Star";
             disapperTransition();
         }
         public void redMushTransition()

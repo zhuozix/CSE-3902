@@ -18,6 +18,7 @@ namespace Sprint0.NPC.Blocks
         public int Rows { get; set; }
         public int Columns { get; set; }
         public Vector2 Position { get; set; }
+        public Vector2 originalPosition;
         public Vector2 velocity { get; set; }
         public bool crash { get; set; }
 
@@ -44,16 +45,38 @@ namespace Sprint0.NPC.Blocks
             location = l;
         }
         public void Update(GameTime gameTime) {
-            timeSinceLastFrameTransition += gameTime.ElapsedGameTime.TotalSeconds;
-            if (timeSinceLastFrameTransition > animateFrequency)
-            {
-                timeSinceLastFrameTransition = 0;
-                currentFrame++;
-                if (currentFrame == totalFrames)
+            if(velocity == Vector2.Zero){
+                timeSinceLastFrameTransition += gameTime.ElapsedGameTime.TotalSeconds;
+                if (timeSinceLastFrameTransition > animateFrequency)
                 {
-                    currentFrame = 0;
+                    timeSinceLastFrameTransition = 0;
+                    currentFrame++;
+                    if (currentFrame == totalFrames)
+                    {
+                        currentFrame = 0;
+                    }
                 }
             }
+            else
+            {
+                Position += velocity;
+                if (Position.Y != originalPosition.Y)
+                {
+                    
+                        //Position += velocity;
+                        if(originalPosition.Y >= Position.Y + 30)
+                        {
+                            velocity = new Vector2(0, 3);
+                        }
+                    
+                }
+                    if(Position.Y == originalPosition.Y)
+                    {
+                        velocity = Vector2.Zero;
+                    }
+            }
+
+            
         }
 
         public void Draw(SpriteBatch spriteBatch, bool isFlipped)

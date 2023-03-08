@@ -11,6 +11,7 @@ using Sprint0.ObjectManager;
 using Sprint0.LevelLoader;
 using Sprint0.Collision;
 using Sprint0.Controller;
+using Sprint0.Command.GameControlCMD;
 
 namespace Sprint0
 {
@@ -42,8 +43,8 @@ namespace Sprint0
 
         //Mario
         public Mario mario;
-        public int coins;
-        public int life;
+        public int coins = 0;
+        public int life = 3;
 
         /*
          *  Sprites Lists
@@ -88,15 +89,14 @@ namespace Sprint0
 
 
             //Lists
-            gameObjectManager = new GameObjectManager();
+            gameObjectManager = new GameObjectManager(this);
 
             blockList = new ArrayList();
             itemList = new ArrayList();
             enemyList = new ArrayList();
             fireBallList = new ArrayList();
 
-            coins = 0;
-            life = 3;
+            
 
             Collision = new Collide(this);
 
@@ -175,5 +175,9 @@ namespace Sprint0
         {
             this.Initialize();
         }
+
+        
+
+        
     }
 }

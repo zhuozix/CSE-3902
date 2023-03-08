@@ -1,15 +1,22 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.Command.GameControlCMD;
+using Sprint0.Content;
+using Sprint0.MarioPlayer;
+using Sprint0.MarioPlayer.State.PowerupState;
 using Sprint0.NPC.Item;
 using Sprint0.Sprites;
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Color = Microsoft.Xna.Framework.Color;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace Sprint0.ObjectManager
 {
@@ -21,20 +28,25 @@ namespace Sprint0.ObjectManager
         public List<ISprite> items;
         public List<ISprite> fireBallList;
         public Texture2D background;
+        private Game1 game;
 
         private float timerOfCrashedBlock = 0f;
         private float timerOfDeadEnemy = 0f;
         private bool hasDeadEnemy = false;
         private bool hasCrashedBlocks = false;
         private bool timeUp = false;
+        private float starTimer = 0f;
+        private bool hasStarMario = false;
+        private float timeSpent = 0f;
 
-        public GameObjectManager() 
+        public GameObjectManager(Game1 gameInstance) 
         { 
             this.blocks= new List<ISprite>();
             this.enemies= new List<ISprite>();
             this.players= new List<ISprite>();
             this.items= new List<ISprite>();
             this.fireBallList = new List<ISprite>();
+            game = gameInstance;
         }
 
         public void addObject(ISprite obj, String objectType)
@@ -104,6 +116,44 @@ namespace Sprint0.ObjectManager
                 hasCrashedBlocks = false;
             }
         }
+        public void updateStarMario(GameTime time)
+        {
+            foreach (ISprite obj in this.players)
+            {
+                if (hasStarMario)
+                {
+                    break;
+                }
+                if (obj.state == "Star")
+                {
+                    hasStarMario = true;
+                }
+            }
+
+            if (hasStarMario)
+            {
+                starTimer += (float)time.ElapsedGameTime.TotalSeconds;
+            }
+            else
+            {
+                starTimer = 0f;
+            }
+
+            if (starTimer >= 10.0f)
+            {
+
+                foreach (ISprite obj in this.players)
+                {
+                    if (obj.state == "Star")
+                    {
+                        obj.state = "Normal";
+                        break;
+                    }
+                }
+                hasStarMario = false;
+            }
+        }
+
         public void updateDeadEnemy(GameTime time)
         {
             foreach (ISprite obj in this.enemies)
@@ -195,8 +245,56 @@ namespace Sprint0.ObjectManager
 
         }
 
+        private void gameExit()
+        {
+            if (game.life < 0)
+            {
+                ICommand exit = new Exit(game);
+                exit.Execute();
+            }
+        }
+
+        private void moreLife()
+        {
+            if (game.coins >= 3)
+            {
+                game.coins = 0;
+                game.life++;
+            }
+        }
+
+        private void updateMario(GameTime time, Mario player)
+        {
+
+            MarioPowerupStateType powerupStateType = player.CurrentPowerupState.GetEnumValue();
+            if (powerupStateType == MarioPowerupStateType.Dead)
+            {
+                timeSpent += (float)time.ElapsedGameTime.TotalSeconds;
+                if (timeSpent > 3f)
+                {
+                    timeSpent = 0f;
+                    ICommand reset = new Reset(game);
+                    reset.Execute();
+                    game.life--;
+                }
+            }
+            if (player.Position.Y > 800 || player.Position.Y < 0 || player.Position.X < 0)
+            {
+                timeSpent += (float)time.ElapsedGameTime.TotalSeconds;
+                if (timeSpent >= 3f)
+                {
+                    timeSpent = 0f;
+                    ICommand reset = new Reset(game);
+                    reset.Execute();
+                    game.life--;
+                }
+            }
+        }
+
         public void update(GameTime time)
         {
+            gameExit();
+            moreLife();
 
             updateShatteredBlocks(time);
             updateDeadEnemy(time);
@@ -204,6 +302,7 @@ namespace Sprint0.ObjectManager
             deleteDropedItems();
             fireBallLimit();
             fireBallTimesUp();
+            updateStarMario(time);
 
             foreach (ISprite obj in this.blocks)
             {
@@ -213,8 +312,9 @@ namespace Sprint0.ObjectManager
             {
                 obj.Update(time);
             }
-            foreach (ISprite obj in this.players)
+            foreach (Mario obj in this.players)
             {
+                updateMario(time, obj);
                 obj.Update(time);
             }
             foreach (ISprite obj in this.items)
