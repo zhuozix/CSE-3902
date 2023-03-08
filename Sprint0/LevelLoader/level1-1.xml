@@ -115,12 +115,25 @@
 		<GreenPipeSmall xPos="5728" yPos="352"></GreenPipeSmall>
 	</Blocks>
 	<Enemies>
-		<Goomba xPos="250" yPos="386"></Goomba>
-		<Koopa xPos="300" yPos="386"></Koopa>
+		<Goomba xPos="704" yPos="388"></Goomba>
+		<Goomba xPos="1280" yPos="388"></Goomba>
+		<Goomba xPos="1632" yPos="388"></Goomba>
+		<Goomba xPos="1678" yPos="388"></Goomba>
+		<Goomba xPos="2560" yPos="130"></Goomba>
+		<Goomba xPos="2624" yPos="130"></Goomba>
+		<Goomba xPos="3104" yPos="388"></Goomba>
+		<Goomba xPos="3152" yPos="388"></Goomba>
+		<Koopa xPos="3424" yPos="388"></Koopa>
+		<Goomba xPos="3648" yPos="388"></Goomba>
+		<Goomba xPos="3694" yPos="388"></Goomba>
+		<Goomba xPos="3968" yPos="388"></Goomba>
+		<Goomba xPos="4014" yPos="388"></Goomba>
+		<Goomba xPos="4096" yPos="388"></Goomba>
+		<Goomba xPos="4142" yPos="388"></Goomba>
+		<Goomba xPos="5568" yPos="388"></Goomba>
+		<Goomba xPos="5614" yPos="388"></Goomba>
 	</Enemies>
 	<Items>
-		<Coin xPos="100" yPos="350"></Coin>
-		
 	</Items>
 	<Player>
 		<Mario xPos="200" yPos="200"></Mario>
