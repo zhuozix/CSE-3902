@@ -1,4 +1,5 @@
-﻿using Sprint0.MarioPlayer;
+﻿using Microsoft.Xna.Framework;
+using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.PowerupState;
 using Sprint0.ObjectManager;
 using Sprint0.Sprites;
@@ -45,7 +46,7 @@ namespace Sprint0.NPC.StateChange
                 case "FireFlower":
                     fireFlowerTransition(); break;
                 default:
-                    disapperTransition();
+                    
                     break;
             }
         }
@@ -64,19 +65,23 @@ namespace Sprint0.NPC.StateChange
 
         public void starTransition()
         {
-
+            disapperTransition();
         }
         public void redMushTransition()
         {
             MarioPowerupStateType powerupStateType = player.CurrentPowerupState.GetEnumValue();
             if (powerupStateType == MarioPowerupStateType.Normal)
             {
+                player.Position = new Vector2(player.Position.X,player.Position.Y - 40);
+                player.fallAfterJump();
                 player.UseSuperMushroom();
             }
+            disapperTransition();
         }
         public void greenMushTransition()
         {
             game1.life++;
+            disapperTransition();
         }
         public void CoinTransition()
         {
@@ -86,14 +91,21 @@ namespace Sprint0.NPC.StateChange
                 game1.life++;
                 game1.coins = 0;
             }
+            disapperTransition();
         }
         public void fireFlowerTransition()
         {
             MarioPowerupStateType powerupStateType = player.CurrentPowerupState.GetEnumValue();
             if (powerupStateType != MarioPowerupStateType.Fire)
             {
+                if(powerupStateType == MarioPowerupStateType.Normal)
+                {
+                    player.Position = new Vector2(player.Position.X, player.Position.Y - 40);
+                    player.fallAfterJump();
+                }
                 player.UseFireMushroom();
             }
+            disapperTransition();
         }
     }
 }

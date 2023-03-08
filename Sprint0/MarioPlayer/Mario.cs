@@ -8,7 +8,7 @@ using Sprint0.Factory;
 using Sprint0.NPC.Item;
 using Sprint0.Sprites;
 using System.Collections;
-using Sprint0.Sprites.Lists;
+
 using Sprint0.ObjectManager;
 using Sprint0.Command.GameControlCMD;
 
@@ -20,7 +20,7 @@ namespace Sprint0.MarioPlayer
         public IMarioPowerupState CurrentPowerupState { get; set; }
         public bool IsFacingRight { get; set; }
         public SpritesFactory fireballFactory;
-        private FireBallList fireBallList;
+        private ArrayList fireBallList;
         public float ySpawnPosition;
         public MarioFactory marioFactory;
         public bool crash { get; set; }

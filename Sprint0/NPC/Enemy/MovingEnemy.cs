@@ -34,10 +34,15 @@ namespace Sprint0.NPC.Enemy
         }
         public override void Update(GameTime gameTime)
         {
-            if(this.state == "Dead")
+            if(this.state == "Dead" || this.state == "idle")
             {
                 moveSpeed = 0;
             }
+            else
+            {
+                moveSpeed = 100;
+            }
+            
             float currentx = position.X;
             timeSinceLastFrameTransition += gameTime.ElapsedGameTime.TotalSeconds;
             if (timeSinceLastFrameTransition > animateFrequency)

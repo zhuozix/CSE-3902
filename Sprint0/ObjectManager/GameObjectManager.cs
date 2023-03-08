@@ -1,12 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint0.NPC.Item;
 using Sprint0.Sprites;
-using Sprint0.Sprites.Lists;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sprint0.ObjectManager
@@ -17,13 +19,14 @@ namespace Sprint0.ObjectManager
         public List<ISprite> enemies;
         public List<ISprite> players;
         public List<ISprite> items;
-        public FireBallList fireBallList;
+        public List<ISprite> fireBallList;
         public Texture2D background;
 
         private float timerOfCrashedBlock = 0f;
         private float timerOfDeadEnemy = 0f;
         private bool hasDeadEnemy = false;
         private bool hasCrashedBlocks = false;
+        private bool timeUp = false;
 
         public GameObjectManager() 
         { 
@@ -31,7 +34,7 @@ namespace Sprint0.ObjectManager
             this.enemies= new List<ISprite>();
             this.players= new List<ISprite>();
             this.items= new List<ISprite>();
-            this.fireBallList = new FireBallList();
+            this.fireBallList = new List<ISprite>();
         }
 
         public void addObject(ISprite obj, String objectType)
@@ -52,7 +55,7 @@ namespace Sprint0.ObjectManager
                     this.items.Add(obj);
                     break;
                 case "fireBall":
-                    this.fireBallList.add(obj);
+                    this.fireBallList.Add(obj);
                     break;
                 default:
                     break;
@@ -163,6 +166,35 @@ namespace Sprint0.ObjectManager
             }
         }
 
+        private void fireBallLimit()
+        {
+                if (fireBallList.Count > 3)
+                {
+                    fireBallList.RemoveAt(0);
+                }
+                
+            
+        }
+
+        private void fireBallTimesUp()
+        {
+
+            foreach (FireBallSprite sprite in fireBallList)
+            {
+                if (sprite.time >= 2f)
+                {
+                    timeUp = true;
+                }
+            }
+
+            if (timeUp)
+            {
+                fireBallList.RemoveAt(0);
+                timeUp = false;
+            }
+
+        }
+
         public void update(GameTime time)
         {
 
@@ -170,6 +202,9 @@ namespace Sprint0.ObjectManager
             updateDeadEnemy(time);
             deleteDropedEnemy();
             deleteDropedItems();
+            fireBallLimit();
+            fireBallTimesUp();
+
             foreach (ISprite obj in this.blocks)
             {
                 obj.Update(time);
@@ -186,7 +221,10 @@ namespace Sprint0.ObjectManager
             {
                 obj.Update(time);
             }
-            this.fireBallList.Update(time);
+            foreach (ISprite obj in this.fireBallList)
+            {
+                obj.Update(time);
+            }
         }
 
         public void Draw(SpriteBatch _spriteBatch, Boolean isFlipped)
@@ -211,7 +249,10 @@ namespace Sprint0.ObjectManager
             {
                 obj.Draw(_spriteBatch, isFlipped);
             }
-            this.fireBallList.Draw(_spriteBatch);
+            foreach (ISprite obj in this.fireBallList)
+            {
+                obj.Draw(_spriteBatch, isFlipped);
+            }
         }
     }
 }

@@ -243,6 +243,7 @@ namespace Sprint0.Factory
         }
         public ISprite getKoopaSprite()
         {
+            
             ISprite sprite = new MovingEnemy(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics, 1);
             sprite.Name = "Koopa";
             sprite.state = "Normal";
@@ -253,7 +254,7 @@ namespace Sprint0.Factory
         {
             ISprite sprite = new MovingEnemy(texture_KoopaShell, new Vector2(500, 400), 1, 1, _graphics, 1);
             sprite.Name = "KoopaShell";
-            sprite.state = "idle";
+            sprite.state = "Normal";
             return sprite;
         }
          public ISprite getDeadGommbaSprite()

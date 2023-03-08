@@ -6,7 +6,7 @@ using System.Collections;
 using Sprint0.NPC.Enemy;
 using Sprint0.Factory;
 using Sprint0.MarioPlayer;
-using Sprint0.Sprites.Lists;
+
 using Sprint0.ObjectManager;
 using Sprint0.LevelLoader;
 using Sprint0.Collision;
@@ -51,7 +51,7 @@ namespace Sprint0
         private ArrayList blockList;
         private ArrayList itemList;
         private ArrayList enemyList;
-        public FireBallList fireBallList;
+        public ArrayList fireBallList;
 
         /*
          * Command Control
@@ -93,7 +93,7 @@ namespace Sprint0
             blockList = new ArrayList();
             itemList = new ArrayList();
             enemyList = new ArrayList();
-            fireBallList = new FireBallList();
+            fireBallList = new ArrayList();
 
             coins = 0;
             life = 3;

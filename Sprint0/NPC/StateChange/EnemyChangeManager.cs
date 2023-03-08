@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.Factory;
+using Sprint0.MarioPlayer;
 using Sprint0.NPC.Blocks;
 using Sprint0.ObjectManager;
 using Sprint0.Sprites;
@@ -17,12 +18,14 @@ namespace Sprint0.NPC.StateChange
         SpritesFactory factory;
         GameObjectManager objManager;
         bool touchedByFireball = false;
-        
+        Game1 game;
         public EnemyChangeManager(ISprite enemyIn, Game1 gameInstance) 
         {
             currentEnemy= enemyIn;
             factory = gameInstance.spritesFactory;
             objManager = gameInstance.gameObjectManager;
+            game = gameInstance;
+
         }
         public void attackedByFireball()
         {
@@ -39,7 +42,10 @@ namespace Sprint0.NPC.StateChange
             {
                 case "Koopa":
                     koopaTransition();break;
+                case "KoopaShell":
+                    koopaTransition();break;
                 case "Gommba":
+
                     gommbaTransition();break;
                 default: break;
             }
@@ -55,7 +61,6 @@ namespace Sprint0.NPC.StateChange
                         {
                         ISprite futureSprite = factory.getDeadGommbaSprite();
                         futureSprite.Position = currentEnemy.Position;
-                        futureSprite.velocity = Vector2.Zero;
                         futureSprite.state = "Dead";
                         objManager.addObject(futureSprite, "enemy");
 
@@ -69,8 +74,6 @@ namespace Sprint0.NPC.StateChange
 
         private void koopaTransition()
         {
-            ISprite futureSprite = factory.getKoopaShellSprite();
-            futureSprite.Position = currentEnemy.Position;
             if (touchedByFireball)
             {
                 foreach (ISprite target in objManager.enemies)
@@ -81,22 +84,66 @@ namespace Sprint0.NPC.StateChange
                         break;
                     }
                 }
-                
             }
 
-            if (currentEnemy.state == "Normal")
+            else if (currentEnemy.state == "Normal")
             {
-                currentEnemy.state = "idle";
-                objManager.addObject(futureSprite, "enemies");
-            } 
-            else if(currentEnemy.state == "idle")
-            {
-               
+                foreach (ISprite target in objManager.enemies)
+                {
+                    if (currentEnemy.Equals(target))
+                    {
+                        objManager.enemies.Remove(target);
+                        ISprite futureSprite = factory.getKoopaShellSprite();
+                        futureSprite.Position = currentEnemy.Position;
+                        futureSprite.state = "idle";
+                        objManager.addObject(futureSprite, "enemy");
+                        pushMario();
+                        break;
+                    }
+                }
             }
-            else if(currentEnemy.state == "rolling")
+            else
             {
 
+                foreach (ISprite target in objManager.enemies)
+                {
+                    if (currentEnemy.Equals(target))
+                    {
+                        objManager.enemies.Remove(target);
+                        ISprite futureSprite = factory.getKoopaShellSprite();
+                        futureSprite.Position = currentEnemy.Position;
+                        futureSprite.state = "Normal";
+                        objManager.addObject(futureSprite, "enemy");
+                        pushMario();
+                        break;
+                    }
+                }
+
             }
+
+        }
+
+        private void pushMario()
+        {
+            Mario player = game.mario;
+            float xVelocity = player.velocity.X;
+            float yVelocity = player.velocity.Y;
+            if (xVelocity > 0 && yVelocity == 0)
+            {
+                game.mario.Position = new Vector2(player.Position.X - 50, player.Position.Y);
+            }
+            else if (xVelocity < 0 && yVelocity == 0)
+            {
+                game.mario.Position = new Vector2(player.Position.X + 50, player.Position.Y);
+            }
+            else
+            {
+                game.mario.Position = new Vector2(player.Position.X, player.Position.Y - 10);
+                game.mario.velocity = new Vector2(player.velocity.X, -350);
+                player.Jump();
+            }
+            
         }
     }
 }
+
