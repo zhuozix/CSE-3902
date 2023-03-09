@@ -9,6 +9,7 @@ using System.Reflection.Metadata.Ecma335;
 using Sprint0.ObjectManager;
 using Sprint0.Collision;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Sprint0.NPC.Enemy
 {
@@ -18,23 +19,23 @@ namespace Sprint0.NPC.Enemy
 
         private GraphicsDeviceManager graphics;
         private Vector2 originalPosition;
-        private Vector2 Velocity;
+        private Vector2 velocity;
         private int moveDirectionX;
-        private int moveDirectionY = 0;
+        public int moveDirectionY = 0;
         public bool crash { get; set; }
 
 
-        public MovingEnemy(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection)
-            : base(texture, position, rows, cols)
+        public MovingEnemy(Texture2D texture, Vector2 position, int rowsIn, int colsIn, GraphicsDeviceManager graphics, int moveDirection)
+            : base(texture, position, rowsIn, colsIn)
         {
             this.graphics = graphics;
             originalPosition = position;
-            moveDirectionX = moveDirection;
+            moveDirectionX = moveDirection * -1;
             crash = false;
         }
         public override void Update(GameTime gameTime)
         {
-            if (this.state == "Dead" || this.state == "idle")
+            if (this.state == "Dead" || this.state == "idle" || this.state == "out")
             {
                 moveSpeed = 0;
             }
@@ -59,9 +60,9 @@ namespace Sprint0.NPC.Enemy
                     currentFrame = 0;
                 }
             }
-            Velocity = new Vector2(moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirectionX, moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirectionY);
+            velocity = new Vector2(moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirectionX, moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirectionY);
 
-            position += Velocity;
+            position += velocity;
             if (crash)
             {
 
@@ -69,17 +70,14 @@ namespace Sprint0.NPC.Enemy
                 position += new Vector2(5 * moveDirectionX, 0);
                 crash = false;
             }
+            
             if (moveDirectionX != 0)
             {
-                if (currentx >= 780)
-                {
-                    moveDirectionX = -1;
-                }
-                else if (currentx <= 0)
+                 if (currentx <= 0)
                 {
                     moveDirectionX = 1;
                 }
-            }
+            } 
 
         }
 

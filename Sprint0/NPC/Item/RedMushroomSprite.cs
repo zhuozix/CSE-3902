@@ -17,8 +17,7 @@ namespace Sprint0.NPC.Item
         private int moveDirection;
         static float moveSpeed = 100f;
         private int xDirection = 1;
-        public RedMushroomSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection)
-            : base(texture, position, rows, cols, graphics, moveDirection)
+        public RedMushroomSprite(Texture2D texture, Vector2 position, int rowsIn, int colsIn, GraphicsDeviceManager graphics, int moveDirection) : base(texture, position, rowsIn, colsIn, graphics, moveDirection)
         {
             this.graphics = graphics;
             originalPosition = position;

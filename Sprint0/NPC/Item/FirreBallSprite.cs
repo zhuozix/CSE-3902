@@ -20,8 +20,7 @@ namespace Sprint0.NPC.Item
         private int xDirection = 1;
         public bool isFliped = true;
         public float time = 0f;
-        public FireBallSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection, bool isFliped)
-            : base(texture, position, rows, cols, graphics, moveDirection)
+        public FireBallSprite(Texture2D texture, Vector2 position, int rowsIn, int colsIn, GraphicsDeviceManager graphics, int moveDirection, bool isFliped) : base(texture, position, rowsIn, colsIn, graphics, moveDirection)
         {
             this.graphics = graphics;
             originalPosition = position;

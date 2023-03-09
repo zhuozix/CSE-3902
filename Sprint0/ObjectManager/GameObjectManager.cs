@@ -4,6 +4,8 @@ using Sprint0.Command.GameControlCMD;
 using Sprint0.Content;
 using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.PowerupState;
+using Sprint0.NPC.Blocks;
+using Sprint0.NPC.Enemy;
 using Sprint0.NPC.Item;
 using Sprint0.Sprites;
 
@@ -15,6 +17,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static System.Formats.Asn1.AsnWriter;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
@@ -29,6 +32,7 @@ namespace Sprint0.ObjectManager
         public List<ISprite> fireBallList;
         public Texture2D background;
         private Game1 game;
+        private Viewport viewport;
 
         private float timerOfCrashedBlock = 0f;
         private float timerOfDeadEnemy = 0f;
@@ -47,6 +51,7 @@ namespace Sprint0.ObjectManager
             this.items= new List<ISprite>();
             this.fireBallList = new List<ISprite>();
             game = gameInstance;
+            this.viewport = gameInstance.viewport;
         }
 
         public void addObject(ISprite obj, String objectType)
@@ -278,7 +283,7 @@ namespace Sprint0.ObjectManager
                     game.life--;
                 }
             }
-            if (player.Position.Y > 800 || player.Position.Y < 0 || player.Position.X < 0)
+            if (player.Position.Y > 800 || player.Position.X < 0)
             {
                 timeSpent += (float)time.ElapsedGameTime.TotalSeconds;
                 if (timeSpent >= 3f)
@@ -291,11 +296,27 @@ namespace Sprint0.ObjectManager
             }
         }
 
+        private void activateEnemy()
+        {
+            foreach (MovingEnemy a in enemies)
+            {
+                if (a.state == "out")
+                {
+                    Rectangle enemy = new Rectangle((int)a.position.X - 500, (int)a.position.Y - 2000, 500, 2000);
+                    Rectangle mario = new Rectangle((int)game.mario.Position.X, (int)game.mario.Position.Y - 2000,100,2000);
+                    if (enemy.Intersects(mario))
+                    {
+                        a.state = "Normal";
+                    }
+                }
+            }
+        }
+
         public void update(GameTime time)
         {
             gameExit();
             moreLife();
-
+            activateEnemy();
             updateShatteredBlocks(time);
             updateDeadEnemy(time);
             deleteDropedEnemy();

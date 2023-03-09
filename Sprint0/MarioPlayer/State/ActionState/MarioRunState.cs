@@ -69,10 +69,9 @@ namespace Sprint0.MarioPlayer.State.ActionState
                 IdleTransition();
             else
             {
-                if (!marioEntity.crash)
-                {
+
                    marioEntity.velocity = new Vector2(-50, 150);
-                }
+
             }
                 
         }
@@ -82,10 +81,9 @@ namespace Sprint0.MarioPlayer.State.ActionState
                 IdleTransition();
             else
             {
-                if (!marioEntity.crash)
-                {
+
                     marioEntity.velocity = new Vector2(50, 150);
-                }
+
             }
                 
         }

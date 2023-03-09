@@ -11,8 +11,7 @@ namespace Sprint0.NPC.Item
 {
     internal class CoinSprite : NoneMovingAnimatedSprite
     {
-        public CoinSprite(Texture2D texture, Vector2 position, int rows, int cols)
-            : base(texture, position, rows, cols)
+        public CoinSprite(Texture2D texture, Vector2 position, int rowsIn, int colsIn) : base(texture, position, rowsIn, colsIn)
         { }
     }
 }

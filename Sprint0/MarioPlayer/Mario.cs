@@ -29,6 +29,7 @@ namespace Sprint0.MarioPlayer
         Game1 game;
         public int columns = 1;
 
+
         public Mario(Vector2 spawnLocation,Game1 gameInstance)
         {
             game= gameInstance;
@@ -40,7 +41,8 @@ namespace Sprint0.MarioPlayer
             velocity = new Vector2(0,150);
             Acceleration = Vector2.Zero;
             ySpawnPosition = spawnLocation.Y;
-            
+            this.cols = 1;
+            this.rows = 1;
             CurrentActionState = new MarioIdleState(this, marioFactory);
             CurrentPowerupState = new MarioNormalState(this, marioFactory);
 
@@ -158,7 +160,8 @@ namespace Sprint0.MarioPlayer
 
         public override void Update(GameTime gameTime)
         {
-
+            this.cols = columns;
+            this.rows = 1;
             CurrentActionState.Update(gameTime);
             base.Update(gameTime);
         }

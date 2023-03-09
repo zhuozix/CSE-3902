@@ -237,7 +237,7 @@ namespace Sprint0.Factory
         {
             ISprite sprite = new MovingEnemy(texture_Gommba, new Vector2(500, 400), 1, 2, _graphics, 1);
             sprite.Name = "Gommba";
-            sprite.state = "Normal";
+            sprite.state = "out";
             return sprite;
             
         }
@@ -246,7 +246,7 @@ namespace Sprint0.Factory
             
             ISprite sprite = new MovingEnemy(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics, 1);
             sprite.Name = "Koopa";
-            sprite.state = "Normal";
+            sprite.state = "out";
             return sprite;
         }
 

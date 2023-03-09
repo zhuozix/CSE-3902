@@ -18,6 +18,10 @@ namespace Sprint0.Sprites
         int Width { get; }
         int Height { get; }
 
+        int rows { get; set; }
+
+        int cols { get; set; }
+
         bool crash { get; set; }
 
         void Update(GameTime gameTime);

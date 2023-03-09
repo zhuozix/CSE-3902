@@ -29,6 +29,7 @@ namespace Sprint0
 
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
+        public Viewport viewport;
         /*
          * Controllers
          */
@@ -73,11 +74,13 @@ namespace Sprint0
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-             
+            
+
         }
 
         protected override void Initialize()
         {
+            viewport = GraphicsDevice.Viewport;
             //Factories
             spritesFactory = new SpritesFactory(this);
             spritesFactory.initalize();

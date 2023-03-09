@@ -15,8 +15,8 @@ namespace Sprint0.NPC.Blocks
         public string state { get; set; }
         public bool crash { get; set; }
         public Texture2D Texture { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        public int rows { get; set; }
+        public int cols { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 velocity { get; set; }
 
@@ -32,13 +32,13 @@ namespace Sprint0.NPC.Blocks
         internal double timeSinceLastFrameTransition = 0.0;
         public static double animateFrequency = 0.9 / 5.0;
 
-        public ShatteredBlock(Texture2D texture, int rows, int columns, Vector2 l)
+        public ShatteredBlock(Texture2D texture, int rowsIn, int columns, Vector2 l)
         {
             Texture = texture;
-            Rows = rows;
-            Columns = columns;
+            this.rows = rows;
+            this.cols = columns;
             currentFrame = 0;
-            totalFrames = Rows * Columns;
+            totalFrames = this.rows * this.cols;
            
             Position = l;
         }
@@ -58,10 +58,10 @@ namespace Sprint0.NPC.Blocks
 
         public void Draw(SpriteBatch spriteBatch, bool isFlipped)
         {
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
-            int row = currentFrame / Columns;
-            int column = currentFrame % Columns;
+            int width = Texture.Width / this.cols;
+            int height = Texture.Height / this.rows;
+            int row = currentFrame / this.cols;
+            int column = currentFrame % this.cols;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)Position.X, (int)Position.Y, width * Game1.scale, height * Game1.scale);

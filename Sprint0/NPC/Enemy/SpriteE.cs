@@ -16,8 +16,9 @@ namespace Sprint0.NPC.Enemy
         public static double animateFrequency = 0.9 / 5.0;
         public bool crash { get; set; }
         private Texture2D texture;
-        public int numRows;
-        public int numCols;
+
+        public int rows { get; set; }
+        public int cols { get; set; }
         internal int currentFrame;
         internal int totalFrames;
         SpriteEffects spriteEffect = SpriteEffects.None;
@@ -36,23 +37,23 @@ namespace Sprint0.NPC.Enemy
 
         public bool collideA { get; set; }
 
-        public SpriteE(Texture2D texture, Vector2 position, int rows, int cols)
+        public SpriteE(Texture2D texture, Vector2 position, int rowsIn, int colsIn)
         {
             this.texture = texture;
-            numRows = rows;
-            numCols = cols;
+            this.rows = rowsIn;
+            this.cols = colsIn;
             this.position = position;
             currentFrame = 0;
-            totalFrames = numRows * numCols;
+            totalFrames = rows * cols;
         }
         public abstract void Update(GameTime gameTime);
         public void Draw(SpriteBatch _spriteBatch, bool isFlipped)
         {
 
-            int width = texture.Width / numCols;
-            int height = texture.Height / numRows;
-            int row = currentFrame / numCols;
-            int column = currentFrame % numCols;
+            int width = texture.Width / cols;
+            int height = texture.Height / rows;
+            int row = currentFrame / cols;
+            int column = currentFrame % cols;
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 

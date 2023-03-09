@@ -14,7 +14,10 @@ namespace Sprint0.MarioPlayer
         public Texture2D Texture { get { return Sprite.Texture; } }
         public int Width { get { return Texture.Width; } }
         public int Height { get { return Texture.Height; } }
-     
+
+        public int rows { get; set; }
+        public int cols { get; set; }
+
         public Vector2 Position { get { return Sprite.Position; } set { Sprite.Position = value; } }
         public Vector2 velocity { get; set; }
         public Vector2 Acceleration { get; set; }

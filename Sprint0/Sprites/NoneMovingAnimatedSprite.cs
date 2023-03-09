@@ -11,8 +11,8 @@ namespace Sprint0.Content
 {
     public class NoneMovingAnimatedSprite : Sprite
     {
-        public NoneMovingAnimatedSprite(Texture2D texture, Vector2 position, int rows, int cols)
-            : base(texture, position, rows, cols)
+        public NoneMovingAnimatedSprite(Texture2D texture, Vector2 position, int rowsIn, int colsIn)
+            : base(texture, position, rowsIn, colsIn)
         { }
 
         public override void Update(GameTime gameTime)

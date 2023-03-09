@@ -12,8 +12,8 @@ namespace Sprint0.Content
         private int moveDirection;
         static float moveSpeed = 100f;
 
-        public MovingNoneAnimatedSprite(Texture2D texture, Vector2 position, int rows, int cols, GraphicsDeviceManager graphics, int moveDirection)
-            : base(texture, position, rows, cols)
+        public MovingNoneAnimatedSprite(Texture2D texture, Vector2 position, int rowsIn, int colsIn, GraphicsDeviceManager graphics, int moveDirection)
+            : base(texture, position, rowsIn, colsIn)
         {
             this.graphics = graphics;
             this.originalPosition = position;

@@ -17,8 +17,8 @@ namespace Sprint0.Content
         public static double animateFrequency = 0.18;
         public bool crash { get; set; }
         private Texture2D texture;
-        private int numRows;
-        private int numCols;
+        public int rows { get; set; }
+        public int cols { get; set; }
         internal int currentFrame;
         internal int totalFrames;
 
@@ -34,23 +34,23 @@ namespace Sprint0.Content
         public int Width { get { return texture.Width; } }
         public int Height { get { return texture.Height; } }
 
-        public Sprite(Texture2D texture, Vector2 position, int rows, int cols)
+        public Sprite(Texture2D texture, Vector2 position, int rowsIn, int colsIn)
         {
             this.texture = texture;
-            this.numRows = rows;
-            this.numCols = cols;
+            this.rows = rowsIn;
+            this.cols = colsIn;
             this.position = position;
             this.currentFrame = 0;
-            this.totalFrames = numRows * numCols;
+            this.totalFrames = rows * cols;
         }
         public abstract void Update(GameTime gameTime);
         public void Draw(SpriteBatch _spriteBatch, bool isFlipped)
         {
             
-                int width = texture.Width / numCols;
-                int height = texture.Height / numRows;
-                int row = currentFrame / numCols;
-                int column = currentFrame % numCols;
+                int width = texture.Width / cols;
+                int height = texture.Height / rows;
+                int row = currentFrame / cols;
+                int column = currentFrame % cols;
                 SpriteEffects spriteEffect;
                 Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * Game1.scale, height * Game1.scale);
