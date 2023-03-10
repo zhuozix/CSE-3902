@@ -122,7 +122,6 @@ namespace Sprint0.Collision
             }
 
             //Mario and block
-
             foreach (Mario a in gobj.players)
             {
                 foreach (BlockSprite b in gobj.blocks)
@@ -145,14 +144,14 @@ namespace Sprint0.Collision
                         {
                             cannotMoveLeft(a);
                         }
+                     
+                            if (touchBottom(RectangleMain, RectangleOBJ) && b.Name !="InvisibleBlock")
+                            {
+                                cannotMoveDown(a);
+                            }
                         
-                         if (touchBottom(RectangleMain,RectangleOBJ))
-                        {
-                            cannotMoveDown(a);
-                        }
-                         
 
-                          if (touchTop(RectangleMain,RectangleOBJ))
+                          if (touchTop(RectangleMain,RectangleOBJ) && b.Name !="InvisibleBlock")
                         {
                             cannotMoveUP(a);
                             a.fallAfterJump();
@@ -161,8 +160,21 @@ namespace Sprint0.Collision
                             break;
                         }
 
+                        if (b.Name == "InvisibleBlock")
+                        {
+                            if (touchBottom(RectangleOBJ, RectangleMain))
+                            {
+                                cannotMoveUP(a);
+                                a.fallAfterJump();
+                                BlockChangeManager changeState = new BlockChangeManager(b, game);
+                                changeState.changeState();
+                                break;
+                            }
+                        }
                     }
+                  
                 }
+                
             }
 
 

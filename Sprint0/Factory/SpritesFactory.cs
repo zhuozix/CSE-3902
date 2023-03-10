@@ -213,7 +213,7 @@ namespace Sprint0.Factory
         }
         public ISprite getGreenMushSprite() 
         {
-            ISprite sprite = new CoinSprite(texture_GreenMush, new Vector2(300, 300), 1, 1);
+            ISprite sprite = new RedMushroomSprite(texture_GreenMush, new Vector2(300, 300), 1, 1, 1);
             sprite.Name = "GreenMush";
             sprite.state = "Normal";
             return sprite;
