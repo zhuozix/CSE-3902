@@ -10,9 +10,11 @@ Name of the .cs file being reviewed Collide.cs
 
 Author of the .cs file being reviewed Yao/Zhuozi
 
-Number of minutes taken to complete the review
+Number of minutes taken to complete the review: 15 min
 
-Specific comments on what is readable and what is not
+Specific comments on what is readable and what is not: 
+
+The disgn of overall is graet, but the update method is too long. Maybe writer can put different parts of code in to serveral different method. And then call all the method in the update. This will make the collide class easy to read. The overall readability is great: all the name of methods and variables have clear meaning. 
 
 
 
@@ -29,3 +31,5 @@ Name of the .cs file being reviewed: LevelLoader.cs
 Author of the .cs file being reviewed: Seth/Adam
 
 Specific comments on code quality
+
+The code quality is really good. All methods are supuer clear and easy to understand. The logic is easy to follow and there is no redundant code. However, maybe you can create enum type instead of using strings when load the level but I think its not a big problem.
