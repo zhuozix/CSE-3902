@@ -12,11 +12,11 @@ End date: 3/10
 
 Tasks for the required features of the sprint.
 
-1. Collisions for player and moving NPCs. {Shuangchen / Yao}
+1. Collisions for player and moving NPCs. {Zhuozi / Yao}
 
 2. Mouse Controller (Gamepad is optional) for teleport function.  {Kyle}
 
-3. State change for NPCs(items, blocks, enemies). {Shuangchen / Yao / Zhuozi}
+3. State change for NPCs(items, blocks, enemies). {Shuangchen}
 
 4. Level {Seth / Adam}
 
