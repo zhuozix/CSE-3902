@@ -6,7 +6,6 @@ using System.Collections;
 using Sprint0.NPC.Enemy;
 using Sprint0.Factory;
 using Sprint0.MarioPlayer;
-
 using Sprint0.ObjectManager;
 using Sprint0.LevelLoader;
 using Sprint0.Collision;
@@ -47,21 +46,7 @@ namespace Sprint0
         public int coins = 0;
         public int life = 3;
 
-        /*
-         *  Sprites Lists
-         */
-        private ArrayList blockList;
-        private ArrayList itemList;
-        private ArrayList enemyList;
         public ArrayList fireBallList;
-
-        /*
-         * Command Control
-         */
-        public int DisplaySprite { get; set; }
-        public int DisplayBlock { get; set; }
-        public int DisplayItem { get; set; }
-        public int DisplayEnemy { get; set; }
 
         /*
          * Camera
@@ -75,7 +60,6 @@ namespace Sprint0
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             
-
         }
 
         protected override void Initialize()
@@ -85,21 +69,12 @@ namespace Sprint0
             spritesFactory = new SpritesFactory(this);
             spritesFactory.initalize();
 
-
             //controllers
             keyboardController = new KeyboardController(this);
             MouseController = new MouseController(this);
 
-
-            //Lists
+            //Game object manager
             gameObjectManager = new GameObjectManager(this);
-
-            blockList = new ArrayList();
-            itemList = new ArrayList();
-            enemyList = new ArrayList();
-            fireBallList = new ArrayList();
-
-            
 
             Collision = new Collide(this);
 
@@ -112,30 +87,10 @@ namespace Sprint0
 
             camera = new Camera();
 
-            /*
-             * Load Sprites 
-             */
-          LevelLoader.LevelLoader.loadLevel(gameObjectManager, "level1-1.xml", spritesFactory, this);
+            //Load level 1
+            LevelLoader.LevelLoader.loadLevel(gameObjectManager, "level1-1.xml", spritesFactory, this);
 
-            //Player
-            //mario = new Mario(new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), this);
-            // NPC lists
-            //spritesFactory.addAllBlocks(blockList);
-            //spritesFactory.addAllItems(itemList);
-            //spritesFactory.addAllEnemies(enemyList);
-
-            foreach (ISprite obj in blockList)
-            {
-                gameObjectManager.addObject(obj, "block");
-            }
-            foreach (ISprite obj in enemyList)
-            {
-                gameObjectManager.addObject(obj, "enemy");
-            }
-            foreach (ISprite obj in itemList)
-            {
-                gameObjectManager.addObject((ISprite)obj, "item");
-            }
+            
             gameObjectManager.addObject(mario, "player");
             //Load commands to controller
             keyboardController.loadCommonCommand();
@@ -163,13 +118,7 @@ namespace Sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin(transformMatrix: camera.Transform);
 
-            //mario.Draw(_spriteBatch, true);
-            //currentBlock.Draw(_spriteBatch, true);
             gameObjectManager.Draw(_spriteBatch, true);
-            //currentItem.Draw(_spriteBatch, true);
-            //currentEnemy.Draw(_spriteBatch, true);
-            //fireBallList.Draw(_spriteBatch);
-
 
             _spriteBatch.End();
         } 

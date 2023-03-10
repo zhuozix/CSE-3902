@@ -1,0 +1,31 @@
+-- readability review --
+
+Author of the code review: Shuangchen
+
+Date of the code review: 3/10
+
+Sprint number: 03
+
+Name of the .cs file being reviewed Collide.cs
+
+Author of the .cs file being reviewed Yao/Zhuozi
+
+Number of minutes taken to complete the review
+
+Specific comments on what is readable and what is not
+
+
+
+-- code quality review --
+
+Author of the code review: Shuangchen
+
+Date of the code review: 3/10
+
+Sprint number: 03
+
+Name of the .cs file being reviewed: LevelLoader.cs
+
+Author of the .cs file being reviewed: Seth/Adam
+
+Specific comments on code quality

@@ -1,0 +1,35 @@
+-- readability review --
+
+Author of the code review: Adam Cote
+
+Date of the code review: 3/10
+
+Sprint number: 03
+
+Name of the .cs file being reviewed: Entity.cs
+
+Author of the .cs file being reviewed Yao/Zhuozi:
+
+Number of minutes taken to complete the review: 5
+
+This class follows good readability practices. The attributes that are similar are grouped together which is a sign of high cohesion.
+The code could benefit from comments, but other than that it has high readability.
+
+
+
+-- code quality review --
+
+Author of the code review: Adam Cote
+
+Date of the code review: 3/10
+
+Sprint number: 03
+
+Name of the .cs file being reviewed: Entity.cs
+
+Author of the .cs file being reviewed: Yao/Zhuozi
+
+Number of minutes taken to complete the review: 5
+
+The quality of this code is very high. It doesn't set off any of the class level code smells. It is a good size and fulfills its function
+in the project very well.

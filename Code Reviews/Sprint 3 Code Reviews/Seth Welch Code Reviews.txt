@@ -1,0 +1,31 @@
+-- readability review --
+
+Author of the code review: Seth Welch
+
+Date of the code review: 3/10
+
+Sprint number: 03
+
+Name of the .cs file being reviewed 
+
+Author of the .cs file being reviewed 
+
+Number of minutes taken to complete the review
+
+Specific comments on what is readable and what is not
+
+
+
+-- code quality review --
+
+Author of the code review: Seth Welch
+
+Date of the code review: 3/10
+
+Sprint number: 03
+
+Name of the .cs file being reviewed: 
+
+Author of the .cs file being reviewed: 
+
+Specific comments on code quality

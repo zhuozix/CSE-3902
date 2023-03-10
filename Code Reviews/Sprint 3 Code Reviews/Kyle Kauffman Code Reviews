@@ -1,0 +1,20 @@
+Readability Review
+Author of Code Review: Kyle Kauffman
+Date of Code Review: 3/10/2023
+CS File being reviewed: EnemyChangeManager.cs
+Author of CS File: Shuangchen
+Duration of Code Review: 10 minutes
+Variable names are clear and understandable, the code is well organized. It's good, readable code that doesn't
+take too long to figure out, but it does completely lack comments. I understand the enemy, goomba, koopa and
+koopa shell transitions, but I don't know what push mario is being used for here, some comments could explain.
+
+Quality Review
+Authr of the Code Review: Kyle Kauffman
+Date of Code Review: 3/10/2023
+CS File being reviewed: BlockChangeManager.cs
+Author of the CS File: Shuangchen
+Duration of the Code Review: 10 minutes
+The code is functional but the item blocks generate items completely randomly, which is not how those are
+suppose to work. Instead of randomly generating an item, we could change the item blocks to have a value
+that dictates what item is inside of them, and then instead of randomly generating a number the generateItem
+function could generate an item based on that value.

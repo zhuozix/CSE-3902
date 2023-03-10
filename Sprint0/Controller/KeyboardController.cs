@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Command;
 using Sprint0.Command.GameControlCMD;
-using Sprint0.Command.NpcCMD.EnemyCMD;
 using Sprint0.Command.PlayerCMD;
 using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.ActionState;
@@ -57,15 +56,6 @@ namespace Sprint0.Content
             /*
              * Set Common Command
              */
-            // Change Block
-            ICommand increaseBlockIndex = new increaseBlockIndex(gameInstance);
-            ICommand decreaseBlockIndex = new decreaseBlockIndex(gameInstance);
-            // Change Item
-            ICommand increaseItemIndex = new increaseItemIndex(gameInstance);
-            ICommand decreaseItemIndex = new decreaseItemIndex(gameInstance);
-            // Change Enemy 
-            ICommand SetPrevious = new SetPrevious(gameInstance);
-            ICommand SetNext = new SetNext(gameInstance);
             // Game control
             ICommand exit = new Exit(gameInstance);
             ICommand reset = new Reset(gameInstance);
@@ -89,14 +79,6 @@ namespace Sprint0.Content
              * Put common command into controller map.
              */
 
-            this.AddCommand(Keys.Y, increaseBlockIndex);
-            this.AddCommand(Keys.T, decreaseBlockIndex);
-            // Change Item
-            this.AddCommand(Keys.I, increaseItemIndex);
-            this.AddCommand(Keys.U, decreaseItemIndex);
-            // Change Enemy
-            this.AddCommand(Keys.O, SetPrevious);
-            this.AddCommand(Keys.P, SetNext);
             // Game control
             this.AddCommand(Keys.Q, exit);
             this.AddCommand(Keys.R, reset);
