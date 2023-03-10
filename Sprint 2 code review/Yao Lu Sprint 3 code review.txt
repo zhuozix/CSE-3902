@@ -1,0 +1,25 @@
+readability review
+Author of the code review: Yao Lu
+Date of the code review: 3/9/2023
+Sprint number: 3
+Name of the .cs file being reviewed: GameObjectManager.cs
+Author of the .cs file being reviewed: Seth Welch
+Number of minutes taken to complete the review: 3 minutes.
+Specific comments on what is readable and what is not:
+Overall, the code seems to be written in a readable content. 
+Most of the names are easy to understand and in proper way. 
+However if comments are used, it can explain some functions, since XML is kind of new for us.
+
+
+code quality review
+Author of the code review: Yao Lu
+Date of the code review: 3/9/2023
+Sprint number: 3
+Name of the .cs file being reviewed: BlockChangeManager
+Author of the .cs file being reviewed: Shuangchen Zhou
+Number of minutes taken to complete the review: 3 minutes.
+Specific comments on code quality:
+Still have some magic number exists, but it will be fixed in next sprint. For the generateItem() method, 
+it has too many if and else, which makes it hard to understand and maintain. 
+For the variables like blockSprite, factory could be private variables.
+Overall the code is clear and following the requirements of code smell.
