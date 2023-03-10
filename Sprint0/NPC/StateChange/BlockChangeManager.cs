@@ -22,6 +22,7 @@ namespace Sprint0.NPC.StateChange
         SpritesFactory factory;
         GameObjectManager objManager;
         Game1 game;
+        Random rand = new Random();
         public BlockChangeManager(ISprite enterSprites, Game1 gameInsstance)
         {
             blockSprite = enterSprites;
@@ -42,27 +43,60 @@ namespace Sprint0.NPC.StateChange
                 case "CoinBlock":
                     CoinBlockTransition(); break;
                 case "BrickBlock":
-                    brickBlockTransition(); break;              
+                    brickBlockTransition(); break;
+                case "InvisibleBlock":
+                    InvisibleBlockTransition(); break;
                 default: 
                     // No Change
                     break;
             }
         }
 
+        private void InvisibleBlockTransition()
+        {
+                ISprite futureSprite = factory.getUsedBlockSprite();
+                futureSprite.Position = blockSprite.Position;
+                foreach (ISprite target in objManager.blocks)
+                {
+                    if (blockSprite.Equals(target))
+                    {
+                        objManager.blocks.Remove(target);
+                        break;
+                    }
+                }
+            generateGreenMush(futureSprite);
+                objManager.addObject(futureSprite, "block");
+            
+
+        }
+
         private void CoinBlockTransition()
         {
-            ISprite futureSprite = factory.getUsedBlockSprite();
-            futureSprite.Position = blockSprite.Position;
-            foreach (ISprite target in objManager.blocks)
+
+            int randomNumber = rand.Next(1, 5);
+            if (randomNumber == 1)
             {
-                if (blockSprite.Equals(target))
+                //Feeling lucky
+                generateCoin(blockSprite);
+                game.mario.Position = new Vector2(game.mario.Position.X, game.mario.Position.Y + 10);
+
+            } else
+            {
+                ISprite futureSprite = factory.getUsedBlockSprite();
+                futureSprite.Position = blockSprite.Position;
+                foreach (ISprite target in objManager.blocks)
                 {
-                    objManager.blocks.Remove(target);
-                    break;
+                    if (blockSprite.Equals(target))
+                    {
+                        objManager.blocks.Remove(target);
+                        break;
+                    }
                 }
+                //generateStar(futureSprite);
+                generateItem(futureSprite);
+                objManager.addObject(futureSprite, "block");
             }
-            generateItem(futureSprite);
-            objManager.addObject(futureSprite, "block");
+            
         }
 
         private void brickBlockTransition()
@@ -116,7 +150,20 @@ namespace Sprint0.NPC.StateChange
                 //generate redmush or coin
                 if (hasRedMush())
                 {
-                    generateCoin(futureSprite);
+                    int randomNumber = rand.Next(1, 20);
+                    if (randomNumber == 1)
+                    {
+                        generateGreenMush(futureSprite);
+                    } 
+                    else if(randomNumber == 2)
+                    {
+                        generateStar(futureSprite);
+                    }
+                    else
+                    {
+                        generateCoin(futureSprite);
+                    }
+                    
                 }
                 else
                 {
@@ -127,7 +174,19 @@ namespace Sprint0.NPC.StateChange
             {
                 if (hasFireFlower())
                 {
-                    generateCoin(futureSprite);
+                    int randomNumber = rand.Next(1, 20);
+                    if (randomNumber == 1)
+                    {
+                        generateGreenMush(futureSprite);
+                    }
+                    else if (randomNumber == 2)
+                    {
+                        generateStar(futureSprite);
+                    }
+                    else
+                    {
+                        generateCoin(futureSprite);
+                    }
                 }
                 else
                 {
@@ -136,7 +195,19 @@ namespace Sprint0.NPC.StateChange
             }
             else if (powerupStateType != MarioPowerupStateType.Dead)
             {
-                generateCoin(futureSprite);
+                int randomNumber = rand.Next(1, 10);
+                if (randomNumber == 1)
+                {
+                    generateGreenMush(futureSprite);
+                }
+                else if (randomNumber == 2)
+                {
+                    generateStar(futureSprite);
+                }
+                else
+                {
+                    generateCoin(futureSprite);
+                }
             }
 
 
@@ -156,10 +227,24 @@ namespace Sprint0.NPC.StateChange
             objManager.addObject(ans, "item");
         }
 
+        private void generateGreenMush(ISprite spriteIn)
+        {
+            ISprite ans = factory.getGreenMushSprite();
+            ans.Position = new Vector2(spriteIn.Position.X, spriteIn.Position.Y - 35);
+            objManager.addObject(ans, "item");
+        }
+
         private void generateFireFlower(ISprite spriteIn)
         {
             ISprite ans = factory.getFireFlowerSprite();
             ans.Position = new Vector2(spriteIn.Position.X - 3, spriteIn.Position.Y - 35);
+            objManager.addObject(ans, "item");
+        }
+
+        private void generateStar(ISprite spriteIn)
+        {
+            ISprite ans = factory.getStarSprite();
+            ans.Position = new Vector2(spriteIn.Position.X -3 , spriteIn.Position.Y - 35);
             objManager.addObject(ans, "item");
         }
 

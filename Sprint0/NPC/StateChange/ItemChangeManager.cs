@@ -73,8 +73,6 @@ namespace Sprint0.NPC.StateChange
             MarioPowerupStateType powerupStateType = player.CurrentPowerupState.GetEnumValue();
             if (powerupStateType == MarioPowerupStateType.Normal)
             {
-                player.Position = new Vector2(player.Position.X,player.Position.Y - 40);
-                player.fallAfterJump();
                 player.UseSuperMushroom();
             }
             disapperTransition();
@@ -99,11 +97,6 @@ namespace Sprint0.NPC.StateChange
             MarioPowerupStateType powerupStateType = player.CurrentPowerupState.GetEnumValue();
             if (powerupStateType != MarioPowerupStateType.Fire)
             {
-                if(powerupStateType == MarioPowerupStateType.Normal)
-                {
-                    player.Position = new Vector2(player.Position.X, player.Position.Y - 40);
-                    player.fallAfterJump();
-                }
                 player.UseFireMushroom();
             }
             disapperTransition();

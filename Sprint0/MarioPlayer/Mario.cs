@@ -11,6 +11,8 @@ using System.Collections;
 
 using Sprint0.ObjectManager;
 using Sprint0.Command.GameControlCMD;
+using System.Numerics;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Sprint0.MarioPlayer
 {
@@ -28,6 +30,10 @@ namespace Sprint0.MarioPlayer
         private float timeSpent = 0f;
         Game1 game;
         public int columns = 1;
+
+        private bool isVisible = true;
+        private float visibleTimer = 0f;
+
 
 
         public Mario(Vector2 spawnLocation,Game1 gameInstance)
@@ -61,7 +67,7 @@ namespace Sprint0.MarioPlayer
             ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight);
             if(this.velocity.X != 0)
             {
-                fireball.velocity = new Vector2(fireball.velocity.X * 3, fireball.velocity.Y);
+                fireball.velocity = new Vector2((float)(fireball.velocity.X * 1.5), fireball.velocity.Y);
             }
             
             gameObjectManager.addObject(fireball, "fireBall");
@@ -139,27 +145,73 @@ namespace Sprint0.MarioPlayer
         #region Powerup state transitions
         public void RevertToNormal()
         {
+            MarioPowerupStateType powerupStateType = CurrentPowerupState.GetEnumValue();
+            if (powerupStateType == MarioPowerupStateType.Super)
+            {
+                Position = new Vector2(Position.X, Position.Y + 20);
+                velocity = new Vector2(velocity.X, velocity.Y + 20);
+            }
             CurrentPowerupState.NormalMarioTransition();
         }
 
         public void UseSuperMushroom()
         {
+            MarioPowerupStateType powerupStateType = CurrentPowerupState.GetEnumValue();
+            if (powerupStateType == MarioPowerupStateType.Normal)
+            {
+                Position = new Vector2(Position.X, Position.Y - 30);
+                velocity = new Vector2(velocity.X, velocity.Y + 20 );
+            }
+                
             CurrentPowerupState.SuperMarioTransition();
         }
 
         public void UseFireMushroom()
         {
+            MarioPowerupStateType powerupStateType = CurrentPowerupState.GetEnumValue();
+            if (powerupStateType == MarioPowerupStateType.Normal)
+            {
+                Position = new Vector2(Position.X, Position.Y - 30);
+                velocity = new Vector2(velocity.X, velocity.Y + 20);
+            }
             CurrentPowerupState.FireMarioTransition();
         }
 
         public void TakeDamage()
         {
+            MarioPowerupStateType powerupStateType = CurrentPowerupState.GetEnumValue();
+            if (powerupStateType == MarioPowerupStateType.Super)
+            {
+                Position = new Vector2(Position.X, Position.Y + 30);
+                velocity = new Vector2(velocity.X, velocity.Y + 20);
+            }
             CurrentPowerupState.TakeDamage();
         }
         #endregion
 
         public override void Update(GameTime gameTime)
         {
+            if(this.state == "Hurt")
+            {
+                visibleTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if(visibleTimer >= 0.4f)
+                {
+                    visibleTimer = 0f;
+                    changeVisibleStatus();
+                }
+            } else if (this.state == "Star")
+            {
+                visibleTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (visibleTimer >= 0.1f)
+                {
+                    visibleTimer = 0f;
+                    changeVisibleStatus();
+                }
+            }
+            else
+            {
+                this.isVisible = true;
+            }
             this.cols = columns;
             this.rows = 1;
             CurrentActionState.Update(gameTime);
@@ -168,7 +220,17 @@ namespace Sprint0.MarioPlayer
 
         public override void Draw(SpriteBatch spriteBatch, bool isFlipped)
         {
-            base.Draw(spriteBatch, !IsFacingRight);
+            if (isVisible){
+                
+                base.Draw(spriteBatch, !IsFacingRight);
+            }
+            
+        }
+
+        private void changeVisibleStatus()
+        {
+           if (isVisible) { isVisible = false; }
+            else { isVisible= true; }
         }
 
         public bool running()

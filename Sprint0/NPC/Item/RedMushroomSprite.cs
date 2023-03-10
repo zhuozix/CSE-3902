@@ -6,50 +6,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.MarioPlayer;
+using Sprint0.Sprites;
 
 namespace Sprint0.NPC.Item
 {
-    internal class RedMushroomSprite : MovingNoneAnimatedSprite
+    internal class RedMushroomSprite : NoneMovingAnimatedSprite
     {
-        private GraphicsDeviceManager graphics;
-        private Vector2 originalPosition;
-        //1 means right and down, -1 means move left and up
-        private int moveDirection;
-        static float moveSpeed = 100f;
-        private int xDirection = 1;
-        public RedMushroomSprite(Texture2D texture, Vector2 position, int rowsIn, int colsIn, GraphicsDeviceManager graphics, int moveDirection) : base(texture, position, rowsIn, colsIn, graphics, moveDirection)
-        {
-            this.graphics = graphics;
-            originalPosition = position;
-            this.moveDirection = moveDirection;
-        }
 
+        public RedMushroomSprite(Texture2D texture, Vector2 position, int rowsIn, int colsIn, int moveDirection) : base(texture, position, rowsIn, colsIn)
+        {
+            this.Position = position;
+            this.velocity = new Vector2(80, 100);
+            this.crash = false;
+            
+        }
+        
         public override void Update(GameTime gameTime)
         {
-            float currHeight = position.Y;
-            float currWidth = position.X;
-            float maxHeight = 600;
-            float maxWidth = graphics.PreferredBackBufferWidth - (Texture.Width + 1);
-            float minHeight = 0;
-            float minWidth = 0;
-            if (currHeight >= maxHeight)
+            if(crash)
             {
-                position.Y = maxHeight;
+                velocity = new Vector2(velocity.X * -1,velocity.Y);
+                crash = false;
             }
+            Position += (float)gameTime.ElapsedGameTime.TotalSeconds * velocity;
+            base.Update(gameTime);
 
-            if (Position.X >= maxWidth && xDirection > 0)
-            {
-                position.X = maxWidth - 1;
-                xDirection = -xDirection;
-            }
-            else if (Position.X <= minWidth && xDirection < 0)
-            {
-                xDirection = -xDirection;
-            }
-
-
-            position += new Vector2(moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * xDirection, moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds * moveDirection);
-
-        }
+        } 
     }
 }

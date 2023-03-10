@@ -6,23 +6,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
-namespace Sprint0.NPC.Item
+namespace Sprint0.NPC.Fireball
 {
-    internal class StarSprite : NoneMovingAnimatedSprite
+    internal class FireBallInstance : NoneMovingAnimatedSprite
     {
+        public float time;
         float maxHeight = 0f;
-        public StarSprite(Texture2D texture, Vector2 position, int rowsIn, int colsIn) : base(texture, position, rowsIn, colsIn)
+        public FireBallInstance(Texture2D texture, Vector2 position, int rowsIn, int colsIn, int moveDirection) : base(texture, position, rowsIn, colsIn)
         {
             this.Position = position;
-            this.velocity = new Vector2(80, 100);
+            if(moveDirection == 0)
+            {
+                //right
+                this.velocity = new Vector2(300, 100);
+            }
+            else
+            {
+                //left
+                this.velocity = new Vector2(-300, 100);
+            }
+
             this.crash = false;
 
         }
 
         private void bounce()
         {
-            if (this.velocity.Y == 0)
+            if(this.velocity.Y == 0)
             {
                 this.maxHeight = this.position.Y - 20;
                 this.velocity = new Vector2(this.velocity.X, -50);
@@ -31,9 +43,9 @@ namespace Sprint0.NPC.Item
 
         private void fall()
         {
-            if (this.maxHeight != 0)
+            if(this.maxHeight != 0)
             {
-                if (this.position.Y <= maxHeight)
+                if(this.position.Y <= maxHeight)
                 {
                     this.velocity = new Vector2(this.velocity.X, 50);
                 }
@@ -50,10 +62,10 @@ namespace Sprint0.NPC.Item
 
             bounce();
             fall();
+            time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             Position += (float)gameTime.ElapsedGameTime.TotalSeconds * velocity;
             base.Update(gameTime);
 
         }
-
     }
 }

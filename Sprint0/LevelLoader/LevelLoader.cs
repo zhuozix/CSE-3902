@@ -137,6 +137,11 @@ namespace Sprint0.LevelLoader
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
                     break;
+                case "InvisibleBlock":
+                    obj = factory.getInvisibleBlock();
+                    obj.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(obj, "block");
+                    break;
                 case "UsedBlock":
                     obj = factory.getUsedBlockSprite();
                     obj.Position = new Vector2(xPos, yPos);

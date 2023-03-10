@@ -1,12 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Command.GameControlCMD;
+using Sprint0.Command.PlayerCMD;
 using Sprint0.Content;
 using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.PowerupState;
 using Sprint0.NPC.Blocks;
 using Sprint0.NPC.Enemy;
-using Sprint0.NPC.Item;
+using Sprint0.NPC.Fireball;
 using Sprint0.Sprites;
 
 using System;
@@ -42,6 +43,9 @@ namespace Sprint0.ObjectManager
         private float starTimer = 0f;
         private bool hasStarMario = false;
         private float timeSpent = 0f;
+
+        private bool haveHurt = false;
+        private float hurtTimer = 0f;
 
         public GameObjectManager(Game1 gameInstance) 
         { 
@@ -234,7 +238,7 @@ namespace Sprint0.ObjectManager
         private void fireBallTimesUp()
         {
 
-            foreach (FireBallSprite sprite in fireBallList)
+            foreach (FireBallInstance sprite in fireBallList)
             {
                 if (sprite.time >= 2f)
                 {
@@ -283,7 +287,7 @@ namespace Sprint0.ObjectManager
                     game.life--;
                 }
             }
-            if (player.Position.Y > 800 || player.Position.X < 0)
+            if (player.Position.Y > 2000 || player.Position.X < 0)
             {
                 timeSpent += (float)time.ElapsedGameTime.TotalSeconds;
                 if (timeSpent >= 3f)
@@ -298,11 +302,11 @@ namespace Sprint0.ObjectManager
 
         private void activateEnemy()
         {
-            foreach (MovingEnemy a in enemies)
+            foreach (ISprite a in enemies)
             {
                 if (a.state == "out")
                 {
-                    Rectangle enemy = new Rectangle((int)a.position.X - 500, (int)a.position.Y - 2000, 500, 2000);
+                    Rectangle enemy = new Rectangle((int)a.Position.X - 450, (int)a.Position.Y - 2000, 100, 2000);
                     Rectangle mario = new Rectangle((int)game.mario.Position.X, (int)game.mario.Position.Y - 2000,100,2000);
                     if (enemy.Intersects(mario))
                     {
@@ -310,6 +314,41 @@ namespace Sprint0.ObjectManager
                     }
                 }
             }
+        }
+
+        private void hurtUpdate(GameTime time)
+        {
+            if (!haveHurt)
+            {
+                foreach(Mario a in players)
+                {
+                    if (a.state == "Hurt")
+                    {
+                        haveHurt = true;
+                    }
+                    else
+                    {
+                        haveHurt = false;
+                    }
+                }
+            } else
+            {
+                hurtTimer += (float)time.ElapsedGameTime.TotalSeconds;
+                if(hurtTimer >= 2)
+                {
+                    hurtTimer = 0;
+                    foreach (Mario a in players)
+                    {
+                        if (a.state == "Hurt")
+                        {
+                            a.state = "Normal";
+                        }
+                    }
+                }
+            }
+           
+
+            
         }
 
         public void update(GameTime time)
@@ -324,6 +363,7 @@ namespace Sprint0.ObjectManager
             fireBallLimit();
             fireBallTimesUp();
             updateStarMario(time);
+            hurtUpdate(time);
 
             foreach (ISprite obj in this.blocks)
             {

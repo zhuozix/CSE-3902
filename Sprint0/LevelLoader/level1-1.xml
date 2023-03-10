@@ -14,6 +14,8 @@
 
 		<FloorBlockStretch xPos="4960" yPos="416" xPos2="6720"></FloorBlockStretch>
 		<FloorBlockStretch xPos="4960" yPos="448" xPos2="6720"></FloorBlockStretch>
+
+		<InvisibleBlock xPos="2048" yPos="256"></InvisibleBlock>
 		
 		<CoinBlock xPos="510" yPos="286"></CoinBlock>
 		<CoinBlock xPos="670" yPos="286"></CoinBlock>
@@ -113,25 +115,26 @@
 
 		<GreenPipeSmall xPos="5216" yPos="352"></GreenPipeSmall>
 		<GreenPipeSmall xPos="5728" yPos="352"></GreenPipeSmall>
+	
 	</Blocks>
 	<Enemies>
-		<Goomba xPos="704" yPos="388"></Goomba>
-		<Goomba xPos="1280" yPos="388"></Goomba>
-		<Goomba xPos="1632" yPos="388"></Goomba>
-		<Goomba xPos="1678" yPos="388"></Goomba>
+		<Goomba xPos="704" yPos="368"></Goomba>
+		<Goomba xPos="1280" yPos="368"></Goomba>
+		<Goomba xPos="1632" yPos="368"></Goomba>
+		<Goomba xPos="1678" yPos="368"></Goomba>
 		<Goomba xPos="2560" yPos="130"></Goomba>
 		<Goomba xPos="2624" yPos="130"></Goomba>
-		<Goomba xPos="3104" yPos="388"></Goomba>
-		<Goomba xPos="3152" yPos="388"></Goomba>
-		<Koopa xPos="3424" yPos="388"></Koopa>
-		<Goomba xPos="3648" yPos="388"></Goomba>
-		<Goomba xPos="3694" yPos="388"></Goomba>
-		<Goomba xPos="3968" yPos="388"></Goomba>
-		<Goomba xPos="4014" yPos="388"></Goomba>
-		<Goomba xPos="4096" yPos="388"></Goomba>
-		<Goomba xPos="4142" yPos="388"></Goomba>
-		<Goomba xPos="5568" yPos="388"></Goomba>
-		<Goomba xPos="5614" yPos="388"></Goomba>
+		<Goomba xPos="3104" yPos="368"></Goomba>
+		<Goomba xPos="3152" yPos="368"></Goomba>
+		<Koopa xPos="3424" yPos="368"></Koopa>
+		<Goomba xPos="3648" yPos="368"></Goomba>
+		<Goomba xPos="3694" yPos="368"></Goomba>
+		<Goomba xPos="3968" yPos="368"></Goomba>
+		<Goomba xPos="4014" yPos="368"></Goomba>
+		<Goomba xPos="4096" yPos="368"></Goomba>
+		<Goomba xPos="4142" yPos="368"></Goomba>
+		<Goomba xPos="5568" yPos="368"></Goomba>
+		<Goomba xPos="5614" yPos="368"></Goomba>
 	</Enemies>
 	<Items>
 	</Items>

@@ -52,9 +52,23 @@ namespace Sprint0.Content
                 int row = currentFrame / cols;
                 int column = currentFrame % cols;
                 SpriteEffects spriteEffect;
-                Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            SpriteEffects spriteEffectStar;
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * Game1.scale, height * Game1.scale);
-                 
+                 if(this.state == "Star")
+                {
+                if (isFlipped)
+                {
+                    spriteEffect = SpriteEffects.FlipHorizontally | SpriteEffects.FlipHorizontally;
+                }
+                else
+                {
+                    spriteEffect = SpriteEffects.None | SpriteEffects.FlipHorizontally;
+                }
+
+            }
+            else
+            {
                 if (isFlipped)
                 {
                     spriteEffect = SpriteEffects.FlipHorizontally;
@@ -63,6 +77,11 @@ namespace Sprint0.Content
                 {
                     spriteEffect = SpriteEffects.None;
                 }
+
+            }
+                
+
+                
                
                 
                 _spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, spriteEffect, 0);

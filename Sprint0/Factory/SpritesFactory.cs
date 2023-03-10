@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.ActionState;
 using Sprint0.ObjectManager;
+using Sprint0.NPC.Fireball;
 
 namespace Sprint0.Factory
 {
@@ -72,8 +73,7 @@ namespace Sprint0.Factory
             texture_GreenPipeMedium = content.Load<Texture2D>("Blocks/GreenPipeMedium");
             texture_GreenPipeSmall = content.Load<Texture2D>("Blocks/GreenPipeSmall");
             texture_ShatteredBlock = content.Load<Texture2D>("Blocks/ShatteredBlock");
-            //todo
-            texture_InvisibleBlock = null;
+            texture_InvisibleBlock = content.Load<Texture2D>("Blocks/hiddenBlock");
 
             // Items
             texture_FireFlower = content.Load<Texture2D>("fireFlower");
@@ -206,14 +206,14 @@ namespace Sprint0.Factory
         }
         public ISprite getStarSprite()
         {
-            ISprite sprite = new StarSprite(texture_Star, new Vector2(200, 300), 1, 4, _graphics, 1);
+            ISprite sprite = new StarSprite(texture_Star, new Vector2(200, 300), 1, 4);
             sprite.Name = "Star";
             sprite.state = "Normal";
             return sprite;
         }
         public ISprite getGreenMushSprite() 
         {
-            ISprite sprite = new GreenMushroomSprite(texture_GreenMush, new Vector2(300, 300), 1, 1, _graphics, 1);
+            ISprite sprite = new CoinSprite(texture_GreenMush, new Vector2(300, 300), 1, 1);
             sprite.Name = "GreenMush";
             sprite.state = "Normal";
             return sprite;
@@ -221,7 +221,7 @@ namespace Sprint0.Factory
             
         }
         public ISprite getRedMushSprite() {
-            ISprite sprite = new RedMushroomSprite(texture_RedMush, new Vector2(400, 300), 1, 1, _graphics, 1);
+            ISprite sprite = new RedMushroomSprite(texture_RedMush, new Vector2(400, 300), 1, 1, 1);
             sprite.Name = "RedMush";
             sprite.state = "Normal";
             return sprite;
@@ -235,7 +235,7 @@ namespace Sprint0.Factory
         }
         public ISprite getGommbaSprite() 
         {
-            ISprite sprite = new MovingEnemy(texture_Gommba, new Vector2(500, 400), 1, 2, _graphics, 1);
+            ISprite sprite = new EnemySprite(texture_Gommba, new Vector2(500, 400), 1, 2);
             sprite.Name = "Gommba";
             sprite.state = "out";
             return sprite;
@@ -244,7 +244,7 @@ namespace Sprint0.Factory
         public ISprite getKoopaSprite()
         {
             
-            ISprite sprite = new MovingEnemy(texture_Koopa, new Vector2(500, 400), 1, 2, _graphics, 1);
+            ISprite sprite = new EnemySprite(texture_Koopa, new Vector2(500, 400), 1, 2);
             sprite.Name = "Koopa";
             sprite.state = "out";
             return sprite;
@@ -252,14 +252,14 @@ namespace Sprint0.Factory
 
          public ISprite getKoopaShellSprite()
         {
-            ISprite sprite = new MovingEnemy(texture_KoopaShell, new Vector2(500, 400), 1, 1, _graphics, 1);
+            ISprite sprite = new EnemySprite(texture_KoopaShell, new Vector2(500, 400), 1, 1);
             sprite.Name = "KoopaShell";
             sprite.state = "Normal";
             return sprite;
         }
          public ISprite getDeadGommbaSprite()
         {
-            ISprite sprite = new MovingEnemy(texture_DeadGommba, new Vector2(500, 400), 1, 1, _graphics, 1);
+            ISprite sprite = new EnemySprite(texture_DeadGommba, new Vector2(500, 400), 1, 1);
             sprite.Name = "DeadGommba";
             sprite.state = "Normal";
             return sprite;
@@ -269,11 +269,11 @@ namespace Sprint0.Factory
         {
             if (isFacingRight)
             {
-                return new FireBallSprite(texture_FireBall, new Vector2(currentLocation.X + 5, currentLocation.Y), 2, 2, _graphics, 1, true);
+                return new FireBallInstance(texture_FireBall, new Vector2(currentLocation.X + 5, currentLocation.Y), 2, 2,0);
             }
             else
             {
-                return new FireBallSprite(texture_FireBall, new Vector2(currentLocation.X - 5, currentLocation.Y), 2, 2, _graphics, -1, false);
+                return new FireBallInstance(texture_FireBall, new Vector2(currentLocation.X - 5, currentLocation.Y), 2, 2,1);
             }
 
         }
