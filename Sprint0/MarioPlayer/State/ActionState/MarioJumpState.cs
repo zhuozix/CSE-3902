@@ -49,6 +49,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
         }
         public override void TurnLeft()
         {
+            /*
             if (marioEntity.IsFacingRight)
             {
                 marioEntity.IsFacingRight = false;
@@ -60,12 +61,12 @@ namespace Sprint0.MarioPlayer.State.ActionState
             else
             {
                 marioEntity.velocity = new Vector2(-50, marioEntity.velocity.Y);
-            }
+            }*/
 
         }
         public override void TurnRight()
         {
-
+            /*
             if (!marioEntity.IsFacingRight)
             {
                 marioEntity.IsFacingRight = true;
@@ -77,7 +78,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
             else
             {
                 marioEntity.velocity = new Vector2(50, marioEntity.velocity.Y);
-            }
+            }*/
 
         }
 
