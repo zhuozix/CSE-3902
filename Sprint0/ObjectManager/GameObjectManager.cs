@@ -400,7 +400,16 @@ namespace Sprint0.ObjectManager
             }
             foreach (ISprite obj in this.enemies)
             {
-                obj.Draw(_spriteBatch, isFlipped);
+                bool filppedEnemy;
+                if (obj.velocity.X < 0)
+                {
+                    filppedEnemy = true;
+                }
+                else
+                {
+                    filppedEnemy = false;
+                }
+                obj.Draw(_spriteBatch, filppedEnemy);
             }
             foreach (ISprite obj in this.players)
             {

@@ -12,16 +12,18 @@ namespace Sprint0.NPC.Enemy
 
         internal class EnemySprite : NoneMovingAnimatedSprite
         {
-
+            bool isFilped = false;
             public EnemySprite(Texture2D texture, Vector2 position, int rowsIn, int colsIn) : base(texture, position, rowsIn, colsIn)
             {
                 this.Position = position;
-                this.velocity = new Vector2(-100, 100);
+                this.velocity = new Vector2(-100, 10);
                 this.crash = false;
 
             }
 
-            public override void Update(GameTime gameTime)
+
+
+        public override void Update(GameTime gameTime)
             {
             if (this.state == "Dead" || this.state == "idle" || this.state == "out")
             {

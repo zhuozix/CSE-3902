@@ -36,6 +36,10 @@ namespace Sprint0.Collision
         public List<bool> collidePlayer { get; set; }
         public bool fall { get; set; }
         Game1 game;
+
+        private float invisibeleTimer = 0f;
+        private bool timerGo = false;
+
         public Collide(Game1 gameInstance)
         {
             this.gobj = gameInstance.gameObjectManager;
@@ -46,6 +50,16 @@ namespace Sprint0.Collision
         public void Update(GameTime gameTime)
         {
             bool hasBottomBlock = false;
+            if (timerGo)
+            {
+                invisibeleTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
+            }
+            
+            if (invisibeleTimer >= 2f)
+            {
+                invisibeleTimer = 0f;
+                timerGo = false;
+            }
 
             foreach (Mario a in gobj.players) {
 
@@ -64,7 +78,41 @@ namespace Sprint0.Collision
                 }
             }
 
-            // enemy and enemy does not collide
+            // enemy and enemy 
+            foreach(ISprite a in gobj.enemies)
+            {
+                bool killed = false;
+                
+                foreach(ISprite b in gobj.enemies)
+                {
+                    if (a.Equals(b))
+                    {
+                        break;
+                    }
+                    Rectangle RectangleEnemyA = getRectangle(b);
+                    Rectangle RectangleEnemyB = getRectangle(a);
+                    if (RectangleEnemyA.Intersects(RectangleEnemyB))
+                    {
+                        if(a.state == "Rolling")
+                        {
+                            EnemyChangeManager changeState = new EnemyChangeManager(b, game);
+                            changeState.attackedByFireball();
+                            changeState.changeState();
+                            killed = true;
+                            break;
+                        }
+                        else
+                        {
+                            a.crash = true;
+                            b.crash = true;
+                        }
+                    }
+                }
+                if (killed)
+                {
+                    break;
+                }
+            }
             // enemy and item does not collide
 
             // enemy and block
@@ -84,11 +132,11 @@ namespace Sprint0.Collision
                             a.velocity = new Vector2(a.velocity.X, 0);
                         }
 
-                        if (touchRight(RectangleItem, RectangleBlock))
+                        if (touchRight(RectangleItem, RectangleBlock,a))
                         {
                             a.crash = true;
                         }
-                        else if (touchLeft(RectangleItem, RectangleBlock))
+                        else if (touchLeft(RectangleItem, RectangleBlock, a))
                         {
                             a.crash = true;
                         }
@@ -120,11 +168,11 @@ namespace Sprint0.Collision
                             a.velocity = new Vector2(a.velocity.X, 0);
                         }
 
-                        if (touchRight(RectangleItem, RectangleBlock))
+                        if (touchRight(RectangleItem, RectangleBlock,a))
                         {
                             a.crash = true;
                         }
-                        else if (touchLeft(RectangleItem, RectangleBlock))
+                        else if (touchLeft(RectangleItem, RectangleBlock,a))
                         {
                             a.crash = true;
                         }
@@ -151,33 +199,31 @@ namespace Sprint0.Collision
                         {
                             break;
                         }
-                        
 
-                        if (touchRight(RectangleMain,RectangleOBJ))
+                        if (touchRight(RectangleMain,RectangleOBJ,a))
                         {
                             cannotMoveRight(a);
-                            if (!hasBottomBlock)
+                            if (onlyOneTouchedBlock(a, b))
                             {
                                 a.fallAfterJump();
                             }
                         }
-                        else if (touchLeft(RectangleMain,RectangleOBJ))
+                        else if (touchLeft(RectangleMain,RectangleOBJ,a))
                         {
                             cannotMoveLeft(a);
-                            if (!hasBottomBlock)
+                            if (onlyOneTouchedBlock(a,b))
                             {
                                 a.fallAfterJump();
                             }
                            
                         }
-                     
-                         if (touchBottom(RectangleMain, RectangleOBJ) && b.Name !="InvisibleBlock")
+                            if (touchBottom(RectangleMain, RectangleOBJ) && b.Name != "InvisibleBlock")
                             {
                                 cannotMoveDown(a);
                             }
                         
 
-                          if (touchTop(RectangleMain,RectangleOBJ) && b.Name !="InvisibleBlock")
+                          if (touchTop(RectangleMain,RectangleOBJ) && b.Name != "InvisibleBlock")
                         {
                             cannotMoveUP(a);
                             //a.fallAfterJump();
@@ -188,7 +234,12 @@ namespace Sprint0.Collision
 
                         if (b.Name == "InvisibleBlock")
                         {
-                            if (touchBottom(RectangleOBJ, RectangleMain))
+                            if (!touchTop(RectangleMain, RectangleOBJ))
+                            {
+                                timerGo = true;
+                            }
+                                
+                            if (!timerGo  && touchTop(RectangleMain, RectangleOBJ))
                             {
                                 cannotMoveUP(a);
                                 //a.fallAfterJump();
@@ -203,7 +254,7 @@ namespace Sprint0.Collision
                 
             }
 
-
+            //Mario and enemis
             foreach (Mario a in gobj.players)
             {
                 foreach (EnemySprite b in gobj.enemies)
@@ -239,7 +290,7 @@ namespace Sprint0.Collision
                         else if(a.state == "Normal")
                         {
                             
-                            if (b.state == "Normal" || b.state == "rolling")
+                            if (b.state == "Normal" || b.state == "Rolling")
                             {
                             a.crash = true;
                             a.TakeDamage();
@@ -339,11 +390,11 @@ namespace Sprint0.Collision
                             a.velocity = new Vector2(a.velocity.X, 0);
                         }
 
-                        if (touchRight(RectangleItem, RectangleBlock))
+                        if (touchRight(RectangleItem, RectangleBlock, a))
                         {
                             a.crash = true;
                         }
-                        else if (touchLeft(RectangleItem, RectangleBlock))
+                        else if (touchLeft(RectangleItem, RectangleBlock,a))
                         {
                             a.crash = true;
                         }
@@ -357,24 +408,26 @@ namespace Sprint0.Collision
         }
 
         
-        public bool touchLeft(Rectangle mainInstance, Rectangle anotherInstance)
+        public bool touchLeft(Rectangle mainInstance, Rectangle anotherInstance, ISprite mainSprite)
         {
-            if (touchBottom(mainInstance, anotherInstance)){
+            if (!xAxisTouch(mainInstance, anotherInstance, mainSprite))
+            {
                 return false;
             }
             return mainInstance.Left < anotherInstance.Right && mainInstance.Right > anotherInstance.Right;
         }
         public bool touchBottom(Rectangle mainInstance, Rectangle anotherInstance)
         {
-           return mainInstance.Bottom > anotherInstance.Top && mainInstance.Top < anotherInstance.Top;
+            return mainInstance.Bottom > anotherInstance.Top && mainInstance.Top < anotherInstance.Top;
         }
         public bool touchBottomEnemy(Rectangle mainInstance, Rectangle anotherInstance)
         {
             return mainInstance.Bottom > anotherInstance.Top && mainInstance.Bottom < anotherInstance.Bottom;
         }
-        public bool touchRight(Rectangle mainInstance, Rectangle anotherInstance)
+        public bool touchRight(Rectangle mainInstance, Rectangle anotherInstance, ISprite mainSprite)
         {
-            if (touchBottom(mainInstance, anotherInstance)){
+            if (!xAxisTouch(mainInstance, anotherInstance, mainSprite))
+            {
                 return false;
             }
             return mainInstance.Right > anotherInstance.Left && mainInstance.Left < anotherInstance.Left;
@@ -434,6 +487,38 @@ namespace Sprint0.Collision
             return new Rectangle(startX,startY,endX,endy);
         }
 
+
+
+         private bool onlyOneTouchedBlock(ISprite a, ISprite b)
+        {
+            foreach(ISprite target in gobj.blocks)
+            {
+                Rectangle rect1 = getRectangle(a);
+                Rectangle rect2 = getRectangle(target);
+                if (rect1.Intersects(rect2))
+                {
+                    if (!target.Equals(b)) { return false; }
+                }
+            }
+
+            return true;
+        }
+
+        private bool xAxisTouch(Rectangle a, Rectangle b, ISprite c)
+        {
+            if(c.velocity.X > 0)
+            {
+                return Math.Abs(b.Left - a.Right) < Math.Abs(a.Bottom - b.Top) - 10;
+            }
+            else if(c.velocity.X == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return Math.Abs(b.Right - a.Left) < Math.Abs(a.Bottom - b.Top) - 10;
+            }
+        }
 
 
     }

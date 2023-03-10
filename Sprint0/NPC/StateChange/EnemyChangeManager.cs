@@ -139,7 +139,7 @@ namespace Sprint0.NPC.StateChange
             else
             {
                 game.mario.Position = new Vector2(player.Position.X, player.Position.Y - 10);
-                game.mario.velocity = new Vector2(player.velocity.X, -350);
+                game.mario.velocity = new Vector2(player.velocity.X, -120);
                 player.Jump();
             }
             

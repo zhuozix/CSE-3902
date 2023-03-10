@@ -118,6 +118,9 @@
 	
 	</Blocks>
 	<Enemies>
+
+		<Koopa xPos="600" yPos="368"></Koopa>
+		
 		<Goomba xPos="704" yPos="368"></Goomba>
 		<Goomba xPos="1280" yPos="368"></Goomba>
 		<Goomba xPos="1632" yPos="368"></Goomba>
