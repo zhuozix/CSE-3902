@@ -49,7 +49,7 @@ namespace Sprint0.Collision
 
         public void Update(GameTime gameTime)
         {
-            bool hasBottomBlock = false;
+            
             if (timerGo)
             {
                 invisibeleTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
@@ -61,22 +61,6 @@ namespace Sprint0.Collision
                 timerGo = false;
             }
 
-            foreach (Mario a in gobj.players) {
-
-                foreach(ISprite b in gobj.blocks)
-                {
-                    Rectangle RectangleMain = getRectangle(a);
-                    Rectangle RectangleOBJ = getRectangle(b);
-                    if (RectangleMain.Intersects(RectangleOBJ))
-                    {
-                        if (touchBottom(RectangleMain, RectangleOBJ) && b.Name != "InvisibleBlock")
-                        {
-                            hasBottomBlock = true;
-                            break;
-                        }
-                    }
-                }
-            }
 
             // enemy and enemy 
             foreach(ISprite a in gobj.enemies)
@@ -205,7 +189,8 @@ namespace Sprint0.Collision
                             cannotMoveRight(a);
                             if (onlyOneTouchedBlock(a, b))
                             {
-                                a.fallAfterJump();
+                               // a.fallAfterJump();
+                               a.velocity = new Vector2(a.velocity.X, 100);
                             }
                         }
                         else if (touchLeft(RectangleMain,RectangleOBJ,a))
@@ -213,14 +198,16 @@ namespace Sprint0.Collision
                             cannotMoveLeft(a);
                             if (onlyOneTouchedBlock(a,b))
                             {
-                                a.fallAfterJump();
+                               // a.fallAfterJump();
+                               a.velocity = new Vector2(a.velocity.X, 100);
                             }
                            
                         }
                             if (touchBottom(RectangleMain, RectangleOBJ) && b.Name != "InvisibleBlock")
                             {
                                 cannotMoveDown(a);
-                            }
+                                
+                        }
                         
 
                           if (touchTop(RectangleMain,RectangleOBJ) && b.Name != "InvisibleBlock")
@@ -280,7 +267,7 @@ namespace Sprint0.Collision
                         }                    
                         else if (b.state == "idle" || touchBottomEnemy(RectangleA,RectangleB))
                         {
- 
+        
                                 EnemyChangeManager changeState = new EnemyChangeManager(b, game);    
                                 changeState.changeState();
                                 break;

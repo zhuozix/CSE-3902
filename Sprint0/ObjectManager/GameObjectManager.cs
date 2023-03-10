@@ -47,6 +47,9 @@ namespace Sprint0.ObjectManager
         private bool haveHurt = false;
         private float hurtTimer = 0f;
 
+        private bool hasTempCoin = false;
+        private float tempCoinTimer = 0f;
+         
         public GameObjectManager(Game1 gameInstance) 
         { 
             this.blocks= new List<ISprite>();
@@ -351,6 +354,40 @@ namespace Sprint0.ObjectManager
             
         }
 
+        private void eatTempItem(GameTime time)
+        {
+           foreach(ISprite a in items)
+            {
+                if(a.state == "Temp")
+                {
+                    hasTempCoin = true;
+                    break;
+                }
+            }
+
+            if (hasTempCoin)
+            {
+                tempCoinTimer += (float)time.ElapsedGameTime.TotalSeconds;
+            }
+
+            if(tempCoinTimer >= 0.3f)
+            {
+                tempCoinTimer = 0f;
+                hasTempCoin = false;
+
+                foreach (ISprite a in items)
+                {
+                    if (a.state == "Temp")
+                    {
+                        items.Remove(a);
+                        game.coins++;
+                        break;
+                    }
+                }
+
+            }
+        }
+
         public void update(GameTime time)
         {
             gameExit();
@@ -364,6 +401,7 @@ namespace Sprint0.ObjectManager
             fireBallTimesUp();
             updateStarMario(time);
             hurtUpdate(time);
+            eatTempItem(time);
 
             foreach (ISprite obj in this.blocks)
             {

@@ -217,6 +217,8 @@ namespace Sprint0.NPC.StateChange
         {
             ISprite ans = factory.getCoinSprite();
             ans.Position = new Vector2(spriteIn.Position.X + 10, spriteIn.Position.Y - 35);
+            ans.state = "Temp";
+            ans.velocity = new Vector2(0, -100);
             objManager.addObject(ans, "item");
         }
 

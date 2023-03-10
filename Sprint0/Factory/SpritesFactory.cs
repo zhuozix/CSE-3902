@@ -228,7 +228,8 @@ namespace Sprint0.Factory
         }
         public ISprite getCoinSprite() 
         {
-            ISprite sprite = new CoinSprite(texture_Coin, new Vector2(500, 300), 1, 4);
+            ISprite sprite = new RedMushroomSprite(texture_Coin, new Vector2(500, 300), 1, 4, 1);
+            sprite.velocity = Vector2.Zero;
             sprite.Name = "Coin";
             sprite.state = "Normal";
             return sprite;
