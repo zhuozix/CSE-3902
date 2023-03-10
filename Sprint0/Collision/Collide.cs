@@ -399,9 +399,10 @@ namespace Sprint0.Collision
 
         private Rectangle getRectangle(ISprite a)
         {
-            int startX = (int)a.Position.X ;
-            int startY = (int)a.Position.Y ;
             int scale = Game1.scale;
+            int startX = (int)a.Position.X;
+            int startY = (int)a.Position.Y;
+          
             int endX = (((int)a.Texture.Width / a.cols) * scale) ;
             int endy = (((int)a.Texture.Height / a.rows ) * scale) ;   
             return new Rectangle(startX,startY,endX,endy);

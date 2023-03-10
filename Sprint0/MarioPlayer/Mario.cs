@@ -287,6 +287,7 @@ namespace Sprint0.MarioPlayer
             if (powerUpType == MarioPowerupStateType.Dead)
             {
                 spriteLocation = "DeadMario/MarioDeath";
+
             }
             spriteLocation = fileNamePrefix + "/" + fileNamePrefix + fileNameSuffix;
             return spriteLocation;
