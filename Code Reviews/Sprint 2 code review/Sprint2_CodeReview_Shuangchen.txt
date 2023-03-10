@@ -1,0 +1,76 @@
+-- readability review --
+
+Author of the code review
+
+	Shuangchen Zhou
+
+Date of the code review
+
+	2023/2/17
+
+Sprint number
+
+	2
+
+Name of the .cs file being reviewed
+
+	/Command/Command.cs
+
+Author of the .cs file being reviewed
+
+	Seth Welch
+
+Number of minutes taken to complete the review
+
+	~10
+
+Specific comments on what is readable and what is not
+
+	This list of commands contains several commands for item switching. 
+	In fact these are some of the earliest commands in our sprint group, and it is not surprising that they provide a reference for other commands. 
+	I think these commands are very easy to understand and do not use redundant code. 
+	
+
+
+-- code quality review --
+
+Author of the code review
+
+	Shuangchen Zhou
+
+Date of the code review
+
+	2023/2/17
+
+Sprint number
+
+	2
+
+Name of the .cs file being reviewed
+
+	/Blocks/AnimatedBlockSprite.cs
+
+Author of the .cs file being reviewed
+	
+	Adam Cote
+
+Specific comments on code quality
+
+From the perspective of code readability and maintainability, the quality of this code is good. 
+The class naming is meaningful, the code is well-indented, and variable and method names are also in accordance with standards, making it easy to understand. 
+The use of interfaces and properties enhances the code's extensibility and reusability. 
+It's worth to say that the code also includes some exception throwing, which is a good practice that can help with debugging and error handling.
+
+However, there are also some shortcomings in this code. 
+For example, the Position property uses NotImplementedException, which means that the method has not been implemented, and this may cause some confusion for developers who use this class. 
+In addition, the assignment of AnimateFrequency is not very clear and intuitive. 
+Furthermore, the code lacks comments, which makes it difficult to understand.
+
+Overall, the quality of this code is good in terms of readability and maintainability, but there are some details that need to be optimized. 
+It would be better to add comments to make the code more understandable and maintainable.
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change
+
+There are no methods or properties that allow for the scaling of the sprite. 
+The Draw method only specifies the width and height of the sprite based on the texture and the number of rows and columns.
+So will not be able to easily support change.

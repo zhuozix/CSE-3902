@@ -1,0 +1,19 @@
+readability review
+Author of the code review: Zhuozi Xie
+Date of the code review: 2/17/2023
+Sprint number: 2
+Name of the .cs file being reviewed: FirreBallSprite.cs
+Author of the .cs file being reviewed: Yao Lu
+Number of minutes taken to complete the review: 5 minutes.
+Specific comments on what is readable and what is not:
+The code style is clear and clean, with proper indentation, and naming conventions, like” timeSinceLastFrameTransition,” which is easy to understand and maintain.
+
+code quality review
+Author of the code review: Zhuozi Xie
+Date of the code review: 2/17/2023
+Sprint number: 2
+Name of the .cs file being reviewed: SpritesFactory.cs
+Author of the .cs file being reviewed: Shuangcheng Zhou
+Number of minutes taken to complete the review: 10 minutes.
+Specific comments on code quality:
+This code implementation of the factory pattern, providing a SpritesFactory class to produce various sprite objects in the game. The organizational structure of the code is relatively clear, and the function realization is also relatively clear. However, there are many magic values in the code, these values should be defined as constants or enumerations to improve the maintainability of the code.
