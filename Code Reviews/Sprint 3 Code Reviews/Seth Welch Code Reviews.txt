@@ -6,13 +6,14 @@ Date of the code review: 3/10
 
 Sprint number: 03
 
-Name of the .cs file being reviewed 
+Name of the .cs file being reviewed: camera.cs
 
-Author of the .cs file being reviewed 
+Author of the .cs file being reviewed: Kyle Kauffman
 
-Number of minutes taken to complete the review
+Number of minutes taken to complete the review: 5 minutes
 
-Specific comments on what is readable and what is not
+This class is very straightforward and readable. There aren't manu variables being used but they are well named making them self explanitory. There is little complexity
+to the method and the conditions in the logic are math based so it makes it easy to tell what triggers the translation of the camera. 
 
 
 
@@ -24,8 +25,11 @@ Date of the code review: 3/10
 
 Sprint number: 03
 
-Name of the .cs file being reviewed: 
+Name of the .cs file being reviewed: FireBallInstances.cs
 
-Author of the .cs file being reviewed: 
+Author of the .cs file being reviewed: Shuangchen
 
-Specific comments on code quality
+Number of minutes taken to complete the review: 5 minutes
+
+This class is very simple in the way that it knows its job and does it without much complexity. One note is that in the fall() method there is a case of 2 nested 'if' statements that should easily be changed to a single 'if' statement by combining the conditions. There is also a heavy use of magic numbers to control the movement
+of the fireballs. This unnecesarry complexity was the only issue I had with this code. 
