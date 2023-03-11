@@ -1,5 +1,5 @@
 CSE-3902
-Team members: Adam Cote, Kyle Kauffman, Seth Welch, Shuangchen Zhou, Yao Lu, Zhuozi Xie.
+Team members: (Cotae)Adam Cote, (Kylek0)Kyle Kauffman, (sethw216)Seth Welch, (Leah16)Shuangchen Zhou, (Adobely)Yao Lu,  (zhuozix)Zhuozi Xie.
 
 Project: Mario Replica
 
