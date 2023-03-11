@@ -1,0 +1,35 @@
+-- code readability review --
+
+Author of the code review: Zhuozi Xie
+
+Date of the code review: 3/10
+
+Sprint number: 03
+
+Name of the .cs file being reviewed: ItemChangeManager.cs
+
+Author of the .cs file being reviewed: Shuangchen Zhou
+
+Number of minutes taken to complete the review: 3
+
+The code would benefit from more comments, especially to explain the purpose of the methods. 
+The name of the varibales are easy to understand.
+
+
+-- code quality review --
+
+Author of the code review: Zhuozi Xie
+
+Date of the code review: 3/10
+
+Sprint number: 03
+
+Name of the .cs file being reviewed: EnemyChangeManager.cs
+
+Author of the .cs file being reviewed: Shuangchen Zhou
+
+Number of minutes taken to complete the review: 5
+
+The koopaTransition() and gommbaTransition() methods share some common code, such as removing the current enemy object from the enemies list. 
+It's a good idea to refactor the code to remove the duplicate code and improve code reuse.
+The code structure also very good. The changeState() method calls the appropriate transition method based on the name of the enemy object.
