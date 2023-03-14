@@ -392,6 +392,24 @@
 /processorParam:TextureFormat=Color
 /build:redMushroom.png
 
+#begin Sounds/main-theme-overworld.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/main-theme-overworld.mp3
+
+#begin Sounds/smb_jump-super.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/smb_jump-super.wav
+
+#begin Sounds/smb_jumpsmall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/smb_jumpsmall.wav
+
 #begin star.png
 /importer:TextureImporter
 /processor:TextureProcessor
