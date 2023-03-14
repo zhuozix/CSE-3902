@@ -13,6 +13,7 @@ using Sprint0.ObjectManager;
 using Sprint0.Command.GameControlCMD;
 using System.Numerics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
+using Sprint0.Sounds;
 
 namespace Sprint0.MarioPlayer
 {
@@ -84,6 +85,20 @@ namespace Sprint0.MarioPlayer
         public void Jump()
         {
             MarioPowerupStateType powerupStateType = this.CurrentPowerupState.GetEnumValue();
+
+            if (CurrentActionState.GetEnumValue() == MarioActionStateType.Running ||
+                    CurrentActionState.GetEnumValue() == MarioActionStateType.Idle)
+            {
+                if (powerupStateType == MarioPowerupStateType.Normal) SoundPlayer.playJumpSmall();
+                if (powerupStateType == MarioPowerupStateType.Super ||
+                    powerupStateType == MarioPowerupStateType.Fire) SoundPlayer.playJumpSuper();
+            }
+
+            
+            {
+                
+            }
+
             if (powerupStateType == MarioPowerupStateType.Dead)
             {
                 CurrentActionState.IdleTransition();

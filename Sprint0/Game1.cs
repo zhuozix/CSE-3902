@@ -11,6 +11,7 @@ using Sprint0.LevelLoader;
 using Sprint0.Collision;
 using Sprint0.Controller;
 using Sprint0.Command.GameControlCMD;
+using Sprint0.Sounds;
 
 namespace Sprint0
 {
@@ -78,6 +79,7 @@ namespace Sprint0
 
             Collision = new Collide(this);
 
+
             base.Initialize();
         }
 
@@ -90,6 +92,8 @@ namespace Sprint0
             //Load level 1
             LevelLoader.LevelLoader.loadLevel(gameObjectManager, "level1-1.xml", spritesFactory, this);
 
+            SoundPlayer.loadSounds(this);
+            SoundPlayer.playMainTheme();
             
             gameObjectManager.addObject(mario, "player");
             //Load commands to controller
