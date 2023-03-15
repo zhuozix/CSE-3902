@@ -3,6 +3,7 @@ using Sprint0.Factory;
 using Sprint0.MarioPlayer;
 using Sprint0.NPC.Blocks;
 using Sprint0.ObjectManager;
+using Sprint0.Sounds;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -63,7 +64,8 @@ namespace Sprint0.NPC.StateChange
                         futureSprite.Position = currentEnemy.Position;
                         futureSprite.state = "Dead";
                         objManager.addObject(futureSprite, "enemy");
-
+                        pushMario();
+                        SoundPlayer.playStomp();
                         }
                         objManager.enemies.Remove(target);
                         break;
@@ -98,6 +100,7 @@ namespace Sprint0.NPC.StateChange
                         futureSprite.state = "idle";
                         objManager.addObject(futureSprite, "enemy");
                         pushMario();
+                        SoundPlayer.playStomp();
                         break;
                     }
                 }
@@ -119,6 +122,7 @@ namespace Sprint0.NPC.StateChange
                         }
                         objManager.addObject(futureSprite, "enemy");
                         pushMario();
+                        SoundPlayer.playStomp();
                         break;
                     }
                 }

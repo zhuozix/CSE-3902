@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Sounds;
 
 namespace Sprint0.MarioPlayer.State.PowerupState
 {

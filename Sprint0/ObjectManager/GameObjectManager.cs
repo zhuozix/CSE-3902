@@ -9,6 +9,7 @@ using Sprint0.NPC.Blocks;
 using Sprint0.NPC.Enemy;
 using Sprint0.NPC.Fireball;
 using Sprint0.Sprites;
+using Sprint0.Sounds;
 
 using System;
 using System.Collections.Generic;
@@ -121,6 +122,7 @@ namespace Sprint0.ObjectManager
                 {
                     if (obj.state == "Crashed")
                     {
+                        SoundPlayer.playBlockBreak();
                         this.blocks.Remove(obj);
                         break;
                     }

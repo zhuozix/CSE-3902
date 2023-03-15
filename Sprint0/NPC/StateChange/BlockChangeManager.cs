@@ -5,6 +5,7 @@ using Sprint0.MarioPlayer.State.PowerupState;
 using Sprint0.NPC.Blocks;
 using Sprint0.NPC.Item;
 using Sprint0.ObjectManager;
+using Sprint0.Sounds;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -108,6 +109,7 @@ namespace Sprint0.NPC.StateChange
                 {
                     if (blockSprite.Equals(target))
                     {
+                        SoundPlayer.playBump();
                         target.originalPosition = target.Position;
                         target.velocity = new Vector2(0, -3);
                         break;
@@ -219,6 +221,7 @@ namespace Sprint0.NPC.StateChange
             ans.Position = new Vector2(spriteIn.Position.X + 10, spriteIn.Position.Y - 35);
             ans.state = "Temp";
             ans.velocity = new Vector2(0, -100);
+            SoundPlayer.playCoin();
             objManager.addObject(ans, "item");
         }
 
@@ -226,6 +229,7 @@ namespace Sprint0.NPC.StateChange
         {
             ISprite ans = factory.getRedMushSprite();
             ans.Position = new Vector2(spriteIn.Position.X, spriteIn.Position.Y - 35);
+            SoundPlayer.playPowerupAppears();
             objManager.addObject(ans, "item");
         }
 
@@ -233,6 +237,7 @@ namespace Sprint0.NPC.StateChange
         {
             ISprite ans = factory.getGreenMushSprite();
             ans.Position = new Vector2(spriteIn.Position.X, spriteIn.Position.Y - 35);
+            SoundPlayer.playPowerupAppears();
             objManager.addObject(ans, "item");
         }
 
@@ -240,6 +245,7 @@ namespace Sprint0.NPC.StateChange
         {
             ISprite ans = factory.getFireFlowerSprite();
             ans.Position = new Vector2(spriteIn.Position.X - 3, spriteIn.Position.Y - 35);
+            SoundPlayer.playPowerupAppears();
             objManager.addObject(ans, "item");
         }
 
@@ -247,6 +253,7 @@ namespace Sprint0.NPC.StateChange
         {
             ISprite ans = factory.getStarSprite();
             ans.Position = new Vector2(spriteIn.Position.X -3 , spriteIn.Position.Y - 35);
+            SoundPlayer.playPowerupAppears();
             objManager.addObject(ans, "item");
         }
 

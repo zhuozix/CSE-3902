@@ -2,6 +2,7 @@
 using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.PowerupState;
 using Sprint0.ObjectManager;
+using Sprint0.Sounds;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -35,15 +36,20 @@ namespace Sprint0.NPC.StateChange
         {
             switch (item.Name)
             {
-                case "Star": 
+                case "Star":
+                    SoundPlayer.playPowerup();
                     starTransition(); break;
-                case "RedMush": 
+                case "RedMush":
+                    SoundPlayer.playPowerup();
                     redMushTransition(); break;
                 case "GreenMush":
+                    SoundPlayer.playOneUp();
                     greenMushTransition(); break;
                 case "Coin":
+                    SoundPlayer.playCoin();
                     CoinTransition(); break;
                 case "FireFlower":
+                    SoundPlayer.playPowerup();
                     fireFlowerTransition(); break;
                 default:
                     

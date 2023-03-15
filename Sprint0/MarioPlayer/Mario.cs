@@ -70,7 +70,7 @@ namespace Sprint0.MarioPlayer
             {
                 fireball.velocity = new Vector2((float)(fireball.velocity.X * 1.5), fireball.velocity.Y);
             }
-            
+            SoundPlayer.playFireball();
             gameObjectManager.addObject(fireball, "fireBall");
         }
 

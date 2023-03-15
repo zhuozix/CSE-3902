@@ -15,6 +15,15 @@ namespace Sprint0.Sounds
         private static Song mainTheme;
         private static SoundEffect jump1;
         private static SoundEffect jump2;
+        private static SoundEffect blockBreak;
+        private static SoundEffect bump;
+        private static SoundEffect fireball;
+        private static SoundEffect powerupAppears;
+        private static SoundEffect powerup;
+        private static SoundEffect oneUp;
+        private static SoundEffect coin;
+        private static SoundEffect death;
+        private static SoundEffect stomp;
 
         public static void loadSounds(Game1 game)
         {
@@ -24,6 +33,15 @@ namespace Sprint0.Sounds
             mainTheme = content.Load<Song>("Sounds/main-theme-overworld");
             jump1 = content.Load<SoundEffect>("Sounds/smb_jumpsmall");
             jump2 = content.Load<SoundEffect>("Sounds/smb_jump-super");
+            blockBreak = content.Load<SoundEffect>("Sounds/smb_breakblock");
+            bump = content.Load<SoundEffect>("Sounds/smb_bump");
+            fireball = content.Load<SoundEffect>("Sounds/smb_fireball");
+            powerupAppears = content.Load<SoundEffect>("Sounds/smb_powerup_appears");
+            powerup = content.Load<SoundEffect>("Sounds/smb_powerup");
+            oneUp = content.Load<SoundEffect>("Sounds/smb_1-up");
+            coin = content.Load<SoundEffect>("Sounds/smb_coin");
+            death = content.Load<SoundEffect>("Sounds/smb_mariodie");
+            stomp = content.Load<SoundEffect>("Sounds/smb_stomp");
         }
 
         public static void playMainTheme()
@@ -40,6 +58,52 @@ namespace Sprint0.Sounds
         public static void playJumpSuper()
         {
             jump2.Play();
+        }
+
+        public static void playBlockBreak()
+        {
+            blockBreak.Play();
+        }
+
+        public static void playBump()
+        {
+            bump.Play();
+        }
+
+        public static void playFireball()
+        {
+            fireball.Play();
+        }
+
+        public static void playPowerupAppears()
+        {
+            powerupAppears.Play();
+        }
+
+        public static void playPowerup()
+        {
+            powerup.Play();
+        }
+
+        public static void playOneUp()
+        {
+            oneUp.Play();
+        }
+
+        public static void playCoin()
+        {
+            coin.Play();
+        }
+
+        public static void playDeath()
+        {
+            MediaPlayer.Stop();
+            death.Play();
+        }
+
+        public static void playStomp()
+        {
+            stomp.Play();
         }
     }
 }
