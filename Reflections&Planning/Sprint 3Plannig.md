@@ -18,7 +18,7 @@ Tasks for the required features of the sprint, as well as some feature repairs
 
 3. Downward camera movement
 
-4. Heads Up Display(game over display, life count, coin count, etc.)
+4. Heads Up Display(game over display, life count, coin count, etc.) {Yao}
 
 5. Sound effect
 
