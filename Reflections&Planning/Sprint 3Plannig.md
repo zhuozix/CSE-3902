@@ -4,20 +4,24 @@ Team members: Adam Cote, Kyle Kauffman, Seth Welch, Shuangchen Zhou, Yao Lu, Zhu
 
 Project: Mario Replica
 
-Sprint3 Planning:
+Sprint4 Planning:
 
-Start date: 2/17
+Start date: 3/21
 
-End date: 3/10
+End date: 4/8
 
-Tasks for the required features of the sprint.
+Tasks for the required features of the sprint, as well as some feature repairs
 
-1. Collisions for player and moving NPCs. {Zhuozi / Yao}
+1. Improve collisions and animations. {Zhuozi / Yao/ Shuangchen}
 
-2. Mouse Controller (Gamepad is optional) for teleport function.  {Kyle}
+2. Underground world content
 
-3. State change for NPCs(items, blocks, enemies). {Shuangchen}
+3. Downward camera movement
 
-4. Level {Seth / Adam}
+4. Heads Up Display(game over display, life count, coin count, etc.)
+
+5. Sound effect
+
+6. Mario slides off the flagpole and ends the game feature
 
 All group members should test the game for bugs and if it meets the requirements. (Last week of this sprint)
