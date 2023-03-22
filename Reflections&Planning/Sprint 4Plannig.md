@@ -12,16 +12,18 @@ End date: 4/8
 
 Tasks for the required features of the sprint, as well as some feature repairs
 
-1. Improve collisions and animations. {Zhuozi / Yao/ Shuangchen}
+1. Improve collisions. {Zhuozi / Yao/ Shuangchen}
 
-2. Underground world content
+2. Underground world content {Shuangchen}
 
 3. Downward camera movement
 
-4. Heads Up Display(game over display, life count, coin count, etc.) {Yao}
+4. Heads Up Display(game over display, life count, coin count, etc.) {Yao / Shuangchhen}
 
 5. Sound effect
 
 6. Mario slides off the flagpole and ends the game feature
+
+8. More animation. {Shuangchen}
 
 All group members should test the game for bugs and if it meets the requirements. (Last week of this sprint)
