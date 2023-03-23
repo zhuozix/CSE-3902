@@ -20,9 +20,9 @@ Tasks for the required features of the sprint, as well as some feature repairs
 
 4. Heads Up Display(game over display, life count, coin count, etc.) {Yao / Shuangchhen}
 
-5. Sound effect
+5. Sound effect {Seth}
 
-6. Mario slides off the flagpole and ends the game feature
+6. Mario slides off the flagpole and ends the game feature {Seth}
 
 8. More animation. {Shuangchen}
 
