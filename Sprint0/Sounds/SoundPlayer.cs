@@ -25,6 +25,8 @@ namespace Sprint0.Sounds
         private static SoundEffect death;
         private static SoundEffect stomp;
         private static SoundEffect marioHit;
+        private static SoundEffect stageClear;
+        private static SoundEffect pipe;
 
         public static void loadSounds(Game1 game)
         {
@@ -44,6 +46,8 @@ namespace Sprint0.Sounds
             death = content.Load<SoundEffect>("Sounds/smb_mariodie");
             stomp = content.Load<SoundEffect>("Sounds/smb_stomp");
             marioHit = content.Load<SoundEffect>("Sounds/smb_touch");
+            stageClear = content.Load<SoundEffect>("Sounds/smb_stage_clear");
+            pipe = content.Load<SoundEffect>("Sounds/smb_pipe");
         }
 
         public static void playMainTheme()
@@ -111,6 +115,16 @@ namespace Sprint0.Sounds
         public static void playMarioHit()
         {
             marioHit.Play();
+        }
+
+        public static void playStageClear()
+        {
+            stageClear.Play();
+        }
+
+        public static void playPipe()
+        {
+            pipe.Play();
         }
     }
 }
