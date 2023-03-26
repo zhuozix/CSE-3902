@@ -464,6 +464,12 @@
 /processorParam:Quality=Best
 /build:Sounds/smb_stomp.wav
 
+#begin Sounds/smb_touch.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/smb_touch.wav
+
 #begin star.png
 /importer:TextureImporter
 /processor:TextureProcessor
