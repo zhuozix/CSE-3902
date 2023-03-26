@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.Sounds;
 using System;
 
 namespace Sprint0.MarioPlayer.State.PowerupState
@@ -15,6 +16,7 @@ namespace Sprint0.MarioPlayer.State.PowerupState
 
         public override void TakeDamage()
         {
+            SoundPlayer.playMarioHit();
             NormalMarioTransition();
         }
     }

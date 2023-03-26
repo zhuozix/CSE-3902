@@ -24,6 +24,7 @@ namespace Sprint0.Sounds
         private static SoundEffect coin;
         private static SoundEffect death;
         private static SoundEffect stomp;
+        private static SoundEffect marioHit;
 
         public static void loadSounds(Game1 game)
         {
@@ -42,6 +43,7 @@ namespace Sprint0.Sounds
             coin = content.Load<SoundEffect>("Sounds/smb_coin");
             death = content.Load<SoundEffect>("Sounds/smb_mariodie");
             stomp = content.Load<SoundEffect>("Sounds/smb_stomp");
+            marioHit = content.Load<SoundEffect>("Sounds/smb_touch");
         }
 
         public static void playMainTheme()
@@ -104,6 +106,11 @@ namespace Sprint0.Sounds
         public static void playStomp()
         {
             stomp.Play();
+        }
+
+        public static void playMarioHit()
+        {
+            marioHit.Play();
         }
     }
 }
