@@ -446,6 +446,12 @@
 /processorParam:Quality=Best
 /build:Sounds/smb_mariodie.wav
 
+#begin Sounds/smb_pipe.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/smb_pipe.wav
+
 #begin Sounds/smb_powerup_appears.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -457,6 +463,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/smb_powerup.wav
+
+#begin Sounds/smb_stage_clear.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/smb_stage_clear.wav
 
 #begin Sounds/smb_stomp.wav
 /importer:WavImporter
