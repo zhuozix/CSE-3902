@@ -25,6 +25,7 @@ namespace Sprint0.NPC.Blocks
 
         public void teleportPlayer(Mario receiver)
         {
+            Sounds.SoundPlayer.playPipe();
             receiver.Position = new Vector2(xDest, yDest);
         }
     }
