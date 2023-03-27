@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.MarioPlayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace Sprint0.NPC.Blocks
 {
     public class Teleporter
     {
-        private Rectangle box { get; set; }
-        private String activator { get; set; }
-        int xDest { get; set; }
-        int yDest { get; set; }
+        public Rectangle box { get; set; }
+        public String activator { get; set; }
+        public int xDest { get; set; }
+        public int yDest { get; set; }
 
         public Teleporter(Rectangle box, String activator, int xDest, int yDest)
         {
@@ -20,6 +21,11 @@ namespace Sprint0.NPC.Blocks
             this.activator = activator;
             this.xDest = xDest;
             this.yDest = yDest;
+        }
+
+        public void teleportPlayer(Mario receiver)
+        {
+            receiver.Position = new Vector2(xDest, yDest);
         }
     }
 }

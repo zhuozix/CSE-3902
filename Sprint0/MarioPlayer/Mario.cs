@@ -14,6 +14,7 @@ using Sprint0.Command.GameControlCMD;
 using System.Numerics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Sprint0.Sounds;
+using Sprint0.NPC.Blocks;
 
 namespace Sprint0.MarioPlayer
 {
@@ -144,6 +145,16 @@ namespace Sprint0.MarioPlayer
                 CurrentActionState.IdleTransition();
             }
             CurrentActionState.CrouchingTransition();
+            foreach (Teleporter warp in game.gameObjectManager.teleporters)
+            {
+                Rectangle teleport = warp.box;
+                Rectangle player = new Rectangle((int)base.Position.X, (int)base.Position.Y, base.Width * Game1.scale, base.Height * Game1.scale);
+                if (player.Intersects(teleport) && warp.activator.Equals("down"))
+                {
+                    warp.teleportPlayer(this);
+                    break;
+                }
+            }
         }
 
         public void Attack()
