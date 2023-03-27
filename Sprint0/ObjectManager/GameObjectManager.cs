@@ -32,6 +32,7 @@ namespace Sprint0.ObjectManager
         public List<ISprite> players;
         public List<ISprite> items;
         public List<ISprite> fireBallList;
+        public List<Teleporter> teleporters;
         public Texture2D background;
         private Game1 game;
         private Viewport viewport;
@@ -58,6 +59,7 @@ namespace Sprint0.ObjectManager
             this.players= new List<ISprite>();
             this.items= new List<ISprite>();
             this.fireBallList = new List<ISprite>();
+            this.teleporters = new List<Teleporter>();
             game = gameInstance;
             this.viewport = gameInstance.viewport;
         }
@@ -85,6 +87,11 @@ namespace Sprint0.ObjectManager
                 default:
                     break;
             }
+        }
+
+        public void addTeleporter(Teleporter warp)
+        {
+            this.teleporters.Add(warp);
         }
 
         public void addBackground(Texture2D background)

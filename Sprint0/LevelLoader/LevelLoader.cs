@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using System.ComponentModel;
 using Sprint0.Collision;
+using Sprint0.NPC.Blocks;
 
 namespace Sprint0.LevelLoader
 {
@@ -112,6 +113,7 @@ namespace Sprint0.LevelLoader
         public static void processBlock(XmlReader xml, GameObjectManager gameObjectManager, SpritesFactory factory)
         {
             long xPos2;
+            long yPos2;
             long xPos = Int64.Parse(xml.GetAttribute("xPos"));
             long yPos = Int64.Parse(xml.GetAttribute("yPos"));
             ISprite obj;
@@ -181,6 +183,12 @@ namespace Sprint0.LevelLoader
                         gameObjectManager.addObject(obj, "block");
                         xPos += 16 * Game1.scale;
                     }
+                    break;
+                case "Teleporter":
+                    xPos2 = xPos + Int64.Parse(xml.GetAttribute("width"));
+                    yPos2 = yPos - Int64.Parse(xml.GetAttribute("height"));
+                    Rectangle rec = new Rectangle((int)xPos, (int)yPos2, (int)xPos2, (int)yPos);
+                    gameObjectManager.addTeleporter(new Teleporter(rec, xml.GetAttribute("activation"), Int32.Parse(xml.GetAttribute("xDest")), Int32.Parse(xml.GetAttribute("yDest"))));
                     break;
                 default:
                     break;
