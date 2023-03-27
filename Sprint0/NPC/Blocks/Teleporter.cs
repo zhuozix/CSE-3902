@@ -14,13 +14,15 @@ namespace Sprint0.NPC.Blocks
         public String activator { get; set; }
         public int xDest { get; set; }
         public int yDest { get; set; }
+        public Boolean underground { get; set; }
 
-        public Teleporter(Rectangle box, String activator, int xDest, int yDest)
+        public Teleporter(Rectangle box, String activator, int xDest, int yDest, bool underground)
         {
             this.box = box;
             this.activator = activator;
             this.xDest = xDest;
             this.yDest = yDest;
+            this.underground = underground;
         }
 
         public void teleportPlayer(Mario receiver)
