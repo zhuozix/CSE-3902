@@ -32,6 +32,7 @@ namespace Sprint0.ObjectManager
         public List<ISprite> players;
         public List<ISprite> items;
         public List<ISprite> fireBallList;
+        public List<ISprite> textList;
         public Texture2D background;
         private Game1 game;
         private Viewport viewport;
@@ -58,6 +59,7 @@ namespace Sprint0.ObjectManager
             this.players= new List<ISprite>();
             this.items= new List<ISprite>();
             this.fireBallList = new List<ISprite>();
+            this.textList = new List<ISprite>();
             game = gameInstance;
             this.viewport = gameInstance.viewport;
         }
@@ -82,6 +84,9 @@ namespace Sprint0.ObjectManager
                 case "fireBall":
                     this.fireBallList.Add(obj);
                     break;
+                case "text":
+                    this.textList.Add(obj);
+                    break;
                 default:
                     break;
             }
@@ -91,6 +96,7 @@ namespace Sprint0.ObjectManager
         {
             this.background = background;
         }
+
 
         public void updateShatteredBlocks(GameTime time)
         {
@@ -426,6 +432,12 @@ namespace Sprint0.ObjectManager
             {
                 obj.Update(time);
             }
+            foreach (ISprite obj in this.textList)
+            {
+                obj.Update(time);
+            }
+
+            game.time -= (float)time.ElapsedGameTime.TotalSeconds;
         }
 
         public void Draw(SpriteBatch _spriteBatch, Boolean isFlipped)
@@ -460,6 +472,10 @@ namespace Sprint0.ObjectManager
                 obj.Draw(_spriteBatch, isFlipped);
             }
             foreach (ISprite obj in this.fireBallList)
+            {
+                obj.Draw(_spriteBatch, isFlipped);
+            }
+            foreach (ISprite obj in this.textList)
             {
                 obj.Draw(_spriteBatch, isFlipped);
             }

@@ -16,6 +16,7 @@ using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.ActionState;
 using Sprint0.ObjectManager;
 using Sprint0.NPC.Fireball;
+using Sprint0.UI.Text;
 
 namespace Sprint0.Factory
 {
@@ -54,10 +55,14 @@ namespace Sprint0.Factory
         // Mario
         public Texture2D texture_Mario;
 
+        //Font
+        public SpriteFont texture_scorefont;
+
         public SpritesFactory(Game1 gameInstance)
         {
             this._graphics = gameInstance._graphics;
             this.gameInstance = gameInstance;
+            initalize();
         }
 
         public void initalize()
@@ -90,31 +95,9 @@ namespace Sprint0.Factory
 
             // Bullets
             texture_FireBall = content.Load<Texture2D>("FireMario/fireball");
-        }
-        public void addAllBlocks(ArrayList blockList)
-        {
-            blockList.Add(getCoinBlockSprite());
-            blockList.Add(getBrickBlockSprite());
-			blockList.Add(getFloorBlockSprite());
-			blockList.Add(getStairBlockSprite());
-			blockList.Add(getUsedBlockSprite());
-			blockList.Add(getGreenPipeSmallSprite());
-		}
-        public void addAllItems(ArrayList itemList)
-        {
-            itemList.Add(getFireFlowerSprite());
-            itemList.Add(getStarSprite());
-            itemList.Add(getGreenMushSprite());
-            itemList.Add(getRedMushSprite());
-            itemList.Add(getCoinSprite());
-        }
 
-        public void addAllEnemies(ArrayList enemyList)
-        {
-            enemyList.Add(getGommbaSprite());
-            enemyList.Add(getKoopaSprite());
-            enemyList.Add(getKoopaShellSprite());
-            enemyList.Add(getDeadGommbaSprite());
+            // Font
+            texture_scorefont = content.Load<SpriteFont>("Font/Score");
         }
 
         public Texture2D getBackgroundSprite(String background)
@@ -291,5 +274,58 @@ namespace Sprint0.Factory
                 return new NoneAnimatedNonMovingSprite(texture_Mario, Vector2.Zero, 1, 1);
             }
         }
+
+        //Fonts
+        public ISprite getCoinFontSprite()
+        {
+            ISprite sprite = new CoinTextSprite(texture_scorefont, "", new Vector2(50, 30), Color.Black, gameInstance);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        public ISprite getLifeFontSprite()
+        {
+            ISprite sprite = new LifeTextSprite(texture_scorefont, "", new Vector2(250, 30), Color.Black, gameInstance);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        public ISprite getTimeFontSprite()
+        {
+            ISprite sprite = new TimeTextSprite(texture_scorefont, "", new Vector2(450, 30), Color.Black, gameInstance);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        public ISprite getTitleFontSprite()
+        {
+            ISprite sprite = new TitleTextSprite(texture_scorefont, "", new Vector2(250, 200), Color.Black);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        public ISprite getDeathFontSprite()
+        {
+            ISprite sprite = new DeathTextSprite(texture_scorefont, "", new Vector2(250, 200), Color.Black, gameInstance);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        public ISprite getWinFontSprite()
+        {
+            ISprite sprite = new WinTextSprite(texture_scorefont, "", new Vector2(250, 200), Color.Black);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        public ISprite getGameOverFontSprite()
+        {
+            ISprite sprite = new GameOverTextSprite(texture_scorefont, "", new Vector2(250, 200), Color.Black);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
+
+
     }
 }

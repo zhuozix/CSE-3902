@@ -1,4 +1,5 @@
 ﻿using Sprint0.Content;
+using Sprint0.UI.Title;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,10 @@ namespace Sprint0.Command.GameControlCMD
         }
         public void Execute()
         {
-            game.GameReset();
+            game.coins = 0;
+            game.life = 3;
+            game.time = 400f;
+            game.ChangeState(new TitleScreenState(game));
         }
     }
 }

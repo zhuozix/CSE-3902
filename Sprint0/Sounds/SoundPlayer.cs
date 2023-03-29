@@ -105,5 +105,9 @@ namespace Sprint0.Sounds
         {
             stomp.Play();
         }
+        public static void stopMusic()
+        {
+            MediaPlayer.Stop();
+        }
     }
 }

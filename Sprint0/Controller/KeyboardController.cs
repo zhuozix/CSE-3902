@@ -18,7 +18,7 @@ using Sprint0.MarioPlayer.State.ActionState;
 */
 namespace Sprint0.Content
 {
-    class KeyboardController : IController
+    public class KeyboardController : IController
     {
         //create dictionary to map the keys.
         private Dictionary<Keys, ICommand> CommandMap;

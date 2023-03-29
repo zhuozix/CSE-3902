@@ -11,7 +11,7 @@ using Sprint0.MarioPlayer;
 
 namespace Sprint0.Controller
 {
-    class MouseController: IController
+    public class MouseController: IController
     {
         private Dictionary<String, ICommand> commandMap;
 

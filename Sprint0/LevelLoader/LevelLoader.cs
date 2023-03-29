@@ -70,6 +70,7 @@ namespace Sprint0.LevelLoader
                     }
                 }
             }
+            processText(xml, gameObjectManager, factory);
         }
 
         public static void processItem(XmlReader xml, GameObjectManager gameObjectManager, SpritesFactory factory)
@@ -227,12 +228,22 @@ namespace Sprint0.LevelLoader
             }
         }
 
+
         public static void processBackground(XmlReader xml, GameObjectManager gameObjectManager, SpritesFactory factory)
         {
             if (xml.Name.Contains("bg"))
             {
                 gameObjectManager.addBackground(factory.getBackgroundSprite(xml.Name));
             }
+        }
+        public static void processText(XmlReader xml, GameObjectManager gameObjectManager, SpritesFactory factory)
+        {
+            ISprite coinText = factory.getCoinFontSprite();
+            ISprite timeText = factory.getTimeFontSprite();
+            ISprite lifeText = factory.getLifeFontSprite();
+            gameObjectManager.addObject(timeText, "text");
+            gameObjectManager.addObject(lifeText, "text");
+            gameObjectManager.addObject(coinText, "text");
         }
     }
 }

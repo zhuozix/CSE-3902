@@ -320,6 +320,13 @@
 /processorParam:TextureFormat=Compressed
 /build:font.spritefont
 
+#begin Font/Score.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font/Score.spritefont
+
 #begin greenMushroom.png
 /importer:TextureImporter
 /processor:TextureProcessor
