@@ -108,6 +108,8 @@
 
 		<StairBlock xPos="4384" yPos="288"></StairBlock>
 
+		<BlueFloorBlockStretch xPos="6656" yPos="416" xPos2="7136"></BlueFloorBlockStretch>
+
 		<GreenPipeSmall xPos="896" yPos="352"></GreenPipeSmall>
 		<GreenPipeMedium xPos="1216" yPos="320"></GreenPipeMedium>
 		<GreenPipeLarge xPos="1472" yPos="288"></GreenPipeLarge>

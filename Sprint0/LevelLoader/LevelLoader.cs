@@ -129,6 +129,11 @@ namespace Sprint0.LevelLoader
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
                     break;
+                case "BlueFloorBlock":
+                    obj = factory.getBlueFloorBlockSprite();
+                    obj.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(obj, "block");
+                    break;
                 case "StairBlock":
                     obj = factory.getStairBlockSprite();
                     obj.Position = new Vector2(xPos, yPos);
@@ -136,6 +141,11 @@ namespace Sprint0.LevelLoader
                     break;
                 case "BrickBlock":
                     obj = factory.getBrickBlockSprite();
+                    obj.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(obj, "block");
+                    break;
+                case "BlueBrickBlock":
+                    obj = factory.getBlueBrickBlockSprite();
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
                     break;
@@ -169,6 +179,26 @@ namespace Sprint0.LevelLoader
                     while(xPos <= xPos2)
                     {
                         obj = factory.getFloorBlockSprite();
+                        obj.Position = new Vector2(xPos, yPos);
+                        gameObjectManager.addObject(obj, "block");
+                        xPos += 16 * Game1.scale;
+                    }
+                    break;
+                case "BlueFloorBlockStretch":
+                    xPos2 = Int64.Parse(xml.GetAttribute("xPos2"));
+                    while (xPos <= xPos2)
+                    {
+                        obj = factory.getBlueFloorBlockSprite();
+                        obj.Position = new Vector2(xPos, yPos);
+                        gameObjectManager.addObject(obj, "block");
+                        xPos += 16 * Game1.scale;
+                    }
+                    break;
+                case "BlueBrickBlockStretch":
+                    xPos2 = Int64.Parse(xml.GetAttribute("xPos2"));
+                    while (xPos <= xPos2)
+                    {
+                        obj = factory.getBlueBrickBlockSprite();
                         obj.Position = new Vector2(xPos, yPos);
                         gameObjectManager.addObject(obj, "block");
                         xPos += 16 * Game1.scale;

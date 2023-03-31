@@ -26,6 +26,8 @@ namespace Sprint0.Factory
   		// Blocks
 		public Texture2D texture_CoinBlock;
 		public Texture2D texture_BrickBlock;
+        public Texture2D texture_BlueBrickBlock;
+        public Texture2D texture_BlueFloorBlock;
 		public Texture2D texture_FloorBlock;
 		public Texture2D texture_StairBlock;
 		public Texture2D texture_UsedBlock;
@@ -65,6 +67,8 @@ namespace Sprint0.Factory
             ContentManager content = gameInstance.Content;
             // Blocks
             texture_BrickBlock = content.Load<Texture2D>("Blocks/brickBlock");
+            texture_BlueBrickBlock = content.Load<Texture2D>("Blocks/blueBrickBlock");
+            texture_BlueFloorBlock = content.Load<Texture2D>("Blocks/blueFloorBlock");
             texture_CoinBlock = content.Load<Texture2D>("Blocks/questionBlock");
             texture_FloorBlock = content.Load<Texture2D>("Blocks/floorBlock");
 			texture_StairBlock = content.Load<Texture2D>("Blocks/stairblock");
@@ -137,14 +141,29 @@ namespace Sprint0.Factory
             sprite.state = "Normal";
             return sprite;
         }
-		public ISprite getFloorBlockSprite()
+
+        public ISprite getBlueBrickBlockSprite()
+        {
+            ISprite sprite = new BlockSprite(texture_BlueBrickBlock, 1, 1, new Vector2(200, 100));
+            sprite.Name = "BrickBlock";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        public ISprite getFloorBlockSprite()
 		{
             ISprite sprite = new BlockSprite(texture_FloorBlock, 1, 1, new Vector2(300, 100));
             sprite.Name = "FloorBlock";
             sprite.state = "Normal";
             return sprite;
 		}
-		public ISprite getStairBlockSprite()
+        public ISprite getBlueFloorBlockSprite()
+        {
+            ISprite sprite = new BlockSprite(texture_BlueFloorBlock, 1, 1, new Vector2(300, 100));
+            sprite.Name = "FloorBlock";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        public ISprite getStairBlockSprite()
 		{
             ISprite sprite = new BlockSprite(texture_StairBlock, 1, 1, new Vector2(400, 100));
             sprite.Name = "StairBlock";
