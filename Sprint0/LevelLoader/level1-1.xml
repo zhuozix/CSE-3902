@@ -116,11 +116,10 @@
 		<GreenPipeSmall xPos="5216" yPos="352"></GreenPipeSmall>
 		<GreenPipeSmall xPos="5728" yPos="352"></GreenPipeSmall>
 
-		<Teleporter xPos="1830" yPos="286" width="50" height="10" activation="down" xDest="1594" yDest="544" underground="True"></Teleporter>
+		<Teleporter xPos="1830" yPos="286" width="50" height="10" activation="down" xDest="6714" yDest="64" underground="True"></Teleporter>
 
-		<Teleporter xPos="1942" yPos="894" width="10" height="50" activation="right" xDest="5228" yDest="144" underground="False"></Teleporter>
+		<Teleporter xPos="7060" yPos="894" width="12" height="50" activation="right" xDest="5228" yDest="144" underground="False"></Teleporter>
 
-		<UndergroundCamera xPos="1536" yPos="544"></UndergroundCamera>
 		
 	</Blocks>
 	<Enemies>
