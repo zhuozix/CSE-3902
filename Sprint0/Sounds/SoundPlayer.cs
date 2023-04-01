@@ -139,5 +139,9 @@ namespace Sprint0.Sounds
         {
             pipe.Play();
         }
+        public static void stopMusic()
+        {
+            MediaPlayer.Stop();
+        }
     }
 }

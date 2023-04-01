@@ -12,6 +12,8 @@ using Sprint0.Collision;
 using Sprint0.Controller;
 using Sprint0.Command.GameControlCMD;
 using Sprint0.Sounds;
+using Sprint0.UI.Title;
+using Sprint0.UI.State;
 
 namespace Sprint0
 {
@@ -36,10 +38,10 @@ namespace Sprint0
         /*
          * Controllers
          */
-        private IController keyboardController;
-        private IController MouseController;
+        public IController keyboardController;
+        public IController MouseController;
 
-        private ICollision Collision;
+        public ICollision Collision;
         /*
          * SpriteFactories
          */
@@ -47,15 +49,17 @@ namespace Sprint0
 
         //Mario
         public Mario mario;
-        public int coins = 0;
-        public int life = 3;
+        public int coins;
+        public int life;
+        public float time;
 
         public ArrayList fireBallList;
 
+        private IGameState _currentState;
         /*
          * Camera
          */
-        private Camera camera;
+        public Camera camera;
 
         public GameObjectManager gameObjectManager;
         public Game1()
@@ -69,75 +73,46 @@ namespace Sprint0
         protected override void Initialize()
         {
             viewport = GraphicsDevice.Viewport;
+
+            coins = 0;
+            life = 3;
+            time = 400f;
             //Factories
             spritesFactory = new SpritesFactory(this);
-            spritesFactory.initalize();
 
-            //controllers
-            keyboardController = new KeyboardController(this);
-            MouseController = new MouseController(this);
-
-            //Game object manager
-            gameObjectManager = new GameObjectManager(this);
-
-            Collision = new Collide(this);
-
-
+            ChangeState(new TitleScreenState(this));
             base.Initialize();
         }
 
         protected override void LoadContent()
         {         
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            camera = new Camera();
-
-            //Load level 1
-            LevelLoader.LevelLoader.loadLevel(gameObjectManager, "level1-1.xml", spritesFactory, this);
-
-            SoundPlayer.loadSounds(this);
-            SoundPlayer.playMainTheme();
-            
-            gameObjectManager.addObject(mario, "player");
-            //Load commands to controller
-            keyboardController.loadCommonCommand();
-            MouseController.loadCommonCommand();
         }
 
         protected override void Update(GameTime gameTime)
         {
-            
-            keyboardController.UpdateInput();
-            MouseController.UpdateInput();
-
-            Collision.Update(gameTime);
-
-            gameObjectManager.update(gameTime);
-
-            camera.MoveCamera(mario);
-
-
-            base.Update(gameTime);
-           
+            _currentState.Update(gameTime);
+            base.Update(gameTime);          
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            _spriteBatch.Begin(transformMatrix: camera.Transform);
-
-            gameObjectManager.Draw(_spriteBatch, true);
-
-            _spriteBatch.End();
+            _currentState.Draw(_spriteBatch);
+            base.Draw(gameTime);
         } 
 
         public void GameReset()
         {
-            this.Initialize();
+            ChangeState(new PlayState(this));
         }
 
-        
+        public void ChangeState(IGameState newState)
+        {
+            _currentState?.Exit();
+            _currentState = newState;
+            _currentState.Enter();
+        }
 
-        
+
     }
 }

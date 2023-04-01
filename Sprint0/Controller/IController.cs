@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Sprint0.Content
 {
-    interface IController
+    public interface IController
     {
         void loadCommonCommand();
         void UpdateInput();

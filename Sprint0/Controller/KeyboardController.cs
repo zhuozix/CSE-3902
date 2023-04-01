@@ -19,7 +19,7 @@ using Sprint0.Sounds;
 */
 namespace Sprint0.Content
 {
-    class KeyboardController : IController
+    public class KeyboardController : IController
     {
         //create dictionary to map the keys.
         private Dictionary<Keys, ICommand> CommandMap;
