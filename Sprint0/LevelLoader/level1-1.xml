@@ -109,8 +109,8 @@
 
 		<StairBlock xPos="4384" yPos="288"></StairBlock>
 
-		<BlueFloorBlockStretch xPos="6656" yPos="416" xPos2="7482"></BlueFloorBlockStretch>
-		<BlueFloorBlockStretch xPos="6656" yPos="448" xPos2="7482"></BlueFloorBlockStretch>
+		<BlueFloorBlockStretch xPos="6656" yPos="416" xPos2="7546"></BlueFloorBlockStretch>
+		<BlueFloorBlockStretch xPos="6656" yPos="448" xPos2="7546"></BlueFloorBlockStretch>
 
 		<BlueBrickBlockStretch xPos="6784" yPos="320" xPos2="6976"></BlueBrickBlockStretch>
 		<BlueBrickBlockStretch xPos="6784" yPos="352" xPos2="6976"></BlueBrickBlockStretch>
@@ -118,18 +118,20 @@
 
 		<BlueBrickBlockStretch xPos="6784" yPos="64" xPos2="6976"></BlueBrickBlockStretch>
 
-		<BlueBrickBlockStretch xPos="7168" yPos="66" xPos2="7482"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="7168" yPos="98" xPos2="7482"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="7168" yPos="130" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7168" yPos="2" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7168" yPos="34" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7168" yPos="66" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7168" yPos="98" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7168" yPos="130" xPos2="7546"></BlueBrickBlockStretch>
 
-		<BlueBrickBlockStretch xPos="7194" yPos="162" xPos2="7482"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="7194" yPos="194" xPos2="7482"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="7194" yPos="226" xPos2="7482"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="7194" yPos="258" xPos2="7482"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="7194" yPos="290" xPos2="7482"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="7194" yPos="322" xPos2="7482"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="7194" yPos="354" xPos2="7482"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="7194" yPos="386" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="162" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="194" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="226" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="258" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="290" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="322" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="354" xPos2="7546"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="386" xPos2="7546"></BlueBrickBlockStretch>
 
 		<BlueBrickBlock xPos="6656" yPos="64"></BlueBrickBlock>
 		<BlueBrickBlock xPos="6656" yPos="96"></BlueBrickBlock>
