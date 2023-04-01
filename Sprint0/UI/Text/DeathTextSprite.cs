@@ -21,12 +21,13 @@ namespace Sprint0.UI.Text
 
         public override void Update(GameTime gameTime)
         {
-            this.text = this.lifetext + this.gameInstance.life.ToString();
+            this.lifetext = "Mario X " + this.gameInstance.life.ToString();
         }
 
         public override void Draw(SpriteBatch spriteBatch, bool isFlipped)
         {
             spriteBatch.DrawString(this.font, this.text, this.Position, this.color);
+            spriteBatch.DrawString(this.font, this.lifetext, this.Position + new Vector2(0,50), this.color);
         }
     }
 }

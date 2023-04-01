@@ -14,6 +14,7 @@ using Sprint0.Command.GameControlCMD;
 using Sprint0.Sounds;
 using Sprint0.UI.Title;
 using Sprint0.UI.State;
+using System;
 
 namespace Sprint0
 {
@@ -62,6 +63,7 @@ namespace Sprint0
         public Camera camera;
 
         public GameObjectManager gameObjectManager;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -91,8 +93,9 @@ namespace Sprint0
 
         protected override void Update(GameTime gameTime)
         {
-            _currentState.Update(gameTime);
-            base.Update(gameTime);          
+                _currentState.Update(gameTime); 
+                base.Update(gameTime);   
+                   
         }
 
         protected override void Draw(GameTime gameTime)

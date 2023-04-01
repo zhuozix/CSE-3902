@@ -258,7 +258,7 @@ namespace Sprint0.Factory
         }
         public ISprite getCoinSprite() 
         {
-            ISprite sprite = new RedMushroomSprite(texture_Coin, new Vector2(500, 300), 1, 4, 1);
+            ISprite sprite = new CoinSprite(texture_Coin, new Vector2(500, 300), 1, 4);
             sprite.velocity = Vector2.Zero;
             sprite.Name = "Coin";
             sprite.state = "Normal";
@@ -360,14 +360,14 @@ namespace Sprint0.Factory
         }
         public ISprite getWinFontSprite()
         {
-            ISprite sprite = new WinTextSprite(texture_scorefont, "", new Vector2(250, 200), Color.Black);
+            ISprite sprite = new WinTextSprite(texture_scorefont, "", new Vector2(25, 200), Color.Black);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;
         }
         public ISprite getGameOverFontSprite()
         {
-            ISprite sprite = new GameOverTextSprite(texture_scorefont, "", new Vector2(250, 200), Color.Black);
+            ISprite sprite = new GameOverTextSprite(texture_scorefont, "", new Vector2(25, 200), Color.Black);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;

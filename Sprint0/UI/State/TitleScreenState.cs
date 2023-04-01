@@ -34,10 +34,12 @@ namespace Sprint0.UI.Title
             _game.GraphicsDevice.Clear(Color.White);
             spriteBatch.Begin();
             ISprite obj = _game.spritesFactory.getUsedBlockSprite();
-            obj.Draw(spriteBatch,false);
+            obj.Draw(spriteBatch, false);
             ISprite text = _game.spritesFactory.getTitleFontSprite();
-            text.Draw(spriteBatch,false);
+            text.Draw(spriteBatch, false);
             spriteBatch.End();
+
+            
         }
 
         public void Enter()

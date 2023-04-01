@@ -16,7 +16,7 @@ namespace Sprint0.UI.Text
         public GameOverTextSprite(SpriteFont fontIn, string textIn, Vector2 location, Color fontColor) : base(fontIn, textIn, location, fontColor)
         {
             this.text = "GameOver!";
-            this.instruction = "Press { R } to Replay, Press any other key to exit.";
+            this.instruction = "Press { R } to Restart, Press any other key to exit.";
             this.nextLine = new Vector2(location.X, location.Y + 100);
         }
 

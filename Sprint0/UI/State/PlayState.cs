@@ -29,12 +29,15 @@ namespace Sprint0.UI.State
         {
             _game.keyboardController.UpdateInput();
             _game.MouseController.UpdateInput();
-
+            
             _game.Collision.Update(gameTime);
+            if (!_game.IsPaused)
+            {
+                _game.gameObjectManager.update(gameTime);
 
-            _game.gameObjectManager.update(gameTime);
-
-            _game.camera.MoveCamera(_game.mario);
+                _game.camera.MoveCamera(_game.mario);
+            }
+           
         }
 
         public void Draw(SpriteBatch spriteBatch)

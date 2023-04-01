@@ -112,7 +112,7 @@ namespace Sprint0.Collision
                     if (RectangleBlock.Intersects(RectangleItem))
                     {
                         touched = true;
-                        if (touchBottom(RectangleItem, RectangleBlock))
+                        if (touchBottom(RectangleItem, RectangleBlock,a))
                         {
                             a.velocity = new Vector2(a.velocity.X, 0);
                         }
@@ -148,7 +148,7 @@ namespace Sprint0.Collision
                     if (RectangleBlock.Intersects(RectangleItem))
                     {
                         touched = true;
-                        if (touchBottom(RectangleItem, RectangleBlock))
+                        if (touchBottom(RectangleItem, RectangleBlock, a))
                         {
                             a.velocity = new Vector2(a.velocity.X, 0);
                         }
@@ -204,14 +204,14 @@ namespace Sprint0.Collision
                             }
                            
                         }
-                            if (touchBottom(RectangleMain, RectangleOBJ) && b.Name != "InvisibleBlock")
+                            if (touchBottom(RectangleMain, RectangleOBJ, a) && b.Name != "InvisibleBlock")
                             {
                                 cannotMoveDown(a);
                                 
                         }
                         
 
-                          if (touchTop(RectangleMain,RectangleOBJ) && b.Name != "InvisibleBlock")
+                          if (touchTop(RectangleMain,RectangleOBJ,a) && b.Name != "InvisibleBlock")
                         {
                             cannotMoveUP(a);
                             //a.fallAfterJump();
@@ -222,12 +222,12 @@ namespace Sprint0.Collision
 
                         if (b.Name == "InvisibleBlock")
                         {
-                            if (!touchTop(RectangleMain, RectangleOBJ))
+                            if (!touchTop(RectangleMain, RectangleOBJ, a))
                             {
                                 timerGo = true;
                             }
                                 
-                            if (!timerGo  && touchTop(RectangleMain, RectangleOBJ))
+                            if (!timerGo  && touchTop(RectangleMain, RectangleOBJ, a))
                             {
                                 cannotMoveUP(a);
                                 //a.fallAfterJump();
@@ -382,7 +382,7 @@ namespace Sprint0.Collision
                     if (RectangleBlock.Intersects(RectangleItem))
                     {
      
-                        if (touchBottom(RectangleItem, RectangleBlock))
+                        if (touchBottom(RectangleItem, RectangleBlock, a))
                         {
                             a.velocity = new Vector2(a.velocity.X, 0);
                         }
@@ -407,15 +407,15 @@ namespace Sprint0.Collision
         
         public bool touchLeft(Rectangle mainInstance, Rectangle anotherInstance, ISprite mainSprite)
         {
-            if (!xAxisTouch(mainInstance, anotherInstance, mainSprite))
+            if (!leftXTouchMain(mainInstance, anotherInstance, mainSprite))
             {
                 return false;
-            }
+            }else if(touchBottom(mainInstance,anotherInstance,mainSprite)) { return false; }
             return mainInstance.Left < anotherInstance.Right && mainInstance.Right > anotherInstance.Right;
         }
-        public bool touchBottom(Rectangle mainInstance, Rectangle anotherInstance)
+        public bool touchBottom(Rectangle mainInstance, Rectangle anotherInstance, ISprite mainSprite)
         {
-            return mainInstance.Bottom > anotherInstance.Top && mainInstance.Top < anotherInstance.Top;
+            return mainInstance.Bottom - anotherInstance.Top <= 5 && mainInstance.Top < anotherInstance.Top;
         }
         public bool touchBottomEnemy(Rectangle mainInstance, Rectangle anotherInstance)
         {
@@ -423,19 +423,21 @@ namespace Sprint0.Collision
         }
         public bool touchRight(Rectangle mainInstance, Rectangle anotherInstance, ISprite mainSprite)
         {
-            if (!xAxisTouch(mainInstance, anotherInstance, mainSprite))
+            if (!rightXTouchMain(mainInstance, anotherInstance, mainSprite))
             {
                 return false;
             }
+            else if (touchBottom(mainInstance, anotherInstance, mainSprite)) { return false; }
             return mainInstance.Right > anotherInstance.Left && mainInstance.Left < anotherInstance.Left;
         }
-        public bool touchTop(Rectangle mainInstance, Rectangle anotherInstance)
+        public bool touchTop(Rectangle mainInstance, Rectangle anotherInstance, ISprite mainSprite)
         {
-            if(mainInstance.Left < anotherInstance.Left - 15 || mainInstance.Right > anotherInstance.Right + 15)
+            if (mainInstance.Left < anotherInstance.Left -1|| mainInstance.Right > anotherInstance.Right+1 )
             {
                 return false;
             }
             return mainInstance.Top < anotherInstance.Bottom && mainInstance.Bottom > anotherInstance.Bottom;
+
         }
         
         public void cannotMoveDown(ISprite target)
@@ -501,22 +503,15 @@ namespace Sprint0.Collision
             return true;
         }
 
-        private bool xAxisTouch(Rectangle a, Rectangle b, ISprite c)
+        private bool rightXTouchMain(Rectangle a, Rectangle b, ISprite c)
         {
-            if(c.velocity.X > 0)
-            {
-                return Math.Abs(b.Left - a.Right) < Math.Abs(a.Bottom - b.Top) - 10;
-            }
-            else if(c.velocity.X == 0)
-            {
-                return false;
-            }
-            else
-            {
-                return Math.Abs(b.Right - a.Left) < Math.Abs(a.Bottom - b.Top) - 10;
-            }
+            return Math.Abs(b.Left - a.Right) <= Math.Abs(a.Bottom - b.Top) ;
         }
 
+        private bool leftXTouchMain(Rectangle a, Rectangle b, ISprite c)
+        {
+            return Math.Abs(b.Right - a.Left) <= Math.Abs(a.Bottom - b.Top) ;
+        }
 
     }
 }

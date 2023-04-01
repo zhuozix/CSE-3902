@@ -22,6 +22,8 @@ using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using Sprint0.UI.State;
+using Sprint0.UI.Title;
 
 namespace Sprint0.ObjectManager
 {
@@ -281,10 +283,9 @@ namespace Sprint0.ObjectManager
 
         private void gameExit()
         {
-            if (game.life < 0)
+            if (game.life < 1)
             {
-                ICommand exit = new Exit(game);
-                exit.Execute();
+                game.ChangeState(new GameOverState(game));
             }
         }
 
@@ -307,19 +308,7 @@ namespace Sprint0.ObjectManager
                 if (timeSpent > 3f)
                 {
                     timeSpent = 0f;
-                    ICommand reset = new Reset(game);
-                    reset.Execute();
-                    game.life--;
-                }
-            }
-            if (player.Position.Y > 2000 || player.Position.X < 0)
-            {
-                timeSpent += (float)time.ElapsedGameTime.TotalSeconds;
-                if (timeSpent >= 3f)
-                {
-                    timeSpent = 0f;
-                    ICommand reset = new Reset(game);
-                    reset.Execute();
+                    game.ChangeState(new DeathState(game));
                     game.life--;
                 }
             }
