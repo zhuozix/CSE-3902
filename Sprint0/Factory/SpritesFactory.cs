@@ -34,6 +34,8 @@ namespace Sprint0.Factory
 		public Texture2D texture_GreenPipeLarge;
         public Texture2D texture_GreenPipeMedium;
         public Texture2D texture_GreenPipeSmall;
+        public Texture2D texture_SidewaysGreenPipe;
+        public Texture2D texture_GreenTube;
         public Texture2D texture_ShatteredBlock;
         public Texture2D texture_InvisibleBlock;
 		public Texture2D texture_FlagPoleBlock;
@@ -77,6 +79,8 @@ namespace Sprint0.Factory
 			texture_GreenPipeLarge = content.Load<Texture2D>("Blocks/GreenPipeLarge");
             texture_GreenPipeMedium = content.Load<Texture2D>("Blocks/GreenPipeMedium");
             texture_GreenPipeSmall = content.Load<Texture2D>("Blocks/GreenPipeSmall");
+            texture_SidewaysGreenPipe = content.Load<Texture2D>("Blocks/sidewaysGreenPipe");
+            texture_GreenTube = content.Load<Texture2D>("Blocks/greenTube");
             texture_ShatteredBlock = content.Load<Texture2D>("Blocks/ShatteredBlock");
             texture_InvisibleBlock = content.Load<Texture2D>("Blocks/hiddenBlock");
 			texture_FlagPoleBlock = content.Load<Texture2D>("Blocks/flagPoleBlock");
@@ -198,6 +202,22 @@ namespace Sprint0.Factory
         public ISprite getGreenPipeSmallSprite()
         {
             ISprite sprite = new BlockSprite(texture_GreenPipeSmall, 1, 1, new Vector2(600, 100));
+            sprite.Name = "GreenPipe";
+            sprite.state = "Normal";
+            return sprite;
+        }
+
+        public ISprite getSidewaysGreenPipeSprite()
+        {
+            ISprite sprite = new BlockSprite(texture_SidewaysGreenPipe, 1, 1, new Vector2(600, 100));
+            sprite.Name = "GreenPipe";
+            sprite.state = "Normal";
+            return sprite;
+        }
+
+        public ISprite getGreenTubeSprite()
+        {
+            ISprite sprite = new BlockSprite(texture_GreenTube, 1, 1, new Vector2(600, 100));
             sprite.Name = "GreenPipe";
             sprite.state = "Normal";
             return sprite;

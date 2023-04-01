@@ -109,14 +109,27 @@
 
 		<StairBlock xPos="4384" yPos="288"></StairBlock>
 
-		<BlueFloorBlockStretch xPos="6656" yPos="416" xPos2="7136"></BlueFloorBlockStretch>
-		<BlueFloorBlockStretch xPos="6656" yPos="448" xPos2="7136"></BlueFloorBlockStretch>
+		<BlueFloorBlockStretch xPos="6656" yPos="416" xPos2="7482"></BlueFloorBlockStretch>
+		<BlueFloorBlockStretch xPos="6656" yPos="448" xPos2="7482"></BlueFloorBlockStretch>
 
 		<BlueBrickBlockStretch xPos="6784" yPos="320" xPos2="6976"></BlueBrickBlockStretch>
 		<BlueBrickBlockStretch xPos="6784" yPos="352" xPos2="6976"></BlueBrickBlockStretch>
 		<BlueBrickBlockStretch xPos="6784" yPos="384" xPos2="6976"></BlueBrickBlockStretch>
 
 		<BlueBrickBlockStretch xPos="6784" yPos="64" xPos2="6976"></BlueBrickBlockStretch>
+
+		<BlueBrickBlockStretch xPos="7168" yPos="66" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7168" yPos="98" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7168" yPos="130" xPos2="7482"></BlueBrickBlockStretch>
+
+		<BlueBrickBlockStretch xPos="7194" yPos="162" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="194" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="226" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="258" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="290" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="322" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="354" xPos2="7482"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="7194" yPos="386" xPos2="7482"></BlueBrickBlockStretch>
 
 		<BlueBrickBlock xPos="6656" yPos="64"></BlueBrickBlock>
 		<BlueBrickBlock xPos="6656" yPos="96"></BlueBrickBlock>
@@ -138,9 +151,12 @@
 		<GreenPipeSmall xPos="5216" yPos="352"></GreenPipeSmall>
 		<GreenPipeSmall xPos="5728" yPos="352"></GreenPipeSmall>
 
-		<Teleporter xPos="1830" yPos="286" width="50" height="10" activation="down" xDest="6714" yDest="64" underground="True"></Teleporter>
+		<SidewaysGreenPipe xPos="7098" yPos="354"></SidewaysGreenPipe>
+		<GreenTube xPos="7166" yPos="162"></GreenTube>
 
-		<Teleporter xPos="7060" yPos="894" width="12" height="50" activation="right" xDest="5228" yDest="144" underground="False"></Teleporter>
+		<Teleporter xPos="1830" yPos="286" width="50" height="8" activation="down" xDest="6714" yDest="64" underground="True"></Teleporter>
+
+		<Teleporter xPos="7162" yPos="414" width="2" height="32" activation="right" xDest="5228" yDest="144" underground="False"></Teleporter>
 
 		<FlagPoleBlock xPos="6340" yPos="100"></FlagPoleBlock>
 	</Blocks>

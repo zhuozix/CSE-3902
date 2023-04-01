@@ -179,6 +179,16 @@ namespace Sprint0.LevelLoader
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
                     break;
+                case "SidewaysGreenPipe":
+                    obj = factory.getSidewaysGreenPipeSprite();
+                    obj.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(obj, "block");
+                    break;
+                case "GreenTube":
+                    obj = factory.getGreenTubeSprite();
+                    obj.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(obj, "block");
+                    break;
                 case "FloorBlockStretch":
                     xPos2 = Int64.Parse(xml.GetAttribute("xPos2"));
                     while(xPos <= xPos2)

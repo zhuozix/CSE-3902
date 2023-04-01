@@ -134,6 +134,17 @@ namespace Sprint0.MarioPlayer
                 CurrentActionState.IdleTransition();
             }
             CurrentActionState.TurnRight();
+            foreach (Teleporter warp in game.gameObjectManager.teleporters)
+            {
+                Rectangle teleport = warp.box;
+                Rectangle player = new Rectangle((int)base.Position.X, (int)base.Position.Y, base.Width * Game1.scale, base.Height * Game1.scale);
+                if (player.Intersects(teleport) && warp.activator.Equals("right"))
+                {
+                    warp.teleportPlayer(this);
+                    this.fallAfterJump();
+                    break;
+                }
+            }
         }
 
         public void Crouch()
@@ -151,6 +162,7 @@ namespace Sprint0.MarioPlayer
                 if (player.Intersects(teleport) && warp.activator.Equals("down"))
                 {
                     warp.teleportPlayer(this);
+                    this.fallAfterJump();
                     break;
                 }
             }
