@@ -58,7 +58,7 @@ namespace Sprint0.Sounds
 
         public static void MuteMusic()
         {
-            MediaPlayer.Volume = 0;
+            MediaPlayer.Stop();
         }
         // for game pause and resume use
         public static void PauseMusic()
