@@ -144,7 +144,12 @@ namespace Sprint0.LevelLoader
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
                     break;
-                case "UsedBlock":
+				case "FlagPoleBlock":
+					obj = factory.getFlagPoleBlock();
+					obj.Position = new Vector2(xPos, yPos);
+					gameObjectManager.addObject(obj, "block");
+					break;
+				case "UsedBlock":
                     obj = factory.getUsedBlockSprite();
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
@@ -190,7 +195,13 @@ namespace Sprint0.LevelLoader
                     Rectangle rec = new Rectangle((int)xPos, (int)yPos2, (int)xPos2, (int)yPos);
                     gameObjectManager.addTeleporter(new Teleporter(rec, xml.GetAttribute("activation"), Int32.Parse(xml.GetAttribute("xDest")), Int32.Parse(xml.GetAttribute("yDest")), xml.GetAttribute("underground").Equals("True")));
                     break;
-                default:
+				case "FlagPoleHitbox":
+					xPos2 = xPos + Int64.Parse(xml.GetAttribute("width"));
+					yPos2 = yPos - Int64.Parse(xml.GetAttribute("height"));
+					Rectangle r = new Rectangle((int)xPos, (int)yPos2, (int)xPos2, (int)yPos);
+					gameObjectManager.addFlagPoleHitbox(new FlagPoleHitbox(r));
+					break;
+				default:
                     break;
             }
         }

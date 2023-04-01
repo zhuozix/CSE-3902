@@ -43,7 +43,11 @@ namespace Sprint0.MarioPlayer
                 {
                    ans = new NoneMovingAnimatedSprite(texture, Vector2.Zero, 1, 3);
                 player.columns = 3;
-                }
+                }else if (this.actionType == MarioActionStateType.PoleSliding)
+			{
+				ans = new NoneMovingAnimatedSprite(texture, Vector2.Zero, 1, 2);
+				player.columns = 1;
+			}
                 else {
                    ans = new NoneAnimatedNonMovingSprite(texture, Vector2.Zero, 1, 1);
                 player.columns = 1;
@@ -79,7 +83,10 @@ namespace Sprint0.MarioPlayer
             if (powerUpType != MarioPowerupStateType.Dead)
                 switch (actionType)
                 {
-                    case MarioActionStateType.Idle:
+                    case MarioActionStateType.PoleSliding:
+						fileNameSuffix = "RightFlagPole";
+						break;
+					case MarioActionStateType.Idle:
                         fileNameSuffix = "IdleRight";
                         break;
                     case MarioActionStateType.Crouching:

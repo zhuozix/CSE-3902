@@ -47,7 +47,18 @@ namespace Sprint0.MarioPlayer.State.ActionState
             }
         }
 
-        public override void JumpingTransition()
+		public override void PoleSlidingTransition()
+		{
+			MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
+			if (powerupStateType != MarioPowerupStateType.Dead)
+			{
+				Exit();
+				CurrentState = new MarioPoleslideState(marioEntity, marioFactory);
+				CurrentState.Enter(this);
+			}
+		}
+
+		public override void JumpingTransition()
         {
             MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
             if (powerupStateType != MarioPowerupStateType.Dead)
@@ -71,7 +82,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
            
         }
 
-        public override void RunningTransition()
+		public override void RunningTransition()
         {
             MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
             if (powerupStateType != MarioPowerupStateType.Dead)

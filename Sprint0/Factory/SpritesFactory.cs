@@ -34,9 +34,10 @@ namespace Sprint0.Factory
         public Texture2D texture_GreenPipeSmall;
         public Texture2D texture_ShatteredBlock;
         public Texture2D texture_InvisibleBlock;
+		public Texture2D texture_FlagPoleBlock;
 
-        // Items
-        public Texture2D texture_FireFlower;
+		// Items
+		public Texture2D texture_FireFlower;
         public Texture2D texture_Star;
         public Texture2D texture_GreenMush;
         public Texture2D texture_RedMush;
@@ -74,9 +75,10 @@ namespace Sprint0.Factory
             texture_GreenPipeSmall = content.Load<Texture2D>("Blocks/GreenPipeSmall");
             texture_ShatteredBlock = content.Load<Texture2D>("Blocks/ShatteredBlock");
             texture_InvisibleBlock = content.Load<Texture2D>("Blocks/hiddenBlock");
+			texture_FlagPoleBlock = content.Load<Texture2D>("Blocks/flagPoleBlock");
 
-            // Items
-            texture_FireFlower = content.Load<Texture2D>("fireFlower");
+			// Items
+			texture_FireFlower = content.Load<Texture2D>("fireFlower");
             texture_Star = content.Load<Texture2D>("star");
             texture_GreenMush = content.Load<Texture2D>("greenMushroom");
             texture_RedMush = content.Load<Texture2D>("redMushroom");
@@ -188,8 +190,14 @@ namespace Sprint0.Factory
             sprite.state = "Normal";
             return sprite;
         }
-
-        public ISprite getShatteredBlock()
+		public ISprite getFlagPoleBlock()
+		{
+			ISprite sprite = new BlockSprite(texture_FlagPoleBlock, 1, 1, new Vector2(500, 100));
+			sprite.Name = "FlagPoleBlock";
+			sprite.state = "Normal";
+			return sprite;
+		}
+		public ISprite getShatteredBlock()
         {
             ISprite sprite = new BlockSprite(texture_ShatteredBlock, 1, 1, new Vector2(600, 100));
             sprite.Name = "ShatteredBlock";

@@ -2,7 +2,7 @@
 	<Background>
 		<bg-1-1></bg-1-1>
 	</Background>
-	<Blocks>
+	<Blocks>		
 		<FloorBlockStretch xPos="0" yPos="416" xPos2="2176"></FloorBlockStretch>
 		<FloorBlockStretch xPos="0" yPos="448" xPos2="2176"></FloorBlockStretch>
 
@@ -18,6 +18,7 @@
 		<InvisibleBlock xPos="2048" yPos="256"></InvisibleBlock>
 		
 		<CoinBlock xPos="510" yPos="286"></CoinBlock>
+
 		<CoinBlock xPos="670" yPos="286"></CoinBlock>
 		<CoinBlock xPos="734" yPos="286"></CoinBlock>
 		<CoinBlock xPos="702" yPos="158"></CoinBlock>
@@ -120,12 +121,12 @@
 
 		<Teleporter xPos="7060" yPos="894" width="12" height="50" activation="right" xDest="5228" yDest="144" underground="False"></Teleporter>
 
-		
+		<FlagPoleBlock xPos="6340" yPos="100"></FlagPoleBlock>
 	</Blocks>
 	<Enemies>
 
 		<Koopa xPos="600" yPos="368"></Koopa>
-		
+
 		<Goomba xPos="704" yPos="368"></Goomba>
 		<Goomba xPos="1280" yPos="368"></Goomba>
 		<Goomba xPos="1632" yPos="368"></Goomba>

@@ -17,6 +17,7 @@ using Sprint0.NPC.StateChange;
 using Sprint0.Command.PlayerCMD;
 using Sprint0.NPC.Item;
 using Sprint0.MarioPlayer.State.PowerupState;
+using Sprint0.MarioPlayer.State.ActionState;
 
 namespace Sprint0.Collision
 {
@@ -235,14 +236,24 @@ namespace Sprint0.Collision
                                 break;
                             }
                         }
-                    }
+						if (b.Name == "FlagPoleBlock")
+						{
+                            cannotMoveUP(a);
+							cannotMoveRight(a);
+							cannotMoveLeft(a);
+							cannotMoveDown(a);
+                            a.poleslide();
+                            
+                            break;
+						}
+					}
                   
                 }
                 
             }
 
-            //Mario and enemis
-            foreach (Mario a in gobj.players)
+			//Mario and enemis
+			foreach (Mario a in gobj.players)
             {
                 foreach (EnemySprite b in gobj.enemies)
                 {
@@ -257,8 +268,7 @@ namespace Sprint0.Collision
                             break;
                         }
 
-
-                        if(a.state == "Star")
+						if (a.state == "Star")
                         {
                             EnemyChangeManager changeState = new EnemyChangeManager(b, game);
                             changeState.attackedByFireball();

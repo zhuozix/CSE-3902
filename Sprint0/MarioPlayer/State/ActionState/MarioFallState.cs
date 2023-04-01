@@ -39,15 +39,21 @@ namespace Sprint0.MarioPlayer.State.ActionState
 
         public override void FallingTransition()
         {
-            MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
-            if (powerupStateType != MarioPowerupStateType.Dead)
-            {
-                Exit();
-                CurrentState = new MarioFallState(marioEntity, marioFactory);
-                CurrentState.Enter(this);
-            }
-        }
+			MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
+			if (powerupStateType != MarioPowerupStateType.Dead)
+			{
+				Exit();
+				CurrentState = new MarioFallState(marioEntity, marioFactory);
+				CurrentState.Enter(this);
+			}
+		}
 
+        public override void PoleSlidingTransition() 
+        {
+			Exit();
+			CurrentState = new MarioPoleslideState(marioEntity, marioFactory);
+			CurrentState.Enter(this);
+		}
         public override void TurnLeft()
         {
 

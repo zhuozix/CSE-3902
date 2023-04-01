@@ -10,6 +10,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
         Jumping,
         Falling,
         Running,
+        PoleSliding,
     }
     public abstract class MarioActionState : IMarioActionState
     {
@@ -42,10 +43,11 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public virtual void JumpingTransition() { }
         public virtual void FallingTransition() { }
         public virtual void RunningTransition() { }
-
-        public virtual void TurnLeft() { }
+		public virtual void PoleSlidingTransition() { }
+		public virtual void TurnLeft() { }
         public virtual void TurnRight() { }
         public virtual void Attack() { }
+
 
         public virtual void Update(GameTime gameTime) { }
     }

@@ -37,7 +37,6 @@ namespace Sprint0.MarioPlayer
         private float visibleTimer = 0f;
 
 
-
         public Mario(Vector2 spawnLocation,Game1 gameInstance)
         {
             game= gameInstance;
@@ -215,9 +214,19 @@ namespace Sprint0.MarioPlayer
         }
         #endregion
 
+        public void poleslide()
+        {
+            CurrentActionState.PoleSlidingTransition();
+
+		}
+
         public override void Update(GameTime gameTime)
         {
-            if(this.state == "Hurt")
+			if (this.state == "PoleSliding")
+			{
+                poleslide();
+			}
+			else if (this.state == "Hurt")
             {
                 visibleTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if(visibleTimer >= 0.4f)

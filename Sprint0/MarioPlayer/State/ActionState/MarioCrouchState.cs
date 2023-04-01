@@ -39,7 +39,14 @@ namespace Sprint0.MarioPlayer.State.ActionState
             CurrentState.Enter(this);
         }
 
-        public override void FallingTransition()
+		public override void PoleSlidingTransition()
+		{
+			Exit();
+			CurrentState = new MarioPoleslideState(marioEntity, marioFactory);
+			CurrentState.Enter(this);
+		}
+
+		public override void FallingTransition()
         {
             Exit();
             CurrentState = new MarioFallState(marioEntity, marioFactory);

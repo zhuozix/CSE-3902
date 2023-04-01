@@ -15,11 +15,12 @@ namespace Sprint0.MarioPlayer.State.ActionState
         void JumpingTransition();
         void FallingTransition();
         void RunningTransition();
-
-        void TurnLeft();
+        void PoleSlidingTransition();
+		void TurnLeft();
         void TurnRight();
         void Attack();
 
         void Update(GameTime gameTime);
-    }
+
+	}
 }
