@@ -110,6 +110,25 @@
 		<StairBlock xPos="4384" yPos="288"></StairBlock>
 
 		<BlueFloorBlockStretch xPos="6656" yPos="416" xPos2="7136"></BlueFloorBlockStretch>
+		<BlueFloorBlockStretch xPos="6656" yPos="448" xPos2="7136"></BlueFloorBlockStretch>
+
+		<BlueBrickBlockStretch xPos="6784" yPos="320" xPos2="6976"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="6784" yPos="352" xPos2="6976"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="6784" yPos="384" xPos2="6976"></BlueBrickBlockStretch>
+
+		<BlueBrickBlockStretch xPos="6784" yPos="64" xPos2="6976"></BlueBrickBlockStretch>
+
+		<BlueBrickBlock xPos="6656" yPos="64"></BlueBrickBlock>
+		<BlueBrickBlock xPos="6656" yPos="96"></BlueBrickBlock>
+		<BlueBrickBlock xPos="6656" yPos="128"></BlueBrickBlock>
+		<BlueBrickBlock xPos="6656" yPos="160"></BlueBrickBlock>
+		<BlueBrickBlock xPos="6656" yPos="192"></BlueBrickBlock>
+		<BlueBrickBlock xPos="6656" yPos="224"></BlueBrickBlock>
+		<BlueBrickBlock xPos="6656" yPos="256"></BlueBrickBlock>
+		<BlueBrickBlock xPos="6656" yPos="288"></BlueBrickBlock>
+		<BlueBrickBlock xPos="6656" yPos="320"></BlueBrickBlock>
+		<BlueBrickBlock xPos="6656" yPos="352"></BlueBrickBlock>
+		<BlueBrickBlock xPos="6656" yPos="384"></BlueBrickBlock>
 
 		<GreenPipeSmall xPos="896" yPos="352"></GreenPipeSmall>
 		<GreenPipeMedium xPos="1216" yPos="320"></GreenPipeMedium>
@@ -148,6 +167,28 @@
 		<Goomba xPos="5614" yPos="368"></Goomba>
 	</Enemies>
 	<Items>
+		<Coin xPos="6790" yPos="288"></Coin>
+		<Coin xPos="6822" yPos="288"></Coin>
+		<Coin xPos="6854" yPos="288"></Coin>
+		<Coin xPos="6886" yPos="288"></Coin>
+		<Coin xPos="6918" yPos="288"></Coin>
+		<Coin xPos="6950" yPos="288"></Coin>
+		<Coin xPos="6982" yPos="288"></Coin>
+
+		<Coin xPos="6790" yPos="226"></Coin>
+		<Coin xPos="6822" yPos="226"></Coin>
+		<Coin xPos="6854" yPos="226"></Coin>
+		<Coin xPos="6886" yPos="226"></Coin>
+		<Coin xPos="6918" yPos="226"></Coin>
+		<Coin xPos="6950" yPos="226"></Coin>
+		<Coin xPos="6982" yPos="226"></Coin>
+
+		<Coin xPos="6822" yPos="162"></Coin>
+		<Coin xPos="6854" yPos="162"></Coin>
+		<Coin xPos="6886" yPos="162"></Coin>
+		<Coin xPos="6918" yPos="162"></Coin>
+		<Coin xPos="6950" yPos="162"></Coin>
+
 	</Items>
 	<Player>
 		<Mario xPos="200" yPos="200"></Mario>
