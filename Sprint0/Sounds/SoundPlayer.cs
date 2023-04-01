@@ -56,6 +56,19 @@ namespace Sprint0.Sounds
             MediaPlayer.IsRepeating = true;
         }
 
+        public static void MuteMusic()
+        {
+            MediaPlayer.Volume = 0;
+        }
+        // for game pause and resume use
+        public static void PauseMusic()
+        {
+            MediaPlayer.Pause();
+        }
+        public static void ResumeMusic()
+        {
+            MediaPlayer.Resume();
+        }
         public static void playJumpSmall()
         {
             jump1.Play();

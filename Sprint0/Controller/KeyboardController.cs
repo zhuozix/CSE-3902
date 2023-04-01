@@ -10,6 +10,7 @@ using Sprint0.Command.GameControlCMD;
 using Sprint0.Command.PlayerCMD;
 using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.ActionState;
+using Sprint0.Sounds;
 /**
 * Controller Class for keyboard input. 
 * This class is not for player control. 
@@ -27,6 +28,7 @@ namespace Sprint0.Content
         //Save current states for comparsion.
         KeyboardState previousKeyboardState;
 
+        private bool isMuted = false;
         //idle for mario
         //private ICommand idle; Taken over by mouse controller
 
@@ -59,6 +61,7 @@ namespace Sprint0.Content
             // Game control
             ICommand exit = new Exit(gameInstance);
             ICommand reset = new Reset(gameInstance);
+            ICommand gamePause = new gamePause(gameInstance);
             //State change command
             ICommand takeDamage = new MarioDamageCheatCommand(playerInstance);
             ICommand toSuperMario = new MarioSuperCheatCommand(playerInstance);
@@ -80,6 +83,7 @@ namespace Sprint0.Content
              */
 
             // Game control
+            this.AddCommand(Keys.P, gamePause);
             this.AddCommand(Keys.Q, exit);
             this.AddCommand(Keys.R, reset);
             //Mario state control
@@ -100,6 +104,7 @@ namespace Sprint0.Content
             this.AddPlayerCommand(Keys.Right, moveRight);
             this.AddPlayerCommand(Keys.Down, crouch);
 
+          
         }
 
         public void UpdateInput()
@@ -108,7 +113,7 @@ namespace Sprint0.Content
             KeyboardState currentKeyboardState = Keyboard.GetState();
 
             Keys[] keysPressed = Keyboard.GetState().GetPressedKeys();
-            
+
             if (keysPressed.Length == 0)
             {
                 // idle.Execute();   Taken over by mouse
@@ -128,7 +133,7 @@ namespace Sprint0.Content
                 {
                     idle.Execute(); 
                 } */
-               
+
             }
             //Excute the command
             foreach (Keys key in keysPressed)
@@ -141,15 +146,33 @@ namespace Sprint0.Content
                 //Check if the key is released or not.
                 if (!previousKeyboardState.IsKeyDown(key))
                 {
-                    
+
                     if (CommandMap.ContainsKey(key))
-                    { 
+                    {
                         CommandMap[key].Execute();
                     }
-                }         
+                }
             }
             //Save current state.
             previousKeyboardState = currentKeyboardState;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.M)){
+
+                isMuted = !isMuted;
+                
+            
+            if (isMuted){
+
+                SoundPlayer.MuteMusic();
+                }
+            else{
+                SoundPlayer.playMainTheme();        
+        
+             }
+            }
+      
+            
+         
         }
     }
 }

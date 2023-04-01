@@ -25,6 +25,9 @@ namespace Sprint0
                 return instance;
             }
         }
+
+        public bool IsPaused { get;  set; }
+
         public const int scale = 2;
 
         public GraphicsDeviceManager _graphics;
@@ -112,6 +115,7 @@ namespace Sprint0
             gameObjectManager.update(gameTime);
 
             camera.MoveCamera(mario);
+
 
             base.Update(gameTime);
            
