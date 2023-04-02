@@ -22,6 +22,10 @@ namespace Sprint0
             {
                 position = Matrix.CreateTranslation(-player.Position.X + 400, 0, 0);
             }
+            if (player.Position.X > 6656)
+            {
+                position = Matrix.CreateTranslation(-6656, 0, 0);
+            }
 
             Transform = position;
         }
