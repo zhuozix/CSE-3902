@@ -29,5 +29,6 @@ namespace Sprint0.UI.Text
         {
             spriteBatch.DrawString(this.font, this.text, this.Position, this.color);
         }
+
     }
 }

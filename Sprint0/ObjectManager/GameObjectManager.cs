@@ -291,7 +291,7 @@ namespace Sprint0.ObjectManager
 
         private void moreLife()
         {
-            if (game.coins >= 3)
+            if (game.coins >= 8)
             {
                 game.coins = 0;
                 game.life++;
