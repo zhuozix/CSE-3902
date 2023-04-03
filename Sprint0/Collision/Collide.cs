@@ -115,6 +115,8 @@ namespace Sprint0.Collision
                         touched = true;
                         if (touchBottom(RectangleItem, RectangleBlock, a))
                         {
+                            int intersect = RectangleItem.Bottom - RectangleBlock.Top;
+                            if (intersect >= 2) a.Position = new Vector2(a.Position.X, a.Position.Y - 2);
                             a.velocity = new Vector2(a.velocity.X, 0);
                         }
 
@@ -159,6 +161,8 @@ namespace Sprint0.Collision
                         touched = true;
                         if (touchBottom(RectangleItem, RectangleBlock, a))
                         {
+                            int intersect = RectangleItem.Bottom - RectangleBlock.Top;
+                            if (intersect >= 2) a.Position = new Vector2(a.Position.X, a.Position.Y - 2);
                             a.velocity = new Vector2(a.velocity.X, 0);
                         }
 
@@ -194,39 +198,50 @@ namespace Sprint0.Collision
                             break;
                         }
 
-                        
-                        if (touchBottom(RectangleMain, RectangleOBJ, a) && b.Name != "InvisibleBlock")
-                        {
-                            cannotMoveDown(a);
 
-                        }else if (touchTop(RectangleMain, RectangleOBJ, a) && b.Name != "InvisibleBlock")
-                        {
-                            cannotMoveUP(a);
-                            //a.fallAfterJump();
-                            BlockChangeManager changeState = new BlockChangeManager(b, game);
-                            changeState.changeState();
-                            break;
-                        }
-                        
                         if (touchRight(RectangleMain, RectangleOBJ, a))
                         {
                             cannotMoveRight(a);
+                            int intersect = RectangleMain.Right - RectangleOBJ.Left;
+                            if (intersect >= 2 && intersect <= 6) a.Position = new Vector2(a.Position.X - 2, a.Position.Y);
                             if (onlyOneTouchedBlock(a, b))
                             {
                                 // a.fallAfterJump();
-                                a.velocity = new Vector2(a.velocity.X, 100);
+                                //a.velocity = new Vector2(a.velocity.X, 100);
                             }
                         }
                         else if (touchLeft(RectangleMain, RectangleOBJ, a))
                         {
                             cannotMoveLeft(a);
+                            int intersect = RectangleOBJ.Right - RectangleMain.Left;
+                            if (intersect >= 2 && intersect <= 6) a.Position = new Vector2(a.Position.X + 2, a.Position.Y);
                             if (onlyOneTouchedBlock(a, b))
                             {
                                 // a.fallAfterJump();
-                                a.velocity = new Vector2(a.velocity.X, 100);
+                                //a.velocity = new Vector2(a.velocity.X, 100);
                             }
+                        }
+
+                        if (touchBottom(RectangleMain, RectangleOBJ, a) && b.Name != "InvisibleBlock")
+                        {
+                            cannotMoveDown(a);
+                            int intersect = RectangleMain.Bottom - RectangleOBJ.Top;
+                            if (intersect >= 2) a.Position = new Vector2(a.Position.X, a.Position.Y - 2);
 
                         }
+                        else if (touchTop(RectangleMain, RectangleOBJ, a) && b.Name != "InvisibleBlock")
+                        {
+                            cannotMoveUP(a);
+                            
+                            //a.fallAfterJump();
+                            BlockChangeManager changeState = new BlockChangeManager(b, game);
+                            changeState.changeState();
+                            break;
+                        }
+
+
+
+
 
                         if (b.Name == "InvisibleBlock")
                         {
@@ -420,12 +435,18 @@ namespace Sprint0.Collision
             {
                 return false;
             }
-            else if (touchBottom(mainInstance, anotherInstance, mainSprite)) { return false; }
+            else if (touchBottom2(mainInstance, anotherInstance, mainSprite)) { return false; }
             return mainInstance.Left < anotherInstance.Right && mainInstance.Right > anotherInstance.Right;
         }
-        public bool touchBottom(Rectangle mainInstance, Rectangle anotherInstance, ISprite mainSprite)
+        public bool touchBottom2(Rectangle mainInstance, Rectangle anotherInstance, ISprite mainSprite)
         {
             return mainInstance.Bottom - anotherInstance.Top <= 20 && mainInstance.Bottom < anotherInstance.Bottom;
+            //return mainInstance.Bottom - anotherInstance.Top <= 5 
+        }
+
+        public bool touchBottom(Rectangle mainInstance, Rectangle anotherInstance, ISprite mainSprite)
+        {
+            return mainInstance.Bottom - anotherInstance.Top <= 20 && mainInstance.Bottom < anotherInstance.Bottom && anotherInstance.Left - mainInstance.Left < 28 && mainInstance.Right - anotherInstance.Right < 28;
             //return mainInstance.Bottom - anotherInstance.Top <= 5 
         }
         public bool touchBottomEnemy(Rectangle mainInstance, Rectangle anotherInstance)
@@ -440,16 +461,17 @@ namespace Sprint0.Collision
             {
                 return false;
             }
-            else if (touchBottom(mainInstance, anotherInstance, mainSprite)) { return false; }
+            else if (touchBottom2(mainInstance, anotherInstance, mainSprite)) { return false; }
             return mainInstance.Right > anotherInstance.Left && mainInstance.Left < anotherInstance.Left;
         }
         public bool touchTop(Rectangle mainInstance, Rectangle anotherInstance, ISprite mainSprite)
         {
-            if (mainInstance.Left < anotherInstance.Left - 15 || mainInstance.Right > anotherInstance.Right + 15)
+            
+            if (mainInstance.Left < anotherInstance.Left - 24 || mainInstance.Right > anotherInstance.Right + 24)
             {
                 return false;
             }
-            return anotherInstance.Bottom - mainInstance.Top <= 10;
+            return anotherInstance.Bottom - mainInstance.Top <= 8;
 
         } 
 
@@ -473,6 +495,7 @@ namespace Sprint0.Collision
         public void cannotMoveLeft(ISprite target)
         {
             //target.crash = true;
+            //target.Position= new Vector2(target.Position.X+1, target.Position.Y);
             if (target.velocity.X < 0)
             {
                 target.velocity = new Vector2(0, target.velocity.Y);
@@ -482,6 +505,7 @@ namespace Sprint0.Collision
         public void cannotMoveRight(ISprite target)
         {
             //target.crash = true;
+            //target.Position = new Vector2(target.Position.X - 1, target.Position.Y);
             if (target.velocity.X > 0)
             {
                 target.velocity = new Vector2(0, target.velocity.Y);
@@ -544,6 +568,7 @@ namespace Sprint0.Collision
         {
             return Math.Abs(b.Right - a.Left) <= Math.Abs(a.Bottom - b.Top);
         }
+
 
     }
 }
