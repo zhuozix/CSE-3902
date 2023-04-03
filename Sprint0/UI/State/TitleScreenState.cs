@@ -29,13 +29,11 @@ namespace Sprint0.UI.Title
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             _game.GraphicsDevice.Clear(Color.White);
             spriteBatch.Begin();
-            ISprite obj = _game.spritesFactory.getUsedBlockSprite();
-            obj.Draw(spriteBatch, false);
-            ISprite text = _game.spritesFactory.getTitleFontSprite();
+            ISprite text = _game.spritesFactory.getTitleFontSprite(gameTime);
             text.Draw(spriteBatch, false);
             spriteBatch.End();
 

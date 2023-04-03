@@ -344,9 +344,11 @@ namespace Sprint0.Factory
             sprite.state = "Normal";
             return sprite;
         }
-        public ISprite getTitleFontSprite()
+        public ISprite getTitleFontSprite(GameTime gameTime)
         {
-            ISprite sprite = new TitleTextSprite(gameInstance,texture_scorefont, "", new Vector2(250, 200), Color.Black);
+            float pulsate = (float)(Math.Sin(gameTime.TotalGameTime.TotalSeconds * 6.0) + 1.0) / 2.0f;
+            Color color = Color.Lerp(new Color(255, 192, 203), Color.White, pulsate);
+            ISprite sprite = new TitleTextSprite(gameInstance,texture_scorefont, "", new Vector2(345, 395), color);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;

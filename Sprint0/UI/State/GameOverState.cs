@@ -41,7 +41,7 @@ namespace Sprint0.UI.State
                 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch,GameTime gameTime)
         {
             _game.GraphicsDevice.Clear(Color.White);
 

@@ -11,7 +11,7 @@ namespace Sprint0.UI.Title
     public interface IGameState
     {
         void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(SpriteBatch spriteBatch,GameTime gameTime);
         void Enter();
         void Exit();
     }

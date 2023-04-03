@@ -117,7 +117,7 @@ namespace Sprint0
 
         protected override void Draw(GameTime gameTime)
         {
-            _currentState.Draw(_spriteBatch);
+            _currentState.Draw(_spriteBatch,gameTime);
             base.Draw(gameTime);
         } 
 

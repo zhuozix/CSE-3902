@@ -21,7 +21,7 @@ namespace Sprint0.UI.Text
         {
             this.text = "Super Mario Bros.";
             this.instruction = "Press { Enter } to play.";
-            this.nextLine = new Vector2(location.X, location.Y + 100);
+            this.nextLine = new Vector2(location.X, location.Y + 55);
             this.gameInstance = gameInstance;
         }
 
@@ -33,8 +33,8 @@ namespace Sprint0.UI.Text
         public override void Draw(SpriteBatch spriteBatch, bool isFlipped)
         {
             ContentManager content = gameInstance.Content;
-            Texture2D thumbsUp = content.Load<Texture2D>("thumbs up");
-            spriteBatch.Draw(thumbsUp, new Vector2(20, 0), Color.White);
+            Texture2D thumbsUp = content.Load<Texture2D>("titlepage1");
+            spriteBatch.Draw(thumbsUp, new Vector2(0, 0), Color.White);
             spriteBatch.DrawString(this.font, this.text, this.Position, this.color);
             spriteBatch.DrawString(this.font, this.instruction, this.nextLine, this.color);
         }

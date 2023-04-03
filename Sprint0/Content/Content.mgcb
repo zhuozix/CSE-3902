@@ -645,7 +645,7 @@
 /processorParam:TextureFormat=Color
 /build:SuperMario/SuperMarioWalkRight.png
 
-#begin thumbs up.png
+#begin titlepage image.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -655,7 +655,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:thumbs up.png
+/build:titlepage image.png
+
+#begin titlepage1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:titlepage1.png
 
 #begin WalkingGoomba1.png
 /importer:TextureImporter
