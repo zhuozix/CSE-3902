@@ -148,6 +148,14 @@ namespace Sprint0.Collision
                     Rectangle RectangleItem = getRectangle(a);
                     if (RectangleBlock.Intersects(RectangleItem))
                     {
+                        //block hit item
+                        if(b.velocity.X < 0)
+                        {
+                            a.velocity = new Vector2(b.velocity.X, a.velocity.Y);
+                            break;
+                        }
+
+                        //item hit block
                         touched = true;
                         if (touchBottom(RectangleItem, RectangleBlock, a))
                         {

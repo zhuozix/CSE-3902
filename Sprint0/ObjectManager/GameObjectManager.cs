@@ -34,7 +34,6 @@ namespace Sprint0.ObjectManager
         public List<ISprite> players;
         public List<ISprite> items;
         public List<ISprite> fireBallList;
-        public List<ISprite> textList;
         public List<Teleporter> teleporters;
         public List<FlagPoleHitbox> flagpoles;
         public Texture2D background;
@@ -55,6 +54,7 @@ namespace Sprint0.ObjectManager
 
         private bool hasTempCoin = false;
         private float tempCoinTimer = 0f;
+
          
         public GameObjectManager(Game1 gameInstance) 
         { 
@@ -65,15 +65,13 @@ namespace Sprint0.ObjectManager
             this.fireBallList = new List<ISprite>();
             this.teleporters = new List<Teleporter>();
             this.flagpoles = new List<FlagPoleHitbox>();
-            this.textList = new List<ISprite>();
             game = gameInstance;
             this.viewport = gameInstance.viewport;
         }
 
         public void addObject(ISprite obj, String objectType)
         {
-
-            switch(objectType) {
+            switch (objectType) {
 
                 case "block":
                     this.blocks.Add(obj); 
@@ -89,9 +87,6 @@ namespace Sprint0.ObjectManager
                     break;
                 case "fireBall":
                     this.fireBallList.Add(obj);
-                    break;
-                case "text":
-                    this.textList.Add(obj);
                     break;
                 default:
                     break;
@@ -435,10 +430,6 @@ namespace Sprint0.ObjectManager
             {
                 obj.Update(time);
             }
-            foreach (ISprite obj in this.textList)
-            {
-                obj.Update(time);
-            }
 
             game.time -= (float)time.ElapsedGameTime.TotalSeconds;
         }
@@ -475,10 +466,6 @@ namespace Sprint0.ObjectManager
                 obj.Draw(_spriteBatch, isFlipped);
             }
             foreach (ISprite obj in this.fireBallList)
-            {
-                obj.Draw(_spriteBatch, isFlipped);
-            }
-            foreach (ISprite obj in this.textList)
             {
                 obj.Draw(_spriteBatch, isFlipped);
             }

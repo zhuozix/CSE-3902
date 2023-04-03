@@ -30,11 +30,12 @@ namespace Sprint0.UI.State
             _game.keyboardController.UpdateInput();
             _game.MouseController.UpdateInput();
             
+            
             _game.Collision.Update(gameTime);
             if (!_game.IsPaused)
             {
                 _game.gameObjectManager.update(gameTime);
-
+                _game.UI.Update(gameTime);
                 _game.camera.MoveCamera(_game.mario);
             }
            
@@ -43,10 +44,13 @@ namespace Sprint0.UI.State
         public void Draw(SpriteBatch spriteBatch)
         {
             _game.GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin(transformMatrix: _game.camera.Transform);
+            Matrix combinedMatrix = Matrix.CreateTranslation(0, 100, 0) * _game.camera.Transform;
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, combinedMatrix);
 
             _game.gameObjectManager.Draw(spriteBatch, true);
+            
             spriteBatch.End();
+            _game.UI.Draw();
         }
 
         public void Enter()

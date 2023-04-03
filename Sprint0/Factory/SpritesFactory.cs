@@ -325,21 +325,21 @@ namespace Sprint0.Factory
         //Fonts
         public ISprite getCoinFontSprite()
         {
-            ISprite sprite = new CoinTextSprite(texture_scorefont, "", new Vector2(50, 30), Color.Black, gameInstance);
+            ISprite sprite = new CoinTextSprite(texture_scorefont, "", new Vector2(50, 30), Color.White, gameInstance);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;
         }
         public ISprite getLifeFontSprite()
         {
-            ISprite sprite = new LifeTextSprite(texture_scorefont, "", new Vector2(250, 30), Color.Black, gameInstance);
+            ISprite sprite = new LifeTextSprite(texture_scorefont, "", new Vector2(250, 30), Color.White, gameInstance);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;
         }
         public ISprite getTimeFontSprite()
         {
-            ISprite sprite = new TimeTextSprite(texture_scorefont, "", new Vector2(450, 30), Color.Black, gameInstance);
+            ISprite sprite = new TimeTextSprite(texture_scorefont, "", new Vector2(450, 30), Color.White, gameInstance);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;

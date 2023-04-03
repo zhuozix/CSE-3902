@@ -35,6 +35,8 @@ namespace Sprint0
 
         public GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
+        public SpriteBatch _uiSpriteBatch;
+
         public Viewport viewport;
         /*
          * Controllers
@@ -61,7 +63,14 @@ namespace Sprint0
          * Camera
          */
         public Camera camera;
-
+        /*
+         * UI
+         */
+        public UserInterface UI;
+        public static float gameAreaDiff { get; set; }
+        /*
+         * Game objects
+         */
         public GameObjectManager gameObjectManager;
 
         public Game1()
@@ -74,21 +83,29 @@ namespace Sprint0
 
         protected override void Initialize()
         {
+            _graphics.PreferredBackBufferWidth = 800;
+            //UI + Game Core
+            _graphics.PreferredBackBufferHeight = 480 + 100;
+            _graphics.ApplyChanges();
+
             viewport = GraphicsDevice.Viewport;
 
             coins = 0;
             life = 3;
             time = 400f;
+            gameAreaDiff = 100;
             //Factories
             spritesFactory = new SpritesFactory(this);
-
+            UI = new UserInterface(this);
             ChangeState(new TitleScreenState(this));
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {         
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _uiSpriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
         protected override void Update(GameTime gameTime)
