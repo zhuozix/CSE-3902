@@ -346,7 +346,7 @@ namespace Sprint0.Factory
         }
         public ISprite getTitleFontSprite()
         {
-            ISprite sprite = new TitleTextSprite(texture_scorefont, "", new Vector2(250, 200), Color.Black);
+            ISprite sprite = new TitleTextSprite(gameInstance,texture_scorefont, "", new Vector2(250, 200), Color.Black);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;
