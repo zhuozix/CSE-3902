@@ -155,7 +155,7 @@ namespace Sprint0.Content
             }
             //Save current state.
             previousKeyboardState = currentKeyboardState;
-
+            // not a required feature, not perform well
             if (Keyboard.GetState().IsKeyDown(Keys.M)){
 
                 isMuted = !isMuted;
@@ -166,7 +166,7 @@ namespace Sprint0.Content
                 SoundPlayer.MuteMusic();
                 }
             else{
-                SoundPlayer.playMainTheme();        
+                SoundPlayer.UnMuteMusic();       
         
              }
             }
