@@ -47,7 +47,7 @@ namespace Sprint0.UI.State
 
             spriteBatch.Begin();
 
-            ISprite text = _game.spritesFactory.getGameOverFontSprite();
+            ISprite text = _game.spritesFactory.getGameOverFontSprite(gameTime);
             text.Draw(spriteBatch, false);
 
             spriteBatch.End();

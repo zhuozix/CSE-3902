@@ -362,14 +362,16 @@ namespace Sprint0.Factory
         }
         public ISprite getWinFontSprite()
         {
-            ISprite sprite = new WinTextSprite(texture_scorefont, "", new Vector2(25, 200), Color.Black);
+            ISprite sprite = new WinTextSprite(texture_scorefont, "", new Vector2(50, 200), Color.Black);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;
         }
-        public ISprite getGameOverFontSprite()
+        public ISprite getGameOverFontSprite(GameTime gameTime)
         {
-            ISprite sprite = new GameOverTextSprite(texture_scorefont, "", new Vector2(25, 200), Color.Black);
+            float pulsate = (float)(Math.Sin(gameTime.TotalGameTime.TotalSeconds * 6.0) + 1.0) / 2.0f;
+            Color color = Color.Lerp(Color.Yellow, Color.White, pulsate);
+            ISprite sprite = new GameOverTextSprite(gameInstance,texture_scorefont, "", new Vector2(50, 200), color);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;
