@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.MarioPlayer.State.PowerupState;
+using Sprint0.Sounds;
 using System;
 
 namespace Sprint0.MarioPlayer.State.ActionState
@@ -43,7 +44,8 @@ namespace Sprint0.MarioPlayer.State.ActionState
 		}
 		public override void PoleSlidingTransition()
 		{
-			Exit();
+            if (previousState.GetEnumValue() != CurrentState.GetEnumValue()) SoundPlayer.playStageClear();
+            Exit();
 			CurrentState = new MarioPoleslideState(marioEntity, marioFactory);
 			CurrentState.Enter(this);
 		}

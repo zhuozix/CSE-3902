@@ -136,6 +136,7 @@ namespace Sprint0.Sounds
 
         public static void playStageClear()
         {
+            MediaPlayer.Stop();
             stageClear.Play();
         }
 

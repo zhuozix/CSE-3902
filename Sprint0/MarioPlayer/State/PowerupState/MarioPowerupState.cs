@@ -70,6 +70,7 @@ namespace Sprint0.MarioPlayer.State.PowerupState
         }
         public virtual void DeadMarioTransition()
         {
+            if (previousState.GetEnumValue() != CurrentState.GetEnumValue()) SoundPlayer.playDeath();
             Exit();
             CurrentState = new MarioDeadState(marioEntity, marioFactory);
             CurrentState.Enter(this);
