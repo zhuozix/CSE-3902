@@ -262,6 +262,11 @@ namespace Sprint0.MarioPlayer
             this.cols = columns;
             this.rows = 1;
             CurrentActionState.Update(gameTime);
+            if (this.Position.Y > 600)
+            {
+                CurrentPowerupState.DeadMarioTransition();
+                SoundPlayer.playDeath();// idk why it plays crazy sound
+            }
             base.Update(gameTime);
         }
 

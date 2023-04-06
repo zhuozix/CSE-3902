@@ -133,7 +133,7 @@
 /processorParam:TextureFormat=Color
 /build:Blocks/greenTube.png
 
-#begin Blocks/hiddenBlock.png
+#begin Blocks/HiddenBloc.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -143,7 +143,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Blocks/hiddenBlock.png
+/build:Blocks/HiddenBloc.png
 
 #begin Blocks/questionBlock.png
 /importer:TextureImporter

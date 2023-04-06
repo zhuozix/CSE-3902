@@ -87,7 +87,7 @@ namespace Sprint0.Factory
             texture_SidewaysGreenPipe = content.Load<Texture2D>("Blocks/sidewaysGreenPipe");
             texture_GreenTube = content.Load<Texture2D>("Blocks/greenTube");
             texture_ShatteredBlock = content.Load<Texture2D>("Blocks/ShatteredBlock");
-            texture_InvisibleBlock = content.Load<Texture2D>("Blocks/hiddenBlock");
+            texture_InvisibleBlock = content.Load<Texture2D>("Blocks/HiddenBloc");
 			texture_FlagPoleBlock = content.Load<Texture2D>("Blocks/flagPoleBlock");
 
 			// Items

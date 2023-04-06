@@ -23,6 +23,15 @@
 		<CoinBlock xPos="734" yPos="286"></CoinBlock>
 		<CoinBlock xPos="702" yPos="158"></CoinBlock>
 
+		<BrickBlock xPos="-35" yPos="226"></BrickBlock>
+		<BrickBlock xPos="-35" yPos="256"></BrickBlock>
+		<BrickBlock xPos="-35" yPos="286"></BrickBlock>
+		<BrickBlock xPos="-35" yPos="316"></BrickBlock>
+		<BrickBlock xPos="-35" yPos="346"></BrickBlock>
+		<BrickBlock xPos="-35" yPos="376"></BrickBlock>
+		<BrickBlock xPos="-35" yPos="406"></BrickBlock>
+		<BrickBlock xPos="-35" yPos="436"></BrickBlock>
+		
 		<BrickBlock xPos="640" yPos="286"></BrickBlock>
 		<BrickBlock xPos="704" yPos="286"></BrickBlock>
 		<BrickBlock xPos="768" yPos="286"></BrickBlock>
