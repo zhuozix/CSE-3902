@@ -167,7 +167,7 @@
 
 		<Teleporter xPos="1830" yPos="286" width="50" height="8" activation="down" xDest="6714" yDest="64" underground="True"></Teleporter>
 
-		<Teleporter xPos="7162" yPos="414" width="2" height="32" activation="right" xDest="5228" yDest="144" underground="False"></Teleporter>
+		<Teleporter xPos="7162" yPos="414" width="2" height="32" activation="right" xDest="5230" yDest="320" underground="False"></Teleporter>
 
 		<FlagPoleBlock xPos="6340" yPos="100"></FlagPoleBlock>
 	</Blocks>
