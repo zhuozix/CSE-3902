@@ -1,0 +1,24 @@
+readability review
+Author of the code review: Adam Cote
+Date of the code review: 4/7/2023
+Sprint number: 4
+Name of the .cs file being reviewed: CollisionDetection.cs
+Author of the .cs file being reviewed: Yao Lu / Shuangchen
+Number of minutes taken to complete the review: 5 minutes.
+Specific comments on what is readable and what is not:
+
+This code is very well formatted and easy to read and understand at first glance. The code would benefit from more commenting however.
+Adding captions to the methods and variables would round off this class and make it very readable.
+
+code quality review
+Author of the code review: Adam Cote
+Date of the code review: 4/7/2023
+Sprint number: 4
+Name of the .cs file being reviewed: CollisionDetection.cs
+Author of the .cs file being reviewed: Yao Lu/ Shuangchen
+Number of minutes taken to complete the review: 5 minutes.
+
+As for the code quality, the code is pretty good logic for detecting collisions. 
+One critique I would make is that magic numbers should be made into variables.
+Other than that, this class is very good quality and is a large contributor to
+making the game work and function correctly.
