@@ -13,8 +13,8 @@ using Sprint0.ObjectManager;
 using Sprint0.Command.GameControlCMD;
 using System.Numerics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
-using Sprint0.Sounds;
 using Sprint0.NPC.Blocks;
+using Sprint0.Sounds;
 
 namespace Sprint0.MarioPlayer
 {

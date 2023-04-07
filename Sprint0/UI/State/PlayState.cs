@@ -12,7 +12,7 @@ using Sprint0.ObjectManager;
 using Sprint0.UI.Title;
 using Sprint0.Factory;
 using Sprint0.Collision;
-using Sprint0.ObjectManager.Sounds;
+using Sprint0.Sounds;
 
 namespace Sprint0.UI.State
 {

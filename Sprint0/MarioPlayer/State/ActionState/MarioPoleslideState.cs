@@ -5,7 +5,7 @@ using System;
 
 namespace Sprint0.MarioPlayer.State.ActionState
 {
-	public class MarioPoleslideState : MarioActionState
+    public class MarioPoleslideState : MarioActionState
 	{
 		public MarioPoleslideState(Mario marioEntity, MarioFactory marioFactory) :
 			base(marioEntity, marioFactory)

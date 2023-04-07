@@ -2,7 +2,6 @@
 using Sprint0.MarioPlayer.State.PowerupState;
 using Sprint0.MarioPlayer;
 using Sprint0.NPC.Fireball;
-using Sprint0.Sounds;
 using Sprint0.Sprites;
 using Sprint0.UI.State;
 using System;
@@ -10,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.Sounds;
 
 namespace Sprint0.ObjectManager
 {
