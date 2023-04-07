@@ -14,7 +14,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
 		public override void Enter(IMarioActionState previousState)
 		{
 			base.Enter(previousState);
-
+			SoundPlayer.playStageClear();
 			marioEntity.velocity = new Vector2(0, 70);
 
 		}
