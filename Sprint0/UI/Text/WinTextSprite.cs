@@ -15,7 +15,7 @@ namespace Sprint0.UI.Text
         public WinTextSprite(SpriteFont fontIn, string textIn, Vector2 location, Color fontColor) : base(fontIn, textIn, location, fontColor)
         {
             this.text = "You win the game!";
-            this.instruction = "Press { R } to Replay, Press any other key to exit.";
+            this.instruction = "Press { R } to ReStart, Press any other key to exit.";
             this.nextLine = new Vector2(location.X, location.Y + 100);
         }
 

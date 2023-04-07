@@ -250,12 +250,12 @@ namespace Sprint0.ObjectManager
                 }
             }
         }
-
+        /*
         private void activateEnemy()
         {
             foreach (ISprite a in enemies)
             {
-                if (a.state == "out")
+                if (a.state != "out")
                 {
                     Rectangle enemy = new Rectangle((int)a.Position.X - 450, (int)a.Position.Y - 2000, 100, 2000);
                     Rectangle mario = new Rectangle((int)game.mario.Position.X, (int)game.mario.Position.Y - 2000, 100, 2000);
@@ -266,7 +266,7 @@ namespace Sprint0.ObjectManager
                 }
             }
         }
-
+        */
         private void hurtUpdate(GameTime time)
         {
             if (!haveHurt)
@@ -341,7 +341,7 @@ namespace Sprint0.ObjectManager
         {
             gameExit();
             moreLife();
-            activateEnemy();
+            //activateEnemy();
             updateShatteredBlocks(time);
             updateDeadEnemy(time);
             deleteDropedEnemy();

@@ -82,7 +82,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
             MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
 			if(powerupStateType != MarioPowerupStateType.Normal)
 			{
-				if(marioEntity.Position.Y >= 366)
+				if(marioEntity.Position.Y >= 356)
 				{
                     marioEntity.velocity = new Vector2(50, 0);
                     WinStateTransition();

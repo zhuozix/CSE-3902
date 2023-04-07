@@ -33,6 +33,7 @@ namespace Sprint0.Collision
         private ICollisionLogic itemVSblock;
         private ICollisionLogic player;
         private ICollisionLogic fireball;
+        private ICollisionLogic activateEnemy;
         private List<ICollisionLogic> logicList;
 
         public bool fall { get; set; }
@@ -53,12 +54,13 @@ namespace Sprint0.Collision
             itemVSblock = new ItemAndBlock(gobj.items, gobj.blocks, this);
             player = new MarioAndNPC(gobj.players, gobj.blocks, gobj.items,gobj.enemies, this);
             fireball = new FireballAndOthers(gobj.fireBallList, gobj.players, gobj.enemies, gobj.blocks, this);
-            
+            activateEnemy = new ActivateEnemy(gobj.players,gobj.enemies, this);
             logicList.Add(enemyVSblock);
             logicList.Add(enemyVSenemy);
             logicList.Add(itemVSblock);
             logicList.Add(player);
             logicList.Add(fireball);
+            logicList.Add(activateEnemy);
         }
 
         public void Update(GameTime gameTime)
