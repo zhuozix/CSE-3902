@@ -1,0 +1,24 @@
+readability review
+Author of the code review: Yao Lu
+Date of the code review: 4/4/2023
+Sprint number: 4
+Name of the .cs file being reviewed: PlayState.cs
+Author of the .cs file being reviewed: Shuangchen Zhou
+Number of minutes taken to complete the review: 3 minutes.
+Specific comments on what is readable and what is not:
+Overall, the code seems to be written in a readable content. 
+The indentation and spacing are consistent and make the code easy to read, the variable and method names are generally
+descriptive and easy to understand.
+The Enter() method initializes the Camera, loads a level, adds a player object, and loads commands into the controllers. It 
+does too many things, could break into smaller methods.
+
+code quality review
+Author of the code review: Yao Lu
+Date of the code review: 4/6/2023
+Sprint number: 4
+Name of the .cs file being reviewed: Camera.cs
+Author of the .cs file being reviewed: Kyle Kauffman
+too many magic numbers,should be replaced with a named constant to make it easier to maintain.
+It uses Mario as parameter would be better to simply pass in the player's position as a parameter 
+instead of the entire Mario object.
+could use Math.Min() and Math.Max() to make the camera position to a specific range.
