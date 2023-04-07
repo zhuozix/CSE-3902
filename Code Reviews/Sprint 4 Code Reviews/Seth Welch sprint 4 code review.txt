@@ -1,0 +1,23 @@
+readability review
+Author of the code review: Seth Welch
+Date of the code review: 4/7/2023
+Sprint number: 4
+Name of the .cs file being reviewed: TitleScreenState.cs
+Author of the .cs file being reviewed: Yao Lu / Shuangchen
+Number of minutes taken to complete the review: 5 minutes.
+Specific comments on what is readable and what is not:
+
+This code is very simple and easy to follow because the only job of the title screen is to draw an image and check for input, but I feel as though the check for the 
+enter key should belong somewhere else like the keyboard controller and complicates the update method.
+
+code quality review
+Author of the code review: Seth Welch
+Date of the code review: 4/7/2023
+Sprint number: 4
+Name of the .cs file being reviewed: UserInterface.cs
+Author of the .cs file being reviewed: Shuangchen
+Number of minutes taken to complete the review: 5 minutes.
+
+This code is very high quality and simple. The ui Draw method utilizes a separate spritebatch from the rest of the game to prevent it from moving which is a clever 
+way of addresssing that issue. This class only deals with displaying the ui and does not concern itself with controlling the values in the UI which is good separation 
+of responsibility. The only few magic numbers in this class are unchanging position numbers that could be removed in the future.
