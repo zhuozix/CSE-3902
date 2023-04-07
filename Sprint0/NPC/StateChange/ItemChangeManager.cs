@@ -2,7 +2,7 @@
 using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.PowerupState;
 using Sprint0.ObjectManager;
-using Sprint0.Sounds;
+using Sprint0.ObjectManager.Sounds;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Sprint0.NPC.StateChange
 {
-     class ItemChangeManager : IStateChangeManager
+    class ItemChangeManager : IStateChangeManager
     {
         ISprite item;
         GameObjectManager objManager;

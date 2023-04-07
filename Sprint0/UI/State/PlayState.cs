@@ -11,8 +11,8 @@ using Sprint0.MarioPlayer;
 using Sprint0.ObjectManager;
 using Sprint0.UI.Title;
 using Sprint0.Factory;
-using Sprint0.Sounds;
 using Sprint0.Collision;
+using Sprint0.ObjectManager.Sounds;
 
 namespace Sprint0.UI.State
 {

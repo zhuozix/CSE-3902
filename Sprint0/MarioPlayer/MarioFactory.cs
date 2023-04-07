@@ -39,7 +39,7 @@ namespace Sprint0.MarioPlayer
         {
             Sprite ans;
            
-                if(this.actionType == MarioActionStateType.Running)
+                if(this.actionType == MarioActionStateType.Running ||this.actionType == MarioActionStateType.Win)
                 {
                    ans = new NoneMovingAnimatedSprite(texture, Vector2.Zero, 1, 3);
                 player.columns = 3;
@@ -95,6 +95,9 @@ namespace Sprint0.MarioPlayer
                     case MarioActionStateType.Jumping:
                     case MarioActionStateType.Falling:
                         fileNameSuffix = "JumpRight";
+                        break;
+                    case MarioActionStateType.Win:
+                        fileNameSuffix = "WalkRight";
                         break;
                     case MarioActionStateType.Running:
                         fileNameSuffix = "WalkRight";

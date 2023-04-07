@@ -10,7 +10,7 @@ using Sprint0.Command.GameControlCMD;
 using Sprint0.Command.PlayerCMD;
 using Sprint0.MarioPlayer;
 using Sprint0.MarioPlayer.State.ActionState;
-using Sprint0.Sounds;
+using Sprint0.ObjectManager.Sounds;
 /**
 * Controller Class for keyboard input. 
 * This class is not for player control. 
@@ -155,7 +155,7 @@ namespace Sprint0.Content
             }
             //Save current state.
             previousKeyboardState = currentKeyboardState;
-            // not a required feature, not perform well
+
             if (Keyboard.GetState().IsKeyDown(Keys.M)){
 
                 isMuted = !isMuted;
@@ -166,7 +166,7 @@ namespace Sprint0.Content
                 SoundPlayer.MuteMusic();
                 }
             else{
-                SoundPlayer.UnMuteMusic();       
+                SoundPlayer.playMainTheme();        
         
              }
             }

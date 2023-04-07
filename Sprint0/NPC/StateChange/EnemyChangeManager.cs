@@ -3,7 +3,7 @@ using Sprint0.Factory;
 using Sprint0.MarioPlayer;
 using Sprint0.NPC.Blocks;
 using Sprint0.ObjectManager;
-using Sprint0.Sounds;
+using Sprint0.ObjectManager.Sounds;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;

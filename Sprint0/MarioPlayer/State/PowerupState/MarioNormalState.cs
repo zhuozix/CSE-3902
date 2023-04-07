@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.MarioPlayer.State.PowerupState;
-using Sprint0.Sounds;
+using Sprint0.ObjectManager.Sounds;
 using System;
 
 namespace Sprint0.MarioPlayer.State.PowerupState

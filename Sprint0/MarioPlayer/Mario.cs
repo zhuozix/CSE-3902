@@ -30,7 +30,7 @@ namespace Sprint0.MarioPlayer
         public bool crash { get; set; }
         public GameObjectManager gameObjectManager;
         private float timeSpent = 0f;
-        Game1 game;
+        public Game1 game;
         public int columns = 1;
 
         private bool isVisible = true;

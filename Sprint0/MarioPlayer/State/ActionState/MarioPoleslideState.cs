@@ -7,7 +7,6 @@ namespace Sprint0.MarioPlayer.State.ActionState
 {
 	public class MarioPoleslideState : MarioActionState
 	{
-		private float timeSpent = 0f;
 		public MarioPoleslideState(Mario marioEntity, MarioFactory marioFactory) :
 			base(marioEntity, marioFactory)
 		{ }
@@ -16,10 +15,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
 		{
 			base.Enter(previousState);
 
-			marioEntity.velocity = new Vector2(0, 10);
-
-
-
+			marioEntity.velocity = new Vector2(0, 70);
 
 		}
 
@@ -67,6 +63,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
 		{
 
 		}
+		
 
 		public override MarioActionStateType GetEnumValue()
 		{
@@ -75,24 +72,11 @@ namespace Sprint0.MarioPlayer.State.ActionState
 
 		public override void Update(GameTime gameTime)
 		{
-			//if (marioEntity.crash || marioEntity.velocity.Y == 0)
-			//{
-			//	Exit();
-			//	CurrentState = new MarioIdleState(marioEntity, marioFactory);
-			//	CurrentState.Enter(this);
-			//}
 
-			//else if (marioEntity.velocity.Y < 150)
-			//{
-			//	float accelaretion = 9.8f;
-			//	timeSpent += (float)gameTime.ElapsedGameTime.TotalSeconds;
-			//	marioEntity.velocity = new Vector2(marioEntity.velocity.X, marioEntity.velocity.Y + (timeSpent * accelaretion));
-			//}
-
-			if (marioEntity.velocity.Y == 0)
+			if (marioEntity.Position.Y >= 386)
 			{
 				Exit();
-				CurrentState = new MarioIdleState(marioEntity, marioFactory);
+				CurrentState = new MarioWinState(marioEntity, marioFactory);
 				CurrentState.Enter(this);
 			}
 

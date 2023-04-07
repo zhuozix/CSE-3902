@@ -218,6 +218,6 @@
 
 	</Items>
 	<Player>
-		<Mario xPos="200" yPos="200"></Mario>
+		<Mario xPos="200" yPos="368"></Mario>
 	</Player>
 </Level>
