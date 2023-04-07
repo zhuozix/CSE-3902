@@ -40,10 +40,10 @@ namespace Sprint0.MarioPlayer.State.ActionState
 		}
 		public override void PoleSlidingTransition()
 		{
-            if (previousState.GetEnumValue() != CurrentState.GetEnumValue()) SoundPlayer.playStageClear();
-            Exit();
-			CurrentState = new MarioPoleslideState(marioEntity, marioFactory);
-			CurrentState.Enter(this);
+            //if (previousState.GetEnumValue() != CurrentState.GetEnumValue()) SoundPlayer.playStageClear();
+            //Exit();
+			//CurrentState = new MarioPoleslideState(marioEntity, marioFactory);
+			//CurrentState.Enter(this);
 		}
 		public override void TurnLeft()
 		{
@@ -63,21 +63,34 @@ namespace Sprint0.MarioPlayer.State.ActionState
 		{
 
 		}
-		
 
-		public override MarioActionStateType GetEnumValue()
+        public override void WinStateTransition()
+        {
+            Exit();
+            CurrentState = new MarioWinState(marioEntity, marioFactory);
+            CurrentState.Enter(this);
+        }
+
+
+        public override MarioActionStateType GetEnumValue()
 		{
 			return MarioActionStateType.PoleSliding;
 		}
 
 		public override void Update(GameTime gameTime)
 		{
-
-			if (marioEntity.Position.Y >= 386)
+            MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
+			if(powerupStateType != MarioPowerupStateType.Normal)
 			{
-				Exit();
-				CurrentState = new MarioWinState(marioEntity, marioFactory);
-				CurrentState.Enter(this);
+				if(marioEntity.Position.Y >= 366)
+				{
+                    marioEntity.velocity = new Vector2(50, 0);
+                    WinStateTransition();
+				}
+			}
+            else if (marioEntity.Position.Y >= 386)
+			{
+				WinStateTransition();
 			}
 
 

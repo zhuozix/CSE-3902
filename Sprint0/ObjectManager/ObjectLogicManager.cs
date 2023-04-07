@@ -220,6 +220,10 @@ namespace Sprint0.ObjectManager
             {
                 game.ChangeState(new GameOverState(game));
             }
+            if(game.time < 0)
+            {
+                game.ChangeState(new TimeUpState(game));
+            }
         }
 
         private void moreLife()

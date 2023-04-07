@@ -44,7 +44,7 @@ namespace Sprint0
         public IController keyboardController;
         public IController MouseController;
 
-        public ICollision Collision;
+        public Collide Collision;
         /*
          * SpriteFactories
          */

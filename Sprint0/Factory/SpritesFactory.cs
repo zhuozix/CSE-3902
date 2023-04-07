@@ -360,6 +360,13 @@ namespace Sprint0.Factory
             sprite.state = "Normal";
             return sprite;
         }
+        public ISprite getTimeUpFontSprite()
+        {
+            ISprite sprite = new TimeUpTextSprite(texture_scorefont, "", new Vector2(250, 200), Color.Black, gameInstance);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
         public ISprite getWinFontSprite()
         {
             ISprite sprite = new WinTextSprite(texture_scorefont, "", new Vector2(50, 200), Color.Black);

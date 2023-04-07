@@ -228,7 +228,16 @@ namespace Sprint0.MarioPlayer
 
         public void poleslide()
         {
-            CurrentActionState.PoleSlidingTransition();
+            MarioActionStateType actiontateType = this.CurrentActionState.GetEnumValue();
+            if(actiontateType == MarioActionStateType.Win || actiontateType == MarioActionStateType.PoleSliding)
+            {
+
+            }
+            else
+            {
+                CurrentActionState.PoleSlidingTransition();
+            }
+            
             
 
 		}
