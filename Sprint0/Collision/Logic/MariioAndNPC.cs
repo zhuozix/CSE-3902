@@ -23,7 +23,7 @@ namespace Sprint0.Collision.Logic
         private List<ISprite> enemyList;
         private float invisibeleTimer = 0f;
         private bool timerGo = false;
-        public bool win = false;
+        public bool win;
         public MarioAndNPC(List<ISprite> marioListIn, List<ISprite> blockListIn, List<ISprite> itemListIn,List<ISprite>enemyListIn, Collide collideInstance)
         {
             marioList = marioListIn;
@@ -32,9 +32,11 @@ namespace Sprint0.Collision.Logic
             enemyList = enemyListIn;
             collide = collideInstance;
             collisionDetection = new CollisionDetection();
+            win = false;
         }
         public void update(GameTime gameTime)
         {
+            
             if (timerGo)
             {
                 invisibeleTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
@@ -45,9 +47,13 @@ namespace Sprint0.Collision.Logic
                 invisibeleTimer = 0f;
                 timerGo = false;
             }
+            if (!win)
+            {
             marioAndblock(gameTime);
             marioAndEnemy(gameTime);
             marioAndItem(gameTime);
+            }
+            
 
         }
 
