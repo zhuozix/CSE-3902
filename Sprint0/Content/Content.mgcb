@@ -349,6 +349,18 @@
 /processorParam:TextureFormat=Color
 /build:FireMario/FireMarioJumpRight.png
 
+#begin FireMario/FireMarioRightFlagPole.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:FireMario/FireMarioRightFlagPole.png
+
 #begin FireMario/FireMarioTurnRight.png
 /importer:TextureImporter
 /processor:TextureProcessor

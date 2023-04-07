@@ -190,7 +190,7 @@
 		<Goomba xPos="4014" yPos="368"></Goomba>
 		<Goomba xPos="4096" yPos="368"></Goomba>
 		<Goomba xPos="4142" yPos="368"></Goomba>
-		<Goomba xPos="5568" yPos="368"></Goomba>
+		<Goomba xPos="5480" yPos="368"></Goomba>
 		<Goomba xPos="5614" yPos="368"></Goomba>
 	</Enemies>
 	<Items>
