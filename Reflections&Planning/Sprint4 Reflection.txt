@@ -1,9 +1,10 @@
 Sprint 4 Reflection
 
-In Sprint 4 we complete our task very well. We fixed all the bugs that collision have from Sprint 3.
-We finish the sound very early, which around the spring break. We face some bugs to make the
-mario touch the flag and win the game. But we fixed it very quick. The underground level and UHD worked very well
-approximately no bug occur. Everyone did a great job in Sprint 4.
-All the features of Level 1-1 is realized, put the priority of implementing all functions first. We tested multiple
-times to make sure we fix every bugs.
-We might not sure about how the backlog works, but we did try using Project in GitHub
+In Sprint 4 we completed our tasks well. We fixed all the bugs that the collision had from Sprint 3.
+We finished the sound early, around spring break. We faced some bugs trying to make flag at the
+end of the level work, but we fixed it. The underground level and HUD worked well with no major bugs.
+Everyone did a great job in Sprint 4.
+All the features of Level 1-1 are realized, we prioritized implementing all functionality first and
+then did a lot of testing and bug fixing.
+We've been using issues to organize our tasks, but haven't really implemented the project board still.
+
