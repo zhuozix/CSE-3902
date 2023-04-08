@@ -6,5 +6,6 @@ end of the level work, but we fixed it. The underground level and HUD worked wel
 Everyone did a great job in Sprint 4.
 All the features of Level 1-1 are realized, we prioritized implementing all functionality first and
 then did a lot of testing and bug fixing.
-We've been using issues to organize our tasks, but haven't really implemented the project board still.
+We've been using issues to organize our tasks, but was not passing them to the task board. We did it
+in this sprint by using projects.
 
