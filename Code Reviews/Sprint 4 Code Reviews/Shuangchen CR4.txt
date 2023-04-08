@@ -1,0 +1,31 @@
+readability review
+
+Author of the code review: Shuangchen
+Date of the code review: 4/7/2023
+Sprint number: 4
+Name of the .cs file being reviewed: soundPlayer.cs
+Author of the .cs file being reviewed: Seth / Adam
+Number of minutes taken to complete the review: 10m
+
+The style of the code is unified with the rest of the class. 
+Following the design specifications of the factory pattern makes the entire code particularly clean to read. 
+All the method names and variable names have meaning and allow others to know what each method is supposed to do without any comments.
+I think the code is very readable.
+
+---------------------------------------
+code quality review
+
+Author of the code review: Shuangchen
+Date of the code review: 4/7/2023
+Sprint number: 4
+Name of the .cs file being reviewed: MarioPoleslideState.cs
+Author of the .cs file being reviewed: Seth
+
+The code is well aligned with the rest of the action pattern in sprint2. 
+The code is very simple, when Mario touches the flagpole he has a downward acceleration. 
+But there are too many empty methods in the code. 
+The point of these empty methods is that Mario can't move or enter other states once he enters pole side mode. 
+But these methods can be hidden. 
+Then I thought it would be a good idea to use the update() method to go to the next state, 
+so that Mario could be guaranteed to win without any problems. 
+In the meantime any other commands are locked to ensure no bugs are created.
