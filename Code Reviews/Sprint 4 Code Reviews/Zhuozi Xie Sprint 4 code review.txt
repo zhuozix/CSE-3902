@@ -1,0 +1,26 @@
+readability review
+
+Author of the code review: Zhuozi Xie
+Date of the code review: 4/7/2023
+Sprint number: 4
+Name of the .cs file being reviewed: WinState.cs
+Author of the .cs file being reviewed: Shuangchen Zhou
+Number of minutes taken to complete the review: 3 minutes.
+Specific comments on what is readable and what is not:
+The code is well-organized and readable, with clear and concise naming conventions and logical flow.
+The Update() and Draw() function is simple and easy to understand, with clear variable names and logical flow. 
+The use of ICommand to execute actions is a good way to keep the code clean and maintainable.
+
+code quality review
+
+Author of the code review: Zhuozi Xie
+Date of the code review: 4/7/2023
+Sprint number: 4
+Name of the .cs file being reviewed: SoundPlayer.cs
+Author of the .cs file being reviewed: Seth Welch
+Number of minutes taken to complete the review: 5 minutes.
+
+The loadSounds method initializes the class's static fields with sounds loaded from the content manager. 
+It is a good practice to load all the required content at the beginning of the game or level to avoid delays during gameplay.
+The playMainTheme method plays the main theme music and sets it to repeat. 
+This is appropriate for music that should play continuously during the game.

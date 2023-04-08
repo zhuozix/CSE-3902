@@ -1,0 +1,6 @@
+Sprint 4 Reflection
+
+In Sprint 4 we complete our task very well. We fixed all the bugs that collision have from Sprint 3.
+We finish the sound very early, which around the spring break. We face some bugs to make the
+mario touch the flag and win the game. But we fixed it very quick. The underground level and UHD worked very well
+approximately no bug occur. Everyone did a great job in Sprint 4.
