@@ -4,3 +4,6 @@ In Sprint 4 we complete our task very well. We fixed all the bugs that collision
 We finish the sound very early, which around the spring break. We face some bugs to make the
 mario touch the flag and win the game. But we fixed it very quick. The underground level and UHD worked very well
 approximately no bug occur. Everyone did a great job in Sprint 4.
+All the features of Level 1-1 is realized, put the priority of implementing all functions first. We tested multiple
+times to make sure we fix every bugs.
+We might not sure about how the backlog works, but we did try using Project in GitHub
