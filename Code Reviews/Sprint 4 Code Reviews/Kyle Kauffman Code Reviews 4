@@ -1,0 +1,25 @@
+Readability Review
+Author of the code review: Kyle Kauffman
+Date of the code review: 4/7/2023
+Sprint number: 4
+Name of the .cs file being reviewed: SoundPlayer.cs
+Author of the .cs file being reviewed: Seth Welch
+Number of minutes taken to complete the review: 5 minutes
+
+This code is well organized and easy to decipher and understand, but could benefit from
+some comments to label the code explicity.
+
+
+Quality Review
+Author of the code review: Kyle Kauffman
+Date of the code review: 4/7/2023
+Sprint number: 4
+Name of the .cs file being reviewed: MariioAndNPC.cs
+Author of the .cs file being reviewed: Seth, Adam, Yao, Shuangchen, Zhuozi
+Number of minutes taken to complete the review: 10 minutes
+
+This code is now much better, both in organization and function. Moving all the different types of
+collisions into their own files was a good decision. Collide.cs itself is now much simpler. I think
+the MarioAndNPC file is still doing a lot though, and would benefit from being further decomposed
+into smaller files handling the different collisions between Mario and blocks, mario and enemies, etc.
+Also the file name has a typo, the extra 'i' should be removed.
