@@ -56,6 +56,16 @@ namespace Sprint0.ObjectManager
             this.logic = new ObjectLogicManager(this);
         }
 
+        public void clearAllObjects()
+        {
+            this.blocks = new List<ISprite>();
+            this.enemies = new List<ISprite>();
+            this.items = new List<ISprite>();
+            this.fireBallList = new List<ISprite>();
+            this.teleporters = new List<Teleporter>();
+            this.flagpoles = new List<FlagPoleHitbox>();
+            
+        }
         public void addObject(ISprite obj, String objectType)
         {
             switch (objectType) {
