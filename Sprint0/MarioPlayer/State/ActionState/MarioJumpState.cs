@@ -6,8 +6,8 @@ namespace Sprint0.MarioPlayer.State.ActionState
 {
     public class MarioJumpState : MarioActionState
     {
-        private static float VerticalVelocity = -120;
-        private static float superVerticalVelocity = -180;
+        private static float VerticalVelocity = -110;
+        private static float superVerticalVelocity = -120;
         private float timeSpent = 0f;
 
         public MarioJumpState(Mario marioEntity, MarioFactory marioFactory) : base(marioEntity, marioFactory)
