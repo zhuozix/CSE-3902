@@ -60,7 +60,7 @@ namespace Sprint0.UI.State
             _game.camera = new Camera();
 
             //Load level 1
-            LevelLoader.LevelLoader.loadLevel(_game.gameObjectManager, "level1-1.xml", _game.spritesFactory, _game);
+            LevelLoader.LevelLoader.loadLevel(_game.gameObjectManager, "bossLevel.xml", _game.spritesFactory, _game);
 
             SoundPlayer.loadSounds(_game);
             SoundPlayer.playMainTheme();
