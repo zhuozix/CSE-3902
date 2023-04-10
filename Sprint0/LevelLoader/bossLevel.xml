@@ -1,0 +1,26 @@
+﻿<Level>
+	<Background>
+		<bg-boss></bg-boss>
+	</Background>
+	<Blocks>
+		<BlueBrickBlockStretch xPos="0" yPos="416" xPos2="800"></BlueBrickBlockStretch>
+
+		<BlueBrickBlock xPos="-35" yPos="226"></BlueBrickBlock>
+		<BlueBrickBlock xPos="-35" yPos="256"></BlueBrickBlock>
+		<BlueBrickBlock xPos="-35" yPos="286"></BlueBrickBlock>
+		<BlueBrickBlock xPos="-35" yPos="316"></BlueBrickBlock>
+		<BlueBrickBlock xPos="-35" yPos="346"></BlueBrickBlock>
+		<BlueBrickBlock xPos="-35" yPos="376"></BlueBrickBlock>
+		<BlueBrickBlock xPos="-35" yPos="406"></BlueBrickBlock>
+		<BlueBrickBlock xPos="-35" yPos="436"></BlueBrickBlock>
+	</Blocks>
+	<Enemies>
+
+	</Enemies>
+	<Items>
+		
+	</Items>
+	<Player>
+		<Mario xPos="200" yPos="360"></Mario>
+	</Player>
+</Level>

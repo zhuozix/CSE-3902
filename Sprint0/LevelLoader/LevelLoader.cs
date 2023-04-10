@@ -23,7 +23,7 @@ namespace Sprint0.LevelLoader
         
         public static void loadLevel(GameObjectManager gameObjectManager, String level, SpritesFactory factory, Game1 game)
         {
-            
+            //gameObjectManager.clearAllObjects();
             String type = "";
             XmlReader xml = XmlReader.Create(Directory.GetCurrentDirectory().Replace(@"bin\Debug\net6.0", @"\LevelLoader\") + level);
             while(xml.Read())
@@ -283,6 +283,10 @@ namespace Sprint0.LevelLoader
                     game.mario.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(game.mario, "player");
 
+                    break;
+
+                case "MarioLoc":
+                    gameObjectManager.players[0].Position = new Vector2(xPos, yPos);
                     break;
                 default:
                     break;

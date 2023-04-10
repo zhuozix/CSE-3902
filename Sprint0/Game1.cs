@@ -58,7 +58,7 @@ namespace Sprint0
 
         public ArrayList fireBallList;
 
-        private IGameState _currentState;
+        public IGameState _currentState;
         /*
          * Camera
          */
