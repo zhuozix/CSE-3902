@@ -19,7 +19,7 @@ Bowser Boss Fight:
 
 Additional Level:
 -Game state transitions to Boss room
--Elements from Bowser¡¯s Castle levels
+-Elements from BowserÂ¡Â¯s Castle levels
 -Has the Boss Fight in it
 -Boss Room has platforms you can jumps through
 
@@ -30,6 +30,6 @@ Additional Power-Ups:
 Back-Log:
 -Movement Improvements
 -Pipe Animations
--Change Game-Over Screen	{Yao Lu}
+-Change Game-Over Screen
 
 All group members should test the game for bugs and if it meets the requirements. (Last week of this sprint)
