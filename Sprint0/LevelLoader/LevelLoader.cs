@@ -53,7 +53,7 @@ namespace Sprint0.LevelLoader
                     switch (type)
                     {
                         case "block":
-                            processBlock(xml, gameObjectManager, factory);
+                            processBlock(xml, gameObjectManager, factory, game);
                             break;
                         case "item":
                             processItem(xml, gameObjectManager, factory); 
@@ -111,7 +111,7 @@ namespace Sprint0.LevelLoader
             }
         }
 
-        public static void processBlock(XmlReader xml, GameObjectManager gameObjectManager, SpritesFactory factory)
+        public static void processBlock(XmlReader xml, GameObjectManager gameObjectManager, SpritesFactory factory, Game1 game)
         {
             long xPos2;
             long yPos2;
@@ -194,6 +194,9 @@ namespace Sprint0.LevelLoader
                     obj = factory.getGreenTubeSprite();
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
+                    break;
+                case "FireballSpawner":
+                    gameObjectManager.addSpawner(new FireballSpawner((int)xPos, (int)yPos, game));
                     break;
                 case "FloorBlockStretch":
                     xPos2 = Int64.Parse(xml.GetAttribute("xPos2"));

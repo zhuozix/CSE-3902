@@ -36,6 +36,7 @@ namespace Sprint0.ObjectManager
         public List<ISprite> fireBallList;
         public List<Teleporter> teleporters;
         public List<FlagPoleHitbox> flagpoles;
+        public List<FireballSpawner> spawners;
         public Texture2D background;
         public Game1 game;
         private ObjectLogicManager logic;
@@ -51,6 +52,7 @@ namespace Sprint0.ObjectManager
             this.fireBallList = new List<ISprite>();
             this.teleporters = new List<Teleporter>();
             this.flagpoles = new List<FlagPoleHitbox>();
+            this.spawners= new List<FireballSpawner>();
             game = gameInstance;
             //this.viewport = gameInstance.viewport;
             this.logic = new ObjectLogicManager(this);
@@ -64,6 +66,7 @@ namespace Sprint0.ObjectManager
             this.fireBallList = new List<ISprite>();
             this.teleporters = new List<Teleporter>();
             this.flagpoles = new List<FlagPoleHitbox>();
+            this.spawners = new List<FireballSpawner>();
             
         }
         public void addObject(ISprite obj, String objectType)
@@ -88,6 +91,11 @@ namespace Sprint0.ObjectManager
                 default:
                     break;
             }
+        }
+
+        public void addSpawner(FireballSpawner sp)
+        {
+            this.spawners.Add(sp);
         }
 
 		public void addFlagPoleHitbox(FlagPoleHitbox fp_hb)
@@ -133,6 +141,10 @@ namespace Sprint0.ObjectManager
             {
                 obj.Update(time);
             }
+            foreach (FireballSpawner spawner in this.spawners)
+            {
+                spawner.Update(time);
+            }
 
             game.time -= (float)time.ElapsedGameTime.TotalSeconds;
         }
@@ -171,6 +183,10 @@ namespace Sprint0.ObjectManager
             foreach (ISprite obj in this.fireBallList)
             {
                 obj.Draw(_spriteBatch, isFlipped);
+            }
+            foreach (FireballSpawner spawner in this.spawners)
+            {
+                spawner.Draw(_spriteBatch, isFlipped);
             }
         }
     }

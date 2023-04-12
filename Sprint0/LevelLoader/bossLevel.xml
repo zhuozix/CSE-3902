@@ -3,7 +3,8 @@
 		<bg-boss></bg-boss>
 	</Background>
 	<Blocks>
-		<BlueBrickBlockStretch xPos="0" yPos="416" xPos2="800"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="0" yPos="416" xPos2="384"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="480" yPos="416" xPos2="800"></BlueBrickBlockStretch>
 		<BlueBrickBlockStretch xPos="0" yPos="-16" xPos2="800"></BlueBrickBlockStretch>
 
 		<BlueFloorBlock xPos="-32" yPos="0"></BlueFloorBlock>
@@ -36,6 +37,10 @@
 		<Platform xPos ="0" yPos ="128"></Platform>
 		<Platform xPos ="48" yPos ="128"></Platform>
 		<Platform xPos ="96" yPos ="128"></Platform>
+
+		<FireballSpawner xPos ="432" yPos="480"></FireballSpawner>
+		<FireballSpawner xPos ="448" yPos="480"></FireballSpawner>
+		
 	</Blocks>
 	<Enemies>
 
