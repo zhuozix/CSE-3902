@@ -176,13 +176,17 @@ namespace Sprint0.Collision.Logic
 
                         if (collisionDetection.touchBottom(RectangleMain, RectangleOBJ) && b.Name != "InvisibleBlock")
                         {
+                            
+                            
                             cannotMoveDown(a);
                             int intersect = RectangleMain.Bottom - RectangleOBJ.Top;
                             if (intersect >= 2) a.Position = new Vector2(a.Position.X, a.Position.Y - 2);
+                            
 
                         }
-                        else if (collisionDetection.touchTop(RectangleMain, RectangleOBJ) && b.Name != "InvisibleBlock")
+                        else if (collisionDetection.touchTop(RectangleMain, RectangleOBJ) && b.Name != "InvisibleBlock" && b.Name != "Platform")
                         {
+                            
                             cannotMoveUP(a);
 
                             //a.fallAfterJump();
