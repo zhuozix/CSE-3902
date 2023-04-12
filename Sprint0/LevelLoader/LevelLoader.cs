@@ -165,6 +165,11 @@ namespace Sprint0.LevelLoader
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "block");
                     break;
+                case "Platform":
+                    obj = factory.getPlatformSprite();
+                    obj.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(obj, "block");
+                    break;
                 case "GreenPipeLarge":
                     obj = factory.getGreenPipeLargeSprite();
                     obj.Position = new Vector2(xPos, yPos);

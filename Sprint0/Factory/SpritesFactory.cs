@@ -40,6 +40,7 @@ namespace Sprint0.Factory
         public Texture2D texture_ShatteredBlock;
         public Texture2D texture_InvisibleBlock;
 		public Texture2D texture_FlagPoleBlock;
+        public Texture2D texture_Platform;
 
 		// Items
 		public Texture2D texture_FireFlower;
@@ -89,6 +90,7 @@ namespace Sprint0.Factory
             texture_ShatteredBlock = content.Load<Texture2D>("Blocks/ShatteredBlock");
             texture_InvisibleBlock = content.Load<Texture2D>("Blocks/HiddenBloc");
 			texture_FlagPoleBlock = content.Load<Texture2D>("Blocks/flagPoleBlock");
+            texture_Platform = content.Load<Texture2D>("Blocks/platform");
 
 			// Items
 			texture_FireFlower = content.Load<Texture2D>("fireFlower");
@@ -224,6 +226,14 @@ namespace Sprint0.Factory
             ISprite sprite = new BlockSprite(texture_ShatteredBlock, 1, 1, new Vector2(600, 100));
             sprite.Name = "ShatteredBlock";
             sprite.state = "Crashed";
+            return sprite;
+        }
+
+        public ISprite getPlatformSprite()
+        {
+            ISprite sprite = new BlockSprite(texture_Platform, 1, 1, new Vector2(600, 100));
+            sprite.Name = "Platform";
+            sprite.state = "Normal";
             return sprite;
         }
 
