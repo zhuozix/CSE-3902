@@ -6,24 +6,36 @@
 		<BlueBrickBlockStretch xPos="0" yPos="416" xPos2="800"></BlueBrickBlockStretch>
 		<BlueBrickBlockStretch xPos="0" yPos="-16" xPos2="800"></BlueBrickBlockStretch>
 
-		<BlueBrickBlock xPos="-32" yPos="226"></BlueBrickBlock>
-		<BlueBrickBlock xPos="-32" yPos="256"></BlueBrickBlock>
-		<BlueBrickBlock xPos="-32" yPos="286"></BlueBrickBlock>
-		<BlueBrickBlock xPos="-32" yPos="316"></BlueBrickBlock>
-		<BlueBrickBlock xPos="-32" yPos="346"></BlueBrickBlock>
-		<BlueBrickBlock xPos="-32" yPos="376"></BlueBrickBlock>
-		<BlueBrickBlock xPos="-32" yPos="406"></BlueBrickBlock>
-		<BlueBrickBlock xPos="-32" yPos="436"></BlueBrickBlock>
+		<BlueFloorBlock xPos="-32" yPos="0"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="34"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="66"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="98"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="130"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="162"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="194"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="226"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="256"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="286"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="316"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="346"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="376"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="406"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="436"></BlueFloorBlock>
 
 		<Platform xPos ="0" yPos ="320"></Platform>
 		<Platform xPos ="48" yPos ="320"></Platform>
+		<Platform xPos ="96" yPos ="320"></Platform>
+		<Platform xPos ="144" yPos ="320"></Platform>
 		
 
 		<Platform xPos ="0" yPos ="224"></Platform>
 		<Platform xPos ="48" yPos ="224"></Platform>
+		<Platform xPos ="96" yPos ="224"></Platform>
+		<Platform xPos ="144" yPos ="224"></Platform>
 
 		<Platform xPos ="0" yPos ="128"></Platform>
 		<Platform xPos ="48" yPos ="128"></Platform>
+		<Platform xPos ="96" yPos ="128"></Platform>
 	</Blocks>
 	<Enemies>
 
