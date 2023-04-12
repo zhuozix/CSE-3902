@@ -21,15 +21,17 @@ namespace Sprint0.Collision.Logic
         private List<ISprite> blockList;
         private List<ISprite> itemList;
         private List<ISprite> enemyList;
+        private List<FireballSpawner> spawnerList;
         private float invisibeleTimer = 0f;
         private bool timerGo = false;
         public bool win;
-        public MarioAndNPC(List<ISprite> marioListIn, List<ISprite> blockListIn, List<ISprite> itemListIn,List<ISprite>enemyListIn, Collide collideInstance)
+        public MarioAndNPC(List<ISprite> marioListIn, List<ISprite> blockListIn, List<ISprite> itemListIn,List<ISprite>enemyListIn, List<FireballSpawner> spawners, Collide collideInstance)
         {
             marioList = marioListIn;
             blockList = blockListIn;
             itemList = itemListIn;
             enemyList = enemyListIn;
+            spawnerList = spawners;
             collide = collideInstance;
             collisionDetection = new CollisionDetection();
             win = false;
@@ -86,6 +88,41 @@ namespace Sprint0.Collision.Logic
         {
             foreach (Mario a in marioList)
             {
+                foreach (FireballSpawner b in spawnerList)
+                {
+
+                    if (b.fireBall == null) { break; }
+
+                    Rectangle RectangleA = collisionDetection.getRectangle(a);
+                    Rectangle RectangleB = collisionDetection.getRectangle(b.fireBall);
+                   
+                    if (RectangleA.Intersects(RectangleB))
+                    {
+                        if (a.state == "Hurt")
+                        {
+                            break;
+                        }
+
+                        if (a.state == "Star")
+                        {
+                            
+                            break;
+                        }
+                        
+                        else if (a.state == "Normal")
+                        {
+
+                            
+                            a.crash = true;
+                            a.TakeDamage();
+
+                            a.state = "Hurt";
+                            
+
+                        }
+                    }
+                }
+
                 foreach (EnemySprite b in enemyList)
                 {
 
