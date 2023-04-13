@@ -3,9 +3,9 @@
 		<bg-boss></bg-boss>
 	</Background>
 	<Blocks>
-		<BlueBrickBlockStretch xPos="0" yPos="416" xPos2="384"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="480" yPos="416" xPos2="800"></BlueBrickBlockStretch>
-		<BlueBrickBlockStretch xPos="0" yPos="-16" xPos2="800"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="0" yPos="416" xPos2="2400"></BlueBrickBlockStretch>
+		
+		<BlueBrickBlockStretch xPos="0" yPos="-16" xPos2="2400"></BlueBrickBlockStretch>
 
 		<BlueFloorBlock xPos="-32" yPos="0"></BlueFloorBlock>
 		<BlueFloorBlock xPos="-32" yPos="34"></BlueFloorBlock>
@@ -23,24 +23,42 @@
 		<BlueFloorBlock xPos="-32" yPos="406"></BlueFloorBlock>
 		<BlueFloorBlock xPos="-32" yPos="436"></BlueFloorBlock>
 
-		<Platform xPos ="0" yPos ="320"></Platform>
-		<Platform xPos ="48" yPos ="320"></Platform>
-		<Platform xPos ="96" yPos ="320"></Platform>
-		<Platform xPos ="144" yPos ="320"></Platform>
+		<BlueFloorBlock xPos="1568" yPos="0"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="34"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="66"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="98"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="130"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="162"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="194"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="226"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="256"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="286"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="316"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="348"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="380"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="412"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1568" yPos="444"></BlueFloorBlock>
 		
 
-		<Platform xPos ="0" yPos ="224"></Platform>
-		<Platform xPos ="48" yPos ="224"></Platform>
-		<Platform xPos ="96" yPos ="224"></Platform>
-		<Platform xPos ="144" yPos ="224"></Platform>
+		<Platform xPos ="1600" yPos ="320"></Platform>
+		<Platform xPos ="1648" yPos ="320"></Platform>
+		<Platform xPos ="1696" yPos ="320"></Platform>
+		<Platform xPos ="1744" yPos ="320"></Platform>
+		
 
-		<Platform xPos ="0" yPos ="128"></Platform>
-		<Platform xPos ="48" yPos ="128"></Platform>
-		<Platform xPos ="96" yPos ="128"></Platform>
+		<Platform xPos ="1600" yPos ="224"></Platform>
+		<Platform xPos ="1648" yPos ="224"></Platform>
+		<Platform xPos ="1696" yPos ="224"></Platform>
+		<Platform xPos ="1744" yPos ="224"></Platform>
+
+		<Platform xPos ="1600" yPos ="128"></Platform>
+		<Platform xPos ="1648" yPos ="128"></Platform>
+		<Platform xPos ="1696" yPos ="128"></Platform>
 
 		<FireballSpawner xPos ="432" yPos="480"></FireballSpawner>
 		<FireballSpawner xPos ="448" yPos="480"></FireballSpawner>
-		
+
+		<Teleporter xPos="1448" yPos="416" width="12" height="24" activation="up" xDest="1632" yDest="380" underground="True"></Teleporter>
 	</Blocks>
 	<Enemies>
 

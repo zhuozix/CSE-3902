@@ -86,6 +86,17 @@ namespace Sprint0.MarioPlayer
         {
             MarioPowerupStateType powerupStateType = this.CurrentPowerupState.GetEnumValue();
 
+            foreach (Teleporter warp in game.gameObjectManager.teleporters)
+            {
+                Rectangle teleport = warp.box;
+                Rectangle player = new Rectangle((int)base.Position.X, (int)base.Position.Y, base.Width / base.cols * Game1.scale, base.Height / base.rows * Game1.scale);
+                if (player.Intersects(teleport) && warp.activator.Equals("up"))
+                {
+                    warp.teleportPlayer(this);
+                    break;
+                }
+            }
+
             if (CurrentActionState.GetEnumValue() == MarioActionStateType.Running ||
                     CurrentActionState.GetEnumValue() == MarioActionStateType.Idle)
             {
@@ -137,7 +148,7 @@ namespace Sprint0.MarioPlayer
             foreach (Teleporter warp in game.gameObjectManager.teleporters)
             {
                 Rectangle teleport = warp.box;
-                Rectangle player = new Rectangle((int)base.Position.X, (int)base.Position.Y, base.Width * Game1.scale, base.Height * Game1.scale);
+                Rectangle player = new Rectangle((int)base.Position.X, (int)base.Position.Y, base.Width / base.cols * Game1.scale, base.Height / base.rows * Game1.scale);
                 if (player.Intersects(teleport) && warp.activator.Equals("right"))
                 {
                     warp.teleportPlayer(this);
@@ -158,7 +169,7 @@ namespace Sprint0.MarioPlayer
             foreach (Teleporter warp in game.gameObjectManager.teleporters)
             {
                 Rectangle teleport = warp.box;
-                Rectangle player = new Rectangle((int)base.Position.X, (int)base.Position.Y, base.Width * Game1.scale, base.Height * Game1.scale);
+                Rectangle player = new Rectangle((int)base.Position.X, (int)base.Position.Y, base.Width / base.cols * Game1.scale, base.Height / base.rows * Game1.scale);
                 if (player.Intersects(teleport) && warp.activator.Equals("down"))
                 {
                     warp.teleportPlayer(this);

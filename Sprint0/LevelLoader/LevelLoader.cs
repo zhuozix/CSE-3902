@@ -239,9 +239,9 @@ namespace Sprint0.LevelLoader
                     }
                     break;
                 case "Teleporter":
-                    xPos2 = xPos + Int64.Parse(xml.GetAttribute("width"));
-                    yPos2 = yPos - Int64.Parse(xml.GetAttribute("height"));
-                    Rectangle rec = new Rectangle((int)xPos, (int)yPos2, (int)xPos2, (int)yPos);
+                    xPos2 = Int32.Parse(xml.GetAttribute("width"));
+                    yPos2 = Int32.Parse(xml.GetAttribute("height"));
+                    Rectangle rec = new Rectangle((int)xPos, (int)yPos, (int)xPos2, (int)yPos2);
                     int yDest = Int32.Parse(xml.GetAttribute("yDest"));
                     yDest = yDest - 30;
                     gameObjectManager.addTeleporter(new Teleporter(rec, xml.GetAttribute("activation"), Int32.Parse(xml.GetAttribute("xDest")), yDest, xml.GetAttribute("underground").Equals("True")));
