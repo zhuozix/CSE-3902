@@ -531,6 +531,12 @@
 /processorParam:TextureFormat=Color
 /build:redMushroom.png
 
+#begin Sounds/04-castle.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/04-castle.mp3
+
 #begin Sounds/main-theme-overworld.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
