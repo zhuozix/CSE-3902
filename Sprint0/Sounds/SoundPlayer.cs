@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Sprint0.Sounds
     {
         private static Game1 gameInstance;
         private static Song mainTheme;
+        private static Song bossTheme;
         private static SoundEffect jump1;
         private static SoundEffect jump2;
         private static SoundEffect blockBreak;
@@ -34,6 +36,7 @@ namespace Sprint0.Sounds
             ContentManager content = gameInstance.Content;
 
             mainTheme = content.Load<Song>("Sounds/main-theme-overworld");
+            bossTheme = content.Load<Song>("Sounds/04-castle");
             jump1 = content.Load<SoundEffect>("Sounds/smb_jumpsmall");
             jump2 = content.Load<SoundEffect>("Sounds/smb_jump-super");
             blockBreak = content.Load<SoundEffect>("Sounds/smb_breakblock");
@@ -52,7 +55,15 @@ namespace Sprint0.Sounds
 
         public static void playMainTheme()
         {
+            MediaPlayer.Stop();
             MediaPlayer.Play(mainTheme);
+            MediaPlayer.IsRepeating = true;
+        }
+
+        public static void playBossTheme()
+        {
+            MediaPlayer.Stop();
+            MediaPlayer.Play(bossTheme);
             MediaPlayer.IsRepeating = true;
         }
 
