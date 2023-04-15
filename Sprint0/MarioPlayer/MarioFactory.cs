@@ -43,14 +43,17 @@ namespace Sprint0.MarioPlayer
                 {
                    ans = new NoneMovingAnimatedSprite(texture, Vector2.Zero, 1, 3);
                 player.columns = 3;
+                player.cols = 3;
                 }else if (this.actionType == MarioActionStateType.PoleSliding)
 			{
 				ans = new NoneMovingAnimatedSprite(texture, Vector2.Zero, 1, 2);
 				player.columns = 1;
+                player.cols = 1;
 			}
                 else {
                    ans = new NoneAnimatedNonMovingSprite(texture, Vector2.Zero, 1, 1);
                 player.columns = 1;
+                player.cols = 1;
                 }
                 
          

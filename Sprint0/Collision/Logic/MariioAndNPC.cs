@@ -188,7 +188,7 @@ namespace Sprint0.Collision.Logic
                         }
 
 
-                        if (collisionDetection.touchRight(RectangleMain, RectangleOBJ))
+                        if (collisionDetection.touchRight(RectangleMain, RectangleOBJ) && b.Name != "Platform")
                         {
                             cannotMoveRight(a);
                             int intersect = RectangleMain.Right - RectangleOBJ.Left;
@@ -199,7 +199,7 @@ namespace Sprint0.Collision.Logic
                                 //a.velocity = new Vector2(a.velocity.X, 100);
                             }
                         }
-                        else if (collisionDetection.touchLeft(RectangleMain, RectangleOBJ, a))
+                        else if (collisionDetection.touchLeft(RectangleMain, RectangleOBJ, a) && b.Name != "Platform")
                         {
                             cannotMoveLeft(a);
                             int intersect = RectangleOBJ.Right - RectangleMain.Left;
@@ -213,17 +213,17 @@ namespace Sprint0.Collision.Logic
 
                         if (collisionDetection.touchBottom(RectangleMain, RectangleOBJ) && b.Name != "InvisibleBlock")
                         {
-                            
-                            
+
+
                             cannotMoveDown(a);
                             int intersect = RectangleMain.Bottom - RectangleOBJ.Top;
                             if (intersect >= 2) a.Position = new Vector2(a.Position.X, a.Position.Y - 2);
-                            
+
 
                         }
                         else if (collisionDetection.touchTop(RectangleMain, RectangleOBJ) && b.Name != "InvisibleBlock" && b.Name != "Platform")
                         {
-                            
+
                             cannotMoveUP(a);
 
                             //a.fallAfterJump();
@@ -254,7 +254,7 @@ namespace Sprint0.Collision.Logic
                         }
                         if (b.Name == "FlagPoleBlock" && !win)
                         {
-                            
+
                             a.poleslide();
                             win = true;
                             break;

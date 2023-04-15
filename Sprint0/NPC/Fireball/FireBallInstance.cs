@@ -17,7 +17,7 @@ namespace Sprint0.NPC.Fireball
         public FireBallInstance(Texture2D texture, Vector2 position, int rowsIn, int colsIn, int moveDirection) : base(texture, position, rowsIn, colsIn)
         {
             this.Position = position;
-            if(moveDirection == 0)
+            if (moveDirection == 0)
             {
                 //right
                 this.velocity = new Vector2(300, 100);
@@ -38,20 +38,20 @@ namespace Sprint0.NPC.Fireball
 
         private void bounce()
         {
-            if(this.velocity.Y == 0)
+            if (this.velocity.Y == 0)
             {
                 this.maxHeight = this.position.Y - 20;
-                this.velocity = new Vector2(this.velocity.X, -50);
+                this.velocity = new Vector2(this.velocity.X, -100);
             }
         }
 
         private void fall()
         {
-            if(this.maxHeight != 0)
+            if (this.maxHeight != 0)
             {
-                if(this.position.Y <= maxHeight)
+                if (this.position.Y <= maxHeight)
                 {
-                    this.velocity = new Vector2(this.velocity.X, 50);
+                    this.velocity = new Vector2(this.velocity.X, 100);
                 }
             }
         }
