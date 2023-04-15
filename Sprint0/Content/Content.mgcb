@@ -573,11 +573,23 @@
 /processorParam:Quality=Best
 /build:Sounds/04-castle.mp3
 
+#begin Sounds/heavy-machine-gun.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/heavy-machine-gun.wav
+
 #begin Sounds/main-theme-overworld.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:Sounds/main-theme-overworld.mp3
+
+#begin Sounds/moonjump.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/moonjump.wav
 
 #begin Sounds/smb_1-up.wav
 /importer:WavImporter

@@ -29,6 +29,8 @@ namespace Sprint0.Sounds
         private static SoundEffect marioHit;
         private static SoundEffect stageClear;
         private static SoundEffect pipe;
+        private static SoundEffect Machinegun;
+        private static SoundEffect Moonjump;
 
         public static void loadSounds(Game1 game)
         {
@@ -51,6 +53,8 @@ namespace Sprint0.Sounds
             marioHit = content.Load<SoundEffect>("Sounds/smb_touch");
             stageClear = content.Load<SoundEffect>("Sounds/smb_stage_clear");
             pipe = content.Load<SoundEffect>("Sounds/smb_pipe");
+            Machinegun = content.Load<SoundEffect>("Sounds/heavy-machine-gun");
+            Moonjump = content.Load<SoundEffect>("Sounds/moonjump");
         }
 
         public static void playMainTheme()
@@ -154,6 +158,14 @@ namespace Sprint0.Sounds
         public static void playPipe()
         {
             pipe.Play();
+        }
+        public static void playMachinegun()
+        {
+            Machinegun.Play();
+        }
+        public static void playMoonjump()
+        {
+            Moonjump.Play();
         }
         public static void stopMusic()
         {

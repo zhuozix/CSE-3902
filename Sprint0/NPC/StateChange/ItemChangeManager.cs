@@ -51,6 +51,14 @@ namespace Sprint0.NPC.StateChange
                 case "FireFlower":
                     SoundPlayer.playPowerup();
                     fireFlowerTransition(); break;
+                case "Machinegun":
+                    SoundPlayer.playMachinegun();
+                    fireFlowerTransition();
+                    break;
+                case "Moonjump":
+                    SoundPlayer.playMoonjump();
+                    fireFlowerTransition();
+                break;
                 default:
                     
                     break;

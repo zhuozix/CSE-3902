@@ -21,6 +21,7 @@
   <ItemGroup>
     <None Remove="Content\Blocks\hiddenBlock.png" />
     <None Remove="Content\GreenPipe.png" />
+    <None Remove="Content\Sounds\heavy-machine-gun.mp3" />
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
   </ItemGroup>
