@@ -31,7 +31,7 @@ namespace Sprint0.UI.Text
         public override void Draw(SpriteBatch spriteBatch, bool isFlipped)
         {
             ContentManager content = gameInstance.Content;
-            Texture2D thumbsUp = content.Load<Texture2D>("gameoverscreen");
+            Texture2D thumbsUp = content.Load<Texture2D>("mariogameover");
             spriteBatch.Draw(thumbsUp, new Vector2(0, 0), Color.White);
             spriteBatch.DrawString(this.font, this.text, this.Position, this.color);
             spriteBatch.DrawString(this.font, this.instruction, this.nextLine, this.color);

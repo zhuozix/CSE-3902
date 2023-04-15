@@ -379,7 +379,7 @@ namespace Sprint0.Factory
         }
         public ISprite getWinFontSprite()
         {
-            ISprite sprite = new WinTextSprite(texture_scorefont, "", new Vector2(50, 200), Color.Black);
+            ISprite sprite = new WinTextSprite(gameInstance,texture_scorefont, "", new Vector2(50, 100), Color.White);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;
