@@ -3,8 +3,38 @@
 		<bg-boss></bg-boss>
 	</Background>
 	<Blocks>
-		<BlueBrickBlockStretch xPos="0" yPos="416" xPos2="2400"></BlueBrickBlockStretch>
-		
+		<BlueBrickBlockStretch xPos="0" yPos="416" xPos2="160"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="128" yPos="384" xPos2="160"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="128" yPos="352" xPos2="160"></BlueBrickBlockStretch>
+
+		<BlueBrickBlockStretch xPos="320" yPos="384" xPos2="352"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="320" yPos="352" xPos2="352"></BlueBrickBlockStretch>
+
+
+		<BlueBrickBlockStretch xPos="320" yPos="416" xPos2="704"></BlueBrickBlockStretch>
+
+		<BlueBrickBlockStretch xPos="672" yPos="384" xPos2="704"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="672" yPos="352" xPos2="704"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="672" yPos="320" xPos2="704"></BlueBrickBlockStretch>
+
+		<CoinBlock xPos =" 512" yPos="256"></CoinBlock>
+
+		<BlueBrickBlockStretch xPos="832" yPos="416" xPos2="864"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="832" yPos="384" xPos2="864"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="832" yPos="352" xPos2="864"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="832" yPos="320" xPos2="864"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="832" yPos="288" xPos2="864"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="832" yPos="256" xPos2="864"></BlueBrickBlockStretch>
+
+		<BlueBrickBlockStretch xPos="1120" yPos="416" xPos2="2400"></BlueBrickBlockStretch>
+		<BlueBrickBlockStretch xPos="1120" yPos="384" xPos2="1152"></BlueBrickBlockStretch>
+
+		<Platform xPos ="1488" yPos ="224"></Platform>
+		<Platform xPos ="1440" yPos ="224"></Platform>
+		<Platform xPos ="1392" yPos ="224"></Platform>
+
+		<BlueBrickBlockStretch xPos="1248" yPos="272" xPos2="1280"></BlueBrickBlockStretch>
+
 		<BlueBrickBlockStretch xPos="0" yPos="-16" xPos2="2400"></BlueBrickBlockStretch>
 
 		<BlueFloorBlock xPos="-32" yPos="0"></BlueFloorBlock>
@@ -22,6 +52,7 @@
 		<BlueFloorBlock xPos="-32" yPos="376"></BlueFloorBlock>
 		<BlueFloorBlock xPos="-32" yPos="406"></BlueFloorBlock>
 		<BlueFloorBlock xPos="-32" yPos="436"></BlueFloorBlock>
+		<BlueFloorBlock xPos="-32" yPos="468"></BlueFloorBlock>
 
 		<BlueFloorBlock xPos="1568" yPos="0"></BlueFloorBlock>
 		<BlueFloorBlock xPos="1568" yPos="34"></BlueFloorBlock>
@@ -38,13 +69,14 @@
 		<BlueFloorBlock xPos="1568" yPos="380"></BlueFloorBlock>
 		<BlueFloorBlock xPos="1568" yPos="412"></BlueFloorBlock>
 		<BlueFloorBlock xPos="1568" yPos="444"></BlueFloorBlock>
-		
+		<BlueFloorBlock xPos="1568" yPos="476"></BlueFloorBlock>
+
 
 		<Platform xPos ="1600" yPos ="320"></Platform>
 		<Platform xPos ="1648" yPos ="320"></Platform>
 		<Platform xPos ="1696" yPos ="320"></Platform>
 		<Platform xPos ="1744" yPos ="320"></Platform>
-		
+
 
 		<Platform xPos ="1600" yPos ="224"></Platform>
 		<Platform xPos ="1648" yPos ="224"></Platform>
@@ -55,19 +87,34 @@
 		<Platform xPos ="1648" yPos ="128"></Platform>
 		<Platform xPos ="1696" yPos ="128"></Platform>
 
-		<FireballSpawner xPos ="432" yPos="480"></FireballSpawner>
-		<FireballSpawner xPos ="448" yPos="480"></FireballSpawner>
+		<FireballSpawner xPos ="220" yPos="480"></FireballSpawner>
+		<FireballSpawner xPos ="268" yPos="480"></FireballSpawner>
+
+		<FireballSpawner xPos ="784" yPos="480"></FireballSpawner>
+
+		<FireballSpawner xPos ="952" yPos="480"></FireballSpawner>
+		<FireballSpawner xPos ="1004" yPos="480"></FireballSpawner>
+		<FireballSpawner xPos ="1056" yPos="480"></FireballSpawner>
 
 		<Teleporter xPos="1448" yPos="416" width="12" height="24" activation="up" xDest="1632" yDest="380" underground="True"></Teleporter>
 	</Blocks>
 	<Enemies>
+		<Goomba xPos ="416" yPos ="384"></Goomba>
+		<Goomba xPos ="480" yPos ="384"></Goomba>
 
+		<Goomba xPos ="1536" yPos ="384"></Goomba>
+		<Koopa xPos="1200" yPos="384"></Koopa>
 	</Enemies>
 	<Items>
-		<Machinegun xPos="400" yPos="200"></Machinegun>
-		<Moonjump xPos="1000" yPos="200"></Moonjump>
+		<Coin xPos="1268" yPos="240"></Coin>
+
+		<Coin xPos="852" yPos="224"></Coin>
+		<Coin xPos="340" yPos="320"></Coin>
+
+		<Moonjump xPos="1400" yPos="64"></Moonjump>
+		<Machinegun xPos="1512" yPos="64"></Machinegun>
 	</Items>
 	<Player>
-		<Mario xPos="200" yPos="360"></Mario>
+		<Mario xPos="80" yPos="360"></Mario>
 	</Player>
 </Level>

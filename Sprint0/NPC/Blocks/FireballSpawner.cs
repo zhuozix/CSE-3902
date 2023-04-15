@@ -31,10 +31,10 @@ namespace Sprint0.NPC.Blocks
             this.game = game1;
         }
 
-        public void Update(GameTime gametime) { 
-            
-            if (fireBall == null && this.randomizer.Next(50
-                ) == 1)
+        public void Update(GameTime gametime)
+        {
+
+            if (fireBall == null && this.randomizer.Next(40) == 1)
             {
                 generateFireball();
             }
@@ -45,16 +45,16 @@ namespace Sprint0.NPC.Blocks
                 {
                     this.fireBall = null;
                 }
-                
+
             }
-            
+
         }
 
         public void generateFireball()
         {
             this.fireBall = (FireBallInstance)this.game.spritesFactory.getFireballSprite(this.Position, false);
-            this.fireBall.velocity = new Vector2(0, -70);
-            this.fireBall.maxHeight = 300;
+            this.fireBall.velocity = new Vector2(0, -100);
+            this.fireBall.maxHeight = 180;
         }
 
         public void Draw(SpriteBatch spritebatch, Boolean isflipped)
@@ -63,7 +63,7 @@ namespace Sprint0.NPC.Blocks
             {
                 this.fireBall.Draw(spritebatch, isflipped);
             }
-            
+
         }
     }
 }

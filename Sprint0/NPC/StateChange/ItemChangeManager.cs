@@ -18,7 +18,7 @@ namespace Sprint0.NPC.StateChange
         GameObjectManager objManager;
         Mario player;
         Game1 game1;
-        public ItemChangeManager(ISprite spriteIn,Game1 gameInstance) 
+        public ItemChangeManager(ISprite spriteIn, Game1 gameInstance)
         {
             item = spriteIn;
             objManager = gameInstance.gameObjectManager;
@@ -51,15 +51,21 @@ namespace Sprint0.NPC.StateChange
                 case "FireFlower":
                     SoundPlayer.playPowerup();
                     fireFlowerTransition(); break;
+                case "Moonjump":
+                    SoundPlayer.playPowerup();
+                    moonJumpTransition(); break;
+                case "Machinegun":
+                    SoundPlayer.playPowerup();
+                    flamethrowerTransition(); break;
                 default:
-                    
+
                     break;
             }
         }
 
         public void disapperTransition()
         {
-            foreach(ISprite target in objManager.items)
+            foreach (ISprite target in objManager.items)
             {
                 if (item.Equals(target))
                 {
@@ -67,6 +73,45 @@ namespace Sprint0.NPC.StateChange
                     break;
                 }
             }
+        }
+
+        public void removeMoon()
+        {
+            foreach (ISprite target in objManager.items)
+            {
+                if (target.Name.Equals("Moonjump"))
+                {
+                    objManager.items.Remove(target);
+                    break;
+                }
+            }
+        }
+
+        public void removeMachineGun()
+        {
+            foreach (ISprite target in objManager.items)
+            {
+                if (target.Name.Equals("Machinegun"))
+                {
+                    objManager.items.Remove(target);
+                    break;
+                }
+            }
+        }
+        public void moonJumpTransition()
+        {
+            // ADD STATE CHANGE FOR MARIO
+
+            disapperTransition();
+            removeMachineGun();
+        }
+
+        public void flamethrowerTransition()
+        {
+            // ADD STATE CHANGE FOR MARIO
+
+            disapperTransition();
+            removeMoon();
         }
 
         public void starTransition()
@@ -90,18 +135,18 @@ namespace Sprint0.NPC.StateChange
         }
         public void CoinTransition()
         {
-            if(item.state != "Temp")
+            if (item.state != "Temp")
             {
-                
-            game1.coins++;
-            if (game1.coins == 5)
-            {
-                game1.life++;
-                game1.coins = 0;
-            }
+
+                game1.coins++;
+                if (game1.coins == 5)
+                {
+                    game1.life++;
+                    game1.coins = 0;
+                }
 
             }
-            
+
             disapperTransition();
         }
         public void fireFlowerTransition()
