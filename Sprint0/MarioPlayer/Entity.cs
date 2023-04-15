@@ -10,6 +10,8 @@ namespace Sprint0.MarioPlayer
         public string Name { get; set; }
         public string state { get; set; }
         public bool crash { get; set; }
+        public bool mode { get; set; }
+        public bool Jumpmode { get; set; }
         public Sprite Sprite { get; set; }
         public Texture2D Texture { get { return Sprite.Texture; } }
         public int Width { get { return Texture.Width; } }
@@ -21,8 +23,6 @@ namespace Sprint0.MarioPlayer
         public Vector2 Position { get { return Sprite.Position; } set { Sprite.Position = value; } }
         public Vector2 velocity { get; set; }
         public Vector2 Acceleration { get; set; }
-        public bool collide { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public bool collideA { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
         
 

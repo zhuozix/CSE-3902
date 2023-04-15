@@ -40,28 +40,56 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public override void JumpingTransition()
         {
             Exit();
-            CurrentState = new MarioJumpState(marioEntity, marioFactory);
+            if (marioEntity.Jumpmode)
+            {
+                CurrentState = new MarioJumpState(marioEntity, marioFactory);
+            }
+            else
+            {
+                CurrentState = new MoonJumpState(marioEntity, marioFactory);
+            }
             CurrentState.Enter(this);
         }
 
         public override void FallingTransition()
         {
             Exit();
-            CurrentState = new MarioFallState(marioEntity, marioFactory);
+            if (marioEntity.Jumpmode)
+            {
+                CurrentState = new MarioJumpState(marioEntity, marioFactory);
+            }
+            else
+            {
+                CurrentState = new MoonJumpState(marioEntity, marioFactory);
+            }
             CurrentState.Enter(this);
         }
         
         public override void PoleSlidingTransition()
 		{
 			Exit();
-			CurrentState = new MarioPoleslideState(marioEntity, marioFactory);
-			CurrentState.Enter(this);
+            if (marioEntity.Jumpmode)
+            {
+                CurrentState = new MarioJumpState(marioEntity, marioFactory);
+            }
+            else
+            {
+                CurrentState = new MoonJumpState(marioEntity, marioFactory);
+            }
+            CurrentState.Enter(this);
 		}
 
 		public override void IdleTransition()
         {
             Exit();
-            CurrentState = new MarioIdleState(marioEntity, marioFactory);
+            if (marioEntity.Jumpmode)
+            {
+                CurrentState = new MarioJumpState(marioEntity, marioFactory);
+            }
+            else
+            {
+                CurrentState = new MoonJumpState(marioEntity, marioFactory);
+            }
             CurrentState.Enter(this);
         }
 

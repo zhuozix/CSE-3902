@@ -61,14 +61,20 @@ namespace Sprint0.MarioPlayer
             gameObjectManager = gameInstance.gameObjectManager;
             crash = false;
             state = "Normal";
+            mode = false;
+            Jumpmode = false;
         }
 
         public void generateFireball()
         {           
-            ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight);
-            if(this.velocity.X != 0)
+            ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight, mode);
+            if (mode)
             {
-                fireball.velocity = new Vector2((float)(fireball.velocity.X * 1.5), fireball.velocity.Y);
+                    fireball.velocity = new Vector2((float)(fireball.velocity.X * 1.5), fireball.velocity.Y);
+            }
+            else
+            {
+                    fireball.velocity = new Vector2((float)(fireball.velocity.X * 3), fireball.velocity.Y);
             }
             SoundPlayer.playFireball();
             gameObjectManager.addObject(fireball, "fireBall");

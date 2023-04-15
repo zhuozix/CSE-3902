@@ -82,6 +82,9 @@ namespace Sprint0.Content
              * Put common command into controller map.
              */
 
+            //Fireball controls
+            this.AddCommand(Keys.N, fire);
+            this.AddCommand(Keys.Z, fire);
             // Game control
             this.AddCommand(Keys.P, gamePause);
             this.AddCommand(Keys.Q, exit);
@@ -91,9 +94,6 @@ namespace Sprint0.Content
             this.AddCommand(Keys.D2, toSuperMario);
             this.AddCommand(Keys.D3, toFireMario);
             this.AddCommand(Keys.E, takeDamage);
-            //Fireball controls
-            this.AddCommand(Keys.N, fire);
-            this.AddCommand(Keys.Z, fire);
             //Add movement commands to controller
             this.AddPlayerCommand(Keys.W, jump);
             this.AddPlayerCommand(Keys.A, moveLeft);

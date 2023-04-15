@@ -64,7 +64,14 @@ namespace Sprint0.MarioPlayer.State.ActionState
             if (powerupStateType != MarioPowerupStateType.Dead)
             {
                 Exit();
-                CurrentState = new MarioJumpState(marioEntity, marioFactory);
+                if (marioEntity.Jumpmode)
+                {
+                    CurrentState = new MarioJumpState(marioEntity, marioFactory);
+                }
+                else
+                {
+                    CurrentState = new MoonJumpState(marioEntity, marioFactory);
+                }
                 CurrentState.Enter(this); 
             }
             

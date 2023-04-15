@@ -330,15 +330,44 @@ namespace Sprint0.Factory
             return sprite;
         }
 
-        public ISprite getFireballSprite(Vector2 currentLocation, bool isFacingRight)
+        public ISprite getFireballSprite(Vector2 currentLocation, bool isFacingRight, bool mode)
         {
             if (isFacingRight)
             {
-                return new FireBallInstance(texture_FireBall, new Vector2(currentLocation.X + 5, currentLocation.Y), 2, 2,0);
+                if (mode)
+                {
+                    return new FireBallInstance(texture_FireBall, new Vector2(currentLocation.X + 5, currentLocation.Y), 2, 2,0);
+                }
+                else
+                {
+                    return new SuperFireball(texture_FireBall, new Vector2(currentLocation.X + 5, currentLocation.Y), 2, 2, 0);
+                }
+                
             }
             else
             {
-                return new FireBallInstance(texture_FireBall, new Vector2(currentLocation.X - 5, currentLocation.Y), 2, 2,1);
+                if (mode)
+                {
+                    return new FireBallInstance(texture_FireBall, new Vector2(currentLocation.X - 5, currentLocation.Y), 2, 2, 1);
+                }
+                else
+                {
+                    return new SuperFireball(texture_FireBall, new Vector2(currentLocation.X - 5, currentLocation.Y), 2, 2, 1);
+                }
+                
+            }
+
+        }
+
+        public ISprite getSuperFireballSprite(Vector2 currentLocation, bool isFacingRight)
+        {
+            if (isFacingRight)
+            {
+                return new SuperFireball(texture_FireBall, new Vector2(currentLocation.X + 5, currentLocation.Y), 2, 2, 0);
+            }
+            else
+            {
+                return new SuperFireball(texture_FireBall, new Vector2(currentLocation.X - 5, currentLocation.Y), 2, 2, 1);
             }
 
         }

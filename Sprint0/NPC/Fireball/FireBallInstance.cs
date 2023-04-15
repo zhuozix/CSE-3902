@@ -10,11 +10,11 @@ using System.Runtime.CompilerServices;
 
 namespace Sprint0.NPC.Fireball
 {
-    public class FireBallInstance : NoneMovingAnimatedSprite
+    public class FireBallInstance : Fireball
     {
-        public float time;
         public float maxHeight;
-        public FireBallInstance(Texture2D texture, Vector2 position, int rowsIn, int colsIn, int moveDirection) : base(texture, position, rowsIn, colsIn)
+        public FireBallInstance(Texture2D texture, Vector2 position, int rowsIn, int colsIn, int moveDirection) 
+            : base(texture, position, rowsIn, colsIn)
         {
             this.Position = position;
             if (moveDirection == 0)
@@ -34,6 +34,7 @@ namespace Sprint0.NPC.Fireball
 
             this.crash = false;
             this.maxHeight = 0f;
+            //this.mode = true;
         }
 
         private void bounce()

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Sounds;
+using Sprint0.Content;
 
 namespace Sprint0.ObjectManager
 {
@@ -185,6 +186,21 @@ namespace Sprint0.ObjectManager
             }
         }
 
+        private void fireBall()
+        {
+            foreach(Mario mario in players)
+            {
+                if (mario.mode)
+                {
+                    fireBallLimit();
+                    fireBallTimesUp();
+                }
+                else
+                {
+                    fireBallTimesUp();
+                }
+            }
+        }
         private void fireBallLimit()
         {
             if (fireBallList.Count > 3)
@@ -198,7 +214,7 @@ namespace Sprint0.ObjectManager
         private void fireBallTimesUp()
         {
 
-            foreach (FireBallInstance sprite in fireBallList)
+            foreach (Fireball sprite in fireBallList)
             {
                 if (sprite.time >= 2f)
                 {
@@ -346,8 +362,7 @@ namespace Sprint0.ObjectManager
             updateDeadEnemy(time);
             deleteDropedEnemy();
             deleteDropedItems();
-            fireBallLimit();
-            fireBallTimesUp();
+            fireBall();
             updateStarMario(time);
             hurtUpdate(time);
             eatTempItem(time);
