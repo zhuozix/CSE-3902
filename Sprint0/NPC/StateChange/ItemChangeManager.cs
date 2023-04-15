@@ -53,11 +53,11 @@ namespace Sprint0.NPC.StateChange
                     fireFlowerTransition(); break;
                 case "Machinegun":
                     SoundPlayer.playMachinegun();
-                    fireFlowerTransition();
+                    flamethrowerTransition();
                     break;
                 case "Moonjump":
                     SoundPlayer.playMoonjump();
-                    fireFlowerTransition();
+                    moonJumpTransition();
                 break;
                 default:
 
@@ -103,7 +103,7 @@ namespace Sprint0.NPC.StateChange
         public void moonJumpTransition()
         {
             // ADD STATE CHANGE FOR MARIO
-
+            player.Jumpmode = false;
             disapperTransition();
             removeMachineGun();
         }
@@ -111,7 +111,7 @@ namespace Sprint0.NPC.StateChange
         public void flamethrowerTransition()
         {
             // ADD STATE CHANGE FOR MARIO
-
+            player.mode = false;
             disapperTransition();
             removeMoon();
         }

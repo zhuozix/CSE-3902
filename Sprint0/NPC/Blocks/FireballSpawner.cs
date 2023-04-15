@@ -52,7 +52,7 @@ namespace Sprint0.NPC.Blocks
 
         public void generateFireball()
         {
-            this.fireBall = (FireBallInstance)this.game.spritesFactory.getFireballSprite(this.Position, false);
+            this.fireBall = (FireBallInstance)this.game.spritesFactory.getFireballSprite(this.Position, false,true);
             this.fireBall.velocity = new Vector2(0, -100);
             this.fireBall.maxHeight = 180;
         }

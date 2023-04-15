@@ -61,8 +61,8 @@ namespace Sprint0.MarioPlayer
             gameObjectManager = gameInstance.gameObjectManager;
             crash = false;
             state = "Normal";
-            mode = false;
-            Jumpmode = false;
+            mode = true;
+            Jumpmode = true;
         }
 
         public void generateFireball()
