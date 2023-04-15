@@ -106,6 +106,17 @@ namespace Sprint0.LevelLoader
                     obj.Position = new Vector2(xPos, yPos);
                     gameObjectManager.addObject(obj, "item");
                     break;
+
+                case "Machinegun":
+                    obj = factory.getMachinegunSprite();
+                    obj.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(obj, "item");
+                    break;
+                case "Moonjump":
+                    obj = factory.getMoonjumpSprite();
+                    obj.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(obj, "item");
+                    break;
                 default:
                     break;
             }

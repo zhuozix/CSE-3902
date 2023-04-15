@@ -9,15 +9,17 @@ using System.Threading.Tasks;
 
 namespace Sprint0.MarioPlayer.State.ActionState
 {
-    internal class MarioWinState : MarioActionState
+    internal class MarioLevel1WinState : MarioActionState
     {
-        public MarioWinState(Mario marioEntity, MarioFactory marioFactory) :
+        public MarioLevel1WinState(Mario marioEntity, MarioFactory marioFactory) :
             base(marioEntity, marioFactory)
         { }
         private float timeSpent = 0f;
         public override void Enter(IMarioActionState previousState)
         {
             base.Enter(previousState);
+
+            marioEntity.velocity = new Vector2(50, 0);
 
         }
 
@@ -74,7 +76,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
             timeSpent += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if(timeSpent >= 4.3f)
             {
-                marioEntity.game.ChangeState(new WinState(marioEntity.game));
+                marioEntity.game.ChangeState(new bossfightState(marioEntity.game));
             }
 
         }

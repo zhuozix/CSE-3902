@@ -48,6 +48,8 @@ namespace Sprint0.Factory
         public Texture2D texture_GreenMush;
         public Texture2D texture_RedMush;
         public Texture2D texture_Coin;
+        public Texture2D texture_Machinegun;
+        public Texture2D texture_Moonjump;
 
         // Enemies
         public Texture2D texture_Gommba;
@@ -98,6 +100,9 @@ namespace Sprint0.Factory
             texture_GreenMush = content.Load<Texture2D>("greenMushroom");
             texture_RedMush = content.Load<Texture2D>("redMushroom");
             texture_Coin = content.Load<Texture2D>("coin");
+            texture_Machinegun = content.Load<Texture2D>("machinegun");
+            texture_Moonjump = content.Load<Texture2D>("moonjump");
+
 
             // Enemies
             texture_Gommba = content.Load<Texture2D>("EnemyContent/WalkingGoomba1");
@@ -124,6 +129,8 @@ namespace Sprint0.Factory
             sprite.state = "Normal";
             return sprite;
         }
+
+        
 
         public ISprite getBrickBlockSprite() 
         {
@@ -239,11 +246,28 @@ namespace Sprint0.Factory
 
         public ISprite getFireFlowerSprite()
         {
-            ISprite sprite = new FireFlowerSprite(texture_FireFlower, new Vector2(100, 300), 1, 4);;
+            ISprite sprite = new FireFlowerSprite(texture_FireFlower, new Vector2(100, 300), 1, 4);
             sprite.Name = "FireFlower";
             sprite.state = "Normal";
             return sprite;
         }
+        public ISprite getMachinegunSprite()
+        {
+            ISprite sprite = new FireFlowerSprite(texture_Machinegun, new Vector2(100, 300), 1, 1);
+            sprite.Name = "Machinegun";
+            sprite.state = "Normal";
+            return sprite;
+        }
+
+        public ISprite getMoonjumpSprite()
+        {
+            ISprite sprite = new FireFlowerSprite(texture_Moonjump, new Vector2(100, 300), 1, 1);
+
+            sprite.Name = "Moonjump";
+            sprite.state = "Normal";
+            return sprite;
+        }
+
         public ISprite getStarSprite()
         {
             ISprite sprite = new StarSprite(texture_Star, new Vector2(200, 300), 1, 4);

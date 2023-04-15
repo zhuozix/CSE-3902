@@ -123,7 +123,8 @@ namespace Sprint0
 
         public void GameReset()
         {
-            ChangeState(new PlayState(this));
+            // test convenient
+            ChangeState(new bossfightState(this));
         }
 
         public void ChangeState(IGameState newState)

@@ -64,7 +64,8 @@
 
 	</Enemies>
 	<Items>
-		
+		<Machinegun xPos="400" yPos="200"></Machinegun>
+		<Moonjump xPos="1000" yPos="200"></Moonjump>
 	</Items>
 	<Player>
 		<Mario xPos="200" yPos="360"></Mario>

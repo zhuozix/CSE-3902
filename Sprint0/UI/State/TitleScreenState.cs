@@ -14,18 +14,17 @@ namespace Sprint0.UI.Title
     public class TitleScreenState : IGameState
     {
         private readonly Game1 _game;
-        private Texture2D _titleScreenTexture;
 
         public TitleScreenState(Game1 game)
         {
             _game = game;
         }
-
+        //test conveient
         public void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
-                _game.ChangeState(new PlayState(_game));
+                _game.ChangeState(new bossfightState(_game));
             }
         }
 
