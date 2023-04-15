@@ -17,6 +17,7 @@ using Sprint0.MarioPlayer.State.ActionState;
 using Sprint0.ObjectManager;
 using Sprint0.NPC.Fireball;
 using Sprint0.UI.Text;
+using System.Reflection.Metadata;
 
 namespace Sprint0.Factory
 {
@@ -384,7 +385,7 @@ namespace Sprint0.Factory
                 return new NoneAnimatedNonMovingSprite(texture_Mario, Vector2.Zero, 1, 1);
             }
         }
-
+        
         //Fonts
         public ISprite getCoinFontSprite()
         {

@@ -110,6 +110,7 @@ namespace Sprint0.NPC.StateChange
 
         public void flamethrowerTransition()
         {
+            player.UseFireMushroom();
             // ADD STATE CHANGE FOR MARIO
             player.mode = false;
             disapperTransition();

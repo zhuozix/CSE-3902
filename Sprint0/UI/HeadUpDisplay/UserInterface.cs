@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint0;
 using Sprint0.Factory;
 using Sprint0.Sprites;
+using Sprint0.UI.Text;
 using System.Collections.Generic;
 
 public class UserInterface
@@ -13,6 +14,7 @@ public class UserInterface
     private ISprite coinText;
     private ISprite lifeText;
     private ISprite timeText;
+    private ISprite superabilitytext;
     public List<ISprite> textList;
     private Texture2D _blackBar;
 
