@@ -153,7 +153,11 @@ namespace Sprint0.ObjectManager
         {
             
             _spriteBatch.Draw(this.background, new Rectangle(0,0,this.background.Width * Game1.scale,this.background.Height * Game1.scale), Color.White);
-            
+
+            foreach (ISprite obj in this.players)
+            {
+                obj.Draw(_spriteBatch, isFlipped);
+            }
 
             foreach (ISprite obj in this.blocks)
             {
@@ -172,10 +176,7 @@ namespace Sprint0.ObjectManager
                 }
                 obj.Draw(_spriteBatch, filppedEnemy);
             }
-            foreach (ISprite obj in this.players)
-            {
-                obj.Draw(_spriteBatch, isFlipped);
-            }
+            
             foreach (ISprite obj in this.items)
             {
                 obj.Draw(_spriteBatch, isFlipped);

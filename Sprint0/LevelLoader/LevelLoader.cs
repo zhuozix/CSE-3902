@@ -255,7 +255,7 @@ namespace Sprint0.LevelLoader
                     Rectangle rec = new Rectangle((int)xPos, (int)yPos, (int)xPos2, (int)yPos2);
                     int yDest = Int32.Parse(xml.GetAttribute("yDest"));
                     yDest = yDest - 30;
-                    gameObjectManager.addTeleporter(new Teleporter(rec, xml.GetAttribute("activation"), Int32.Parse(xml.GetAttribute("xDest")), yDest, xml.GetAttribute("underground").Equals("True")));
+                    gameObjectManager.addTeleporter(new Teleporter(rec, xml.GetAttribute("activation"), Int32.Parse(xml.GetAttribute("xDest")), yDest, xml.GetAttribute("underground").Equals("True"), xml.GetAttribute("destDir")));
                     break;
 				case "FlagPoleHitbox":
 					xPos2 = xPos + Int64.Parse(xml.GetAttribute("width"));

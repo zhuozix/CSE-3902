@@ -12,6 +12,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
         Running,
         PoleSliding,
         Win,
+        Piping
     }
     public abstract class MarioActionState : IMarioActionState
     {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.MarioPlayer;
+using Sprint0.MarioPlayer.State.ActionState;
 using Sprint0.MarioPlayer.State.PowerupState;
 using Sprint0.NPC.Blocks;
 using Sprint0.NPC.Enemy;
@@ -176,6 +177,7 @@ namespace Sprint0.Collision.Logic
         {
             foreach (Mario a in marioList)
             {
+                if (a.CurrentActionState.GetEnumValue() == MarioActionStateType.Piping) break;
                 foreach (BlockSprite b in blockList)
                 {
                     Rectangle RectangleMain = collisionDetection.getRectangle(a);

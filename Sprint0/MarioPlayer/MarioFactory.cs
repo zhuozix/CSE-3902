@@ -105,6 +105,9 @@ namespace Sprint0.MarioPlayer
                     case MarioActionStateType.Running:
                         fileNameSuffix = "WalkRight";
                         break;
+                    case MarioActionStateType.Piping:
+                        fileNameSuffix = "IdleRight";
+                        break;
                     default:
                         throw new ArgumentException("MarioSpriteFactory error: Invalid MarioActionStateType specified");
                 }
