@@ -35,7 +35,7 @@
 
 		<BlueBrickBlockStretch xPos="1248" yPos="272" xPos2="1280"></BlueBrickBlockStretch>
 
-		<BlueBrickBlockStretch xPos="0" yPos="-16" xPos2="2400"></BlueBrickBlockStretch>
+		<BlueFloorBlockStretch xPos="0" yPos="-16" xPos2="2400"></BlueFloorBlockStretch>
 
 		<BlueFloorBlock xPos="-32" yPos="0"></BlueFloorBlock>
 		<BlueFloorBlock xPos="-32" yPos="34"></BlueFloorBlock>
