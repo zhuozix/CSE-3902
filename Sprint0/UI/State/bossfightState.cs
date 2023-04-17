@@ -42,8 +42,7 @@ namespace Sprint0.UI.State
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             _game.GraphicsDevice.Clear(Color.CornflowerBlue);
-            Matrix combinedMatrix = Matrix.CreateTranslation(0, 100, 0) * _game.camera.Transform;
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, combinedMatrix);
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, _game.camera.Transform);
 
             _game.gameObjectManager.Draw(spriteBatch, true);
 
@@ -58,7 +57,7 @@ namespace Sprint0.UI.State
             _game.camera = new Camera();
 
             //Load boss level
-            LevelLoader.LevelLoader.loadLevel(_game.gameObjectManager, "bossLevel.xml", _game.spritesFactory, _game);
+            LevelLoader.LevelLoader.loadLevel(_game.gameObjectManager, "bossLevel.xml", _game.spritesFactory, _game, _game.camera);
 
             SoundPlayer.loadSounds(_game);
             SoundPlayer.playBossTheme();

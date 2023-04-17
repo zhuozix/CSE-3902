@@ -117,4 +117,7 @@
 	<Player>
 		<Mario xPos="80" yPos="360"></Mario>
 	</Player>
+	<Camera>
+		<CamPos endLevel="1200" underground="1568"></CamPos>
+	</Camera>
 </Level>
