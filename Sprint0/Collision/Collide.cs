@@ -34,6 +34,7 @@ namespace Sprint0.Collision
         private ICollisionLogic player;
         private ICollisionLogic fireball;
         private ICollisionLogic activateEnemy;
+        //private ICollisionLogic bossVSmario;
         private List<ICollisionLogic> logicList;
 
         public bool fall { get; set; }
@@ -55,6 +56,7 @@ namespace Sprint0.Collision
             player = new MarioAndNPC(gobj.players, gobj.blocks, gobj.items,gobj.enemies, gobj.spawners, this);
             fireball = new FireballAndOthers(gobj.fireBallList, gobj.players, gobj.enemies, gobj.blocks, this);
             activateEnemy = new ActivateEnemy(gobj.players,gobj.enemies, this);
+            //bossVSmario = new BossVSMario(gobj.players,gobj.fireBallList, gobj.bossList, this);
             logicList.Add(enemyVSblock);
             logicList.Add(enemyVSenemy);
             logicList.Add(itemVSblock);

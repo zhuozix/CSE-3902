@@ -28,7 +28,8 @@ namespace Sprint0.NPC.Boss
         public BossActionType currentActionType { get; set; }
         public BossFactory factory { get; set; }
 
-        //property of sprite
+        //property of ai
+        public BossAI _ai { get; set; }
 
         //resources
         public Game1 game;
@@ -62,9 +63,24 @@ namespace Sprint0.NPC.Boss
             factory = new BossFactory(game.Content,this);
             currentActionType = BossActionType.Idle;
             this.Sprite = factory.buildSprite();
+
+            //ai
+            loadAI();
+        }
+
+        public void loadAI()
+        {
+            Mario player = null;
+            foreach(Mario obj in game.gameObjectManager.players)
+            {
+                player = obj;
+                break;
+            }
+            _ai = new BossAI(this,player,game);
         }
         public override void Update(GameTime gameTime) 
         { 
+            _ai.Update(gameTime);
             base.Update(gameTime);
         }
 
