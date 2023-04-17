@@ -55,6 +55,7 @@ namespace Sprint0
         public int coins;
         public int life;
         public float time;
+        public int bossHP;
 
         public ArrayList fireBallList;
 
@@ -71,6 +72,7 @@ namespace Sprint0
         /*
          * Game objects
          */
+
         public GameObjectManager gameObjectManager;
 
         public Game1()
@@ -93,6 +95,7 @@ namespace Sprint0
             coins = 0;
             life = 3;
             time = 400f;
+            bossHP = 100;
             gameAreaDiff = 100;
             //Factories
             spritesFactory = new SpritesFactory(this);
@@ -123,8 +126,15 @@ namespace Sprint0
 
         public void GameReset()
         {
-            // test convenient
-            ChangeState(new bossfightState(this));
+            if (gameObjectManager.isBossFight)
+            {
+                ChangeState(new bossfightState(this));
+            }
+            else
+            {
+                ChangeState(new PlayState(this));
+            }
+            
         }
 
         public void ChangeState(IGameState newState)

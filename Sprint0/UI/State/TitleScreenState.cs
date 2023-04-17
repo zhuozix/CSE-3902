@@ -24,6 +24,9 @@ namespace Sprint0.UI.Title
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
+                _game.ChangeState(new PlayState(_game));
+            } else if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
                 _game.ChangeState(new bossfightState(_game));
             }
         }

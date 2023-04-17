@@ -18,6 +18,7 @@ using Sprint0.ObjectManager;
 using Sprint0.NPC.Fireball;
 using Sprint0.UI.Text;
 using System.Reflection.Metadata;
+using Sprint0.UI.Text.BossFightText;
 
 namespace Sprint0.Factory
 {
@@ -66,6 +67,7 @@ namespace Sprint0.Factory
 
         //Font
         public SpriteFont texture_scorefont;
+        public SpriteFont texture_HUDFont;
 
         public SpritesFactory(Game1 gameInstance)
         {
@@ -116,6 +118,7 @@ namespace Sprint0.Factory
 
             // Font
             texture_scorefont = content.Load<SpriteFont>("Font/Score");
+            texture_HUDFont = content.Load<SpriteFont>("Font/HUDFont");
         }
 
         public Texture2D getBackgroundSprite(String background)
@@ -386,28 +389,50 @@ namespace Sprint0.Factory
             }
         }
         
-        //Fonts
+        //UHD
         public ISprite getCoinFontSprite()
         {
-            ISprite sprite = new CoinTextSprite(texture_scorefont, "", new Vector2(50, 30), Color.White, gameInstance);
+            ISprite sprite = new CoinTextSprite(texture_HUDFont, "", new Vector2(30, 50), Color.White, gameInstance);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;
         }
         public ISprite getLifeFontSprite()
         {
-            ISprite sprite = new LifeTextSprite(texture_scorefont, "", new Vector2(250, 30), Color.White, gameInstance);
+            ISprite sprite = new LifeTextSprite(texture_HUDFont, "", new Vector2(150, 50), Color.White, gameInstance);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;
         }
         public ISprite getTimeFontSprite()
         {
-            ISprite sprite = new TimeTextSprite(texture_scorefont, "", new Vector2(450, 30), Color.White, gameInstance);
+            ISprite sprite = new TimeTextSprite(texture_HUDFont, "", new Vector2(650, 50), Color.White, gameInstance);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;
         }
+        public ISprite getMoonJumpFontSprite()
+        {
+            ISprite sprite = new MoonJumpText(texture_HUDFont, "", new Vector2(550, 50), Color.White, gameInstance);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        public ISprite getGunFontSprite()
+        {
+            ISprite sprite = new MachineGunText(texture_HUDFont, "", new Vector2(550, 50), Color.White, gameInstance);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        public ISprite getBossFontSprite()
+        {
+            ISprite sprite = new BossHP(texture_HUDFont, "", new Vector2(300, 50), Color.White, gameInstance);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
+        // game state
         public ISprite getTitleFontSprite(GameTime gameTime)
         {
             float pulsate = (float)(Math.Sin(gameTime.TotalGameTime.TotalSeconds * 6.0) + 1.0) / 2.0f;
@@ -447,6 +472,8 @@ namespace Sprint0.Factory
             sprite.state = "Normal";
             return sprite;
         }
+
+        //boss
 
 
     }

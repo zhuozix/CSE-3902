@@ -40,10 +40,12 @@ namespace Sprint0.ObjectManager
         public Texture2D background;
         public Game1 game;
         private ObjectLogicManager logic;
-        //private Viewport viewport;
+        //boss fight object control
+        public bool isBossFight { get; set; }
+        public bool isFinalBossActivated { get; set; }
 
-         
-        public GameObjectManager(Game1 gameInstance) 
+
+    public GameObjectManager(Game1 gameInstance) 
         { 
             this.blocks= new List<ISprite>();
             this.enemies= new List<ISprite>();

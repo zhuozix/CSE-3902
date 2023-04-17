@@ -30,7 +30,15 @@ namespace Sprint0.UI.State
             time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if(time > 2f) 
             {
-                _game.ChangeState(new PlayState(_game));
+                if (_game.gameObjectManager.isBossFight)
+                {
+                    _game.ChangeState(new bossfightState(_game));
+                }
+                else
+                {
+                    _game.ChangeState(new PlayState(_game));
+                }
+                
             }
         }
 

@@ -14,15 +14,20 @@ public class UserInterface
     private ISprite coinText;
     private ISprite lifeText;
     private ISprite timeText;
-    private ISprite superabilitytext;
     public List<ISprite> textList;
     private Texture2D _blackBar;
+    //boss fight only
+    private ISprite moonJumpText;
+    private ISprite MGunText;
+    private ISprite bossHpText;
+    public List<ISprite> bossTextList;
 
     public UserInterface(Game1 game)
     {
         _game = game;
         _spritesFactory = game.spritesFactory;
         this.textList = new List<ISprite>();
+        this.bossTextList = new List<ISprite>();
         getAllText();
         LoadContent();
     }
@@ -35,6 +40,13 @@ public class UserInterface
         this.textList.Add(coinText);
         this.textList.Add(lifeText);
         this.textList.Add(timeText);
+        //boss fight only
+        moonJumpText = _spritesFactory.getMoonJumpFontSprite();
+        MGunText = _spritesFactory.getGunFontSprite();
+        bossHpText = _spritesFactory.getBossFontSprite();
+        this.bossTextList.Add(moonJumpText);
+        this.bossTextList.Add(MGunText);
+        this.bossTextList.Add(bossHpText);
     }
 
     private void LoadContent()
@@ -52,6 +64,15 @@ public class UserInterface
         {
             obj.Draw(_game._uiSpriteBatch, false);
         }
+        //boss
+        if (_game.gameObjectManager.isBossFight)
+        {
+            foreach (ISprite obj in this.bossTextList)
+            {
+              obj.Draw(_game._uiSpriteBatch, false);
+            }
+
+        }
         
         _game._uiSpriteBatch.End();
     }
@@ -61,5 +82,13 @@ public class UserInterface
         {
             obj.Update(time);
         }
+        if (_game.gameObjectManager.isBossFight)
+        {
+            foreach (ISprite obj in this.bossTextList)
+            {
+                obj.Update(time);
+            }
+        }
+        
     }
 }

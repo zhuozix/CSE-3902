@@ -416,6 +416,13 @@
 /processorParam:TextureFormat=Compressed
 /build:font.spritefont
 
+#begin Font/HUDFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font/HUDFont.spritefont
+
 #begin Font/Score.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor

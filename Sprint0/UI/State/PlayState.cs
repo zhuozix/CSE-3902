@@ -69,6 +69,7 @@ namespace Sprint0.UI.State
             //Load commands to controller
             _game.keyboardController.loadCommonCommand();
             _game.MouseController.loadCommonCommand();
+            _game.gameObjectManager.isBossFight = false;
         }
 
         public void Initialize()
