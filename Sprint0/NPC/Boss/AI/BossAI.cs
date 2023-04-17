@@ -68,16 +68,16 @@ namespace Sprint0.NPC.Boss
 
         public void ai(GameTime gameTime)
         {
-            //state 1, boss and mario in the same layer
+            //state 1, boss and mario in the same layer on left side of level --> spawn enemies to go towards mario
             if (commonLogic.marioOnGround())
             {
                 commonLogic.findPlayerDirection();
-                //attack fireball
+                
 
             }
-            //state 2, boss and mario is in different layer
+            //state 2, boss and mario is in different layer --> jump to marios level and launch a fireball
 
-            //state 3,
+            //state 3, Mario is on the smae level on right side of level (by bowser) --> try to jump on mario
             
         }
 
