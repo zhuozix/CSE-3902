@@ -110,13 +110,12 @@ namespace Sprint0.MarioPlayer.State.ActionState
 
         public override void Update(GameTime gameTime)
         {
-            if (marioEntity.crash || marioEntity.velocity.Y == 0)
+            if (marioEntity.velocity.Y == 0)
             {
                 Exit();
                 CurrentState = new MarioIdleState(marioEntity, marioFactory);
                 CurrentState.Enter(this);
             }
-
             else if (marioEntity.velocity.Y < 150)
             {
                 float accelaretion = 9.8f;
