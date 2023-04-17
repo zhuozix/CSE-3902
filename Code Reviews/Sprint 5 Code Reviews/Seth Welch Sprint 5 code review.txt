@@ -1,0 +1,23 @@
+Readability Review
+Author of the code review: Seth Welch
+Date of the code review: 4/17/2023
+Sprint number: 5
+Name of the .cs file being reviewed: bossfightState.cs
+Author of the .cs file being reviewed: Shuangchen and Yao Lu
+Number of minutes taken to complete the review: 5
+
+This class was made necessary as we created a second level separate from 1-1 to house our boss fight. This class was well written in its simplicity. 
+It consists of initializing the game objects which are all named appropriately to make it easy to read.
+
+
+Quality Review
+Author of the code review: Seth Welch
+Date of the code review: 4/17/2023
+Sprint number: 5
+Name of the .cs file being reviewed: Camera.cs
+Author of the .cs file being reviewed: Kyle Kaufman
+Number of minutes taken to complete the review: 5
+
+Kyle did a good job on improving the camera method by moving magic numbers pertaining to camera barriers in the level to the xml level file. 
+This improved earlier problems with the camera class being tailored to the level instead of being data driven. This was necessary since we added 
+the boss level which has different barriers.
