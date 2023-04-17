@@ -21,7 +21,7 @@ namespace Sprint0.LevelLoader
     public static class LevelLoader
     {
         
-        public static void loadLevel(GameObjectManager gameObjectManager, String level, SpritesFactory factory, Game1 game)
+        public static void loadLevel(GameObjectManager gameObjectManager, String level, SpritesFactory factory, Game1 game, Camera camera)
         {
             //gameObjectManager.clearAllObjects();
             String type = "";
@@ -48,6 +48,10 @@ namespace Sprint0.LevelLoader
                 {
                     type = "player";
                 } 
+                else if (xml.Name == "Camera")
+                {
+                    type = "camera";
+                }
                 else if (xml.NodeType == XmlNodeType.Element)
                 {
                     switch (type)
@@ -66,6 +70,9 @@ namespace Sprint0.LevelLoader
                             break;
                         case "background":
                             processBackground(xml, gameObjectManager, factory);
+                            break;
+                        case "camera":
+                            processCamera(xml, camera);
                             break;
                         default:
                             break;
@@ -319,6 +326,14 @@ namespace Sprint0.LevelLoader
             {
                 gameObjectManager.addBackground(factory.getBackgroundSprite(xml.Name));
             }
+        }
+
+        public static void processCamera(XmlReader xml, Camera camera)
+        {
+            float endLevel = Int64.Parse(xml.GetAttribute("endLevel"));
+            float underground = Int64.Parse(xml.GetAttribute("underground"));
+            camera.endLevel = endLevel;
+            camera.underground = underground;
         }
     }
 }

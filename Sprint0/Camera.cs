@@ -12,38 +12,39 @@ namespace Sprint0
     public class Camera
     {
         public Matrix Transform { get; private set; }
-        private float cameraX = 0;
+        private float cameraX = 0; //position of the camera
+        private float halfScreen = 400; //Half the width of the screen, used to position camera
+        private float quartScreen = 200; //Quarter width of the screen, used to position camera
+        private float yOffset = 100; //Offset to raise camera to correct height
+        public float endLevel; //Camera position at the end of the level
+        public float underground; //Start of the underground area
 
         public void MoveCamera(Mario player)
         {
 
-            var cameraPos = Matrix.CreateTranslation(0, 0, 0);
-
-            //400 is a magic number for the width of half the screen, replace with a width value later
                 if (player.Position.X - cameraX > 0)
                     
                 {
                     cameraX = player.Position.X;
-                } else if (player.Position.X - cameraX < -200)
+                } else if (player.Position.X - cameraX < -quartScreen)
                 {
-                    cameraX = player.Position.X + 200;
+                    cameraX = player.Position.X + quartScreen;
                 }
 
-            if (cameraX < 400) // Don't let the screen scroll too far back past the start
+            if (cameraX < halfScreen) // Don't let the screen scroll too far back past the start
             {
-                cameraX = 400;
+                cameraX = halfScreen;
             }
-            if (cameraX > 6256 && cameraX < 6656) // Don't let the screen scroll too far past the end
+            if (cameraX > endLevel) // Don't let the screen scroll too far past the end
             {
-                cameraX = 6256;
+                cameraX = endLevel;
             }
-            if (cameraX > 6656) // Don't let the screen scroll in the underground
+            if (player.Position.X > underground) // Don't let the screen scroll in the underground
             {
-                cameraX = 7056;
+                cameraX = underground + halfScreen;
             }
 
-            cameraPos = Matrix.CreateTranslation(-cameraX + 400, 0, 0);
-            Transform = cameraPos;
+            Transform = Matrix.CreateTranslation(-cameraX + halfScreen, yOffset, 0);
         }
     }
 }

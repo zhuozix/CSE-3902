@@ -220,4 +220,7 @@
 	<Player>
 		<Mario xPos="200" yPos="368"></Mario>
 	</Player>
+	<Camera>
+		<CamPos endLevel="6256" underground="6656"></CamPos>
+	</Camera>
 </Level>
