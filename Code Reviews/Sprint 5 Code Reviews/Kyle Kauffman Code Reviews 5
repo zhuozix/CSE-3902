@@ -1,0 +1,31 @@
+Readability Review
+Author of the code review: Kyle Kauffman
+Date of the code review: 4/17/2023
+Sprint number: 5
+Name of the .cs file being reviewed: MoonJumpState.cs
+Author of the .cs file being reviewed: Yao Lu
+Number of minutes taken to complete the review:
+
+This code is organized well so it's fine in readability, but there are a lot
+of magic numbers that could be replaced with variables to make reading and
+managing this code easier. It currently has no comments, so some comments
+could be added to clerify what the code is doing.
+
+
+Quality Review
+Author of the code review: Kyle Kauffman
+Date of the code review: 4/17/2023
+Sprint number: 5
+Name of the .cs file being reviewed: SuperFireball.cs & SpriteFactory.cs
+Author of the .cs file being reviewed: Yao Lu
+Number of minutes taken to complete the review: 15 minutes
+
+This implementation of fireballs sends the fireballs too fast, they end up going
+over the heads of most enemies and not hitting anything. We wanted this mode to
+make mario fire fireballs faster, as in he fires more of them, not just that the
+fireballs move faster.
+I'd slow the super fireballs vertical movement down some, and speed up their 
+horizontal movement, so they still move faster but they also bounce faster so they 
+hit enemies. Then change the factory to fire a burst of 2 or 3 fireballs whenever a
+super fireball is fired so that firing once can hit multiple enemies or deals more 
+damage to the boss.
