@@ -39,7 +39,18 @@ namespace Sprint0.NPC.Boss.AI
             }
             return false;
         }
-        public void findPlayerCurrentLevel() { }
+        public int findPlayerCurrentLevel() {
+            int level = 0;
+            if (player.Position.Y < 128) level = 3;
+            else if (player.Position.Y < 224) level = 2;
+            else if (player.Position.Y < 320) level = 1;
+            return level;
+        }
+
+        public bool marioNearBowser()
+        {
+            return boss.Position.X - player.Position.X < 400;
+        }
 
     }
 }
