@@ -46,7 +46,7 @@ namespace Sprint0.Collision
         }
         public bool touchBottomEnemy(Rectangle mainInstance, Rectangle anotherInstance)
         {
-            return mainInstance.Bottom > anotherInstance.Top && mainInstance.Bottom < anotherInstance.Bottom;
+            return mainInstance.Bottom > anotherInstance.Top && mainInstance.Bottom < anotherInstance.Bottom - 8;
             //return mainInstance.Bottom > anotherInstance.Top && mainInstance.Bottom < anotherInstance.Bottom;
         }
 
