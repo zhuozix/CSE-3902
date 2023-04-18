@@ -23,16 +23,18 @@ namespace Sprint0.Collision.Logic
         private List<ISprite> itemList;
         private List<ISprite> enemyList;
         private List<FireballSpawner> spawnerList;
+        private List<ISprite> superFireballList;
         private float invisibeleTimer = 0f;
         private bool timerGo = false;
         public bool win;
-        public MarioAndNPC(List<ISprite> marioListIn, List<ISprite> blockListIn, List<ISprite> itemListIn,List<ISprite>enemyListIn, List<FireballSpawner> spawners, Collide collideInstance)
+        public MarioAndNPC(List<ISprite> marioListIn, List<ISprite> blockListIn, List<ISprite> itemListIn,List<ISprite>enemyListIn, List<FireballSpawner> spawners, List<ISprite> superFireballs, Collide collideInstance)
         {
             marioList = marioListIn;
             blockList = blockListIn;
             itemList = itemListIn;
             enemyList = enemyListIn;
             spawnerList = spawners;
+            superFireballList = superFireballs;
             collide = collideInstance;
             collisionDetection = new CollisionDetection();
             win = false;
@@ -124,7 +126,7 @@ namespace Sprint0.Collision.Logic
                     }
                 }
 
-                foreach (EnemySprite b in enemyList)
+                foreach (ISprite b in enemyList)
                 {
 
                     //if (found) { break; }
@@ -169,6 +171,39 @@ namespace Sprint0.Collision.Logic
                     }
                 }
 
+                foreach (ISprite b in superFireballList)
+                {
+
+                    //if (found) { break; }
+                    Rectangle RectangleA = collisionDetection.getRectangle(a);
+                    Rectangle RectangleB = collisionDetection.getRectangle(b);
+                    if (RectangleA.Intersects(RectangleB))
+                    {
+                        if (a.state == "Hurt")
+                        {
+                            break;
+                        }
+
+                        if (a.state == "Star")
+                        {
+                            
+                            break;
+                        }
+                        
+                        else if (a.state == "Normal")
+                        {
+
+                            
+                            a.crash = true;
+                            a.TakeDamage();
+
+                            a.state = "Hurt";
+                            
+
+                        }
+
+                    }
+                }
 
             }
         }

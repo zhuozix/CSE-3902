@@ -61,6 +61,7 @@ namespace Sprint0.Factory
 
         // Bullets
         public Texture2D texture_FireBall;
+        public Texture2D texture_SuperFireball;
 
         // Mario
         public Texture2D texture_Mario;
@@ -115,6 +116,7 @@ namespace Sprint0.Factory
 
             // Bullets
             texture_FireBall = content.Load<Texture2D>("FireMario/fireball");
+            texture_SuperFireball = content.Load<Texture2D>("Bowser/bowser_fireball");
 
             // Font
             texture_scorefont = content.Load<SpriteFont>("Font/Score");
@@ -344,7 +346,7 @@ namespace Sprint0.Factory
                 }
                 else
                 {
-                    return new SuperFireball(texture_FireBall, new Vector2(currentLocation.X + 5, currentLocation.Y), 2, 2, 0);
+                    return new SuperFireball(texture_SuperFireball, new Vector2(currentLocation.X + 5, currentLocation.Y), 1, 2, 0);
                 }
                 
             }
@@ -356,7 +358,7 @@ namespace Sprint0.Factory
                 }
                 else
                 {
-                    return new SuperFireball(texture_FireBall, new Vector2(currentLocation.X - 5, currentLocation.Y), 2, 2, 1);
+                    return new SuperFireball(texture_SuperFireball, new Vector2(currentLocation.X - 5, currentLocation.Y), 1, 2, 1);
                 }
                 
             }
@@ -367,11 +369,11 @@ namespace Sprint0.Factory
         {
             if (isFacingRight)
             {
-                return new SuperFireball(texture_FireBall, new Vector2(currentLocation.X + 5, currentLocation.Y), 2, 2, 0);
+                return new SuperFireball(texture_SuperFireball, new Vector2(currentLocation.X + 5, currentLocation.Y), 1, 2, 0);
             }
             else
             {
-                return new SuperFireball(texture_FireBall, new Vector2(currentLocation.X - 5, currentLocation.Y), 2, 2, 1);
+                return new SuperFireball(texture_SuperFireball, new Vector2(currentLocation.X - 5, currentLocation.Y), 1, 2, 1);
             }
 
         }

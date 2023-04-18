@@ -53,7 +53,7 @@ namespace Sprint0.Collision
             enemyVSenemy = new EnemyAndEnemy(gobj.enemies,gobj.enemies,this);
             enemyVSblock = new EnemyAndBlock(gobj.enemies, gobj.blocks, this);
             itemVSblock = new ItemAndBlock(gobj.items, gobj.blocks, this);
-            player = new MarioAndNPC(gobj.players, gobj.blocks, gobj.items,gobj.enemies, gobj.spawners, this);
+            player = new MarioAndNPC(gobj.players, gobj.blocks, gobj.items,gobj.enemies, gobj.spawners, gobj.superFireballList, this);
             fireball = new FireballAndOthers(gobj.fireBallList, gobj.players, gobj.enemies, gobj.blocks, this);
             activateEnemy = new ActivateEnemy(gobj.players,gobj.enemies, this);
             //bossVSmario = new BossVSMario(gobj.players,gobj.fireBallList, gobj.bossList, this);

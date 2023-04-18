@@ -38,6 +38,7 @@ namespace Sprint0.ObjectManager
         public List<Teleporter> teleporters;
         public List<FlagPoleHitbox> flagpoles;
         public List<FireballSpawner> spawners;
+        public List<ISprite> superFireballList;
         public Texture2D background;
         public Game1 game;
         private ObjectLogicManager logic;
@@ -57,6 +58,7 @@ namespace Sprint0.ObjectManager
             this.teleporters = new List<Teleporter>();
             this.flagpoles = new List<FlagPoleHitbox>();
             this.spawners= new List<FireballSpawner>();
+            this.superFireballList = new List<ISprite>();
             game = gameInstance;
             //this.viewport = gameInstance.viewport;
             this.logic = new ObjectLogicManager(this);
@@ -71,7 +73,8 @@ namespace Sprint0.ObjectManager
             this.teleporters = new List<Teleporter>();
             this.flagpoles = new List<FlagPoleHitbox>();
             this.spawners = new List<FireballSpawner>();
-            
+            this.superFireballList = new List<ISprite>();
+
         }
         public void addObject(ISprite obj, String objectType)
         {
@@ -94,6 +97,9 @@ namespace Sprint0.ObjectManager
                     break;
                 case "boss":
                     this.bossList.Add(obj);
+                    break;
+                case "superFireball":
+                    this.superFireballList.Add(obj);
                     break;
                 default:
                     break;
@@ -132,6 +138,10 @@ namespace Sprint0.ObjectManager
                 obj.Update(time);
             }
             foreach (ISprite obj in this.enemies)
+            {
+                obj.Update(time);
+            }
+            foreach (ISprite obj in this.superFireballList)
             {
                 obj.Update(time);
             }
@@ -186,6 +196,10 @@ namespace Sprint0.ObjectManager
                     filppedEnemy = false;
                 }
                 obj.Draw(_spriteBatch, filppedEnemy);
+            }
+            foreach (ISprite obj in this.superFireballList)
+            {
+                obj.Draw(_spriteBatch, isFlipped);
             }
             
             foreach (ISprite obj in this.items)

@@ -170,7 +170,7 @@ namespace Sprint0.NPC.Boss
                     //shoot fireball to commonLogic.findPlayerCurrentLevel();
                     int level = commonLogic.findPlayerCurrentLevel();
                     int jumpTolerence = 80;
-                    int[] yFirePosition = { 0,320, 224, 128 };
+                    int[] yFirePosition = { 0,350, 254, 158 };
                     if (boss.Position.Y == player.Position.Y)
                     {
                         commonLogic.fireballAttack();

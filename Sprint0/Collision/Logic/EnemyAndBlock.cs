@@ -25,7 +25,7 @@ namespace Sprint0.Collision.Logic
         }
         public void update(GameTime gameTime)
         {
-            foreach (EnemySprite a in aList)
+            foreach (ISprite a in aList)
             {
                 bool touched = false;
                 foreach (ISprite b in bList)

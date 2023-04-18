@@ -78,6 +78,7 @@ namespace Sprint0.NPC.Boss.AI
             }
             else
             {
+                fireballAttack();
                 falling();
             }
         }
@@ -167,6 +168,7 @@ namespace Sprint0.NPC.Boss.AI
         public void summonGommba()
         {
             ISprite newEnemy = game.spritesFactory.getGommbaSprite();
+            newEnemy.velocity = new Vector2(newEnemy.velocity.X, 100);
             if (playerOnRight())
             {
                 newEnemy.Position = new Vector2(boss.Position.X + 10, boss.Position.Y - 10);
@@ -181,7 +183,7 @@ namespace Sprint0.NPC.Boss.AI
 
         public void fireballAttack()
         {
-
+            game.gameObjectManager.addObject(game.spritesFactory.getFireballSprite(boss.Position, false, false), "superFireball");
         }
 
     }
