@@ -80,13 +80,8 @@ namespace Sprint0.NPC.Boss
                 }
             }
             //summon 
-            if(summonTimer < 0f)
-            {
-                summonTimer = 0f;
-            }else if(summonTimer > 0f)
-            {
-                summonTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
+            summonTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            summonTimer = Math.Max(0f, summonTimer);
 
             //jump -> fall -> rest 
             if (restTimerLock)
