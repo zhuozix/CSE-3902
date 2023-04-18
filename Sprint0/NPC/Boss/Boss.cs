@@ -27,7 +27,7 @@ namespace Sprint0.NPC.Boss
         public bool isFlying { get; set; }
         public BossActionType currentActionType { get; set; }
         public BossFactory factory { get; set; }
-
+        public bool activated = false;
         //property of ai
         public BossAI _ai { get; set; }
 
@@ -39,14 +39,20 @@ namespace Sprint0.NPC.Boss
          */
         public Boss(Vector2 spawnLocation, Game1 gameInstanceIn)
         {
-            this.Position = spawnLocation;
-            game = gameInstanceIn;            
+            game = gameInstanceIn; 
             Initiallize();
+            Position = spawnLocation;
+            //ai
+            loadAI();
+
         }
 
         public void changeSprite()
         {
+            Vector2 temp = this.Position;
+            //factory = new BossFactory(game.Content, this);
             this.Sprite = factory.buildSprite();
+            this.Position = temp;
         }
 
         public void Initiallize()
@@ -56,7 +62,7 @@ namespace Sprint0.NPC.Boss
             this.Acceleration = Vector2.Zero;
             
             // set the initial state of the boss
-            isFacingRight = false;
+            isFacingRight = true;
             isFlying = false;
 
             // get sprites
@@ -64,8 +70,7 @@ namespace Sprint0.NPC.Boss
             currentActionType = BossActionType.Idle;
             this.Sprite = factory.buildSprite();
 
-            //ai
-            loadAI();
+            
         }
 
         public void loadAI()
@@ -79,14 +84,18 @@ namespace Sprint0.NPC.Boss
             _ai = new BossAI(this,player,game);
         }
         public override void Update(GameTime gameTime) 
-        { 
-            _ai.Update(gameTime);
-            base.Update(gameTime);
+        {
+            if (activated)
+            {
+                _ai.Update(gameTime);
+                base.Update(gameTime);
+            }
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch, bool isFlipped) 
         {
-            base.Draw(spriteBatch, !isFacingRight);
+            base.Draw(spriteBatch, isFacingRight);
         }
 
     }

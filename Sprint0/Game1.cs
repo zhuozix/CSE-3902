@@ -15,6 +15,7 @@ using Sprint0.Sounds;
 using Sprint0.UI.Title;
 using Sprint0.UI.State;
 using System;
+using Sprint0.NPC.Boss;
 
 namespace Sprint0
 {
@@ -55,6 +56,9 @@ namespace Sprint0
         public int coins;
         public int life;
         public float time;
+        
+        //boss
+        public Boss bowser;
         public int bossHP;
 
         public ArrayList fireBallList;

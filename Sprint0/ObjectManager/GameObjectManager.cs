@@ -34,6 +34,7 @@ namespace Sprint0.ObjectManager
         public List<ISprite> players;
         public List<ISprite> items;
         public List<ISprite> fireBallList;
+        public List<ISprite> bossList;
         public List<Teleporter> teleporters;
         public List<FlagPoleHitbox> flagpoles;
         public List<FireballSpawner> spawners;
@@ -52,6 +53,7 @@ namespace Sprint0.ObjectManager
             this.players= new List<ISprite>();
             this.items= new List<ISprite>();
             this.fireBallList = new List<ISprite>();
+            this.bossList = new List<ISprite>();
             this.teleporters = new List<Teleporter>();
             this.flagpoles = new List<FlagPoleHitbox>();
             this.spawners= new List<FireballSpawner>();
@@ -89,6 +91,9 @@ namespace Sprint0.ObjectManager
                     break;
                 case "fireBall":
                     this.fireBallList.Add(obj);
+                    break;
+                case "boss":
+                    this.bossList.Add(obj);
                     break;
                 default:
                     break;
@@ -143,10 +148,15 @@ namespace Sprint0.ObjectManager
             {
                 obj.Update(time);
             }
+            foreach (ISprite obj in this.bossList)
+            {
+                obj.Update(time);
+            }
             foreach (FireballSpawner spawner in this.spawners)
             {
                 spawner.Update(time);
             }
+            
 
             game.time -= (float)time.ElapsedGameTime.TotalSeconds;
         }
@@ -160,7 +170,6 @@ namespace Sprint0.ObjectManager
             {
                 obj.Draw(_spriteBatch, isFlipped);
             }
-
             foreach (ISprite obj in this.blocks)
             {
                 obj.Draw(_spriteBatch, isFlipped);
@@ -184,6 +193,10 @@ namespace Sprint0.ObjectManager
                 obj.Draw(_spriteBatch, isFlipped);
             }
             foreach (ISprite obj in this.fireBallList)
+            {
+                obj.Draw(_spriteBatch, isFlipped);
+            }
+            foreach (ISprite obj in this.bossList)
             {
                 obj.Draw(_spriteBatch, isFlipped);
             }

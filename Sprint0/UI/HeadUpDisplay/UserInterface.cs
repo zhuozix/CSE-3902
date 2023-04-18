@@ -40,13 +40,13 @@ public class UserInterface
         this.textList.Add(coinText);
         this.textList.Add(lifeText);
         this.textList.Add(timeText);
-        //boss fight only
+        //boss fight level
         moonJumpText = _spritesFactory.getMoonJumpFontSprite();
         MGunText = _spritesFactory.getGunFontSprite();
-        bossHpText = _spritesFactory.getBossFontSprite();
         this.bossTextList.Add(moonJumpText);
         this.bossTextList.Add(MGunText);
-        this.bossTextList.Add(bossHpText);
+        //during boss fight only
+        bossHpText = _spritesFactory.getBossFontSprite();
     }
 
     private void LoadContent()
@@ -64,16 +64,21 @@ public class UserInterface
         {
             obj.Draw(_game._uiSpriteBatch, false);
         }
-        //boss
+        //boss level only
         if (_game.gameObjectManager.isBossFight)
         {
             foreach (ISprite obj in this.bossTextList)
             {
               obj.Draw(_game._uiSpriteBatch, false);
             }
-
+            //during boss fight
+            if (_game.bowser.activated && _game.bossHP > 0)
+            {
+                bossHpText.Draw(_game._uiSpriteBatch, false);
+            }
         }
         
+
         _game._uiSpriteBatch.End();
     }
     public void Update(GameTime time) 
@@ -87,6 +92,10 @@ public class UserInterface
             foreach (ISprite obj in this.bossTextList)
             {
                 obj.Update(time);
+            }
+            if (_game.bowser.activated && _game.bossHP > 0)
+            {
+                bossHpText.Update(time);
             }
         }
         

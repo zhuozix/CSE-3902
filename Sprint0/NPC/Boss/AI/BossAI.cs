@@ -6,10 +6,17 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sprint0.NPC.Boss
 {
+    enum ActionLockType
+    {
+        unlocked,
+        jumpAttack,
+        fireBall,
+    }
     public class BossAI
     {
         //basic
@@ -20,32 +27,40 @@ namespace Sprint0.NPC.Boss
 
         //logic
         public CommonLogic commonLogic;
+        public int angry;
+        public bool angryMode;
 
         //Timer
-        private float hitByMarioTimer = 2f;
+        public float hitByMarioTimer = 2f;
+        public float summonTimer = 0f;
+        public float restTimer = 1f;
+       
 
         //Lock
-        private bool hitAndCannotMove = false;
+        public bool hitAndCannotMove = false;
+        public bool restTimerLock = false;
+
+        //ActionLock
+        private ActionLockType actionLockType;
 
         public BossAI(Boss bossIn, Mario playerIn, Game1 gameIn)
         {
             game = gameIn;
             player = playerIn;
             boss = bossIn;
-            commonLogic = new CommonLogic(player,boss);
+            commonLogic = new CommonLogic(player, boss, this, gameIn);
             stateChange = new BossStateChange(boss, game);
+            angry = 0;
+            actionLockType = ActionLockType.unlocked;
         }
 
         public void Update(GameTime gameTime)
         {
             //timer
             timerManager(gameTime);
-            //common logic
-            hitByMario(gameTime);
-            hitByFireball(gameTime);
 
             //ai
-            if (canPerformAction())
+            if (commonLogic.canPerformAction())
             {
                 ai(gameTime);
             }
@@ -58,58 +73,134 @@ namespace Sprint0.NPC.Boss
             if (hitAndCannotMove)
             {
                 hitByMarioTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if(hitByMarioTimer <= 0)
+                if (hitByMarioTimer <= 0)
                 {
                     hitByMarioTimer = 2f;
                     hitAndCannotMove = false;
+                }
+            }
+            //summon 
+            if(summonTimer < 0f)
+            {
+                summonTimer = 0f;
+            }else if(summonTimer > 0f)
+            {
+                summonTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+
+            //jump -> fall -> rest 
+            if (restTimerLock)
+            {
+                restTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if(restTimer <= 0)
+                {
+                    restTimer = 1f;
+                    restTimerLock = false;
                 }
             }
         }
 
         public void ai(GameTime gameTime)
         {
-            
-            if (commonLogic.marioOnGround() )
+
+            if (commonLogic.marioOnGround())
             {
-                if (commonLogic.findPlayerCurrentLevel() == 0 && commonLogic.marioNearBowser())
+                
+                 if (commonLogic.findPlayerCurrentLevel() == 0 && commonLogic.marioNearBowser())
                 {
                     //state 3, Mario is on the smae level on right side of level (by bowser) --> try to jump on mario
+                    if (!restTimerLock)
+                    {
+                        if(actionLockType == ActionLockType.unlocked || actionLockType == ActionLockType.jumpAttack)
+                        {
+                            actionLockType = ActionLockType.jumpAttack;
+                            commonLogic.jumpAttack();
+                            if(boss.currentActionType == BossActionType.Idle)
+                            {
+                                actionLockType = ActionLockType.unlocked;
+                            }
+                        }
+                        else
+                        {
+                            commonLogic.falling();
+                            if (boss.currentActionType == BossActionType.Idle)
+                            {
+                                actionLockType = ActionLockType.unlocked;
+                            }
+                        }
+                        
+                    }
+                    
                 }
                 else
                 {
-                    //state 1, boss and mario in the same layer on left side of level --> spawn enemies to go towards mario
+                    if(actionLockType == ActionLockType.unlocked)
+                    {
+
+                    
+                        //state 1, Approach the player and summon gommba
+                        if(summonTimer == 0f)
+                        {
+                            summonTimer = 2f;
+                            commonLogic.summonGommba();
+                            stateChange.stopMoving();
+                        }
+                        else if(summonTimer <= 1.65f)
+                        {
+                            commonLogic.approchToPlayer();
+                        }
+
+                    }
+                    else
+                    {
+                        commonLogic.falling();
+                        if (boss.currentActionType == BossActionType.Idle)
+                        {
+                            actionLockType = ActionLockType.unlocked;
+                        }
+                    }
+
                 }
             }
             else
             {
-                //state 2, boss and mario is in different layer --> jump to marios level and launch a fireball
-                //shoot fireball to commonLogic.findPlayerCurrentLevel();
+                if(actionLockType != ActionLockType.jumpAttack) { 
+
+                    //state 2, boss and mario is in different layer --> jump to marios level and launch a fireball
+                    //shoot fireball to commonLogic.findPlayerCurrentLevel();
+                    int level = commonLogic.findPlayerCurrentLevel();
+                    int jumpTolerence = 80;
+                    int[] yFirePosition = { 0,320, 224, 128 };
+                    if (boss.Position.Y == player.Position.Y)
+                    {
+                        commonLogic.fireballAttack();
+                    }
+                    if(boss.currentActionType != BossActionType.Falling && !restTimerLock)
+                    {
+                        actionLockType |= ActionLockType.fireBall;
+                        commonLogic.jumpTo(yFirePosition[level] - jumpTolerence);
+                    }
+                
+                    if(boss.currentActionType == BossActionType.Falling)
+                    {
+                        commonLogic.falling();
+                        if (boss.currentActionType == BossActionType.Idle)
+                        {
+                            actionLockType = ActionLockType.unlocked;
+                        }
+                    }
+
+                }
+                else
+                {
+                    commonLogic.falling();
+                    if (boss.currentActionType == BossActionType.Idle)
+                    {
+                        actionLockType = ActionLockType.unlocked;
+                    }
+                }
             }
 
-
-
-
-        }
-
-        public bool canPerformAction()
-        {
-            if (hitAndCannotMove)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public void hitByMario(GameTime gameTime)
-        {
-            hitAndCannotMove = true;
-            stateChange.hitByMario();
-            stateChange.toIdleState();
-        }
-
-        public void hitByFireball(GameTime gameTime)
-        {
-            stateChange.hitByFireball();
         }
     }
 }

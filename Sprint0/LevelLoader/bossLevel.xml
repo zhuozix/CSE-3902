@@ -115,8 +115,11 @@
 		<Machinegun xPos="1512" yPos="64"></Machinegun>
 	</Items>
 	<Player>
-		<Mario xPos="80" yPos="360"></Mario>
+		<Mario xPos="1110" yPos="360"></Mario>
 	</Player>
+	<Boss>
+		<Bowser xPos="2250" yPos="355"></Bowser>
+	</Boss>	
 	<Camera>
 		<CamPos endLevel="1200" underground="1568"></CamPos>
 	</Camera>

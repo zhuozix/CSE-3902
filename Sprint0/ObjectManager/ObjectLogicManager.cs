@@ -353,11 +353,19 @@ namespace Sprint0.ObjectManager
             }
         }
 
+        public void activateBossFight()
+        {
+            if(Math.Abs(game.mario.Position.X - game.bowser.Position.X) <= 650)
+            {
+                game.bowser.activated = true;
+            }
+        }
+
         public void update(GameTime time)
         {
             gameExit();
             moreLife();
-            //activateEnemy();
+            activateBossFight();
             updateShatteredBlocks(time);
             updateDeadEnemy(time);
             deleteDropedEnemy();

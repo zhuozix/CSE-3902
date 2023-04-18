@@ -15,6 +15,7 @@ using System.IO;
 using System.ComponentModel;
 using Sprint0.Collision;
 using Sprint0.NPC.Blocks;
+using Sprint0.NPC.Boss;
 
 namespace Sprint0.LevelLoader
 {
@@ -51,6 +52,10 @@ namespace Sprint0.LevelLoader
                 else if (xml.Name == "Camera")
                 {
                     type = "camera";
+                } 
+                else if (xml.Name == "Boss")
+                {
+                    type = "boss";
                 }
                 else if (xml.NodeType == XmlNodeType.Element)
                 {
@@ -73,6 +78,9 @@ namespace Sprint0.LevelLoader
                             break;
                         case "camera":
                             processCamera(xml, camera);
+                            break;
+                        case "boss":
+                            processBoss(xml, gameObjectManager, factory, game);
                             break;
                         default:
                             break;
@@ -319,6 +327,21 @@ namespace Sprint0.LevelLoader
             }
         }
 
+        public static void processBoss(XmlReader xml, GameObjectManager gameObjectManager, SpritesFactory factory, Game1 game)
+        {
+            long xPos = Int64.Parse(xml.GetAttribute("xPos"));
+            long yPos = Int64.Parse(xml.GetAttribute("yPos"));
+            switch (xml.Name)
+            {
+                case "Bowser":
+                    game.bowser = new Boss(new Vector2(xPos, yPos), game);
+                    game.bowser.Position = new Vector2(xPos, yPos);
+                    gameObjectManager.addObject(game.bowser, "boss");
+                    break;
+                default:
+                    break;
+            }
+        }
 
         public static void processBackground(XmlReader xml, GameObjectManager gameObjectManager, SpritesFactory factory)
         {

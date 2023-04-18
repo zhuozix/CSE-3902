@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint0.Content;
 using System;
@@ -16,7 +17,7 @@ namespace Sprint0.NPC.Boss
         private ContentManager _contentManager;
         private string _fileLocation;
         private Texture2D _texture;
-        Boss KingKoopa;
+        private Boss KingKoopa;
 
         private int rows;
         private int columns;
@@ -29,9 +30,9 @@ namespace Sprint0.NPC.Boss
         public Sprite buildSprite()
         {
             _fileLocation = findLocation();
-            _texture = _contentManager.Load<Texture2D>(_fileLocation);
+            _texture = _contentManager.Load<Texture2D>("Bowser/bowser");
             updateRowsCols();
-            return new NoneMovingAnimatedSprite(_texture, KingKoopa.Position, rows, columns);
+            return new NoneMovingAnimatedSprite(_texture, Vector2.Zero, rows, columns);
 
         }
         public void updateRowsCols()
@@ -39,16 +40,16 @@ namespace Sprint0.NPC.Boss
             rows = 1;
             if(KingKoopa.currentActionType == BossActionType.Running)
             {
-                columns = 3;
+                columns = 4;
             }
             else
             {
-                columns = 1;
+                columns = 4;
             }
         }
         public string findLocation()
         {
-            string fileLocation = "Boss/";
+            string fileLocation = "Bowser/";
 
             if (KingKoopa.isFlying)
             {
@@ -58,16 +59,16 @@ namespace Sprint0.NPC.Boss
                 switch (KingKoopa.currentActionType)
                 {
                     case BossActionType.Idle:
-                        fileLocation += "idle";
+                        fileLocation += "bowser";
                         break;
                     case BossActionType.Running:
-                        fileLocation += "run";
+                        fileLocation += "bowser";
                         break;
                     case BossActionType.Jumping:
-                        fileLocation += "jump";
+                        fileLocation += "bowser";
                         break;
                     case BossActionType.Falling:
-                        fileLocation += "fall";
+                        fileLocation += "boswer";
                         break;
                     default:
                         throw new ArgumentException("SpriteFactory error: Invalid Type specified");

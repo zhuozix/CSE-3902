@@ -1,4 +1,6 @@
-﻿using Sprint0.MarioPlayer;
+﻿using Microsoft.Xna.Framework;
+using Sprint0.MarioPlayer;
+using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,28 +14,32 @@ namespace Sprint0.NPC.Boss.AI
     {
         public Mario player;
         public Boss boss;
-        public CommonLogic(Mario player, Boss boss) 
+        public BossAI ai;
+        public Game1 game;
+        public CommonLogic(Mario player, Boss boss, BossAI aiIn, Game1 gameIn) 
         {
             this.player = player;
             this.boss = boss;
+            this.ai = aiIn;
+            game = gameIn;
         }
 
-        public void findPlayerDirection() 
+        public bool playerOnRight() 
         {
             if(player.Position.X > boss.Position.X)
             {
-                boss.isFacingRight = true;
+                return true;
             }
             else
             {
-                boss.isFacingRight = false;
+                return false;
             }
 
         }
 
         public bool marioOnGround()
         {
-            if(player.Position.Y > 350)
+            if(player.Position.Y > 280)
             {
                 return true;
             }
@@ -41,15 +47,141 @@ namespace Sprint0.NPC.Boss.AI
         }
         public int findPlayerCurrentLevel() {
             int level = 0;
-            if (player.Position.Y < 128) level = 3;
-            else if (player.Position.Y < 224) level = 2;
-            else if (player.Position.Y < 320) level = 1;
+            if (player.Position.Y < 100) level = 3;
+            else if (player.Position.Y < 200) level = 2;
+            else if (player.Position.Y < 280) level = 1;
             return level;
         }
 
         public bool marioNearBowser()
         {
-            return boss.Position.X - player.Position.X < 400;
+            return Math.Abs(boss.Position.X - player.Position.X) < 150;
+        }
+
+        public void approchToPlayer()
+        {
+            if (playerOnRight())
+            {
+                ai.stateChange.runnungRight();
+            }
+            else
+            {
+                ai.stateChange.runnungLeft();
+            }
+        }
+
+        public void jumpTo(int yPosition)
+        {
+            if(boss.Position.Y > yPosition)
+            {
+                ai.stateChange.jump();
+            }
+            else
+            {
+                falling();
+            }
+        }
+
+
+        public void falling()
+        {
+            if (boss.Position.Y < 355)
+            {
+                ai.stateChange.fall();
+            }
+            else
+            {
+                
+                ai.stateChange.stopMoving();
+                ai.restTimerLock = true;
+            }
+        }
+
+        public void jumpAttack()
+        {
+            if(boss.currentActionType != BossActionType.Falling)
+            {
+                if(boss.Position.Y > 280)
+                {
+                    ai.stateChange.jump();
+                    if (boss.Position.X != player.Position.X)
+                    {
+                        if (playerOnRight())
+                        {
+                            boss.isFacingRight = true;
+                            boss.velocity = new Vector2(150, boss.velocity.Y);
+                        }
+                        else
+                        {
+                            boss.isFacingRight = false;
+                            boss.velocity = new Vector2(-150, boss.velocity.Y);
+                        }
+                    }
+                    else
+                    {
+                        boss.velocity = new Vector2(0,boss.velocity.Y);
+                    }
+                }
+                else
+                {
+                    boss.velocity = Vector2.Zero;
+                    ai.restTimer = 0.5f;
+                    falling();
+
+                }
+
+            }
+            else
+            {
+                falling();
+            }
+
+        }
+
+        public bool canPerformAction()
+        {
+            if (ai.hitAndCannotMove)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void hitByMario()
+        {
+            ai.hitAndCannotMove = true;
+            ai.angry += 10;
+            ai.stateChange.stopMoving();
+        }
+
+        public void hitByFireball()
+        {
+            ai.angry += 2;
+        }
+
+        public void resetAngry()
+        {
+            ai.angry = 0;
+        }
+
+        public void summonGommba()
+        {
+            ISprite newEnemy = game.spritesFactory.getGommbaSprite();
+            if (playerOnRight())
+            {
+                newEnemy.Position = new Vector2(boss.Position.X + 10, boss.Position.Y - 10);
+                newEnemy.crash = true;
+            }
+            else
+            {
+                newEnemy.Position = new Vector2(boss.Position.X - 10, boss.Position.Y - 10);
+            }
+            game.gameObjectManager.addObject(newEnemy,"enemy");
+        }
+
+        public void fireballAttack()
+        {
+
         }
 
     }

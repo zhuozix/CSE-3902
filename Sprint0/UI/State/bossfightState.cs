@@ -55,6 +55,7 @@ namespace Sprint0.UI.State
             Initialize();
 
             _game.camera = new Camera();
+            _game.time = 400f;
 
             //Load boss level
             LevelLoader.LevelLoader.loadLevel(_game.gameObjectManager, "bossLevel.xml", _game.spritesFactory, _game, _game.camera);

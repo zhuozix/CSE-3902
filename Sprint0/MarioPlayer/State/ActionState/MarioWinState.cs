@@ -74,7 +74,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
             timeSpent += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if(timeSpent >= 4.3f)
             {
-                marioEntity.game.ChangeState(new WinState(marioEntity.game));
+                marioEntity.game.ChangeState(new bossfightState(marioEntity.game));
             }
 
         }
