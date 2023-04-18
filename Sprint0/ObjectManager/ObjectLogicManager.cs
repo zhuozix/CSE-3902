@@ -355,7 +355,7 @@ namespace Sprint0.ObjectManager
 
         public void activateBossFight()
         {
-            if(Math.Abs(game.mario.Position.X - game.bowser.Position.X) <= 650)
+            if(game.bowser != null && Math.Abs(game.mario.Position.X - game.bowser.Position.X) <= 650)
             {
                 game.bowser.activated = true;
             }
