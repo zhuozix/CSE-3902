@@ -96,7 +96,7 @@
 		<FireballSpawner xPos ="1004" yPos="480"></FireballSpawner>
 		<FireballSpawner xPos ="1056" yPos="480"></FireballSpawner>
 
-		<Teleporter xPos="1448" yPos="416" width="20" height="24" activation="up" xDest="1632" yDest="380" underground="True" destDir="none"></Teleporter>
+		<Teleporter xPos="1440" yPos="416" width="20" height="24" activation="up" xDest="1632" yDest="380" underground="True" destDir="none"></Teleporter>
 	</Blocks>
 	<Enemies>
 		<Goomba xPos ="416" yPos ="384"></Goomba>
