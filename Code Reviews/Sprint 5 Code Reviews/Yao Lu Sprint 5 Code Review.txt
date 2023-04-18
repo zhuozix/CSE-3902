@@ -1,0 +1,19 @@
+readability review
+Author of the code review: Yao Lu
+Date of the code review: 4/17/2023
+Sprint number: 5
+Name of the .cs file being reviewed: ItemChangeManager.cs
+Author of the .cs file being reviewed: Shuangchen Zhou/Yao Lu/Seth Welch
+Number of minutes taken to complete the review: 3 minutes.
+Specific comments on what is readable and what is not:
+the code is relatively easy to read and follows basic coding conventions, but there are a few areas that could be improved for better readability. itemTransition could be renamed to something like HandleItemTransition to better convey its purpose. Besides, more comment needs to be added to better explain what the methods does.
+
+code quality review
+Author of the code review: Yao Lu
+Date of the code review: 4/17/2023
+Sprint number: 5
+Name of the .cs file being reviewed: FireballSpawner.cs
+Author of the .cs file being reviewed: Shuangchen Zhou/Zuozi Xie
+Specific comments:
+Overall the code is well-structured, but here are some point:
+can replace if (fireBall == null) with if (fireBall?.Update(gametime) == null) to using null-conditional operators, some casts are considered unnecessary. In the generateFireball method, the getFireballSprite method returns an ISprite instance, which is then cast to FireBallInstance. This cast may not be necessary if the method always returns a FireBallInstance instance. 
