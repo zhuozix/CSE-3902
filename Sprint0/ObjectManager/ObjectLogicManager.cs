@@ -324,6 +324,7 @@ namespace Sprint0.ObjectManager
                         if (a.state == "Hurt")
                         {
                             a.state = "Normal";
+                            hurtTimer = 0;
                         }
                     }
                 }

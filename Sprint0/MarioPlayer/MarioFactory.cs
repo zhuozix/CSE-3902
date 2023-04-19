@@ -93,7 +93,15 @@ namespace Sprint0.MarioPlayer
                         fileNameSuffix = "IdleRight";
                         break;
                     case MarioActionStateType.Crouching:
-                        fileNameSuffix = "CrouchRight";
+                        if(powerUpType == MarioPowerupStateType.Normal)
+                        {
+                            fileNameSuffix = "IdleRight";
+                        }
+                        else
+                        {
+                            fileNameSuffix = "CrouchRight";
+                        }
+                        
                         break;
                     case MarioActionStateType.Jumping:
                     case MarioActionStateType.Falling:

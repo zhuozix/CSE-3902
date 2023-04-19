@@ -99,7 +99,7 @@ namespace Sprint0
             coins = 0;
             life = 3;
             time = 400f;
-            bossHP = 100;
+            bossHP = 50;
             gameAreaDiff = 100;
             //Factories
             spritesFactory = new SpritesFactory(this);

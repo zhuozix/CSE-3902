@@ -15,6 +15,7 @@ using System.Numerics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Sprint0.NPC.Blocks;
 using Sprint0.Sounds;
+using System.Diagnostics;
 
 namespace Sprint0.MarioPlayer
 {
@@ -245,7 +246,11 @@ namespace Sprint0.MarioPlayer
                 Position = new Vector2(Position.X, Position.Y + 30);
                 velocity = new Vector2(velocity.X, velocity.Y + 20);
             }
-            CurrentPowerupState.TakeDamage();
+            if(this.state != "Hurt")
+            {
+                CurrentPowerupState.TakeDamage();
+            }
+            
         }
         #endregion
 

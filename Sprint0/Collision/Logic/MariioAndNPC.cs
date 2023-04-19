@@ -197,7 +197,7 @@ namespace Sprint0.Collision.Logic
                             break;
                         }
 
-                        if (a.state == "Star")
+                        else if (a.state == "Star")
                         {
                             
                             break;
