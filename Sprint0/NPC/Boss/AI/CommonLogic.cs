@@ -24,6 +24,11 @@ namespace Sprint0.NPC.Boss.AI
             game = gameIn;
         }
 
+        public bool playerOnRight() 
+        {
+            return (player.Position.X > boss.Position.X);
+            
+        }
 
         public bool marioOnGround()
         {
@@ -88,44 +93,52 @@ namespace Sprint0.NPC.Boss.AI
 
         public void jumpAttack()
         {
-            if (boss.currentActionType == BossActionType.Falling)
-                return;
-
-            if (boss.Position.Y <= 280f)
+            if(boss.currentActionType != BossActionType.Falling)
             {
-                boss.velocity = Vector2.Zero;
-                ai.restTimer = 0.5f;
-                falling();
-                return;
-            }
+                if(boss.Position.Y > 280)
+                {
+                    ai.stateChange.jump();
+                    if (boss.Position.X != player.Position.X)
+                    {
+                        if (playerOnRight())
+                        {
+                            boss.isFacingRight = true;
+                            boss.velocity = new Vector2(150, boss.velocity.Y);
+                        }
+                        else
+                        {
+                            boss.isFacingRight = false;
+                            boss.velocity = new Vector2(-150, boss.velocity.Y);
+                        }
+                    }
+                    else
+                    {
+                        boss.velocity = new Vector2(0,boss.velocity.Y);
+                    }
+                }
+                else
+                {
+                    boss.velocity = Vector2.Zero;
+                    ai.restTimer = 0.5f;
+                    falling();
 
-            ai.stateChange.jump();
-            SetBossVelocity();
+                }
 
-        }
-
-        private void SetBossVelocity()
-        {
-            if (boss.Position.X != player.Position.X)
-            {
-                boss.isFacingRight = playerOnRight();
-                float velocityX = boss.isFacingRight ? 150f : -150f;
-                boss.velocity = new Vector2(velocityX, boss.velocity.Y);
             }
             else
             {
-                boss.velocity = new Vector2(0, boss.velocity.Y);
+                falling();
             }
-        }
 
-        private bool playerOnRight()
-        {
-            return player.Position.X > boss.Position.X;
         }
 
         public bool canPerformAction()
         {
-            return !ai.hitAndCannotMove;
+            if (ai.hitAndCannotMove)
+            {
+                return false;
+            }
+            return true;
         }
 
         public void hitByMario()

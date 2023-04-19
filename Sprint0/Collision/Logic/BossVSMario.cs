@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint0.MarioPlayer;
 using Sprint0.NPC.Blocks;
+using Sprint0.NPC.Boss;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -33,7 +35,7 @@ namespace Sprint0.Collision.Logic
             FireBallHitBoss(gameTime);
         }
 
-        public void BossHitMario(GameTime gameTime) { }
+        public void BossHitMario(GameTime gameTime) {}
         public void MarioHitBoss(GameTime gameTime) { }
         public void FireBallHitBoss(GameTime gameTime) { }
     }
