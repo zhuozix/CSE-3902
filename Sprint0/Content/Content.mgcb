@@ -628,6 +628,12 @@
 /processorParam:Quality=Best
 /build:Sounds/smb_1-up.wav
 
+#begin Sounds/smb_bowserfire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/smb_bowserfire.wav
+
 #begin Sounds/smb_breakblock.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
