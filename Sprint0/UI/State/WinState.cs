@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint0.UI.Title;
 using Sprint0.Content;
+using Sprint0.Sounds;
 
 namespace Sprint0.UI.State
 {
@@ -19,6 +20,7 @@ namespace Sprint0.UI.State
 
         public WinState(Game1 game)
         {
+            SoundPlayer.playStageClear();
             _game = game;
         }
 

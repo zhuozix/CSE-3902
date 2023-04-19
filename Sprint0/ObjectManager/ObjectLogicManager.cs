@@ -381,7 +381,7 @@ namespace Sprint0.ObjectManager
           
             if(game.bossHP <= 0)
             {
-                SoundPlayer.playStageClear();
+                
                 toWinState(time); return;
             }
             gameExit();
