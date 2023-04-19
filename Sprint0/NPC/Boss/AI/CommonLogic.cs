@@ -144,13 +144,13 @@ namespace Sprint0.NPC.Boss.AI
         public void hitByMario()
         {
             ai.hitAndCannotMove = true;
-            ai.angry += 10;
+            ai.angry += 15;
             ai.stateChange.stopMoving();
         }
 
         public void hitByFireball()
         {
-            ai.angry += 2;
+            ai.angry += 5;
         }
 
         public void resetAngry()

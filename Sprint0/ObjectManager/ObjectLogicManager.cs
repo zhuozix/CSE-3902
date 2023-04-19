@@ -39,6 +39,8 @@ namespace Sprint0.ObjectManager
         private bool hasTempCoin = false;
         private float tempCoinTimer = 0f;
 
+        private float winTimer = 3f;
+
         public ObjectLogicManager(GameObjectManager ManagerIn) {
             this.blocks = ManagerIn.blocks;
             this.enemies = ManagerIn.enemies;
@@ -46,6 +48,15 @@ namespace Sprint0.ObjectManager
             this.items = ManagerIn.items;
             this.fireBallList = ManagerIn.fireBallList;
             this.game = ManagerIn.game;
+        }
+
+        public void toWinState(GameTime gameTime)
+        {
+            winTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (winTimer < 0f)
+            {
+                game.ChangeState(new WinState(game));
+            }
         }
 
         public void updateShatteredBlocks(GameTime time)
@@ -363,6 +374,10 @@ namespace Sprint0.ObjectManager
 
         public void update(GameTime time)
         {
+            if(game.bossHP <= 0)
+            {
+                toWinState(time); return;
+            }
             gameExit();
             moreLife();
             activateBossFight();

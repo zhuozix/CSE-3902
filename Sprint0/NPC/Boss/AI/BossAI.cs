@@ -29,14 +29,18 @@ namespace Sprint0.NPC.Boss
         public CommonLogic commonLogic;
         public int angry;
         public bool angryMode;
+        public float angryTimer = 12f;
 
         //Timer
+        public float noDmgTimer = 5f;
+        public float noFireballDmgTimer = 0f;
         public float hitByMarioTimer = 2f;
         public float summonTimer = 0f;
         public float restTimer = 1f;
-       
+        
 
         //Lock
+        public bool noDmgLock = false;
         public bool hitAndCannotMove = false;
         public bool restTimerLock = false;
 
@@ -76,8 +80,17 @@ namespace Sprint0.NPC.Boss
                 if (hitByMarioTimer <= 0)
                 {
                     hitByMarioTimer = 2f;
+                    
+                    noDmgTimer = 5f;
+                    if (angryMode)
+                    {
+                        noDmgTimer = 6.5f;
+                    }
+                    noDmgLock = true;
+
                     hitAndCannotMove = false;
                 }
+                commonLogic.falling();
             }
             //summon 
             summonTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -91,6 +104,44 @@ namespace Sprint0.NPC.Boss
                 {
                     restTimer = 1f;
                     restTimerLock = false;
+                }
+            }
+
+            //fireball
+            if(noFireballDmgTimer != 0f)
+            {
+                if(noFireballDmgTimer < 0f)
+                {
+                    noFireballDmgTimer = 0f;
+                }
+                else
+                {
+                    noFireballDmgTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                }
+            }
+
+            //no damage
+            if (noDmgLock)
+            {
+                noDmgTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (noDmgTimer <= 0)
+                {    
+                    noDmgLock = false;
+                }
+            }
+
+            //angry
+            if(angry >= 80)
+            {
+                angry = 0;
+                angryMode = true;
+            }
+            if (angryMode)
+            {
+               angryTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (noDmgTimer <= 0)
+                {
+                    angryMode = false;
                 }
             }
         }
@@ -136,7 +187,9 @@ namespace Sprint0.NPC.Boss
                         //state 1, Approach the player and summon gommba
                         if(summonTimer == 0f)
                         {
+
                             summonTimer = 2f;
+
                             commonLogic.summonGommba();
                             stateChange.stopMoving();
                         }

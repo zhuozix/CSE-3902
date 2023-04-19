@@ -27,6 +27,9 @@ namespace Sprint0.Collision.Logic
         private float invisibeleTimer = 0f;
         private bool timerGo = false;
         public bool win;
+        public bool pushMario = false;
+        public Vector2 originalLocation;
+
         public MarioAndNPC(List<ISprite> marioListIn, List<ISprite> blockListIn, List<ISprite> itemListIn,List<ISprite>enemyListIn, List<FireballSpawner> spawners, List<ISprite> superFireballs, Collide collideInstance)
         {
             marioList = marioListIn;
@@ -39,9 +42,13 @@ namespace Sprint0.Collision.Logic
             collisionDetection = new CollisionDetection();
             win = false;
         }
-        public void update(GameTime gameTime)
+        public void pushMarioUpdate()
         {
             
+        }
+        public void update(GameTime gameTime)
+        {
+            pushMarioUpdate();
             if (timerGo)
             {
                 invisibeleTimer = (float)gameTime.TotalGameTime.TotalMilliseconds;
@@ -148,10 +155,16 @@ namespace Sprint0.Collision.Logic
                         }
                         else if (b.state == "idle" || collisionDetection.touchBottomEnemy(RectangleA, RectangleB))
                         {
-
-                            EnemyChangeManager changeState = new EnemyChangeManager(b, collide.game);
-                            changeState.changeState();
-                            break;
+                            if(b.state != "Dead")
+                            {
+                                EnemyChangeManager changeState = new EnemyChangeManager(b, collide.game);
+                                changeState.changeState();
+                                a.Position = new Vector2(a.Position.X, a.Position.Y - 10);
+                                a.velocity = new Vector2(0,-180);
+                                a.Jump();
+                                break;
+                            }
+                            
 
 
                         }
@@ -302,6 +315,15 @@ namespace Sprint0.Collision.Logic
 
             }
         }
+        private void marioCollide(Mario mario)
+        {
+
+            this.originalLocation = mario.Position;
+            this.pushMario = true;
+
+
+        }
+
 
         public void cannotMoveDown(ISprite target)
         {

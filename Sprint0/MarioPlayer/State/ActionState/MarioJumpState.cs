@@ -16,12 +16,21 @@ namespace Sprint0.MarioPlayer.State.ActionState
         public override void Enter(IMarioActionState previousState)
         {
             base.Enter(previousState);
+
+            float yVelocity = -110;
+
             MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
+            
             if(powerupStateType != MarioPowerupStateType.Normal)
             {
-                VerticalVelocity = superVerticalVelocity;
+                yVelocity = -120;
             }
-            marioEntity.velocity += new Vector2(marioEntity.velocity.X, VerticalVelocity);
+
+            if(marioEntity.velocity.Y != 0)
+            {
+                yVelocity = marioEntity.velocity.Y;
+            }
+            marioEntity.velocity += new Vector2(marioEntity.velocity.X, yVelocity);
         }
 
         public override MarioActionStateType GetEnumValue()

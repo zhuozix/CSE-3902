@@ -2,6 +2,7 @@
 using Sprint0.MarioPlayer;
 using Sprint0.NPC.Blocks;
 using Sprint0.NPC.Boss;
+using Sprint0.NPC.StateChange;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -18,25 +19,95 @@ namespace Sprint0.Collision.Logic
         private List<ISprite> marioList;
         private List<ISprite> bossList;
         private List<ISprite> fireballList;
+        private Game1 _game;
 
-        public BossVSMario(List<ISprite> marioListIn, List<ISprite> fireballListIn, List<ISprite> bossListIn, Collide collideInstance)
+        public BossVSMario(List<ISprite> marioListIn, List<ISprite> fireballListIn, List<ISprite> bossListIn, Collide collideInstance, Game1 game)
         {
             marioList = marioListIn;
             bossList = bossListIn;
             fireballList = fireballListIn;
             collide = collideInstance;
             collisionDetection = new CollisionDetection();
+            _game = game;
         }
 
         public void update(GameTime gameTime) 
         {
-            BossHitMario(gameTime);
-            MarioHitBoss(gameTime);
+            BossAndMario(gameTime);
             FireBallHitBoss(gameTime);
         }
 
-        public void BossHitMario(GameTime gameTime) {}
-        public void MarioHitBoss(GameTime gameTime) { }
-        public void FireBallHitBoss(GameTime gameTime) { }
+        public void hurtMario(Mario m)
+        {
+            m.crash = true;
+            m.TakeDamage();
+            m.state = "Hurt";
+        }
+
+        public void BossAndMario(GameTime gameTime) {
+            foreach(Mario player in marioList)
+            {
+                foreach(Boss boss in bossList)
+                {
+                    if(_game.bossHP <= 0)
+                    {
+                        break;
+                    }
+                    Rectangle playerRectangle = collisionDetection.getRectangle(player);
+                    Rectangle bossRectangle = collisionDetection.getRectangle(boss);
+                    if (playerRectangle.Intersects(bossRectangle))
+                    {
+                        if (boss._ai.noDmgLock)
+                        {
+                            if (player.state != "Hurt")
+                            {
+                                hurtMario(player);
+                            }
+                        }
+                        else if (collisionDetection.touchBottomEnemy(playerRectangle, bossRectangle))
+                        {
+                            BossStateChange stateChange = new BossStateChange(boss, _game);
+                            stateChange.hitByMario();
+                            //push mario
+                            player.Position = new Vector2(player.Position.X, player.Position.Y - 10);
+                            player.velocity = new Vector2(0, -180);
+                            player.Jump();
+                        }
+                        else
+                        {
+                            if (player.state != "Hurt")
+                            {
+                                hurtMario(player);
+                            }
+                            
+                        }
+
+                    }
+                }
+            }
+        }
+        public void FireBallHitBoss(GameTime gameTime) {
+            foreach (ISprite a in fireballList)
+            {
+                bool find = false;
+                foreach (Boss b in bossList)
+                {
+                    Rectangle RectangleA = collisionDetection.getRectangle(a);
+                    Rectangle RectangleB = collisionDetection.getRectangle(b);
+                    if (RectangleA.Intersects(RectangleB))
+                    {
+                        find = true;
+                        BossStateChange stateChange = new BossStateChange(b, _game);
+                        stateChange.hitByFireball();
+
+                        FireballChangeManager changeFireBall = new FireballChangeManager(b, collide.game);
+                        changeFireBall.changeState();
+
+                        break;
+                    }
+                    if (find) { break; }
+                }
+            }
+        }
     }
 }

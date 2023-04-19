@@ -14,21 +14,34 @@ namespace Sprint0.UI.Text
         private string LifeRemin;
         private Game1 gameInstance;
         private int hp;
+        private string noDmg;
         public BossHP(SpriteFont fontIn, string textIn, Vector2 location, Color fontColor, Game1 gameInstanceIn) : base(fontIn, textIn, location, fontColor)
         {
-            this.text = "King Koopa: ";
+            this.text = "";
             this.title = this.text;
             this.LifeRemin = "";
             this.gameInstance = gameInstanceIn;
+            noDmg = "invincible";
             hp = 100;
         }
 
         public override void Update(GameTime gameTime)
         {
-            this.LifeRemin = "";
-            this.hp = gameInstance.bossHP;
-            ReminCalculator();
-            this.text = this.title + this.LifeRemin;
+            if (!gameInstance.bowser._ai.angryMode)
+            {
+                this.title = "King Koopa: ";
+            }
+            else
+            {
+                this.title = "!!!ANGRY!!!: ";
+            }
+            if (!gameInstance.bowser._ai.noDmgLock) { 
+                this.LifeRemin = "";
+                this.hp = gameInstance.bossHP;
+                ReminCalculator();
+                this.text = this.title + this.LifeRemin;
+            }
+            else {this.text = this.title + noDmg;}
         }
 
         private void ReminCalculator()

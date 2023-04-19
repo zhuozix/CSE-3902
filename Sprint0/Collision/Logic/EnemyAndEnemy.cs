@@ -38,6 +38,10 @@ namespace Sprint0.Collision.Logic
                     Rectangle RectangleEnemyB = collisionDetection.getRectangle(a);
                     if (RectangleEnemyA.Intersects(RectangleEnemyB))
                     {
+                        if (collisionDetection.touchBottom(RectangleEnemyA, RectangleEnemyB))
+                        {
+                            b.Position = new Vector2(b.Position.X, b.Position.Y - 10);
+                        }
                         if (a.state == "Rolling")
                         {
                             EnemyChangeManager changeState = new EnemyChangeManager(b, collide.game);

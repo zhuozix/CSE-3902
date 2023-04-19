@@ -64,7 +64,6 @@ namespace Sprint0.NPC.StateChange
                         futureSprite.Position = currentEnemy.Position;
                         futureSprite.state = "Dead";
                         objManager.addObject(futureSprite, "enemy");
-                        pushMario();
                         SoundPlayer.playStomp();
                         }
                         objManager.enemies.Remove(target);
@@ -99,7 +98,6 @@ namespace Sprint0.NPC.StateChange
                         futureSprite.Position = currentEnemy.Position;
                         futureSprite.state = "idle";
                         objManager.addObject(futureSprite, "enemy");
-                        pushMario();
                         SoundPlayer.playStomp();
                         break;
                     }
@@ -116,12 +114,11 @@ namespace Sprint0.NPC.StateChange
                         ISprite futureSprite = factory.getKoopaShellSprite();
                         futureSprite.Position = currentEnemy.Position;
                         futureSprite.state = "Rolling";
-                        if(game.mario.velocity.X > 0)
+                        if(game.mario.IsFacingRight)
                         {
                             futureSprite.crash = true;
                         }
                         objManager.addObject(futureSprite, "enemy");
-                        pushMario();
                         SoundPlayer.playStomp();
                         break;
                     }
@@ -131,27 +128,6 @@ namespace Sprint0.NPC.StateChange
 
         }
 
-        private void pushMario()
-        {
-            Mario player = game.mario;
-            float xVelocity = player.velocity.X;
-            float yVelocity = player.velocity.Y;
-            if (xVelocity > 0 && yVelocity == 0)
-            {
-                game.mario.Position = new Vector2(player.Position.X - 5, player.Position.Y);
-            }
-            else if (xVelocity < 0 && yVelocity == 0)
-            {
-                game.mario.Position = new Vector2(player.Position.X + 5, player.Position.Y);
-            }
-            else
-            {
-                game.mario.Position = new Vector2(player.Position.X, player.Position.Y - 10);
-                game.mario.velocity = new Vector2(player.velocity.X, -120);
-                //player.Jump();
-            }
-            
-        }
     }
 }
 

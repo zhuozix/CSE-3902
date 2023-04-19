@@ -61,7 +61,11 @@ namespace Sprint0.NPC.Boss
                 toRunningState();
             }
             boss.isFacingRight = false;
-            boss.velocity = new Vector2(-50, 0); 
+            boss.velocity = new Vector2(-50, 0);
+            if (boss._ai.angryMode)
+            {
+                boss.velocity = new Vector2(-120, 0);
+            }
                    
         }
 
@@ -73,6 +77,10 @@ namespace Sprint0.NPC.Boss
             }
             boss.isFacingRight = true;
             boss.velocity = new Vector2(50, 0);
+            if (boss._ai.angryMode)
+            {
+                boss.velocity = new Vector2(120, 0);
+            }
         }
 
         public void jump()
@@ -82,6 +90,10 @@ namespace Sprint0.NPC.Boss
                 toJumpingState();
             }
             boss.velocity = new Vector2(boss.velocity.X, -180);
+            if (boss._ai.angryMode)
+            {
+                boss.velocity = new Vector2(boss.velocity.X, -220);
+            }
         }
 
         public void fall()
@@ -91,6 +103,10 @@ namespace Sprint0.NPC.Boss
                 toFallingState();
             }
             boss.velocity = new Vector2(boss.velocity.X, 180);
+            if (boss._ai.angryMode)
+            {
+                boss.velocity = new Vector2(boss.velocity.X, 300);
+            }
         }
 
         public void stopMoving()
@@ -105,14 +121,23 @@ namespace Sprint0.NPC.Boss
         //event
         public void hitByMario() 
         {
-            game.bossHP -= 10;
-            boss._ai.commonLogic.hitByMario();
+            if (!boss._ai.hitAndCannotMove && !boss._ai.noDmgLock)
+            {
+                game.bossHP -= 10;
+                boss._ai.commonLogic.hitByMario();
+            }
+            
         }
 
         public void hitByFireball() 
         {
-            game.bossHP--;
-            boss._ai.commonLogic.hitByFireball();
+            if (!boss._ai.hitAndCannotMove && boss._ai.noFireballDmgTimer == 0f && !boss._ai.noDmgLock)
+            {
+                game.bossHP-- ;
+                boss._ai.commonLogic.hitByFireball();
+                boss._ai.noFireballDmgTimer = 0.3f;
+            }
+            
         } 
     }
 }

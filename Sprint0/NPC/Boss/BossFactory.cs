@@ -32,6 +32,8 @@ namespace Sprint0.NPC.Boss
             _fileLocation = findLocation();
             _texture = _contentManager.Load<Texture2D>("Bowser/bowser");
             updateRowsCols();
+            KingKoopa.cols = columns;
+            KingKoopa.rows = rows;
             return new NoneMovingAnimatedSprite(_texture, Vector2.Zero, rows, columns);
 
         }

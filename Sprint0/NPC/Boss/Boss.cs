@@ -28,6 +28,10 @@ namespace Sprint0.NPC.Boss
         public BossActionType currentActionType { get; set; }
         public BossFactory factory { get; set; }
         public bool activated = false;
+        
+        private bool isVisible = true;
+        private float visibleTimer = 0f;
+
         //property of ai
         public BossAI _ai { get; set; }
 
@@ -83,20 +87,61 @@ namespace Sprint0.NPC.Boss
             }
             _ai = new BossAI(this,player,game);
         }
+
+        public void visibleManager(GameTime gameTime)
+        {
+            if (_ai.hitAndCannotMove || _ai.noFireballDmgTimer != 0f)
+            {
+                visibleTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (visibleTimer >= 0.1f)
+                {
+                    visibleTimer = 0f;
+                    changeVisibleStatus();
+                }
+            }else if (_ai.noDmgLock)
+            {
+                visibleTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (visibleTimer >= 0.4f)
+                {
+                    visibleTimer = 0f;
+                    changeVisibleStatus();
+                }
+            }
+            else
+            {
+                isVisible = true;
+            }
+        }
         public override void Update(GameTime gameTime) 
         {
-            if (activated)
+            if(game.bossHP <= 0)
             {
+                isVisible = false;
+            }
+            else if (activated)
+            {
+                visibleManager(gameTime);
                 _ai.Update(gameTime);
                 base.Update(gameTime);
             }
             
         }
 
-        public override void Draw(SpriteBatch spriteBatch, bool isFlipped) 
+        public override void Draw(SpriteBatch spriteBatch, bool isFlipped)
         {
-            base.Draw(spriteBatch, isFacingRight);
+            if (isVisible)
+            {
+                base.Draw(spriteBatch, isFacingRight);
+            }
+            
         }
+
+        private void changeVisibleStatus()
+        {
+            if (isVisible) { isVisible = false; }
+            else { isVisible = true; }
+        }
+
 
     }
 }
