@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.MarioPlayer;
+using Sprint0.Sounds;
 using Sprint0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -177,6 +178,7 @@ namespace Sprint0.NPC.Boss.AI
         public void fireballAttack()
         {
             game.gameObjectManager.addObject(game.spritesFactory.getFireballSprite(boss.Position, false, false), "superFireball");
+            SoundPlayer.playBowserFire();
         }
 
     }
