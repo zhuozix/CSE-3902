@@ -1,0 +1,34 @@
+Readability Review
+Author of the code review: Shuangchen Z
+Date of the code review: 4/18/2023
+Sprint number: 5
+Name of the .cs file being reviewed: FireballSpawner.cs
+Author of the .cs file being reviewed: Seth
+Number of minutes taken to complete the review: ~10min
+
+This class is an improved version of the original Fireball class and Fireball Factory. 
+This class is well adapted to our requirements for new features in sprint5, and also allows the fireball to behave properly in boss level.
+In terms of readability, the names of all the methods and variables are meaningful.
+As a reader, I don't need comments to understand what each method does and how the variables work. 
+In terms of maintainability, each method is short and easy to understand, which makes it easier to add new features or find bugs in the future.
+
+
+Quality Review
+Author of the code review: Shuangchen Z
+Date of the code review: 4/18/2023
+Sprint number: 5
+Name of the .cs file being reviewed: MoonJumpState.cs
+Author of the .cs file being reviewed: Yao Lu & Zhuozi Xie
+Number of minutes taken to complete the review: ~15min
+
+We have a new feature for sprint5, when Mario eats the moon he can jump even higher. 
+I think this class accomplishes this one task very well. 
+I like the way this feature is implemented based on the original Mario action state, rather than using a completely new implementation. 
+This allows for good consistency and maintainability of the code. The class is highly consistent with the style of the other action state types and is kept as simple as possible. 
+This is the one part I really like. 
+But there are some shortcomings, as we can see from the other action state classes moon jump is just a special form of jump, not a completely new action type. 
+This may raise some potential problems as well as being difficult to maintain. 
+I suggest to modify the Mario action state switching logic to be compatible with the new action.
+
+
+
