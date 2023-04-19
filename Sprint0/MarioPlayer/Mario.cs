@@ -67,18 +67,23 @@ namespace Sprint0.MarioPlayer
 
         public void generateFireball()
         {           
-            ISprite fireball = fireballFactory.getFireballSprite(Position, IsFacingRight, mode);
+            ISprite fireball = fireballFactory.getFireballSprite(new Vector2(Position.X, Position.Y - 10), IsFacingRight, mode);
+            ISprite fireball1 = fireballFactory.getFireballSprite(new Vector2(Position.X, Position.Y + 10), IsFacingRight, mode);
             if (mode)
             {
                     fireball.velocity = new Vector2((float)(fireball.velocity.X * 1.5), fireball.velocity.Y);
+                    SoundPlayer.playFireball();
+                    gameObjectManager.addObject(fireball, "fireBall");
             }
             else
             {
                     
                     fireball.velocity = new Vector2((float)(fireball.velocity.X * 3), fireball.velocity.Y);
+                    fireball1.velocity = new Vector2((float)(fireball1.velocity.X * 3), fireball1.velocity.Y);
+                    SoundPlayer.playFireball();
+                    gameObjectManager.addObject(fireball, "fireBall");
+                    gameObjectManager.addObject(fireball1, "fireBall");
             }
-            SoundPlayer.playFireball();
-            gameObjectManager.addObject(fireball, "fireBall");
         }
 
 

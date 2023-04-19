@@ -66,7 +66,6 @@ namespace Sprint0.MarioPlayer.State.ActionState
             if (powerupStateType == MarioPowerupStateType.Fire)
             {
                 marioEntity.generateFireball();
-
             }
         }
         public override void Update(GameTime gameTime) 

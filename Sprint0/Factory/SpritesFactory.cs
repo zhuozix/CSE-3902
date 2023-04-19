@@ -366,19 +366,6 @@ namespace Sprint0.Factory
 
         }
 
-        public ISprite getSuperFireballSprite(Vector2 currentLocation, bool isFacingRight)
-        {
-            if (isFacingRight)
-            {
-                return new SuperFireball(texture_SuperFireball, new Vector2(currentLocation.X + 5, currentLocation.Y), 1, 2, 0);
-            }
-            else
-            {
-                return new SuperFireball(texture_SuperFireball, new Vector2(currentLocation.X - 5, currentLocation.Y), 1, 2, 1);
-            }
-
-        }
-
         public Sprite getMarioSprite(string fileLocation)
         {
             texture_Mario = gameInstance.Content.Load<Texture2D>(fileLocation);
