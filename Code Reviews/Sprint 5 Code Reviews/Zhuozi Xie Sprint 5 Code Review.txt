@@ -1,0 +1,28 @@
+readability review
+Author of the code review: Zhuozi Xie
+Date of the code review: 4/19/2023
+Sprint number: 5
+Name of the .cs file being reviewed: Boss.cs
+Author of the .cs file being reviewed: Shuangchen Zhou
+Number of minutes taken to complete the review: 5 minutes.
+Specific comments on what is readable and what is not:
+
+The BossActionType enum defines four states for the boss: 
+Idle, Jumping, Falling, and Running. It is very esay to understand 
+and easy for other to maintain. The comment in the code is also 
+very helpful for people to understand how the code work.
+
+code quality review
+Author of the code review: Zhuozi Xie
+Date of the code review: 4/19/2023
+Sprint number: 5
+Name of the .cs file being reviewed: BossStateChange.cs
+Author of the .cs file being reviewed: Shuangchen Zhou
+Number of minutes taken to complete the review: 8 minutes.
+Specific comments:
+
+In the "runnungLeft", "runnungRight", "jump", and "fall" methods, 
+there is a typo in the method names. It should be "running" instead of "runnung".
+Methods "toIdleState", "toRunningState", "toJumpingState", and "toFallingState" are very clear 
+and easy to use with a single call. Esay to maintain and people can target bug esayly if there is 
+something wrong with jump or run.
