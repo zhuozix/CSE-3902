@@ -85,6 +85,7 @@ namespace Sprint0.UI.State
 
         public void Exit()
         {
+            
             SoundPlayer.stopMusic();
         }
     }

@@ -110,9 +110,11 @@
 
 		<Coin xPos="852" yPos="224"></Coin>
 		<Coin xPos="340" yPos="320"></Coin>
-
+		<Star xPos="1600" yPos="70"></Star>
 		<Moonjump xPos="1400" yPos="64"></Moonjump>
 		<Machinegun xPos="1512" yPos="64"></Machinegun>
+		<Machinegun xPos="2250" yPos="50"></Machinegun>
+		<Machinegun xPos="1600" yPos="90"></Machinegun>
 	</Items>
 	<Player>
 		<Mario xPos="1110" yPos="360"></Mario>

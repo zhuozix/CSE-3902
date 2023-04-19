@@ -11,13 +11,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint0.Sounds;
 using Sprint0.Content;
+using Sprint0.Factory;
+using System.Diagnostics;
+using Sprint0.NPC.Boss;
 
 namespace Sprint0.ObjectManager
 {
     public class ObjectLogicManager
     {
         private Game1 game;
-
+        
         public List<ISprite> blocks;
         public List<ISprite> enemies;
         public List<ISprite> players;
@@ -374,8 +377,10 @@ namespace Sprint0.ObjectManager
 
         public void update(GameTime time)
         {
+          
             if(game.bossHP <= 0)
             {
+                SoundPlayer.playStageClear();
                 toWinState(time); return;
             }
             gameExit();
