@@ -346,7 +346,8 @@ namespace Sprint0.Factory
                 }
                 else
                 {
-                    return new SuperFireball(texture_SuperFireball, new Vector2(currentLocation.X + 5, currentLocation.Y), 1, 2, 0);
+                    return new SuperFireball(texture_SuperFireball, new Vector2(currentLocation.X + 5, currentLocation.Y+20), 1, 2, 0);
+                    
                 }
                 
             }
@@ -358,7 +359,7 @@ namespace Sprint0.Factory
                 }
                 else
                 {
-                    return new SuperFireball(texture_SuperFireball, new Vector2(currentLocation.X - 5, currentLocation.Y), 1, 2, 1);
+                    return new SuperFireball(texture_SuperFireball, new Vector2(currentLocation.X - 5, currentLocation.Y + 20), 1, 2, 1);
                 }
                 
             }

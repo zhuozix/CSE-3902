@@ -74,6 +74,7 @@ namespace Sprint0.MarioPlayer
             }
             else
             {
+                    
                     fireball.velocity = new Vector2((float)(fireball.velocity.X * 3), fireball.velocity.Y);
             }
             SoundPlayer.playFireball();

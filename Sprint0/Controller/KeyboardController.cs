@@ -9,8 +9,11 @@ using Sprint0.Command;
 using Sprint0.Command.GameControlCMD;
 using Sprint0.Command.PlayerCMD;
 using Sprint0.MarioPlayer;
+using Sprint0.Factory;
 using Sprint0.MarioPlayer.State.ActionState;
 using Sprint0.Sounds;
+using Sprint0.Sprites;
+using System.Numerics;
 /**
 * Controller Class for keyboard input. 
 * This class is not for player control. 
@@ -83,8 +86,9 @@ namespace Sprint0.Content
              */
 
             //Fireball controls
-            this.AddCommand(Keys.N, fire);
+            
             this.AddCommand(Keys.Z, fire);
+            this.AddCommand(Keys.N, fire);
             // Game control
             this.AddCommand(Keys.P, gamePause);
             this.AddCommand(Keys.Q, exit);
@@ -104,11 +108,11 @@ namespace Sprint0.Content
             this.AddPlayerCommand(Keys.Right, moveRight);
             this.AddPlayerCommand(Keys.Down, crouch);
 
-          
         }
 
         public void UpdateInput()
         {
+            Mario playerInstance = gameInstance.mario;
             //if the key pressed, execute the command in the map.
             KeyboardState currentKeyboardState = Keyboard.GetState();
 
@@ -170,8 +174,10 @@ namespace Sprint0.Content
         
              }
             }
-      
-            
+            /* have problem
+            SpritesFactory spritesFactory = gameInstance.spritesFactory;
+            ICommand superFireball = new SuperFireballContorl(playerInstance, gameInstance, spritesFactory);
+            */
          
         }
     }
