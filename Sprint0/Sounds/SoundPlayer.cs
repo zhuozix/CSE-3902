@@ -31,6 +31,7 @@ namespace Sprint0.Sounds
         private static SoundEffect pipe;
         private static SoundEffect Machinegun;
         private static SoundEffect Moonjump;
+        private static SoundEffect bowserFire;
 
         public static void loadSounds(Game1 game)
         {
@@ -55,6 +56,7 @@ namespace Sprint0.Sounds
             pipe = content.Load<SoundEffect>("Sounds/smb_pipe");
             Machinegun = content.Load<SoundEffect>("Sounds/heavy-machine-gun");
             Moonjump = content.Load<SoundEffect>("Sounds/moonjump");
+            bowserFire = content.Load<SoundEffect>("Sounds/smb_bowserfire");
         }
 
         public static void playMainTheme()
@@ -111,6 +113,11 @@ namespace Sprint0.Sounds
         public static void playFireball()
         {
             fireball.Play();
+        }
+
+        public static void playBowserFire()
+        {
+            bowserFire.Play();
         }
 
         public static void playPowerupAppears()
