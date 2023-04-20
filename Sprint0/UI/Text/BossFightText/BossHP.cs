@@ -28,7 +28,7 @@ namespace Sprint0.UI.Text
             this.LifeRemin = "";
             this.gameInstance = gameInstanceIn;
             noDmg = "invincible";
-            hp = 100;
+            hp = 50;
         }
 
         public override void Update(GameTime gameTime)
@@ -57,18 +57,7 @@ namespace Sprint0.UI.Text
             while (hp > 0)
             {
                 this.LifeRemin += '|';
-                hp = hp - 10;
-                /*
-                float timer = 0f;
-                timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (timer >= 5f)
-                {
-                    ISprite star = spritesFactory.getStarSprite();
-                    star.Position = new Vector2(mario.Position.X, mario.Position.Y - 110);
-                    gameInstance.gameObjectManager.addObject(star, "item");
-                    timer = 0f;
-                }
-                */
+                hp = hp - 3;
             }
            
         }

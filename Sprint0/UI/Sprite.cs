@@ -55,20 +55,6 @@ namespace Sprint0.Content
             SpriteEffects spriteEffectStar;
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
                 Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * Game1.scale, height * Game1.scale);
-                 if(this.state == "Star")
-                {
-                if (isFlipped)
-                {
-                    spriteEffect = SpriteEffects.FlipHorizontally | SpriteEffects.FlipHorizontally;
-                }
-                else
-                {
-                    spriteEffect = SpriteEffects.None | SpriteEffects.FlipHorizontally;
-                }
-
-            }
-            else
-            {
                 if (isFlipped)
                 {
                     spriteEffect = SpriteEffects.FlipHorizontally;
@@ -78,16 +64,80 @@ namespace Sprint0.Content
                     spriteEffect = SpriteEffects.None;
                 }
 
-            }
-                
-
-                
-               
-                
                 _spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White, 0, Vector2.Zero, spriteEffect, 0);
-            
+ 
         }
 
+        public void DrawGold(SpriteBatch _spriteBatch, bool isFlipped)
+        {
 
+            int width = texture.Width / cols;
+            int height = texture.Height / rows;
+            int row = currentFrame / cols;
+            int column = currentFrame % cols;
+            SpriteEffects spriteEffect;
+            SpriteEffects spriteEffectStar;
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * Game1.scale, height * Game1.scale);
+                if (isFlipped)
+                {
+                    spriteEffect = SpriteEffects.FlipHorizontally;
+                }
+                else
+                {
+                    spriteEffect = SpriteEffects.None;
+                }
+
+            _spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.Gold, 0, Vector2.Zero, spriteEffect, 0);
+
+        }
+
+        public void DrawRed(SpriteBatch _spriteBatch, bool isFlipped)
+        {
+
+            int width = texture.Width / cols;
+            int height = texture.Height / rows;
+            int row = currentFrame / cols;
+            int column = currentFrame % cols;
+            SpriteEffects spriteEffect;
+            SpriteEffects spriteEffectStar;
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * Game1.scale, height * Game1.scale);
+            if (isFlipped)
+            {
+                spriteEffect = SpriteEffects.FlipHorizontally;
+            }
+            else
+            {
+                spriteEffect = SpriteEffects.None;
+            }
+
+            _spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.Red, 0, Vector2.Zero, spriteEffect, 0);
+
+        }
+
+        public void DrawPink(SpriteBatch _spriteBatch, bool isFlipped)
+        {
+
+            int width = texture.Width / cols;
+            int height = texture.Height / rows;
+            int row = currentFrame / cols;
+            int column = currentFrame % cols;
+            SpriteEffects spriteEffect;
+            SpriteEffects spriteEffectStar;
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width * Game1.scale, height * Game1.scale);
+            if (isFlipped)
+            {
+                spriteEffect = SpriteEffects.FlipHorizontally;
+            }
+            else
+            {
+                spriteEffect = SpriteEffects.None;
+            }
+
+            _spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.Pink, 0, Vector2.Zero, spriteEffect, 0);
+
+        }
     }
 }

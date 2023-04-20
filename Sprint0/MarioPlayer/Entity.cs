@@ -38,5 +38,20 @@ namespace Sprint0.MarioPlayer
         {
             Sprite.Draw(spriteBatch, isFlipped);
         }
+
+        public virtual void DrawRed(SpriteBatch spriteBatch, bool isFlipped)
+        {
+            Sprite.DrawRed(spriteBatch, isFlipped);
+        }
+
+        public virtual void DrawGold(SpriteBatch spriteBatch, bool isFlipped)
+        {
+            Sprite.DrawGold(spriteBatch, isFlipped);
+        }
+
+        public virtual void DrawPink(SpriteBatch spriteBatch, bool isFlipped)
+        {
+            Sprite.DrawPink(spriteBatch, isFlipped);
+        }
     }
 }

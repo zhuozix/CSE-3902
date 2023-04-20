@@ -417,7 +417,7 @@ namespace Sprint0.Factory
         }
         public ISprite getBossFontSprite()
         {
-            ISprite sprite = new BossHP(texture_HUDFont, "", new Vector2(300, 50), Color.White, gameInstance);
+            ISprite sprite = new BossHP(texture_HUDFont, "", new Vector2(285, 50), Color.White, gameInstance);
             sprite.Name = "Font";
             sprite.state = "Normal";
             return sprite;

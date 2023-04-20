@@ -19,8 +19,6 @@ namespace Sprint0.NPC.Boss
         private Texture2D _texture;
         private Boss KingKoopa;
 
-        private int rows;
-        private int columns;
 
         public BossFactory(ContentManager contentManagerIn, Boss KingKoopaIn) 
         {
@@ -30,23 +28,21 @@ namespace Sprint0.NPC.Boss
         public Sprite buildSprite()
         {
             _fileLocation = findLocation();
-            _texture = _contentManager.Load<Texture2D>("Bowser/bowser");
+            _texture = _contentManager.Load<Texture2D>(_fileLocation);
             updateRowsCols();
-            KingKoopa.cols = columns;
-            KingKoopa.rows = rows;
-            return new NoneMovingAnimatedSprite(_texture, Vector2.Zero, rows, columns);
+            return new NoneMovingAnimatedSprite(_texture, Vector2.Zero, KingKoopa.rows, KingKoopa.cols);
 
         }
         public void updateRowsCols()
         {
-            rows = 1;
+            KingKoopa.rows = 1;
             if(KingKoopa.currentActionType == BossActionType.Running)
             {
-                columns = 4;
+                KingKoopa.cols = 4;
             }
             else
             {
-                columns = 4;
+                KingKoopa.cols = 1;
             }
         }
         public string findLocation()
@@ -60,20 +56,12 @@ namespace Sprint0.NPC.Boss
             else { 
                 switch (KingKoopa.currentActionType)
                 {
-                    case BossActionType.Idle:
-                        fileLocation += "bowser";
-                        break;
                     case BossActionType.Running:
                         fileLocation += "bowser";
                         break;
-                    case BossActionType.Jumping:
-                        fileLocation += "bowser";
-                        break;
-                    case BossActionType.Falling:
-                        fileLocation += "boswer";
-                        break;
                     default:
-                        throw new ArgumentException("SpriteFactory error: Invalid Type specified");
+                        fileLocation += "idle";
+                        break;
                 }
             }
             return fileLocation;

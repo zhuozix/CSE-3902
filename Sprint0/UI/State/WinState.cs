@@ -35,7 +35,7 @@ namespace Sprint0.UI.State
                 {
                     reset.Execute();
                 }
-                else
+                else if(Keyboard.GetState().IsKeyDown(Keys.Escape))
                 {
                     exit.Execute();
                 }

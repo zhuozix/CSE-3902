@@ -33,7 +33,7 @@ namespace Sprint0.NPC.Boss.AI
 
         public bool marioOnGround()
         {
-            if(player.Position.Y > 280)
+            if(player.Position.Y > 290)
             {
                 return true;
             }
@@ -43,7 +43,7 @@ namespace Sprint0.NPC.Boss.AI
             int level = 0;
             if (player.Position.Y < 100) level = 3;
             else if (player.Position.Y < 200) level = 2;
-            else if (player.Position.Y < 280) level = 1;
+            else if (player.Position.Y < 300) level = 1;
             return level;
         }
 
@@ -151,7 +151,7 @@ namespace Sprint0.NPC.Boss.AI
 
         public void hitByFireball()
         {
-            ai.angry += 5;
+            ai.angry += 12;
         }
 
         public void resetAngry()
@@ -177,8 +177,25 @@ namespace Sprint0.NPC.Boss.AI
 
         public void fireballAttack()
         {
-            game.gameObjectManager.addObject(game.spritesFactory.getFireballSprite(boss.Position, false, false), "superFireball");
+            ISprite fireball = game.spritesFactory.getFireballSprite(boss.Position, false, false);
+            if (boss.isFacingRight)
+            {
+                fireball.crash = true;
+            }
+            game.gameObjectManager.addObject(fireball, "superFireball");
             SoundPlayer.playBowserFire();
+        }
+
+        public bool haveGommbaNearBy()
+        {
+            foreach(ISprite gommba in game.gameObjectManager.enemies)
+            {
+                if(Math.Abs(gommba.Position.X - boss.Position.X) <= 30)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }

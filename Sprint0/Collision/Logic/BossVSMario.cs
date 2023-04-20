@@ -57,20 +57,23 @@ namespace Sprint0.Collision.Logic
                     Rectangle bossRectangle = collisionDetection.getRectangle(boss);
                     if (playerRectangle.Intersects(bossRectangle))
                     {
-                        if (boss._ai.noDmgLock)
+                        
+                        if (collisionDetection.touchBottomEnemy(playerRectangle, bossRectangle))
                         {
-                            if (player.state != "Hurt")
+                            if (!boss._ai.noDmgLock)
                             {
-                                hurtMario(player);
+                                BossStateChange stateChange = new BossStateChange(boss, _game);
+                                stateChange.hitByMario();
                             }
-                        }
-                        else if (collisionDetection.touchBottomEnemy(playerRectangle, bossRectangle))
-                        {
-                            BossStateChange stateChange = new BossStateChange(boss, _game);
-                            stateChange.hitByMario();
+                            
                             //push mario
                             player.Position = new Vector2(player.Position.X, player.Position.Y - 10);
-                            player.velocity = new Vector2(0, -180);
+                            int xVelocity = -100;
+                            if (player.IsFacingRight)
+                            {
+                                xVelocity = 100;
+                            }
+                            player.velocity = new Vector2(xVelocity, -280);
                             player.Jump();
                         }
                         else
@@ -97,9 +100,11 @@ namespace Sprint0.Collision.Logic
                     if (RectangleA.Intersects(RectangleB))
                     {
                         find = true;
-                        BossStateChange stateChange = new BossStateChange(b, _game);
-                        stateChange.hitByFireball();
-
+                        if (!b._ai.noDmgLock)
+                        {
+                            BossStateChange stateChange = new BossStateChange(b, _game);
+                            stateChange.hitByFireball();
+                        }
                         FireballChangeManager changeFireBall = new FireballChangeManager(b, collide.game);
                         changeFireBall.changeState();
 
