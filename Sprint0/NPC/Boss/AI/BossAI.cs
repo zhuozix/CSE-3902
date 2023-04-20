@@ -131,7 +131,7 @@ namespace Sprint0.NPC.Boss
             }
 
             //angry
-            if(angry >= 80)
+            if(angry >= 50)
             {
                 angry = 0;
                 angryMode = true;
