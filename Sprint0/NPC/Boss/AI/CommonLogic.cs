@@ -190,7 +190,7 @@ namespace Sprint0.NPC.Boss.AI
         {
             foreach(ISprite gommba in game.gameObjectManager.enemies)
             {
-                if(Math.Abs(gommba.Position.X - boss.Position.X) <= 30)
+                if(Math.Abs(gommba.Position.X - boss.Position.X) <= 100)
                 {
                     return true;
                 }

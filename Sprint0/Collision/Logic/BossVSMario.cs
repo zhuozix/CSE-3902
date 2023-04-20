@@ -73,8 +73,14 @@ namespace Sprint0.Collision.Logic
                             {
                                 xVelocity = 100;
                             }
-                            player.velocity = new Vector2(xVelocity, -280);
+                            int yVelocity = -280;
+                            if(player.Position.Y <= 90)
+                            {
+                                yVelocity = -50;
+                            }
+                            player.velocity = new Vector2(xVelocity, yVelocity);
                             player.Jump();
+                            
                         }
                         else
                         {

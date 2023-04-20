@@ -276,7 +276,7 @@ namespace Sprint0.Collision.Logic
 
                             cannotMoveUP(a);
 
-                            //a.fallAfterJump();
+                            a.fallAfterJump();
                             BlockChangeManager changeState = new BlockChangeManager(b, collide.game);
                             changeState.changeState();
                             break;
