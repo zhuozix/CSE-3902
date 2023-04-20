@@ -67,6 +67,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
         
         public override void PoleSlidingTransition()
 		{
+			/*
 			Exit();
             if (marioEntity.Jumpmode)
             {
@@ -77,6 +78,10 @@ namespace Sprint0.MarioPlayer.State.ActionState
                 CurrentState = new MoonJumpState(marioEntity, marioFactory);
             }
             CurrentState.Enter(this);
+            */
+			Exit();
+			CurrentState = new MarioPoleslideState(marioEntity, marioFactory);
+			CurrentState.Enter(this);
 		}
 
 		public override void IdleTransition()

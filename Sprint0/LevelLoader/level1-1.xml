@@ -170,6 +170,7 @@
 		<Teleporter xPos="7098" yPos="400" width="10" height="16" activation="right" xDest="5230" yDest="336" underground="True" destDir="up"></Teleporter>
 
 		<FlagPoleBlock xPos="6340" yPos="100"></FlagPoleBlock>
+		<FlagPoleBlock xPos="6340" yPos="0"></FlagPoleBlock>
 	</Blocks>
 	<Enemies>
 
