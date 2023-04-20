@@ -17,6 +17,7 @@ namespace Sprint0.NPC.Boss.AI
         public Boss boss;
         public BossAI ai;
         public Game1 game;
+        Boolean stomping = false;
         public CommonLogic(Mario player, Boss boss, BossAI aiIn, Game1 gameIn) 
         {
             this.player = player;
@@ -80,7 +81,7 @@ namespace Sprint0.NPC.Boss.AI
 
         public void falling()
         {
-            if (boss.Position.Y < 355)
+            if (boss.Position.Y < 350)
             {
                 ai.stateChange.fall();
             }
@@ -96,20 +97,21 @@ namespace Sprint0.NPC.Boss.AI
         {
             if(boss.currentActionType != BossActionType.Falling)
             {
-                if(boss.Position.Y > 280)
+                if(boss.Position.Y > 250)
                 {
                     ai.stateChange.jump();
+                    stomping = true;
                     if (boss.Position.X != player.Position.X)
                     {
                         if (playerOnRight())
                         {
                             boss.isFacingRight = true;
-                            boss.velocity = new Vector2(150, boss.velocity.Y);
+                            boss.velocity = new Vector2(200, boss.velocity.Y);
                         }
                         else
                         {
                             boss.isFacingRight = false;
-                            boss.velocity = new Vector2(-150, boss.velocity.Y);
+                            boss.velocity = new Vector2(-200, boss.velocity.Y);
                         }
                     }
                     else
@@ -122,7 +124,7 @@ namespace Sprint0.NPC.Boss.AI
                     boss.velocity = Vector2.Zero;
                     ai.restTimer = 0.5f;
                     falling();
-
+                    stomping = false; 
                 }
 
             }

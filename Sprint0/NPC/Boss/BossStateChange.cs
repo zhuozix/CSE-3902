@@ -105,7 +105,7 @@ namespace Sprint0.NPC.Boss
             boss.velocity = new Vector2(boss.velocity.X, 180);
             if (boss._ai.angryMode)
             {
-                boss.velocity = new Vector2(boss.velocity.X, 300);
+                boss.velocity = new Vector2(boss.velocity.X, 220);
             }
         }
 

@@ -136,7 +136,7 @@
 		<Mario xPos="1110" yPos="360"></Mario>
 	</Player>
 	<Boss>
-		<Bowser xPos="2250" yPos="355"></Bowser>
+		<Bowser xPos="2250" yPos="350"></Bowser>
 	</Boss>	
 	<Camera>
 		<CamPos endLevel="1200" underground="1599"></CamPos>
