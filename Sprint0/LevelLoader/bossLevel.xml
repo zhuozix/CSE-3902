@@ -71,6 +71,22 @@
 		<BlueFloorBlock xPos="1568" yPos="448"></BlueFloorBlock>
 		<BlueFloorBlock xPos="1568" yPos="480"></BlueFloorBlock>
 
+		<BlueFloorBlock xPos="2400" yPos="0"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="32"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="64"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="96"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="128"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="160"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="192"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="224"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="256"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="288"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="320"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="352"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="384"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="416"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="448"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2400" yPos="480"></BlueFloorBlock>
 
 		<Platform xPos ="1600" yPos ="320"></Platform>
 		<Platform xPos ="1648" yPos ="320"></Platform>
@@ -123,6 +139,6 @@
 		<Bowser xPos="2250" yPos="355"></Bowser>
 	</Boss>	
 	<Camera>
-		<CamPos endLevel="1200" underground="1568"></CamPos>
+		<CamPos endLevel="1200" underground="1599"></CamPos>
 	</Camera>
 </Level>
