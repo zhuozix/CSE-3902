@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint0.MarioPlayer;
+using Sprint0.NPC.Blocks;
 using Sprint0.Sounds;
 using Sprint0.Sprites;
 using System;
@@ -87,7 +88,22 @@ namespace Sprint0.NPC.Boss.AI
             }
             else
             {
-                
+                BlockSprite smashed = null;
+                int remainder = (int)boss.Position.X % 32;
+                int Xpos = (int)boss.Position.X - remainder + 32;
+                Vector2 target = new Vector2(Xpos, 416);
+                foreach (BlockSprite b in game.gameObjectManager.blocks)
+                {
+                    if (b.Position == target)
+                    {
+                        smashed = b;
+                    }
+                }
+                if (smashed != null && stomping == true){
+                    game.gameObjectManager.blocks.Remove(smashed);
+                    smashed = null;
+                }
+                stomping = false;
                 ai.stateChange.stopMoving();
                 ai.restTimerLock = true;
             }
@@ -124,7 +140,6 @@ namespace Sprint0.NPC.Boss.AI
                     boss.velocity = Vector2.Zero;
                     ai.restTimer = 0.5f;
                     falling();
-                    stomping = false; 
                 }
 
             }
