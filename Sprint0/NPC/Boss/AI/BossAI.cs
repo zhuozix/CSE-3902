@@ -142,6 +142,7 @@ namespace Sprint0.NPC.Boss
                 if (noDmgTimer <= 0)
                 {
                     angryMode = false;
+ 
                 }
             }
         }
@@ -185,13 +186,13 @@ namespace Sprint0.NPC.Boss
 
                     
                         //state 1, Approach the player and summon gommba
-                        if(summonTimer == 0f)
+                        if(summonTimer == 0f && !commonLogic.haveGommbaNearBy())
                         {
 
-                            summonTimer = 2f;
+                             summonTimer = 2f;
+                             stateChange.stopMoving();
+                             commonLogic.summonGommba();
 
-                            commonLogic.summonGommba();
-                            stateChange.stopMoving();
                         }
                         else if(summonTimer <= 1.65f)
                         {

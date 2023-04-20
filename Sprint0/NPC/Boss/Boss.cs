@@ -37,6 +37,8 @@ namespace Sprint0.NPC.Boss
 
         //resources
         public Game1 game;
+        internal int currentFrame;
+        internal int totalFrames;
 
         /*
          * Constructor
@@ -48,7 +50,10 @@ namespace Sprint0.NPC.Boss
             Position = spawnLocation;
             //ai
             loadAI();
-
+            this.currentFrame = 0;
+            this.totalFrames = 4;
+            this.Name = "Boss";
+            this.state = "Angry";
         }
 
         public void changeSprite()
@@ -74,7 +79,7 @@ namespace Sprint0.NPC.Boss
             currentActionType = BossActionType.Idle;
             this.Sprite = factory.buildSprite();
 
-            
+
         }
 
         public void loadAI()
@@ -98,14 +103,6 @@ namespace Sprint0.NPC.Boss
                     visibleTimer = 0f;
                     changeVisibleStatus();
                 }
-            }else if (_ai.noDmgLock)
-            {
-                visibleTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (visibleTimer >= 0.4f)
-                {
-                    visibleTimer = 0f;
-                    changeVisibleStatus();
-                }
             }
             else
             {
@@ -124,12 +121,25 @@ namespace Sprint0.NPC.Boss
                 _ai.Update(gameTime);
                 base.Update(gameTime);
             }
+
             
         }
 
         public override void Draw(SpriteBatch spriteBatch, bool isFlipped)
         {
-            if (isVisible)
+            if (_ai.noDmgLock && _ai.angryMode)
+            {
+                base.DrawPink(spriteBatch, isFacingRight);
+            }
+            else if (_ai.noDmgLock)
+            {
+                base.DrawGold(spriteBatch, isFacingRight);
+            }
+            else if (_ai.angryMode && isVisible)
+            {
+                base.DrawRed(spriteBatch, isFacingRight);
+            }
+            else if (isVisible)
             {
                 base.Draw(spriteBatch, isFacingRight);
             }
