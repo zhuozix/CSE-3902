@@ -88,6 +88,32 @@
 		<BlueFloorBlock xPos="2400" yPos="448"></BlueFloorBlock>
 		<BlueFloorBlock xPos="2400" yPos="480"></BlueFloorBlock>
 
+		<BlueFloorBlock xPos="1600" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1632" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1664" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1696" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1728" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1760" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1792" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1824" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1856" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1888" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1920" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1952" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="1984" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2016" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2048" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2080" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2112" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2144" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2176" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2208" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2240" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2272" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2304" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2336" yPos="-16"></BlueFloorBlock>
+		<BlueFloorBlock xPos="2368" yPos="-16"></BlueFloorBlock>
+		
 		<Platform xPos ="1600" yPos ="320"></Platform>
 		<Platform xPos ="1648" yPos ="320"></Platform>
 		<Platform xPos ="1696" yPos ="320"></Platform>
