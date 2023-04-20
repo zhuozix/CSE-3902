@@ -186,15 +186,13 @@ namespace Sprint0.NPC.Boss
 
                     
                         //state 1, Approach the player and summon gommba
-                        if(summonTimer == 0f)
+                        if(summonTimer == 0f && !commonLogic.haveGommbaNearBy())
                         {
-                            if (!commonLogic.haveGommbaNearBy())
-                            {
-                                summonTimer = 2f;
-                                stateChange.stopMoving();
-                                commonLogic.summonGommba();
-                            }
-                            
+
+                             summonTimer = 2f;
+                             stateChange.stopMoving();
+                             commonLogic.summonGommba();
+
                         }
                         else if(summonTimer <= 1.65f)
                         {
