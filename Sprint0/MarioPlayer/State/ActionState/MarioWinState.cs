@@ -72,7 +72,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
         {
             // transition to boss fight
             timeSpent += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if(timeSpent >= 4.3f)
+            if(timeSpent >= 6.5f)
             {
                 marioEntity.game.ChangeState(new bossfightState(marioEntity.game));
             }
