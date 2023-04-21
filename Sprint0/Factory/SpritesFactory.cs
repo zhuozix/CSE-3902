@@ -439,6 +439,13 @@ namespace Sprint0.Factory
             sprite.state = "Normal";
             return sprite;
         }
+        public ISprite getLevelClearTextSprite()
+        {
+            ISprite sprite = new LevelClearTextSprite(texture_scorefont, "", new Vector2(200, 200), Color.Black, gameInstance);
+            sprite.Name = "Font";
+            sprite.state = "Normal";
+            return sprite;
+        }
         public ISprite getTimeUpFontSprite()
         {
             ISprite sprite = new TimeUpTextSprite(texture_scorefont, "", new Vector2(250, 200), Color.Black, gameInstance);
