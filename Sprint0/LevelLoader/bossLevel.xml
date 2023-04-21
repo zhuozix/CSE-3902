@@ -159,7 +159,7 @@
 		<FireFlower xPos="1600" yPos="92"></FireFlower>
 	</Items>
 	<Player>
-		<Mario xPos="1110" yPos="360"></Mario>
+		<Mario xPos="60" yPos="360"></Mario>
 	</Player>
 	<Boss>
 		<Bowser xPos="2250" yPos="350"></Bowser>

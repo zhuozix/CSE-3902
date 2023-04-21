@@ -20,6 +20,7 @@ namespace Sprint0.Command.GameControlCMD
             game.coins = 0;
             game.life = 3;
             game.time = 400f;
+            game.bossHP = 50;
             game.ChangeState(new TitleScreenState(game));
         }
     }
