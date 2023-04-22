@@ -1,0 +1,24 @@
+Readability Review
+Author of the code review: Adam Cote
+Date of the code review: 4/21/2023
+Sprint number: 5
+Name of the .cs file being reviewed: SoundPlayer.cs
+Author of the .cs file being reviewed: Seth and Yao
+Number of minutes taken to complete the review: 5
+
+The organization of this code is good. The elements of code that are similar are all 
+grouped together which demonstrates high cohesion. However, the code could use comments
+to increase the readability.
+
+Quality Review
+Author of the code review: Adam Cote
+Date of the code review: 4/21/2023
+Sprint number: 5
+Name of the .cs file being reviewed: SoundPlayer.cs
+Author of the .cs file being reviewed: Seth and Yao
+Number of minutes taken to complete the review: 5 
+
+The overall logic of the code is good. Some things that would improve it are 
+cutting down on the repetition and also getting rid of some magic numbers.
+we could also condense all of the data into collections so that the logic
+is separated from the data. Overall, this is a good class with good logic.
