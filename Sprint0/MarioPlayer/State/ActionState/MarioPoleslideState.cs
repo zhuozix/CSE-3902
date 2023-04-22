@@ -90,7 +90,8 @@ namespace Sprint0.MarioPlayer.State.ActionState
 			}
             else if (marioEntity.Position.Y >= 386)
 			{
-				WinStateTransition();
+                marioEntity.velocity = new Vector2(50, 0);
+                WinStateTransition();
 			}
 
 
