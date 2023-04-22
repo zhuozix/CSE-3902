@@ -6,7 +6,7 @@ namespace Sprint0.MarioPlayer.State.ActionState
 {
     public class MoonJumpState : MarioActionState
     {
-        private static float VerticalVelocity = -300;
+        private static float VerticalVelocity = -150;
 
         public MoonJumpState(Mario marioEntity, MarioFactory marioFactory) : base(marioEntity, marioFactory)
         { }

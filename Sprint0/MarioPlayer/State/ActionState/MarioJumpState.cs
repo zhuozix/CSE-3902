@@ -17,13 +17,13 @@ namespace Sprint0.MarioPlayer.State.ActionState
         {
             base.Enter(previousState);
 
-            float yVelocity = -110;
+            float yVelocity = VerticalVelocity;
 
             MarioPowerupStateType powerupStateType = marioEntity.CurrentPowerupState.GetEnumValue();
             
             if(powerupStateType != MarioPowerupStateType.Normal)
             {
-                yVelocity = -120;
+                yVelocity = superVerticalVelocity;
             }
 
             if(marioEntity.velocity.Y != 0)
