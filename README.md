@@ -10,7 +10,7 @@ Team members:
 
 Project: Mario Replica
 
--Sprint4-
+-Sprint5-
 
 Controls:
 
@@ -26,22 +26,17 @@ Right click to jump.
 Scroll mouse wheel to fire fireball (must be fire mario).
 Press middle mouse or mouse button 1 (if your mouse has buttons) to crouch.
 
-Special Notes for sprint4:
-
 There are some differences between the game and the original game, such as
 1) The game camera can move backwards.
 2) The items that come out after colliding with the question mark bricks are different from the original version.
 3) The game's enemies may appear in different locations.
 4) The distance that activated enemies move is not the same.
-
 5) The fonts used, the UI and the UI background are different from the original.
-6)There is no animation for entering the castle and no animation for exiting from the pipe.
+6) An entirely original boss fight level with new power-ups and an original boss fight with lots of mechanics.
 
 
 Known Bugs:
 
-Compared to sprint3, collision detection works perfectly fine in the vast majority of cases. There may be some minor bugs.
-Regular Mario has problems colliding with koopa.
-Sometimes Mario jumps too low to the left.
-There are very few cases where the sound of the music playing is repeated.
-
+Mario appears to clip through pipes when entering them near the sides.
+Rarily, mario goes really high when bouncing off an enemy.
+Rarily, moon jump mario can jump through the roof and out of the boss room.

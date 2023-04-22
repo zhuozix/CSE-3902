@@ -11,13 +11,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint0.MarioPlayer.State.PowerupState;
 
 namespace Sprint0.UI.State
 {
     internal class bossfightState : IGameState
     {
         private readonly Game1 _game;
-
+        private int marioPowerUpState = 0;
         public bossfightState(Game1 game)
         {
             _game = game;
@@ -52,6 +53,7 @@ namespace Sprint0.UI.State
 
         public void Enter()
         {
+            saveMarioPowerUp();
             Initialize();
 
             _game.camera = new Camera();
@@ -69,6 +71,8 @@ namespace Sprint0.UI.State
             _game.keyboardController.loadCommonCommand();
             _game.MouseController.loadCommonCommand();
             _game.gameObjectManager.isBossFight = true;
+
+            loadMarioPowerUp();
         }
 
         public void Initialize()
@@ -87,6 +91,30 @@ namespace Sprint0.UI.State
         {
             
             SoundPlayer.stopMusic();
+        }
+
+        private void saveMarioPowerUp()
+        {
+            if (_game.mario != null && _game.mario.CurrentPowerupState.GetEnumValue() == MarioPowerupStateType.Super)
+            {
+                marioPowerUpState = 1;
+            }
+            else if (_game.mario != null && _game.mario.CurrentPowerupState.GetEnumValue() == MarioPowerupStateType.Fire)
+            {
+                marioPowerUpState = 2;
+            }
+        }
+
+        private void loadMarioPowerUp() 
+        {
+            if (marioPowerUpState == 1)
+            {
+                _game.mario.UseSuperMushroom();
+            }
+            else if (marioPowerUpState == 2)
+            {
+                _game.mario.UseFireMushroom();
+            }
         }
     }
 }
